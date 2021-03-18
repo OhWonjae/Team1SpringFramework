@@ -28,4 +28,6 @@ public class Team1Controller {
 	public String searchPw() {
 		return "/index/searchPw";
 	}
+	
+
 }
