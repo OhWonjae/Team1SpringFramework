@@ -1,4 +1,13 @@
+<%-- page 지시자 --%>
+
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.mycompany.webapp.dto.*"%>
+
+<%-- taglib 지시자 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<head>
 		<title>Spring</title>
 		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
@@ -23,45 +32,51 @@
                 <div class="row justify-content-between"style="height: 12%; ">
                     <!--사이즈 표-->
                     <figure class="figure ">
-                        <img class="img "   src="image/SizePic.PNG">
+                        <img class="img "   src="${pageContext.request.contextPath}/resources/img/SizePic.PNG">
                         <figcaption class="figure-caption text-center ">S</figcaption>
                         <figcaption class="figure-caption text-center ">0~25mm</figcaption>
                     </figure>
                     <figure class="figure" >
-                        <img class="img "   src="image/SizePic.PNG">
+                        <img class="img "   src="${pageContext.request.contextPath}/resources/img/SizePic.PNG">
                         <figcaption class="figure-caption text-center ">M</figcaption>
                         <figcaption class="figure-caption text-center ">15~30mm</figcaption>
                     </figure>
                     <figure class="figure ">
-                        <img class="img "   src="image/SizePic.PNG">
+                        <img class="img "   src="${pageContext.request.contextPath}/resources/img/SizePic.PNG">
                         <figcaption class="figure-caption text-center ">L</figcaption>
                         <figcaption class="figure-caption text-center ">25~40mm</figcaption>
                     </figure>
                     <figure class="figure ">
-                        <img class="img "   src="image/SizePic.PNG">
+                        <img class="img "   src="${pageContext.request.contextPath}/resources/img/SizePic.PNG">
                         <figcaption class="figure-caption text-center ">XL</figcaption>
                         <figcaption class="figure-caption text-center ">35~60mm</figcaption>
                     </figure>
                     <figure class="figure ">
-                        <img class="img "    src="image/SizePic.PNG">
+                        <img class="img "    src="${pageContext.request.contextPath}/resources/img/SizePic.PNG">
                         <figcaption class="figure-caption text-center ">2XL</figcaption>
                         <figcaption class="figure-caption text-center ">55~80mm</figcaption>
                     </figure>
                     
                 </div>
-
+                
+				<script>
+                  	function detailPicClick(srcPic){
+                  		$("#mainPic").attr("src","${pageContext.request.contextPath}/resources/img/"+srcPic );
+                  	}
+                </script>
+                
                 <div class="row justify-content-center"style="height: 75%; ">
                     <!--제품 사진-->
                     <div class="col-md-6 border">
                         <!--메인 사진-->
                         <div class="row border" style="height: 82%;">
-                            <img class="img" style="height: 100%; width: 100%;" src="image/detail_Main.png">
+                        	<img class="img" id="mainPic" style="height: 100%; width: 100%;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
                         </div>
                         <!--세부 사진-->
                         <div class="row   justify-content-center" style=" height: 15%; padding:35px">
-                            <img class="img border" style="margin: 0px 3px;"  src="image/detail_Sub_1.PNG">
-                            <img class="img border"  style="margin: 0px 3px;" src="image/detail_Sub_2.PNG">
-                            <img class="img border"  style="margin: 0px 3px;" src="image/detail_Sub_3.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
                         </div>
                     </div>
                     <!--구매옵션--> 
@@ -71,28 +86,39 @@
                             <h2>헤이제리 테디베어 퍼 후드 베이지</h2>
                         </div>
                         <!--상품사이즈--> 
+                        
+                        <!--상품사이즈 토글 텍스트 변경--> 
+                        <script>
+                        function DropSelect(select)
+                        {
+                       		var selectid = "#"+select.id;
+                       		console.log(selectid);
+                        	$("#sizedropdownMenuButton").html("사이즈 <br/>"+select.id);
+                        }
+                      
+                        </script>
                         <div class="row" style="margin: 40px 0">
                             <div class="dropdown" style="width: 100%;">
-                                <button class="btn btn-lg border dropdown-toggle text-left" style="width: 100%;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-lg border dropdown-toggle text-left"  style="width: 100%;" type="button" id="sizedropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     사이즈</br>
                                     선택 
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-xl w-100" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">
+                                <div class="dropdown-menu dropdown-menu-xl w-100" >
+                                    <a class="dropdown-item" id="S" onclick="DropSelect(this)" href="#">
                                         S</br>
                                         20,400원</br>
                                         재고있음 
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">
-                                        S</br>
+                                    <a class="dropdown-item" id="M" onclick="DropSelect(this)" href="#">
+                                        M</br>
                                         20,400원</br>
                                         재고있음 
                                     </a>
                                 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">
-                                        S</br>
+                                    <a class="dropdown-item" id="L" onclick="DropSelect(this)" href="#">
+                                        L</br>
                                         20,400원</br>
                                         재고있음 
                                     </a>
@@ -112,15 +138,15 @@
                         <!--재고,배송,업체배송 상태,--> 
                         <div class="row justify-content-center" style="padding: 0 0;" >
                             <div class="col-3 "style="font-size: smaller;">
-                                <img class="img " style="margin: 0px 0px;"  src="image/재고있음.PNG">
+                                <img  style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/재고있음.PNG">
                                 재고있음
                             </div>  
                             <div class="col-3 "style="font-size: smaller;">
-                                <img class="img " style="margin: 0px 0px;"  src="image/업체발송.PNG">
+                                <img style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/업체발송.PNG">
                                 업체발송
                             </div>
                             <div class="col-3 " style="font-size: smaller;">
-                                <img class="img " style="margin: 0px 0px;"  src="image/무료배송.PNG">
+                                <img  style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/무료배송.PNG">
                                 무료배송
                             </div>
                         </div>
@@ -216,7 +242,7 @@
             <!--상세페이지 Detail 컨테이너-->
             <div class="row justify-content-md-center mb-5"  >
                 <!--Detail 이미지-->
-                <img src="image/상세Detail.PNG" >
+                <img src="${pageContext.request.contextPath}/resources/img/상세Detail.PNG" >
                 <!--Detail 접기 버튼-->
                 <button type="button" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
             </div>
@@ -249,7 +275,7 @@
                                     </div>
                                     <!--별점-->
                                     <div style="display: flex; ">
-                                        <img src="image/EmptyStar.PNG" height="40px" ><img src="image/EmptyStar.PNG"  height="40px"><img src="image/EmptyStar.PNG"  height="40px"><img src="image/EmptyStar.PNG"  height="40px"><img src="image/EmptyStar.PNG"  height="40px">
+                                        <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
                                 <!--리뷰 입력 컨테이너-->
@@ -294,12 +320,12 @@
                     <!--구매후기 제목 컨테이너-->
                     <div class="row ">
                         <!--강아지 얼굴 사진-->
-                        <img src="image/DogFace.PNG">
+                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
                         <!--구매후기 제목 내용 컨테이너-->
                         <div class="col-9" style="padding:0 ">
                             <span style="margin:0 0; white-space:nowrap; font-size:medium">
                                 <!--별점-->
-                                <img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG">
+                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
                                 <!--구매인증됨 | 작성 날짜-->
                                 구매인증됨  |  2021.03.12.<br/>
                             </span>
@@ -309,7 +335,7 @@
                     </div>
                     <!--구매후기 내용-->
                     <div class="row"style="margin-bottom:2%; font-size:medium">
-                        <img src="image/review1.PNG" width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
+                        <img src="${pageContext.request.contextPath}/resources/img/review1.PNG" width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
                         옵션 : 사이즈 L<br/>후드티<br/>어쩜 사이즈가 이렇게 잘 맞는지^^요즘처럼 추운 겨울에 실내에서 입혀놓으니 너무 예뻐요^^
                     </div>
                 </div>
@@ -319,12 +345,12 @@
                     <!--구매후기 제목 컨테이너-->
                     <div class="row ">
                         <!--강아지 얼굴 사진-->
-                        <img src="image/DogFace.PNG">
+                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
                         <!--구매후기 제목 내용 컨테이너-->
                         <div class="col-9" style="padding:0 ">
                             <span style="margin:0 0; white-space:nowrap; font-size:medium">
                                 <!--별점-->
-                                <img src="image/Star.PNG"  ><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG">
+                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"  ><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
                                 <!--구매인증됨 | 작성 날짜-->
                                 구매인증됨  |  2021.02.22.<br/>
                             </span>
@@ -334,7 +360,7 @@
                     </div>
                     <!--구매후기 내용-->
                     <div class="row"style="margin-bottom:2%; font-size:medium;">
-                        <img src="image/review2.PNG"; width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
+                        <img src="${pageContext.request.contextPath}/resources/img/review2.PNG"; width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
                         옵션 : 사이즈 2XL<br/>사이즈 찰떡이에요<br/>7kg 푸들인데 털이 많이 쪄가지구<br/>투엑스라지가 여유롭게 잘맞아요 색 너무 귀여워요<br/>
                         기모버전이었으면 조금 더 좋았을거 같아요<br/>
                     </div>
@@ -345,12 +371,12 @@
                     <!--구매후기 제목 컨테이너-->
                     <div class="row ">
                         <!--강아지 얼굴 사진-->
-                        <img src="image/DogFace.PNG">
+                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
                         <!--구매후기 제목 내용 컨테이너-->
                         <div class="col-9" style="padding:0 ">
                             <span style="margin:0 0; white-space:nowrap; font-size:medium">
                                 <!--별점-->
-                                <img src="image/Star.PNG"  ><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG"><img src="image/Star.PNG">
+                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"  ><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
                                 <!--구매인증됨 | 작성 날짜-->
                                 구매인증됨  |  2021.01.05.<br/>
                             </span>
@@ -382,3 +408,4 @@
             </div> 
         </div>
     </div>
+   <%@ include file="/WEB-INF/views/common/footer.jsp"%>
