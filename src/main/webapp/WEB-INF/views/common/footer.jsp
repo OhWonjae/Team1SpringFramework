@@ -6,8 +6,8 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
 	<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+  <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/style.css">
+    <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/cart.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     
@@ -18,7 +18,7 @@
             <div class="row">
               <div class="col-sm-3">
                   <div class="col-sm-4">
-                      <img src="img/dog.png" width="50">
+                      <img src="<%=application.getContextPath() %>/resources/img/dog.png" width="50">
                   </div>
                   <div class="col-6">
                       <a style="width:400px">DOGSINSA가<br>만들어낸 의류</a>
@@ -28,7 +28,7 @@
               
               <div class="col-sm-3">
                   <div class="col-sm-4">
-                      <img src="img/dogc.png" width="50">
+                      <img src="<%=application.getContextPath() %>/resources/img/dogc.png" width="50">
                   </div>
                   <div class="col-6">
                     <a>깨끗하고 안전한<br>재질로 만든 옷</a>
@@ -38,7 +38,7 @@
               
               <div class="col-sm-3">
                   <div class="col-sm-4">
-                      <img src="img/truck.png" width="50">
+                      <img src="<%=application.getContextPath() %>/resources/img/truck.png" width="50">
                   </div>
                   <div class="col-6">
                     <a style="width: 400px;">저녁 6시 이전<br>주문 시 오늘 출발</a>
@@ -48,7 +48,7 @@
 
               <div class="col-sm-3">
                   <div class="col-sm-4">
-                      <img src="img/hand.png" width="50">
+                      <img src="<%=application.getContextPath() %>/resources/img/hand.png" width="50">
                   </div>
                   <div class="col-6">
                       <a>3만원 이상 구매시<br>무료배송</a>
@@ -77,7 +77,7 @@
               010-5319-3079
             </div> 
             <div class="footer-logo">
-              <img src="img/logo.png" alt="logo">
+              <img src="<%=application.getContextPath() %>/resources/img/logo.png" alt="logo">
             </div>
             <div class="footer-container2-downtext">
               <div class="open-time">평일: 09:00 ~ 18:00 / 주말 · 공휴일: 휴무</div>

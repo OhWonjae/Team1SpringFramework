@@ -10,14 +10,15 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-	<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
+		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+    	<script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+   	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/style.css">
+     <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/cart.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
 
 </head>
@@ -26,7 +27,10 @@
         <div class="inner">
             <div class="head-container">
                 <div class="head-brand">
-                    <img src="img/logo7.png" alt="logo">
+                <a href="main.html">
+                   <img src="<%=application.getContextPath() %>/resources/img/logo7.PNG" alt="logo">
+                 </a>
+                    
                 </div>
                 <div class="head-searchbar">
                     <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
@@ -42,7 +46,7 @@
                       </a>
                     </div>
                     <div class="cart">
-                      <a href="...">
+                      <a href="<%=application.getContextPath()%>/index/cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-text">장바구니</span>
                       </a>

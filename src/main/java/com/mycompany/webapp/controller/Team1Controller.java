@@ -11,4 +11,21 @@ public class Team1Controller {
 	public String main() {
 		return "/index/main";
 	}
+	
+	@GetMapping("/cart")
+	public String cart() {
+		return "/index/cart";
+	}
+	
+
+	
+	@GetMapping("/searchId")
+	public String searchId() {
+		return "/index/searchId";
+	}
+	
+	@GetMapping("/searchPw")
+	public String searchPw() {
+		return "/index/searchPw";
+	}
 }

@@ -18,13 +18,13 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="img/banner1.jpg" class="d-block w-100" alt="...">
+                <img src="<%=application.getContextPath() %>/resources/img/banner1.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="img/banner2.jpg" class="d-block w-100" alt="...">
+                <img src="<%=application.getContextPath() %>/resources/img/banner2.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="img/banner3.jpg" class="d-block w-100" alt="...">
+                <img src="<%=application.getContextPath() %>/resources/img/banner3.jpg" class="d-block w-100" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -47,7 +47,7 @@
           <ul class="new-list">
             <li class="new-goods" style="margin-left: 0;">
               <a href="..." target="_blank">
-                <img src="img/new1.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 콤비 후드 아이보리블루</div>
                 <div class="goods-price">29000원</div>
                 <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
@@ -60,7 +60,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/new2.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/new2.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 맨투맨 V라인 옐로우</div>
                 <div class="goods-price">19000원</div>
                 <div class="rate">
@@ -74,7 +74,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/new3.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/new3.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 민소매 아이보리블루</div>
                 <div class="goods-price">14000원</div>
                 <div class="rate">
@@ -88,7 +88,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/new4.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/new4.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트X테디아일랜드 민소매 블루</div>
                 <div class="goods-price">29000원</div>
                 <div class="rate">
@@ -102,7 +102,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/new5.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/new5.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 골지 티셔츠 그린</div>
                 <div class="goods-price">17000원</div>
                 <div class="rate">
@@ -130,7 +130,7 @@
           <ul class="new-list">
             <li class="new-goods" style="margin-left: 0;">
               <a href="..." target="_blank">
-                <img src="img/rec1.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 콤비 후드 아이보리블루</div>
                 <div class="goods-price">29000원</div>
                 <div class="rate">
@@ -144,7 +144,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/rec2.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/rec2.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 맨투맨 V라인 옐로우</div>
                 <div class="goods-price">19000원</div>
                 <div class="rate">
@@ -158,7 +158,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/rec3.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 민소매 아이보리블루</div>
                 <div class="goods-price">14000원</div>
                 <div class="rate">
@@ -172,7 +172,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/rec4.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/rec4.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트X테디아일랜드 민소매 블루</div>
                 <div class="goods-price">29000원</div>
                 <div class="rate">
@@ -186,7 +186,7 @@
             </li>
             <li class="new-goods">
               <a href="..." target="_blank">
-                <img src="img/rec5.jpg" alt="goods1" class="new-image">
+                <img src="<%=application.getContextPath() %>/resources/img/rec5.jpg" alt="goods1" class="new-image">
                 <div class="goods-title">플로트 스탠다드 골지 티셔츠 그린</div>
                 <div class="goods-price">17000원</div>
                 <div class="rate">
@@ -219,7 +219,7 @@
                     <div class="rank-text">1</div>
                   </i>
                     <a href="...">
-                      <img src="img/rec5.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/rec5.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -240,7 +240,7 @@
                     <div class="unrank-text">4</div>
                   
                     <a href="...">
-                      <img src="img/new5.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/new5.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -262,7 +262,7 @@
                     <div class="rank-text">2</div>
                   </i>
                     <a href="...">
-                      <img src="img/new2.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/new2.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -283,7 +283,7 @@
                     <div class="unrank-text">5</div>
                   
                     <a href="...">
-                      <img src="img/rec3.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -305,7 +305,7 @@
                     <div class="rank-text">3</div>
                   </i>
                     <a href="...">
-                      <img src="img/rec2.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/rec2.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -326,7 +326,7 @@
                     <div class="unrank-text">6</div>
                   
                     <a href="...">
-                      <img src="img/new1.jpg" alt="rank1" class="rank-image"/>
+                      <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
                         <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
                         <div class="rank-price">19000원</div>
@@ -355,7 +355,7 @@
             </div>
             <ul class="class-list">
               <li class="class-card">
-                <img src="img/new1.jpg" alt="Review1" class="class-image" />
+                <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="Review1" class="class-image" />
                 <a href="..." target="_blank">
                   <div class="class-container">
                     <div class="class-box">
@@ -377,7 +377,7 @@
                 </a>
               </li>
               <li class="class-card">
-                <img src="img/new4.jpg" alt="Review1" class="class-image" />
+                <img src="<%=application.getContextPath() %>/resources/img/new4.jpg" alt="Review1" class="class-image" />
                 <a href="..." target="_blank">
                   <div class="class-container">
                     <div class="class-box">
@@ -399,7 +399,7 @@
                 </a>
               </li>
               <li class="class-card">
-                <img src="img/rec3.jpg" alt="Review1" class="class-image" />
+                <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="Review1" class="class-image" />
                 <a href="..." target="_blank">
                   <div class="class-container">
                     <div class="class-box">
