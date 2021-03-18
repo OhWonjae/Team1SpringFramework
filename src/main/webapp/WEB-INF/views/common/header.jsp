@@ -26,7 +26,10 @@
         <div class="inner">
             <div class="head-container">
                 <div class="head-brand">
-                    <img src="img/logo7.png" alt="logo">
+                <a href="main.html">
+                   <img src="<%=application.getContextPath() %>/resources/img/logo7.PNG" alt="logo">
+                 </a>
+                    
                 </div>
                 <div class="head-searchbar">
                     <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
