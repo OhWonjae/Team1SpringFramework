@@ -304,7 +304,7 @@
                                 
                                 <!--닫기/등록 버튼 컨테이너-->
                                 <div style="width: 100%; height: 30%; padding:2% 0%; display:flex; justify-content: space-around; align-items: center; ">
-                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-danger" data-dismiss="modal">취소</button>
                                     <button type="submit" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
                                 </div>
                                 </form> 
