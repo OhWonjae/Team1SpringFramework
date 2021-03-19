@@ -43,10 +43,7 @@ public class DetailController {
 	public String reviewupload(@RequestParam()String title, @RequestParam()String content,@RequestParam(defaultValue="n") String media, Model model) {
 		
 		//여기서 리뷰로 쓴 정보 DB에 저장
-		model.addAttribute("title", title);
-		model.addAttribute("content", content);
-		model.addAttribute("media", media);
 		System.out.println(title + content + media);;
-		return "/index/detail";
+		return "redirect:detail";
 	}
 }
