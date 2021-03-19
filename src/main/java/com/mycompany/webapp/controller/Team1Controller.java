@@ -16,9 +16,7 @@ public class Team1Controller {
 	public String cart() {
 		return "/index/cart";
 	}
-	
-
-	
+		
 	@GetMapping("/searchId")
 	public String searchId() {
 		return "/index/searchId";

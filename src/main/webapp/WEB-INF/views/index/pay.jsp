@@ -252,9 +252,12 @@
             </div>  
 
             <div class="form-group" style="display:flex; justify-content: center;">
-                <button type="button" onclick="location.href='payFinish.html' " class="btn btn-primary btn-block" onclick="location.href='payFinish.html'" style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
+				
+                <a type="button" href="<%=application.getContextPath()%>/index/payFinish" class="btn btn-primary btn-block" 
+                style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
                         <strong>결제하기</strong> 
-                </button>
+                </a>
+                
             </div> <!-- form-group// -->    
 
             <br>

@@ -1,0 +1,25 @@
+package com.mycompany.webapp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
+// 형윤- 주문결제 주문내역 
+
+
+
+@Controller
+@RequestMapping("/index")
+public class OrderController {
+	/*
+	 * @GetMapping("/rank") public String rank() { return "/index/rank"; }
+	 * 
+	 * @GetMapping("/rec") public String rec() { return "/index/rec"; }
+	 * 
+	 * @GetMapping("/login") public String login() { return "/index/login"; }
+	 * 
+	 * @GetMapping("/signUp") public String signUp() { return "/index/signUp"; }
+	 */
+}

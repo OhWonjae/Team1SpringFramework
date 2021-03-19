@@ -18,13 +18,11 @@ public class Team1Controller_hyungyoon {
 		return "/index/rec";
 	}
 	
-
-	
 	@GetMapping("/login")
 	public String login() {
 		return "/index/login";
 	}
-	
+
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "/index/signUp";
