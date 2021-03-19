@@ -7,6 +7,162 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
     <title>Document></title>
+<style type="text/css">
+        *{
+        margin: 0px;
+        padding: 0px;
+        } 
+        
+        .start{
+        background-color: #e9ecef;
+        }
+        
+        .info{
+                margin: 20px auto 0;
+                padding: 24px 120px 24px 40px;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
+                flex-direction: row;
+            }
+        .col-2{
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .list-group-item-action{
+            color: #222;
+            background-color: white;
+            border-color: white;
+        }
+
+        .list-group-item-action:focus{
+            color: #FF3357;
+            background-color:  white;
+            border-color:  white;
+        }
+
+        .list-group-item-action:hover{
+         
+            color: #FF3357;
+            background-color: white;
+            border-color: white;
+        }
+
+        .list-group-item.active{
+            color:#FF3357;
+            background-color: white;
+            border-color:#fff;
+        }
+
+        .qa{
+            flex:5;
+        }
+        
+        .btn-secondary{
+            flex:0.4;
+            background-color: #FF3357;
+            border-color: #FF3357;
+        } 
+        
+        .div1{
+            display: flex;
+            border-radius: 8px;
+            width: 50%;
+            height: auto;
+        }
+
+
+
+
+        .answer {
+        display: none;
+        font-size: 13px;
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        }
+
+        .faq-content {
+        border-bottom: 1px solid #e0e0e0;
+        }
+        .question {
+        font-size: 13px;
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+
+        display: flex;
+        justify-content: space-between;
+        }
+        .question:hover {
+        color: #FF3357;
+        }
+        [id$="-toggle"] {
+        margin-right: 15px;
+        }
+        .btn-2{
+        float:right;
+        }
+        .wait{
+        color:white;
+        background-color: gray;
+        margin-left: 10px;
+        }
+        .orderDate{
+        margin-right: 10px;
+        }   
+
+        .div2{
+        margin-top: 20px;
+        height: 200px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        }
+        
+        .fa-sticky-note{
+        color:gray;
+        font-size:80px;
+        }
+        .nolist{
+        padding: 50px;
+        text-align: center; 
+        }
+        .qna{
+        display: flex;
+        justify-content: center;
+        border: 1px solid #e9ecef;
+        background-color: #e9ecef;
+        margin-top: 30px;
+        }
+        .qnaTop{
+        margin-top: 20px;
+        }
+        .qnaBox{ 
+         width: 50em;
+         font-size: 15px;
+         height: auto;
+        }
+        .writeBox{
+            display: flex;
+            flex-direction: coulmn;
+            border: 1px solid #e9ecef;
+            padding:3% 20%;
+            height: auto;
+        }
+
+        select {
+        width: 100%;
+        padding: 16px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+        }
+
+</style>
 
 <div class="header2"> 
     <div class="inner">
