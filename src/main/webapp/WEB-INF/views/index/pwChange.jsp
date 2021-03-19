@@ -135,7 +135,7 @@
                                 <article class="card-body mx-auto" style="width: 500px;">
                                     <h4 class="card-title mt-4 mb-4 text-center"><strong>비밀번호 변경</strong></strong></h4>
                                     </p>
-                                    <form>
+                                    <form method="post" action="my">
                                     <div style="padding: 5px 0 0 0;">
                                         <strong>현재 비밀번호</strong><span style="color: red;">*</span>
                                     </div>
@@ -170,7 +170,7 @@
                                     </div>  
                                     <div></br></div>
                                     <div class="form-group" >
-                                        <button type="button" onclick="location.href='my.html' " class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 확인 </button>
+                                        <button type="submit" onclick="location.href='<%=application.getContextPath()%>/index/my'"  class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 확인 </button>
                                     </div> <!-- form-group// -->      
                                 </form>
                                 </article>

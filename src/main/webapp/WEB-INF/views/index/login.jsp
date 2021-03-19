@@ -23,7 +23,7 @@
                 <strong>로그인</strong>
             </h4>
                 <br>
-            <form>
+            <form  method="post" action="main">
                 <div class="form-group input-group">
                     <input name="" class="form-control" placeholder="이메일을 입력하세요." type="email">
                 </div> 
@@ -35,20 +35,20 @@
                 <br>
 
                 <div class="form-group" >
-                    <button type="submit" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
+                    <button type="submit" onclick="location.href='<%=application.getContextPath()%>/index/main'" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                             로그인 
                     </button>
                 </div>      
                 
                 <div class="form-group" >
-                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='signUp.html'"  style="background-color : white; color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
+                    <button type="button" onclick="location.href='<%=application.getContextPath()%>/index/signUp'"  class="btn btn-primary btn-block" onclick="location.href='signUp.html'"  style="background-color : white; color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
                          회원가입 
                     </button>
                 </div>  
                 
                 <div class="text-center" style="text-align: center; font-size: 0.7em;">
-                    <button type="button" class="button" onclick="location.href='searchId.html' " > 아이디 찾기 | </button>
-                    <button type="button" class="button" onclick="location.href='searchPw.html' "> 비밀번호 찾기 </button>
+                    <button type="button" class="button" onclick="location.href='<%=application.getContextPath()%>/index/searchId' " > 아이디 찾기 | </button>
+                    <button type="button" class="button" onclick="location.href='<%=application.getContextPath()%>/index/searchPw' "> 비밀번호 찾기 </button>
                 </div>  
             
             </form>

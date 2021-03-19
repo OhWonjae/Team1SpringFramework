@@ -18,7 +18,7 @@
         <h4 class="card-title mt-3 text-center"><strong>회원 가입</strong>
         </h4>
         
-        <form>
+        <form method="post" action="login">
             <div style="padding: 20px 0 0 0;">
                 <strong>이름</strong><span style="color: red;">*</span>
                 <div class="form-group input-group">
@@ -63,7 +63,7 @@
             </div>
             
             <div class="form-group" >
-                <button type="submit" class="btn btn-primary btn-block" onclick="location.href='login.html' " style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
+                <button type="submit" class="btn btn-primary btn-block" onclick="location.href='<%=application.getContextPath()%>/index/login' " style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                     <strong>회원가입</strong> 
                 </button>
             </div>      
