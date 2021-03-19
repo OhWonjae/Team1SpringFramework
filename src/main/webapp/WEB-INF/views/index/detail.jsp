@@ -278,34 +278,36 @@
                                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
+                               <!--리뷰 입력 폼-->
+                               <form action="reviewupload" method="post">
                                 <!--리뷰 입력 컨테이너-->
                                 <div style="display:flex;flex-direction: column; padding:2% 20%; height: 100%;">
-                                    <!--리뷰 입력 폼-->
-                                    <form style="height: 100%;">
+                                 
+     
                                         <div class="form-group">
                                             <!--제목 폼-->
                                             <label for="recipient-name" class="col-form-label">제목</label>
-                                            <input type="text" class="form-control" id="recipient-name" placeholder="제목을 입력해 주세요.">
+                                            <input type="text" name="title" class="form-control" id="recipient-name" placeholder="제목을 입력해 주세요.">
                                         </div>                                        
                                         <div class="form-group">
                                             <!--내용 폼-->
                                             <label for="message-text" class="col-form-label">내용</label>
-                                            <textarea class="form-control" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
+                                            <textarea class="form-control" name="content" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
                                         </div>
                                         <!--사진 입력 버튼-->
-                                        <button type="button" class="form-control" id="recipient-pic" style="border:1px black dashed; margin:3% 0; padding: 5px; ">
+                                        <button type="button" name="media" class="form-control" id="recipient-pic" style="border:1px black dashed; margin:3% 0; padding: 5px; ">
                                             <i class="fas fa-camera" style="vertical-align: middle;">사진/동영상 첨부하기</i>
                                             
-                                        </button>   
-                                    </form>                           
-                                </div>  
-
+                                        </button>                                                              
+                               		 </div>  
+  								
                                 
                                 <!--닫기/등록 버튼 컨테이너-->
                                 <div style="width: 100%; height: 30%; padding:2% 0%; display:flex; justify-content: space-around; align-items: center; ">
                                     <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
+                                    <button type="submit" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
                                 </div>
+                                </form> 
                             </div>
                         </div>
                     </div>

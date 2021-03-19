@@ -38,4 +38,12 @@ public class DetailController {
 		System.out.println(price + "구매 데이터 확인");
 		return "/index/pay";
 	}
+	//리뷰업로드 버튼 클릭
+	@PostMapping("/reviewupload")
+	public String reviewupload(@RequestParam()String title, @RequestParam()String content,@RequestParam(defaultValue="n") String media, Model model) {
+		
+		//여기서 리뷰로 쓴 정보 DB에 저장
+		System.out.println(title + content + media);;
+		return "redirect:detail";
+	}
 }
