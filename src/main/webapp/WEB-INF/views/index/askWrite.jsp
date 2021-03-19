@@ -16,7 +16,7 @@
      <div class="inner">
         <div class="info" style="height: 120px;">
             <picture style="float: left;">
-                <img src="<%=application.getContextPath()%>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -27,182 +27,18 @@
                 <div class="row">
                     <div class="col-2">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a><hr/>
-                            <a class="list-group-item list-group-item-action" id="list-home-list"  href="my.html" role="tab" aria-controls="home" >회원정보</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" href="history.html" role="tab" aria-controls="profile">주문내역</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list"href="cart.html" role="tab" aria-controls="messages">장바구니</a>
-                            <a class="list-group-item list-group-item-action active" id="list-settings-list"  href="cs1.html" role="tab" aria-controls="settings">고객센터</a>
-                        </div>
+		               				<a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
+			                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
+                    </div>
                     </div>
                     <div class="col-10">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5>
-                        
-                                <br>
-        
-                                <div class="tab-master">
-                                    <div class="tab">
-                                        <div class="tab3">이름</div>
-                                        <div class="tab2"><strong>1조</strong></div>
-                                    </div>
-                                    <div class="tab">
-                                        <div class="tab4">이메일</div>
-                                        <div class="tab2"><strong>bbsj1058@naver.com</strong></div>
-                                    </div>                  
-                                    <div class="tab">
-                                        <div class="tab1">휴대전화</div>
-                                        <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                        </div>
-                                    </div>
-                                    <div class="tab">
-                                        <div class="tab1">비밀번호</div>
-                                        <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                        </div>
-                                    </div>
-                                    <div class="tab">
-                                        <div class="event"><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                                <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                                    <div>
-                                        <h5 style="padding-top: 23px; padding-bottom: 17px; font-size: 1.4em;"><strong>주문 · 배송</strong>
-                                        </h5>
-                                    </div>
-                                    <table class="table";>
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col" style="width: 10%;">주문 번호</th>
-                                                    <th scope="col" style="width: 10%;">주문 일자</th>
-                                                    <th scope="col" style="width: 65%;">상품 정보</th>
-                                                    <th scope="col" style="width: 15%;">진행 상황</th>
-                                                </tr>
-                                            </thead>
-            
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row" style="color:rgb(138, 138, 146);">1556290343861</th>
-                                                    <td style="color:rgb(138, 138, 146);"> 2019.04.26</td>
-                                                    <td> <img src="<%=application.getContextPath() %>/resources/img/photo31.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                        <strong style="font-size: 1.2em;">이츠독 플러피 기모 후드 점퍼</strong> </br> <strong style="font-size: 1.2em;">26,000원</strong> 
-                                                    </td>
-                                                    <td style="border-right: white; text-align: center;">발송처리완료</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="color:rgb(138, 138, 146); align-items: center;">1556290343861</th>
-                                                    <td style="color:rgb(138, 138, 146);">2017.06.08</td>
-                                                    <td> <img src="<%=application.getContextPath() %>/resources/img/photo32.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                        <strong style="font-size: 1.2em;">플로트 컬러 블록 후드 블루블랙</strong></br> <strong style="font-size: 1.2em;">26,000원</strong>
-                                                    </td>
-                                                    <td style="border-right: white; text-align: center;">발송처리완료</td>
-                                                </tr>
-                                            </tbody>
-                                    </table>
-                            
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">
-                                    <div class="cart-main">
-                                        <div class="cart-title">장바구니</div>
-                                        <div class="cart-route">
-                                            <div class="route route1">01 장바구니></div>
-                                            <div class="route route2">02 주문결제></div>
-                                            <div class="route route3">03 결제완료</div>
-                                        </div>
-                                    </div> 
-                                    <div class="cart-content">
-                                        <div class="container" style="margin-bottom: 20px;">
-                                            <div class="row cart-content1-box">
-                                                <div class="cart-info-box col-sm-5">
-                                                    <div class="cart-info">
-                                                    <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
-                                                    <a class="cart-goods-name" href="...">플로트 스탠다드 맨투맨 V라인 멜로</a>
-                                                    </div>
-                                                </div>        
-                                                <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
-                                                    <div class="count-button">
-                                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                                            <button type="button" class="btn btn-light btn-sm">-</button>
-                                                            <div class="count-text">1</div>
-                                                            <button type="button" class="btn btn-light btn-sm">+</button>
-                                                          </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef;">
-                                                    <div class="cart-price">
-                                                        <div style="font-weight: bold;">
-                                                            10000000원
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2" style="border-bottom: 1px solid #e9ecef;">
-                                                    <div class="delete-button" >
-                                                        <button type="button" class="btn btn-light">삭제</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row cart-content1-box">
-                                                <div class="cart-info-box col-sm-5">
-                                                    <div class="cart-info">
-                                                    <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
-                                                    <a class="cart-goods-name" href="...">플로트 스탠다드 맨투맨 V라인 멜로</a>
-                                                    </div>
-                                                </div>        
-                                                <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
-                                                    <div class="count-button">
-                                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                                            <button type="button" class="btn btn-light btn-sm">-</button>
-                                                            <div class="count-text">1</div>
-                                                            <button type="button" class="btn btn-light btn-sm">+</button>
-                                                          </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef;">
-                                                    <div class="cart-price">
-                                                        <div style="font-weight: bold;">
-                                                            10000000원
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2" style="border-bottom: 1px solid #e9ecef;">
-                                                    <div class="delete-button" >
-                                                        <button type="button" class="btn btn-light">삭제</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="border:3px solid #FF3357"></div>
-                                        <div class="row cart-content2-box">
-                                            <div class="col-sm-3" style="border-right: 1px solid #e9ecef; margin: 0 0;">
-                                              <div class="goods-price">
-                                                  <div style="text-align:center">총 상품금액</div>
-                                                  <div style="font-weight: bold; text-align: center;">2000000원</div>
-                                              </div>
-                                            </div>
-                                            <div class="col-sm-2" style="border-right: 1px solid #e9ecef;">
-                                                <div class="goods-price">
-                                                    <div style="text-align:center">배송비</div>
-                                                    <div style="font-weight: bold; text-align: center;">0원</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2" style="border-right: 1px solid #e9ecef;">
-                                                <div class="goods-price">
-                                                    <div style="text-align:center">총 결제금액</div>
-                                                    <div style="font-weight: bold; text-align: center;">2000000원</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <div class="total-price">
-                                                    <div style="text-align:center; margin-right:1px">합계 : </div>
-                                                    <div style="font-weight: bold; text-align: center; margin-right:5px">2000000원</div>
-                                                    <button type="button" class="btn btn-secondary">구매하기</button>
-                                                </div>
-                                              </div>
-                                          </div>
-                                        
-                                    </div>         
-                            </div>
+                            <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5></div>
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"></div>
+ 										        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list"> </div>
                                         <div class="tab-pane fade show active" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                                             <h7 style="display: flex; justify-content: center;">문의하기</h7>
                                                 <div class="qna">
@@ -240,9 +76,9 @@
                                                         </div>
                         
                                                         <div style="padding-top: 20px;">
-                                                            <button type="button" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; background-color: #FF3357; color:white">
+                                                            <a type="button" href="<%=application.getContextPath()%>/index/askList" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </div> 
                                                 </div>
@@ -252,5 +88,4 @@
                 </div>
              </div>
     </div>
-
  <%@ include file="/WEB-INF/views/common/footer.jsp"%>   

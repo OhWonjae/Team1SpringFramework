@@ -13,4 +13,9 @@ public class cartController {
 		return "/index/pay";
 	}
 	
+	@GetMapping("/cart")
+	public String cart() {
+		return "/index/cart";
+	}
+	
 }
