@@ -35,77 +35,13 @@
                     <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" >회원정보</a>
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
                     <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5>
-                        
-                        <br>
-
-                        <div class="tab-master">
-                            <div class="tab">
-                                <div class="tab3">이름</div>
-                                <div class="tab2"><strong>1조</strong></div>
-                            </div>
-                            <div class="tab">
-                                <div class="tab4">이메일</div>
-                                <div class="tab2"><strong>bbsj1058@naver.com</strong></div>
-                            </div>                  
-                            <div class="tab">
-                                <div class="tab1">휴대전화</div>
-                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                </div>
-                            </div>
-                            <div class="tab">
-                                <div class="tab1">비밀번호</div>
-                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                </div>
-                            </div>
-                            <div class="tab">
-                                <div class="event"><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                            <div>
-                                <h5 style="padding-top: 23px; padding-bottom: 17px; font-size: 1.4em;"><strong>주문 · 배송</strong>
-                                </h5>
-                            </div>
-                            <table class="table";>
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col" style="width: 10%;">주문 번호</th>
-                                            <th scope="col" style="width: 10%;">주문 일자</th>
-                                            <th scope="col" style="width: 65%;">상품 정보</th>
-                                            <th scope="col" style="width: 15%;">진행 상황</th>
-                                        </tr>
-                                    </thead>
-    
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row" style="color:rgb(138, 138, 146);">1556290343861</th>
-                                            <td style="color:rgb(138, 138, 146);"> 2019.04.26</td>
-                                            <td> <img src="<%=application.getContextPath() %>/resources/img/photo31.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                <strong style="font-size: 1.2em;">이츠독 플러피 기모 후드 점퍼</strong> </br> <strong style="font-size: 1.2em;">26,000원</strong> 
-                                            </td>
-                                            <td style="border-right: white; text-align: center;">발송처리완료</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="color:rgb(138, 138, 146); align-items: center;">1556290343861</th>
-                                            <td style="color:rgb(138, 138, 146);">2017.06.08</td>
-                                            <td> <img src="<%=application.getContextPath() %>/resources/img/photo32.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                <strong style="font-size: 1.2em;">플로트 컬러 블록 후드 블루블랙</strong></br> <strong style="font-size: 1.2em;">26,000원</strong>
-                                            </td>
-                                            <td style="border-right: white; text-align: center;">발송처리완료</td>
-                                        </tr>
-                                    </tbody>
-                            </table>
-                    
-                        </div>
-                    </div>
+                    <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"></div>
+                    <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><div></div>       
                     <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">
                             <div class="cart-main">
                                 <div class="cart-title">장바구니</div>
@@ -207,88 +143,9 @@
                                 
                             </div>         
                     </div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                        <div>
-                            <div class="div1" style="margin-bottom: 20px;">
-                            <h5 class="qa">고객센터(1:1문의)</h5>
-                            <a href="cs3.html" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">문의하기</a>
-                            </div>
-                            
-                            <div class="div2" style="padding-bottom: 200px;">
-                                <div class="faq-content">
-                                    <button class="question" id="que-1">
-                                        <div>
-                                            <span>상품 문의</span>
-                                            <span class="wait">답변 대기</span>
-                                        </div>
-                                        <div>
-                                            <span class="orderDate">2021-03-12</span>
-                                            <span id="que-1-toggle">∨</span>
-                                        </div>
-                                    </button>
-                                    <div class="answer" id="ans-1">상품에 관해서 문의합니다.
-                                        <div class="btn-2">
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="faq-content">
-                                    <button class="question" id="que-2">
-                                        <div>
-                                            <span>배송 문의</span>
-                                            <span class="wait">답변 대기</span>
-                                        </div>
-                                        <div>
-                                            <span class="orderDate">2021-03-12</span>
-                                            <span id="que-1-toggle">∨</span>
-                                        </div>
-                                    </button>
-                                    <div class="answer" id="ans-2">배송에 관해서 문의합니다.
-                                        <div class="btn-2">
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="faq-content">
-                                    <button class="question" id="que-3">
-                                    <div>
-                                        <span>주문/결제 문의</span>
-                                        <span class="wait">답변 대기</span>
-                                    </div>
-                                    <div>
-                                        <span class="orderDate">2021-03-12</span>
-                                        <span id="que-3-toggle">∨</span>
-                                    </div>
-                                    </button>
-                                    <div class="answer" id="ans-3">주문/결제 방법에 대해서 문의합니다.
-                                        <div class="btn-2">
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">수정</button>
-                                            <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                        <script>
-                                            const items = document.querySelectorAll('.question');
-                                                function openCloseAnswer() {
-                                                    const answerId = this.id.replace('que', 'ans');
-
-                                                    if(document.getElementById(answerId).style.display === 'block') {
-                                                    document.getElementById(answerId).style.display = 'none';
-                                                    document.getElementById(this.id + '-toggle').textContent = '∨';
-                                                    } else {
-                                                    document.getElementById(answerId).style.display = 'block';
-                                                    document.getElementById(this.id + '-toggle').textContent = '∧';
-                                                    }
-                                                }
-                                            items.forEach(item => item.addEventListener('click', openCloseAnswer));
-                                        </script>
-                            </div>
+                    
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"></div>
+      
                         </div>
                     </div>
                 </div>

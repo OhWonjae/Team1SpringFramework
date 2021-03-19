@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/index")
 public class Team1Controller2 {
+	
 	@GetMapping("/askList")
 	public String askList() {
-		return "/index/askList";
+		return "index/askList";
 	}
 	
 	@GetMapping("/askWrite")

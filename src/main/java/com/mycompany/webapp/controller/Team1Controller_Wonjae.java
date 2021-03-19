@@ -24,8 +24,5 @@ public class Team1Controller_Wonjae {
 		return "/index/detail";
 	}
 	
-	@GetMapping("/pay")
-	public String signUp() {
-		return "/index/pay";
-	}
+
 }

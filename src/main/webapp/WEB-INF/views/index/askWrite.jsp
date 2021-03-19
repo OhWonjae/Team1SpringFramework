@@ -5,57 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/askWrite.css">
     <title>Document></title>
-<style type="text/css">
-          
-        .div2{
-        margin-top: 20px;
-        height: 200px;
-        background-color: #e9ecef;
-        border-radius: 10px;
-        }
-        
-        .fa-sticky-note{
-        color:gray;
-        font-size:80px;
-        }
-        .nolist{
-        padding: 50px;
-        text-align: center; 
-        }
-        .qna{
-        display: flex;
-        justify-content: center;
-        border: 1px solid #e9ecef;
-        background-color: #e9ecef;
-        margin-top: 30px;
-        }
-        .qnaTop{
-        margin-top: 20px;
-        }
-        .qnaBox{ 
-         width: 50em;
-         font-size: 15px;
-         height: auto;
-        }
-        .writeBox{
-            display: flex;
-            flex-direction: coulmn;
-            border: 1px solid #e9ecef;
-            padding:3% 20%;
-            height: auto;
-        }
-
-        select {
-        width: 100%;
-        padding: 16px 20px;
-        border: none;
-        border-radius: 4px;
-        background-color: #f1f1f1;
-        }
-
-</style>
 
 <div class="header2"> 
     <div class="inner">

@@ -1,10 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%-- page 지시자 --%>
+
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.mycompany.webapp.dto.*"%>
 
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+
+
+
 
     <div class="header2"> 
         <div class="inner">
@@ -14,7 +21,7 @@
     <div class="inner" style="margin-bottom: 80px;">
         <div class="info" style="height: 120px;">
              <picture style="float: left;">
-                 <img src="<%=application.getContextPath()%>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
+                 <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
               </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                      <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -26,9 +33,9 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
                     <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action " id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -48,12 +55,12 @@
                             </div>                  
                             <div class="tab">
                                 <div class="tab1">휴대전화</div>
-                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='phoneChange.html' "  class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
                                 <div class="tab1">비밀번호</div>
-                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='pwChange.html' " type="button" class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
@@ -61,8 +68,8 @@
                             </div>
                         </div>
                     </div>
-                   
-                        <div class="tab-pane fade show active"  id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                             <div>
                                 <h5 style="padding-top: 23px; padding-bottom: 17px; font-size: 1.4em;"><strong>주문 · 배송</strong>
                                 </h5>
@@ -96,10 +103,10 @@
                                         </tr>
                                     </tbody>
                             </table>
-                        
-                        </div>
                     
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">
                             <div class="cart-main">
                                 <div class="cart-title">장바구니</div>
                                 <div class="cart-route">
@@ -113,7 +120,7 @@
                                     <div class="row cart-content1-box">
                                         <div class="cart-info-box col-sm-5">
                                             <div class="cart-info">
-                                            <img src="<%=application.getContextPath() %>/resources/img//rec1.jpg" alt="cart1" style="margin:5px 0"/>
+                                            <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
                                             <a class="cart-goods-name" href="...">플로트 스탠다드 맨투맨 V라인 멜로</a>
                                             </div>
                                         </div>        
@@ -193,7 +200,7 @@
                                         <div class="total-price">
                                             <div style="text-align:center; margin-right:1px">합계 : </div>
                                             <div style="font-weight: bold; text-align: center; margin-right:5px">2000000원</div>
-                                            <button type="button"  class="btn btn-secondary">구매하기</button>
+                                            <a type="button" href="<%=application.getContextPath()%>/index/pay" class="btn btn-secondary">구매하기</a>
                                         </div>
                                       </div>
                                   </div>
@@ -289,6 +296,6 @@
         
     </div>
 </div>
-
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
     
+    
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%>
