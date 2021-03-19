@@ -4,27 +4,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("/index")
-public class Team1Controller_hyungyoon {
-	@GetMapping("/rank")
+public class Team1Controller_Wonjae {
+	@GetMapping("/search")
 	public String rank() {
-		return "/index/rank";
+		return "/index/search";
 	}
 	
-	@GetMapping("/rec")
+	@GetMapping("/payFinish")
 	public String rec() {
-		return "/index/rec";
+		return "/index/payFinish";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		return "/index/login";
-	}
 
-	@GetMapping("/signUp")
-	public String signUp() {
-		return "/index/signUp";
+	
+	@GetMapping("/detail")
+	public String login() {
+		return "/index/detail";
 	}
+	
+
 }
