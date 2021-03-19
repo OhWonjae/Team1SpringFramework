@@ -4,9 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// 형윤- 로그인, 결재창, 회원가입
-// 형윤- 로그인, 결재창, 회원가입
-// 형윤- 로그인, 결재창, 회원가입
+
+
+// 형윤- 주문결제 주문내역 
+
 
 
 @Controller
@@ -26,7 +27,7 @@ public class Team1Controller_hyungyoon {
 	public String login() {
 		return "/index/login";
 	}
-	
+
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "/index/signUp";
