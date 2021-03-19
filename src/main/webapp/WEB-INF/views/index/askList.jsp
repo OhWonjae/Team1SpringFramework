@@ -6,73 +6,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
     <title>Document></title>
-<Style>
-			
-	
-				}
-        .qa{
-            flex:5;
-        }
-        
-        .btn-secondary{
-            flex:0.4;
-            background-color: #FF3357;
-            border-color: #FF3357;
-        } 
-        
-        .div1{
-            display: flex;
-        }
 
-
-
-        .answer {
-        display: none;
-        font-size: 13px;
-        padding-left: 30px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-         }
-
-   		 .faq-content {
-        border-bottom: 1px solid #e0e0e0;
-    		}
-   		 .question {
-        font-size: 13px;
-        padding: 10px;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        background: none;
-        width: 100%;
-        text-align: left;
-
-        display: flex;
-        justify-content: space-between;
-    }
-    .question:hover {
-        color: #FF3357;
-    }
-    [id$="-toggle"] {
-        margin-right: 15px;
-    }
-    .btn-2{
-        float:right;
-    }
-    .btn-3{
-        border: 1px solid #dee2e6;
-        border-radius: 3px;
-        background-color: #e9ecef;
-    }
-    .wait{
-        border: 1px solid gray;
-        border-radius: 3px;
-        margin-left: 10px;
-    }
-    .orderDate{
-        margin-right: 10px;
-    }
-    </style>
 
 <div class="header2"> 
     <div class="inner">
