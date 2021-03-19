@@ -10,7 +10,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 
-<div class="header2">
+	<div class="header2">
         <div class="inner" style="font-size: 0.85em; padding-top: 5px;">
             홈 > 추천
         </div>

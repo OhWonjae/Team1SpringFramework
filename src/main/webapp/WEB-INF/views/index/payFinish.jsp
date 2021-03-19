@@ -29,8 +29,8 @@
               결재가 완료되었습니다.
           </div>
           <!--확인 버튼-->
-          <div style="width: 30%;" style="margin:5% 0;">
-                  <button type="button" class="btn btn-danger text-center btn-lg btn-block" onclick="location.href='main.html'"  style=" width: 100%;">확인</button>
+          <div style="width: 30%;" style="margin:5%;">
+          	<a type="button" class="btn btn-danger text-center btn-lg btn-block" href="<%=application.getContextPath()%>/index/history" style=" width: 100%;">확인</a>
           </div>
       </div>
   </div>
