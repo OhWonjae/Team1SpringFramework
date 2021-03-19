@@ -155,7 +155,7 @@
          </div>
             <div class="center">
                 <div class="box col-sm2" style="float: left;"> 
-                    <a href="detail.html"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.jpg" width="100%" ></div></a>
+                    <a href="detail.html"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="100%" ></div></a>
                    <a href="#">디크디크 퀄팅 자켓 블랙</a>
                     <p><strong>69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -163,7 +163,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2" ,style="float: left;">
-                    <a href="#"><img src="..\common\dog\dog2.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog2.JPG" width="100%"></a>
                     <a href="#">디크디크 퀄팅 자켓 베이지</a>
                     <p><strong>69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -171,7 +171,7 @@
                     <div class="event">신상품</div>           
                 </div>
                 <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="..\common\dog\dog3.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog3.JPG" width="100%"></a>
                     <a href="#">헤이제리 힙스터 파자마 스카이블루</a>
                     <p><strong>39,000원 ~ 40,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -179,7 +179,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="..\common\dog\dog4.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog4.JPG" width="100%"></a>
                     <a href="#">헤이제리 힙스터 파자마 그린</a>
                     <p><strong>39,000원 ~ 40,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -187,7 +187,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="..\common\dog\dog5.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog5.JPG" width="100%"></a>
                     <a href="#">헤이제리 힙스터 파자마 살몬</a>
                     <p><strong>39,000원 ~ 40,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -195,7 +195,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="..\common\dog\dog6.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog6.JPG" width="100%"></a>
                     <a href="#">헤이제리 프레피 스트라이프 가디건 스카이블루레드</a>
                     <p><strong>30,000원 ~ 31,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -205,7 +205,7 @@
             </div>
             <div class="center">
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog7.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog7.JPG" width="100%"></a>
                     <a href="#">헤이제리 프레피 스트라이프 가디건 핑크블루</a>
                     <p><strong>30,000원 ~ 31,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -213,7 +213,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog8.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog8.JPG" width="100%"></a>
                     <a href="#">헤이제리 프레피 스트라이프 가디건 옐로우네이비</a>
                     <p><strong>30,000원 ~ 31,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -221,7 +221,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog9.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog9.JPG" width="100%"></a>
                     <a href="#">헤이제리 프레피 스트라이프 가디건 화이트블랙</a>
                     <p><strong>30,000원 ~ 31,000원</strong></p> 
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -229,7 +229,7 @@
                     <div class="event">신상품</div>               
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog10.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog10.JPG" width="100%"></a>
                     <a href="#">헤이제리 레인보우떡 올인원 오리지널 트로피칼</a>
                     <p><strong>35,000원 ~ 36,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -237,7 +237,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog11.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog11.JPG" width="100%"></a>
                     <a href="#">헤이제리 레인보우떡 올인원 오리지널 베리베리</a>
                     <p><strong>35,000원 ~ 36,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -245,7 +245,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog12.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog12.JPG" width="100%"></a>
                     <a href="#">헤이제리 레인보우떡 올인원 오리지널 핑크소다</a>
                     <p><strong>35,000원 ~ 36,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -255,7 +255,7 @@
             </div>
             <div class="center">
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog13.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog13.jpg" width="100%"></a>
                     <a href="#">이츠독 판쵸 올인원 꿀벌우비</a>
                     <p><strong>49,000원 ~ 64,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -263,7 +263,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog14.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog14.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 레드</a>
                     <p><strong>35,000원 ~ 58,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -271,7 +271,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog15.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog15.jpg" width="100%"></a>
                     <a href="#">스니프 개구리 레인코트</a>
                     <p><strong>31,000원 ~ 38,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -279,7 +279,7 @@
                     <div class="event">신상품</div> 
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog16.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog16.jpg" width="100%"></a>
                     <a href="#">이츠독 판쵸 올인원 체리우비</a>
                     <p><strong>49,000원 ~ 64,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -287,7 +287,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog17.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog17.jpg" width="100%"></a>
                     <a href="#">이츠독 삐약이 수면 조끼 아이보리</a>
                     <p><strong>27,000원 ~ 32,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -295,7 +295,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog18.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog18.jpg" width="100%"></a>
                     <a href="#">이츠독 삐약이 수면 조끼 옐로우</a>
                     <p><strong>27,000원 ~ 32,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -305,7 +305,7 @@
             </div>
             <div class="center">
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog19.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog19.jpg" width="100%"></a>
                     <a href="#">이츠독 왈 패딩 베스트 아이보리</a>
                     <p><strong>59,000원 ~ 69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -313,7 +313,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog20.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog20.jpg" width="100%"></a>
                     <a href="#">이츠독 왈 패딩 베스트 레드</a>
                     <p><strong>59,000원 ~ 69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -321,7 +321,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog21.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog21.jpg" width="100%"></a>
                     <a href="#">이츠독 왈 패딩 베스트 핑크</a>
                     <p><strong>59,000원 ~ 69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -329,7 +329,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog22.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog22.jpg" width="100%"></a>
                     <a href="#">이츠독 왈 패딩 베스트 민트</a>
                     <p><strong>59,000원 ~ 69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -337,7 +337,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog23.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog23.jpg" width="100%"></a>
                     <a href="#">이츠독 왈 패딩 베스트 네이비</a>
                     <p><strong>59,000원 ~ 69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -345,7 +345,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog24.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog24.jpg" width="100%"></a>
                     <a href="#">이츠독 스노우라떼 무스탕 베리라떼 핑크</a>
                     <p><strong>54,000원 ~ 64,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -355,7 +355,7 @@
             </div>
             <div class="center">
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog25.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog25.jpg" width="100%"></a>
                     <a href="#">이츠독 스노우라떼 무스탕 초코라떼 브라운</a>
                     <p><strong>54,000원 ~ 64,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -363,7 +363,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog26.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog26.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 옐로우</a>
                     <p><strong>35,000원 ~ 58,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -371,7 +371,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog27.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog27.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 블루</a>
                     <p><strong>35,000원 ~ 58,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -379,7 +379,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog28.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog28.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 핑크</a>
                     <p><strong>35,000원 ~ 58,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -387,7 +387,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog29.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog29.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 브라운</a>
                     <p><strong>35,000원 ~ 38,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -395,7 +395,7 @@
                     <div class="event">신상품</div>
                 </div>
                 <div class="box col-sm2">
-                    <a href="#"><img src="..\common\dog\dog30.jpg" width="100%"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog30.jpg" width="100%"></a>
                     <a href="#">퍼피아 베이스 점퍼 레인코트 카모</a>
                     <p><strong>35,000원 ~ 58,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
@@ -412,4 +412,4 @@
 
    </div>
 </div>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>     
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%> 
