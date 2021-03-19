@@ -76,7 +76,7 @@
                                                         </div>
                         
                                                         <div style="padding-top: 20px;">
-                                                            <a type="button" href="<%=application.getContextPath()%>/index/askList" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
+                                                            <a type="button" href="<%=application.getContextPath()%>/index/insertAskWirte" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
                                                             </a>
                                                         </div>

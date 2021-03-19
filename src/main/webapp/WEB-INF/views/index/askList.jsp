@@ -61,7 +61,7 @@
                                         </button>
                                         <div class="answer" id="ans-1">상품에 관해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/askWrite" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
                                         </button>
                                         <div class="answer" id="ans-2">배송에 관해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/askWrite" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
@@ -100,7 +100,7 @@
                                         </button>
                                         <div class="answer" id="ans-3">주문/결제 방법에 대해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/askWrite" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>

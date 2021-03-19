@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class askController {
 
-
+	
 	@GetMapping("/askList")
 	public String askList() {
 		return "/index/askList";
@@ -17,5 +17,15 @@ public class askController {
 	@GetMapping("/askWrite")
 	public String askWrite() {
 		return "/index/askWrite";
+	}
+
+	@GetMapping("/insertAskWirte")
+	public String insertAskWirte() {
+		return "redirect:askList";
+	}
+	
+	@GetMapping("/editAskWirte")
+	public String editAskWirte() {
+		return "redirect:askList";
 	}
 }
