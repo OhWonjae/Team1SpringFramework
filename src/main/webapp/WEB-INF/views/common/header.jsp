@@ -27,7 +27,7 @@
         <div class="inner">
             <div class="head-container">
                 <div class="head-brand">
-                <a href="main.html">
+                <a href="<%=application.getContextPath()%>/index/main">
                    <img src="<%=application.getContextPath() %>/resources/img/logo7.PNG" alt="logo">
                  </a>
                     
@@ -40,7 +40,7 @@
                 </div>
                 <div class="header-sideBar">
                     <div class="mypage">
-                      <a href="...">
+                      <a href="<%=application.getContextPath()%>/index/login">
                         <i class="fas fa-user mypage-icon"></i>
                         <span class="mypage-text">MY</span>
                       </a>
