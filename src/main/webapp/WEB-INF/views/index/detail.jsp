@@ -69,9 +69,9 @@
                         </div>
                         <!--세부 사진-->
                         <div class="row   justify-content-center" style=" height: 15%; padding:35px">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
                         </div>
                     </div>
                     <!--구매옵션--> 
