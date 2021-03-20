@@ -273,7 +273,6 @@
                                             const items = document.querySelectorAll('.question');
                                                 function openCloseAnswer() {
                                                     const answerId = this.id.replace('que', 'ans');
-
                                                     if(document.getElementById(answerId).style.display === 'block') {
                                                     document.getElementById(answerId).style.display = 'none';
                                                     document.getElementById(this.id + '-toggle').textContent = '∨';
@@ -294,4 +293,4 @@
 </div>
     </body>
   </html>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%> 
