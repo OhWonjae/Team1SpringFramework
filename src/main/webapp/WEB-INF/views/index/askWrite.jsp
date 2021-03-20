@@ -72,16 +72,16 @@
                                                         </div>
                                                         <div style="padding-top:20px">
                                                             <label>사진 첨부</label>
-                                                            <button type="button" class="form-control" id="recipient-pic" name="qphoto"style="border:1px black dashed; height: 70px;">
+                                                            <button type="button" class="form-control" id="recipient-pic" name="qphoto" style="border:1px black dashed; height: 70px;">
                                                                 <i class="fas fa-camera"></i>
                                                                 첨부하기
                                                             </button>
                                                         </div>
                         
                                                         <div style="padding-top: 20px;">
-                                                            <a type="submit" href="<%=application.getContextPath()%>/index/insertAskWirte" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
+                                                            <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                         </div>
                                                         </div>

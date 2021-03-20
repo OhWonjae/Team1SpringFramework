@@ -23,13 +23,13 @@ public class askController {
 	}
 	//'1:1 문의하기 등록'버튼 클릭 
 	@PostMapping("/insertAskWirte")
-	public String insertAskWirte(@RequestParam()String qnaList, @RequestParam()String qcontext,@RequestParam(defaultValue="n") String qphoto, Model model) {
+	public String insertAskWirte(@RequestParam()String qnaList, @RequestParam()String qcontext, @RequestParam(defaultValue="n") String qphoto, Model model) {
 		System.out.println (qnaList + qcontext + qphoto);
 		return "redirect:askList";
 	}
 	// 1:1 문의 게시판에서 '수정'버튼 클릭
 	@GetMapping("/editAskWirte")
 	public String editAskWirte() {
-		return "redirect:askList";
+		return "/index/askWrite";
 	}
 }

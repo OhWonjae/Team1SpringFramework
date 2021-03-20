@@ -33,12 +33,7 @@
                 </div>
                 <div class="col-10">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5>
-                        
-
-                        
-                    </div>
-                   
+                    <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5> </div>
                         <div class="tab-pane fade show active"  id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                             <div>
                                 <h5 style="padding-top: 23px; padding-bottom: 17px; font-size: 1.4em;"><strong>주문 · 배송</strong>
@@ -76,15 +71,11 @@
                         
                         </div>
                     
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">
-                            
-                            
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                        
-                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">   
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"> </div>
                 </div>
             </div>
-        
+        </div>
     </div>
 </div>
 
