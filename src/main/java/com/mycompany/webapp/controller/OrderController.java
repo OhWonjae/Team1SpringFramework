@@ -13,6 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/index")
 public class OrderController {
+	
+	@GetMapping("/payFinish")
+	public String payFinish() {
+		return "/index/payFinish";
+	}
+	
+	@GetMapping("/history")
+	public String history() {
+		return "/index/history";
+	}
 	/*
 	 * @GetMapping("/rank") public String rank() { return "/index/rank"; }
 	 * 
