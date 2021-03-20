@@ -20,12 +20,17 @@ public class OrderController {
 	public String putcart(
 		@RequestParam() String receiver_name,
 		@RequestParam() String receiver_hp, 
-		@RequestParam() String receiver_delivery_request) {
-		// 장바구니 DB에 해당 상품 추가
-		// get메서드 파라미터를 통해 해당 상품의 정보 가져옴
-		System.out.println(receiver_name + ": 받는 사람 이름");
-		System.out.println(receiver_hp + ": 받는 사람 휴대전화");
-		System.out.println(receiver_delivery_request + ": 배송시 요청사항");
+		@RequestParam() String receiver_delivery_request,
+		@RequestParam() String zip,
+		@RequestParam() String addr1,
+		@RequestParam() String addr2) {
+		
+		System.out.println("받는사람 이름 : " + receiver_name);
+		System.out.println("받는사람 휴대전화 : " + receiver_hp);
+		System.out.println("배송 우편번호 : " + zip);
+		System.out.println("배송 주소 : " + addr1);
+		System.out.println("배송 상세주소 : " + addr2);
+		System.out.println("배송시 요청사항 : " + receiver_delivery_request);
 		return "/index/payFinish";
 	}
 	@GetMapping("/payFinish")
