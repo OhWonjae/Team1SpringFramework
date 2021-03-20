@@ -111,7 +111,7 @@
             <div class="inner">
                 <div class="info" style="height: 120px;">
                     <picture style="float: left;">
-                        <img src="..\common\dog\profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                        <img src="${pageContext.request.contextPath}/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
                     </picture>
                         <div style="float: left; padding-left: 20px; padding-top: 15px;">
                             <strong>봉상근</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>

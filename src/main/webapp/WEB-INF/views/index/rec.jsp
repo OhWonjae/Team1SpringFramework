@@ -31,7 +31,7 @@
 
 			<div class="center">
                 <div class="box col-sm2" style="float: left;" > 
-                    <a href="detail.html" style="color: black;">
+                    <a href="<%=application.getContextPath()%>/index/detail" style="color: black;">
                     
                         <img src="<%=application.getContextPath() %>/resources/img/photo1.jpg" width="100%">
                         플로트 스탠다드 골지 티셔츠 옐로우
