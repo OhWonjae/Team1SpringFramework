@@ -7,14 +7,10 @@
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="/WEB-INF/views/common/header.jsp"%>
+   <%@ include file="/WEB-INF/views/common/header.jsp"%>   
 	<head>
 		<title>Spring</title>
-		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+
 	</head>
 	
      <!--검색페이지 시작-->
@@ -36,52 +32,39 @@
                     <h5 class="font-weight-bold strong" style="margin: 15% 0; ">검색옵션</h5>
                     <!--카테고리 드랍다운-->
                     <div class="dropdown" >
-                        <h5 class="nav-link2 dropdown-toggle border-bottom" style="color: gray; padding-top: 5%; padding-bottom: 10%;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <h5 class="nav-link2 dropdown-toggle border-bottom"  style="color: gray; padding-top: 5%; padding-bottom: 10%;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             카테고리
                         </h5>
                         <div class="collapse" id="collapseExample">
-                            <h6 class="nav-link2 active" input type="button" style="padding: 5% 10%" href="#">전체</h6>
+                            <div class="nav-link2 active"  style="padding: 5% 10%" href="#"><h6>전체</h6></div>
                             <!--세부 카테고리 드랍다운-->
                             <div class="dropdown" >
                                 <h6  class="nav-link2 dropdown-toggle" style="padding: 5% 10%" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
                                         의류/악세서리
                                 </h6>
                                 <div class="collapse" id="collapseExample2">
-                                    <h7 class="nav-link2" input type="button" style="display:block; padding: 5% 20%" href="#">전체</h7>
-                                    <h7 class="nav-link2" input type="button" style="display:block; padding: 5% 20%" href="#">티셔츠</h7>
-                                    <h7 class="nav-link2" input type="button" style="display:block; padding: 5% 20%" href="#">후드티</h7>
-                                    <h7 class="nav-link2" input type="button" style="display:block; padding: 5% 20%" href="#">패딩/코트</h7>
-                                    <h7 class="nav-link2" input type="button" style="display:block; padding: 5% 20%" href="#">원피스</h7>
+                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">전체</h6>
+                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">티셔츠</h6>
+                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">후드티</h6>
+                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">패딩/코트</h6>
+                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">원피스</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--검색결과 컨테이너--> 
-                <class class="col-md-10 border" style="padding: 0 0;" >
+                <div class="col-md-10 border" style="padding: 0 0;" >
                     <!--검색결과 설명--> 
                     <div class="border-bottom" style="font:bold; margin: 1%;">
                         <h5><strong>'후드'</strong>에 대한 검색결과</h5>
                     </div>
                     <!--상품 개수--> 
                     <div class="border-bottom" style="padding:1% 0; margin: 1%; color: gray;">
-                        <h7><strong>38</strong>개의 상품</h7>
+                        <h6><strong>38</strong>개의 상품</h6>
                     </div>
-                    
-                    <script>
-                    <!--상품 목록 컨테이너--> 
                     <div class="container" id="productlist">
-                    	<c:forEach var="itemrow" items="${itemrows}">
-                    			$(#productlist).html("<div class="row">");
-                    		<c:forEach var="item" items="${itemrow}">
-                    			$(#productlist).html(${item});
-                    	
-                    		</c:forEach>
-                    			$(#productlist).html("</div>");
-                    	</c:forEach>
-                    </script>
-                    
-                    	
+	                  
                         <!--상품 목록행 1--> 
               			<div class="row">
                             <!--상품1--> 
@@ -118,12 +101,12 @@
                                 </figure>
                             </div>
                             <!--상품3--> 
-                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;"margin: 0px; text-align: center; padding: 5px 5px; ">
+                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
                                 <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
                                     <!--상품 사진-->
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 플러피 기모 후드 점퍼_26,000~31,000원.PNG" width="100%" >
                                     <!--상품명-->
-                                    <figcaption class="figure-caption ">이츠독 플러피 기모 후드 점퍼</figcaption>
+                                    <figcaption class="figure-caption ">이츠독 플러피 후드 점퍼</figcaption>
                                     <!--상품 가격-->
                                     <figcaption class="figure-caption font-weight-bold">26,000원 ~31,000원</figcaption>
                                     <!--상품 별점-->
@@ -134,7 +117,7 @@
                                 </figure>
                             </div>
                             <!--상품4--> 
-                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;"margin: 0px; text-align: center; padding: 5px 5px; ">
+                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
                                 <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
                                     <!--상품 사진-->
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 버디 슈퍼 보아 후드티 블루_32,000원 ~ 37,000원.PNG" width="100%" >
@@ -148,9 +131,18 @@
                                     </figcaption>
                                     
                                 </figure>
-                            </div>
+                            </div> 
+                     
                         </div>
-
+  						       <script>
+	                    	<!--상품 목록 컨테이너 출력-->
+	                    	var rowhtml = $("#productlist").html(); 
+	                    	console.log(rowhtml);
+	                    	 for(var i=0; i<4; i++){
+	                    		$("#productlist").append(rowhtml);
+	                    	} 
+	                    	 $("#productlist").append("</div>");
+	                   	    </script>
                       
 
 

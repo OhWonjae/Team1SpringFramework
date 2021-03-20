@@ -10,11 +10,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<head>
 		<title>Spring</title>
-		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 	</head>
 
     <!--상세페이지 시작-->
