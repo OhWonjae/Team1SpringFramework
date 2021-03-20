@@ -17,7 +17,7 @@
     <div class="inner" style="margin-bottom: 80px;">
         <div class="info" style="height: 120px;">
              <picture style="float: left;">
-                 <img src="../img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
+                 <img src="${pageContext.request.contextPath}/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
               </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                      <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="tab">
-                                <div class="event"><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+                                <div class="event"><button style="margin-left: 10px;" onclick="location.href='main.html' "type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
                             </div>
                         </div>
                     </div>
