@@ -61,7 +61,7 @@
                             </div>
                             <div class="tab">
 <<<<<<< HEAD
-                                <div class="event"><button style="margin-left: 10px;" onclick="location.href='main.html' "type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+                                <div class="event"><button style="margin-left: 10px;" onclick="<%=application.getContextPath()%>/index/main' "type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
 =======
                                 <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
 >>>>>>> branch 'master' of https://github.com/OhWonjae/Team1SpringFramework.git

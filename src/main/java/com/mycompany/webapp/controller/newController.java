@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/index")
-public class Team1Controller_Bong {
-	@GetMapping("/rec")
-	   public String rec() {
-	      return "/index/rec";
+public class newController {
+	@GetMapping("/new")
+	   public String newMethod() {
+	      return "/index/new";
 	   }
 
 }
