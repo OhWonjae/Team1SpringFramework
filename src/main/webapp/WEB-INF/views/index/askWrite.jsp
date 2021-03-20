@@ -32,7 +32,7 @@
 			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
 			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
 			                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
-                    </div>
+                    		</div>
                     </div>
                     <div class="col-10">
                         <div class="tab-content" id="nav-tabContent">
@@ -49,43 +49,49 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                        
-                                                <div class ="writeBox" style="display:flex;flex-direction: column; margin-bottom: 40px; height: 100%;">
+                                                <!--1:1문의 입력 폼-->
+                              								  <form action="insertAskWirte" method="post">        
+	                                                <!-- 1:1문의 입력 컨테이너 -->
+	                                                <div class ="writeBox" style="display:flex; flex-direction: column; margin-bottom: 40px; height: 100%;">
                                                     
                                                     <div style="display: flex; flex-direction: column;">
                                                         <div style="display: flex; flex-direction: column;">
+                                                           
+                                                            <div class="form-group">
                                                             <label>문의 유형</label>
-                                                            <form>
-                                                                <select id="qnaList" name="qnaList">
-                                                                <option value="au">상품 문의</option>
-                                                                <option value="ca">배송 문의</option>
-                                                                <option value="usa">주문/결제 문의</option>
-                                                                </select>
-                                                              </form>
+                                                            <select class="form-control" id="qnaList" name="qnaList">
+                                                                <option value="product">상품 문의</option>
+                                                                <option value="delivery">배송 문의</option>
+                                                                <option value="order/pay">주문/결제 문의</option>
+                                                              </select>
+                                                              </div>
                                                         </div>
                                                         <div style="display: flex; flex-direction: column; padding-top: 20px;">
                                                             <label>문의 내용</label>
-                                                            <textarea class="form-control" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
+                                                            <textarea class="form-control" id="message-text" name="qcontext" style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
                                                         </div>
                                                         <div style="padding-top:20px">
                                                             <label>사진 첨부</label>
-                                                            <button type="button" class="form-control" id="recipient-pic" style="border:1px black dashed; height: 70px;">
+                                                            <button type="button" class="form-control" id="recipient-pic" name="qphoto" style="border:1px black dashed; height: 70px;">
                                                                 <i class="fas fa-camera"></i>
                                                                 첨부하기
                                                             </button>
                                                         </div>
                         
                                                         <div style="padding-top: 20px;">
-                                                            <a type="button" href="<%=application.getContextPath()%>/index/insertAskWirte" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
+                                                            <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
-                                                            </a>
+                                                            </button>
                                                         </div>
-                                                    </div> 
-                                                </div>
+                                                        </div>
+                                                        </div>
+                                                  </form>
+                                         </div>
+                                         
+                            </div>
                                             
-                        </div>
-                    </div>
+                      </div>
+                  </div>
                 </div>
-             </div>
-    </div>
+   
  <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
