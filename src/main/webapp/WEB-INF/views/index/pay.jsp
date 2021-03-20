@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 	<style type="text/css">
         *{
-        margin: 0px;
-        padding: 0px;
+        /* /* margin: 0px;
+        padding: 0px; */ */
         box-sizing: border-box;
         font-family: Noto Sans KR, sans-serif;
         font-size: 0.9em;
@@ -23,7 +23,7 @@
        
         <div class="header2"> 
 	        <div class="inner">
-	            <div  style="padding-top: 6px;">홈  >  장바구니  > 주문하기 </div> 
+	            <div  style="padding-top: 5px;">홈  >  장바구니  > 주문하기 </div> 
 	        </div>
      	</div>
 
@@ -31,7 +31,7 @@
             <h4 style="font-weight: 1000; padding-top: 10px;">
                 주문결제
             </h4>          
-            <div style="text-align: right; font-size: 0.85em; color: rgb(134, 134, 138); line-height: 30px;">01 장바구니 > 
+            <div style="text-align: right; color: rgb(134, 134, 138); line-height: 30px;">01 장바구니 > 
                 <span style="color: rgb(255, 81, 82);">02 주문결제</span> > 03 결제완료
             </div>
         </div>
@@ -40,11 +40,12 @@
             <div>
                 <h5 class="inner2" style="border: 1px solid #e9ecef; "> 
                     <span style="font-weight: 900; line-height: 50px;">배송정보</span>
-                    <form style= "color: rgb(195, 195, 195); border-top: 4px solid; padding : 5px; line-height: 20px;" action="do_payment" method="post">
+                    <form style="color: rgb(195, 195, 195); border-top: 4px solid; padding : 5px; line-height: 20px;" action="do_payment" method="post">
+                   
                         <div>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
-                                    <span style="padding:5px; width: 20%;font-size: 1.2em;";>받는 사람</span>  
+                                    <span style="padding:5px; width: 20%;font-size: 1.2em;">받는 사람</span>  
                                     <input name="receiver_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
@@ -56,16 +57,18 @@
                             </div> 
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
-                                    <span style="padding:5px; width: 20%;font-size: 1.2em;">배송지 주소</span> 
+                                    <span style="padding:5px; width: 20%; font-size: 1.2em;">배송지 주소</span> 
                                     <input class="form-control" placeholder="우편번호를 입력하세요." type="number">
-                                    <button type="button" class="btn btn-light" style="width: 120px; margin-left: 20px;">우편번호</button>
+                                    <button type="button" class="btn btn-light" style="width: 120px; margin-left: 20px;">
+                                    	우편번호
+                                    </button>
                                 </div> <!-- form-group// -->
                                 <div class="form-group input-group">
-                                    <span style="padding:5px; width: 20%;"></span> 
+                                    <span style="padding:5px; width: 20%; font-size: 1.2em;"></span> 
                                     <input class="form-control" placeholder="주소를 입력하세요." type="text">
                                 </div> 
                                 <div class="form-group input-group">
-                                    <span style="padding:5px; width: 20%;"></span> 
+                                    <span style="padding:5px; width: 20%; font-size: 1.2em;"></span> 
                                     <input class="form-control" placeholder="상세주소를 입력하세요." type="text">
                                 </div>   
                             </div>
@@ -78,7 +81,6 @@
                             </div>
                         </div>
                         
-                    </div>
 
                     <span style="font-weight: 800; line-height: 50px;">주문상품</span>
                     <div style= "color: rgb(195, 195, 195); border-top: 4px solid; padding: 2px; line-height: 20px;">
@@ -172,10 +174,11 @@
             <div class="form-group" style="display:flex; justify-content: center;">
 				
                 <button type="submit" class="btn btn-primary btn-block" 
-		                style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
-		                        <strong>결제하기</strong> 
-		                </button>
-            </form>
+                style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
+                        <strong>결제하기</strong> 
+                </button>
+        </form>
+                
             </div> <!-- form-group// -->    
 
             <br>
