@@ -85,7 +85,7 @@
                                 </figure>
                             </div>
                             <!--상품2--> 
-                            <div class="col-3  "OnClick="location.href ='http://URL주소'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
+                            <div class="col-3  "OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
                                 <figure class="figure " style="text-align: left;margin:0 0; height: 90%; width: 90%; ">
                                     <!--상품 사진-->
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/플로트 스탠다드 후드 핑크_26,000원.PNG" width="100%" >
@@ -101,7 +101,7 @@
                                 </figure>
                             </div>
                             <!--상품3--> 
-                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
+                            <div class="col-3  " OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
                                 <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
                                     <!--상품 사진-->
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 플러피 기모 후드 점퍼_26,000~31,000원.PNG" width="100%" >
@@ -117,7 +117,7 @@
                                 </figure>
                             </div>
                             <!--상품4--> 
-                            <div class="col-3  " OnClick="location.href ='http://URL주소'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
+                            <div class="col-3  " OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
                                 <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
                                     <!--상품 사진-->
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 버디 슈퍼 보아 후드티 블루_32,000원 ~ 37,000원.PNG" width="100%" >

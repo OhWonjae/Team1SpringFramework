@@ -28,10 +28,10 @@
                 <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">고객센터</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
+	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -60,11 +60,7 @@
                                 </div>
                             </div>
                             <div class="tab">
-<<<<<<< HEAD
-                                <div class="event"><button style="margin-left: 10px;" onclick="location.href='main.html' "type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
-=======
                                 <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
->>>>>>> branch 'master' of https://github.com/OhWonjae/Team1SpringFramework.git
                             </div>
                         </div>
                     </div>
@@ -277,7 +273,6 @@
                                             const items = document.querySelectorAll('.question');
                                                 function openCloseAnswer() {
                                                     const answerId = this.id.replace('que', 'ans');
-
                                                     if(document.getElementById(answerId).style.display === 'block') {
                                                     document.getElementById(answerId).style.display = 'none';
                                                     document.getElementById(this.id + '-toggle').textContent = '∨';
@@ -298,4 +293,4 @@
 </div>
     </body>
   </html>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%> 

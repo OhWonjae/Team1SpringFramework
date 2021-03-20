@@ -32,11 +32,14 @@
                  </a>
                     
                 </div>
-                <div class="head-searchbar">
+                
+               <div class="head-searchbar">
+                  <form class="formStyle" method="get" action="search" style="display:flex; width:100%">
                     <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
-                    <button class="searchButton">
+                    <button class="searchButton" type="submit" onclick="location.href='<%=application.getContextPath()%>/index/search'">
                         <i class="fas fa-search"></i>
                     </button>
+                  </form>
                 </div>
                 <div class="header-sideBar">
                     <div class="mypage">
@@ -66,24 +69,28 @@
                                 <span class="category">카테고리</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">티셔츠</a>
-                              <a class="dropdown-item" href="#">후드티</a>
-                              <a class="dropdown-item" href="#">패딩/코트</a>
-                              <a class="dropdown-item" href="#">원피스</a>
-                              <a class="dropdown-item" href="#">올인원</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">티셔츠</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">후드티</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">패딩/코트</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">원피스</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">올인원</a>
                              
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">신규</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/new">신규</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">랭킹</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/rank">랭킹</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">추천</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/rec">추천</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">고객센터</a>
+<<<<<<< HEAD
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/askList">고객센터</a>
+=======
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/my">고객센터</a>
+>>>>>>> branch 'master' of https://github.com/OhWonjae/Team1SpringFramework.git
                         </li>
                       </ul>
                     </div>
