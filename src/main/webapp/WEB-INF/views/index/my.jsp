@@ -28,10 +28,10 @@
                 <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">고객센터</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
+	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -273,7 +273,6 @@
                                             const items = document.querySelectorAll('.question');
                                                 function openCloseAnswer() {
                                                     const answerId = this.id.replace('que', 'ans');
-
                                                     if(document.getElementById(answerId).style.display === 'block') {
                                                     document.getElementById(answerId).style.display = 'none';
                                                     document.getElementById(this.id + '-toggle').textContent = '∨';
@@ -294,4 +293,4 @@
 </div>
     </body>
   </html>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%> 
