@@ -51,16 +51,20 @@
                             </div>                  
                             <div class="tab">
                                 <div class="tab1">휴대전화</div>
-                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='phoneChange.html' "  class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/phoneChange'" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
                                 <div class="tab1">비밀번호</div>
-                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='pwChange.html' " type="button" class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='<%=application.getContextPath()%>/index/pwChange'" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
+<<<<<<< HEAD
                                 <div class="event"><button style="margin-left: 10px;" onclick="location.href='main.html' "type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+=======
+                                <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+>>>>>>> branch 'master' of https://github.com/OhWonjae/Team1SpringFramework.git
                             </div>
                         </div>
                     </div>

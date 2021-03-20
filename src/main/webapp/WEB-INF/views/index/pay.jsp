@@ -8,108 +8,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<head>
-		<title>Spring</title>
-		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-	</head>
+	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 	<style type="text/css">
         *{
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
-        font-size: 0.9em;
         font-family: Noto Sans KR, sans-serif;
+        font-size: 0.9em;
         font-weight: 800;
         } 
-        
-        .start{
-        background-color: #e9ecef;
-        }
-
-        .photo{
-            float:left;
-            padding-right: 15px;
-        }   
-        .col-2{
-            
-            text-align: left;
-            font-size: 12px;
-        }
-
-        .header2 {
-            padding-left: 25px;
-            background-color: rgb(244, 244, 245);
-            height: 36px;
-            align-content: center;				
-        }
-
-        
-        .list-group-item-action{
-            color: #222;
-            background-color: white;
-            border-color: white;
-        }
-
-        .list-group-item-action:focus{
-            color: red;
-            background-color:  white;
-            border-color:  white;
-        }
-
-        .list-group-item-action:hover{
-            
-            color: red;
-            background-color: white;
-            border-color: white;
-        }
-    
-        .list-group-item.active{
-            color:red;
-            background-color: white;
-            border-color:#fff;
-        }
-    
-        
-        .inner2{
-            width:100%;
-            height:100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 2rem 6rem;
-            overflow: hidden;
-        }
-        .btn-light:hover {
-
-        color: #ff3357;
-        background-color: white;
-        border-color: #ff3357;
-        }
-
-
-        .btn-light {
-            color: #ff3357;
-            background-color: white;
-            border-color: #ff3357;
-        }
-
-        .btn-light:focus {
-        color: white;
-        background-color: #ff3357;
-        border-color: #ff3357;
-        }
-
     </style>
      <!--주문결재 시작-->
        
-        <div class="start"> 
-            <div class="header2">
-                <div class="inner" style="font-size: 0.75em; padding-top: 10px; color: rgb(134, 134, 138);">홈  >  장바구니  >  주문결제 </div>
-            </div>
-        </div>
+        <div class="header2"> 
+	        <div class="inner">
+	            <div  style="padding-top: 6px;">홈  >  장바구니  > 주문하기 </div> 
+	        </div>
+     	</div>
 
         <div class="inner">
             <h4 style="font-weight: 1000; padding-top: 10px;">
@@ -121,24 +37,24 @@
         </div>
 
         <div class="inner">
-            <div style="flex-direction: column-reverse;">
+            <div>
                 <h5 class="inner2" style="border: 1px solid #e9ecef; "> 
                     <span style="font-weight: 900; line-height: 50px;">배송정보</span>
-                    <form style= "color: rgb(195, 195, 195);border-top: 4px solid; padding : 5px; line-height: 20px;">
+                    <form style= "color: rgb(195, 195, 195); border-top: 4px solid; padding : 5px; line-height: 20px;" action="do_payment" method="post">
                         <div>
-                            <div style=" width: 50%;">
+                            <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span style="padding:5px; width: 20%;font-size: 1.2em;";>받는 사람</span>  
-                                    <input name="" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
+                                    <input name="receiver_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
-                            <div style="width: 50%;">
+                            <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span style="padding:5px; width: 20%;font-size: 1.2em;">휴대전화</span>  
-                                    <input name="" class="form-control" placeholder="휴대전화 번호를 입력하세요." type="number">
+                                    <input name="receiver_hp" class="form-control" placeholder="휴대전화 번호를 입력하세요." type="number">
                                 </div>
                             </div> 
-                            <div style="width: 50%;">
+                            <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span style="padding:5px; width: 20%;font-size: 1.2em;">배송지 주소</span> 
                                     <input class="form-control" placeholder="우편번호를 입력하세요." type="number">
@@ -154,26 +70,28 @@
                                 </div>   
                             </div>
 
-                            <div style=" width: 50%;">
+                            <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span style="padding:5px; width: 20%;font-size: 1.2em;";>배송 요청사항</span>  
-                                    <input name="" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
+                                    <input name="receiver_delivery_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
                         </div>
-                    </form>
+                        
+                    </div>
 
                     <span style="font-weight: 800; line-height: 50px;">주문상품</span>
-                    <form style= "color: rgb(195, 195, 195); border-top: 4px solid; padding: 2px; line-height: 20px;">
+                    <div style= "color: rgb(195, 195, 195); border-top: 4px solid; padding: 2px; line-height: 20px;">
                         
                         <table class="table" style="font-size: 1.4em;">
                             <thead class="thead-light" style="font-size: 0.8em;">
                                 <tr>
-                                    <th scope="col" style="width: 80%; font-size: 1em;">업체발송  상품 (플로트)<br> <stan style="color: rgb(255, 81, 82); line-height: 30px;">발송일: 3월 10일 수</stan></th>
+                                    <th scope="col" style="width: 80%; font-size: 1em; text-align: left">업체발송  상품 (플로트)<br> 
+                                    <stan style="color: rgb(255, 81, 82); line-height: 30px;">발송일: 3월 10일 수</stan></th>
                                     <th scope="col" style="width: 20%; text-align: center;"></th>    
                                 </tr>
                             </thead>
-                            <tbody>
+                           	<tbody>
                                 <tr style="line-height: 20px;">
                                     <th style="color: rgb(195, 195, 195)"> <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/photo2.jpg" width="20%" style="float: left; margin-right: 10px;">
                                         <span style="color: rgb(134, 134, 138)">플로트 스탠다드 민소매 티셔츠 옐로우블루</span> <br> <span>사이즈: L</span> <br> <span>수량: 1개</span> </th>
@@ -182,10 +100,10 @@
                             </tbody>
                         </table>
                 
-                    </form>
+                    </div>
 
                     <span style="font-weight: 900; line-height: 50px;">최종 결제금액</span>
-                    <form style= "color: rgb(195, 195, 195); border-top: 4px solid; line-height: 20px;">
+                    <div style= "color: rgb(195, 195, 195); border-top: 4px solid; line-height: 20px;">
 
                         <table class="table" style="font-size: 1.3em">
                             <thead class="thead-light" style="text-align: left; color: rgb(134, 134, 138);">
@@ -214,10 +132,10 @@
                             
                         </table>
 
-                    </form>
+                    </div>
 
                     <span style="font-weight: 900; line-height: 40px;">결제방법</span>
-                    <form style= "color: rgb(195, 195, 195); border-top: 4px solid; padding : 10px; line-height: 20px; color: #666; font-size: 1.2em;">
+                    <div style= "color: rgb(195, 195, 195); border-top: 4px solid; padding : 10px; line-height: 20px; color: #666; font-size: 1.2em;">
 
                         <div>
 
@@ -243,7 +161,7 @@
                             </div>
                         </div>
 
-                    </form>
+                    </div>
                 </h5>    
             </div>
                     
@@ -252,14 +170,17 @@
             </div>  
 
             <div class="form-group" style="display:flex; justify-content: center;">
-                <button type="button" onclick="location.href='payFinish.html' " class="btn btn-primary btn-block" onclick="location.href='payFinish.html'" style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
-                        <strong>결제하기</strong> 
-                </button>
+				
+                <button type="submit" class="btn btn-primary btn-block" 
+		                style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 60%;">
+		                        <strong>결제하기</strong> 
+		                </button>
+            </form>
             </div> <!-- form-group// -->    
 
             <br>
             <br>
-            <br>
+         
             <br>
 
         </div>

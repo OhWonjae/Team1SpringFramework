@@ -1,31 +1,20 @@
 package com.mycompany.webapp.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/index")
-public class Team1Controller_Wonjae {
+public class SearchController {
+
+	//제품 검색페이지 이동
 	@GetMapping("/search")
-	public String rank() {
+	public String search() {
 		return "/index/search";
 	}
-	
-	@GetMapping("/payFinish")
-	public String rec() {
-		return "/index/payFinish";
-	}
-	
 
-	
-	@GetMapping("/detail")
-	public String login() {
-		return "/index/detail";
-	}
-	
-	@GetMapping("/pay")
-	public String signUp() {
-		return "/index/pay";
-	}
 }

@@ -10,11 +10,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<head>
 		<title>Spring</title>
-		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
 	</head>
 
     <!--상세페이지 시작-->
@@ -74,9 +69,9 @@
                         </div>
                         <!--세부 사진-->
                         <div class="row   justify-content-center" style=" height: 15%; padding:35px">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
+                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
                         </div>
                     </div>
                     <!--구매옵션--> 
@@ -187,11 +182,11 @@
                         <div class="row " style="margin: 70px 5px;">
                             <!--장바구니 담기 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
+                                <button type="button" onclick="location.href='putcart?price=2400';"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
                             </div>
                             <!--바로구매 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="location.href='pay.html' " class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
+                                <button type="button" onclick="location.href='buy?price=2400'" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
                             </div>
                         </div>
                     </div>
@@ -278,34 +273,36 @@
                                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
+                               <!--리뷰 입력 폼-->
+                               <form action="reviewupload" method="post">
                                 <!--리뷰 입력 컨테이너-->
                                 <div style="display:flex;flex-direction: column; padding:2% 20%; height: 100%;">
-                                    <!--리뷰 입력 폼-->
-                                    <form style="height: 100%;">
+                                 
+     
                                         <div class="form-group">
                                             <!--제목 폼-->
                                             <label for="recipient-name" class="col-form-label">제목</label>
-                                            <input type="text" class="form-control" id="recipient-name" placeholder="제목을 입력해 주세요.">
+                                            <input type="text" name="title" class="form-control" id="recipient-name" placeholder="제목을 입력해 주세요.">
                                         </div>                                        
                                         <div class="form-group">
                                             <!--내용 폼-->
                                             <label for="message-text" class="col-form-label">내용</label>
-                                            <textarea class="form-control" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
+                                            <textarea class="form-control" name="content" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
                                         </div>
                                         <!--사진 입력 버튼-->
-                                        <button type="button" class="form-control" id="recipient-pic" style="border:1px black dashed; margin:3% 0; padding: 5px; ">
+                                        <button type="button" name="media" class="form-control" id="recipient-pic" style="border:1px black dashed; margin:3% 0; padding: 5px; ">
                                             <i class="fas fa-camera" style="vertical-align: middle;">사진/동영상 첨부하기</i>
                                             
-                                        </button>   
-                                    </form>                           
-                                </div>  
-
+                                        </button>                                                              
+                               		 </div>  
+  								
                                 
                                 <!--닫기/등록 버튼 컨테이너-->
                                 <div style="width: 100%; height: 30%; padding:2% 0%; display:flex; justify-content: space-around; align-items: center; ">
-                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
+                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-danger" data-dismiss="modal">취소</button>
+                                    <button type="submit" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
                                 </div>
+                                </form> 
                             </div>
                         </div>
                     </div>
