@@ -8,14 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-	<head>
-		<title>Spring</title>
-		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/bootstrap-4.6.0/css/bootstrap.min.css">
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
-		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
-	</head>
+	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 	<style type="text/css">
         *{
         margin: 0px;
@@ -25,83 +18,6 @@
         font-family: Noto Sans KR, sans-serif;
         font-weight: 800;
         } 
-        
-        .start{
-        background-color: #e9ecef;
-        }
-
-        .photo{
-            float:left;
-            padding-right: 15px;
-        }   
-        .col-2{
-            
-            text-align: left;
-            font-size: 12px;
-        }
-
-        .header2 {
-            padding-left: 25px;
-            background-color: rgb(244, 244, 245);
-            height: 36px;
-            align-content: center;				
-        }
-
-        
-        .list-group-item-action{
-            color: #222;
-            background-color: white;
-            border-color: white;
-        }
-
-        .list-group-item-action:focus{
-            color: red;
-            background-color:  white;
-            border-color:  white;
-        }
-
-        .list-group-item-action:hover{
-            
-            color: red;
-            background-color: white;
-            border-color: white;
-        }
-    
-        .list-group-item.active{
-            color:red;
-            background-color: white;
-            border-color:#fff;
-        }
-    
-        
-        .inner2{
-            width:100%;
-            height:100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 2rem 6rem;
-            overflow: hidden;
-        }
-        .btn-light:hover {
-
-        color: #ff3357;
-        background-color: white;
-        border-color: #ff3357;
-        }
-
-
-        .btn-light {
-            color: #ff3357;
-            background-color: white;
-            border-color: #ff3357;
-        }
-
-        .btn-light:focus {
-        color: white;
-        background-color: #ff3357;
-        border-color: #ff3357;
-        }
-
     </style>
      <!--주문결재 시작-->
        
