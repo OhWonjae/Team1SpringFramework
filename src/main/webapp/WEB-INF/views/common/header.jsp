@@ -86,11 +86,7 @@
                             <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/rec">추천</a>
                         </li>
                         <li class="nav-item">
-<<<<<<< HEAD
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/askList">고객센터</a>
-=======
                             <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/my">고객센터</a>
->>>>>>> branch 'master' of https://github.com/OhWonjae/Team1SpringFramework.git
                         </li>
                       </ul>
                     </div>

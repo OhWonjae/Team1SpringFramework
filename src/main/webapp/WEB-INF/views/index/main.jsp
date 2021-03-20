@@ -42,7 +42,7 @@
         <div class="main-new">
           <div class="main-title-new">
             <div class="main-title">신규</div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">더보기></button>
+            <button type="button" onclick="location.href='<%=application.getContextPath()%>/index/new'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
           <ul class="new-list">
             <li class="new-goods" style="margin-left: 0;">
@@ -125,7 +125,7 @@
         <div class="main-new">
           <div class="main-title-new">
             <div class="main-title">추천</div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">더보기></button>
+            <button type="button" onclick="location.href='<%=application.getContextPath()%>/index/rec'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
           <ul class="new-list">
             <li class="new-goods" style="margin-left: 0;">
@@ -209,7 +209,7 @@
         <div class="main-new">
           <div class="main-title-new">
             <div class="main-title">랭킹</div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">더보기></button>
+            <button type="button" onclick="location.href='<%=application.getContextPath()%>/index/rank'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
           <div class="container rank-container">
             <div class="row">
