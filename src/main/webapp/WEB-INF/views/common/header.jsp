@@ -83,7 +83,7 @@
                             <a class="nav-link active" aria-current="page" href="#">추천</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">고객센터</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/askList">고객센터</a>
                         </li>
                       </ul>
                     </div>
