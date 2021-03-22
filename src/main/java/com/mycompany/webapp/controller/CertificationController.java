@@ -23,7 +23,7 @@ public class CertificationController {
 	
 	@PostMapping("/login")
 	public String PostLogin() {
-		return "redirect:/login";
+		return "redirect:/user/login";
 	}
 	
 	@GetMapping("/searchId")

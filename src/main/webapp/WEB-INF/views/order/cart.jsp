@@ -36,7 +36,7 @@
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
                     <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/user/askList" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
