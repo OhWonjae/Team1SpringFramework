@@ -27,7 +27,7 @@
         <div class="inner">
             <div class="head-container">
                 <div class="head-brand">
-                <a href="<%=application.getContextPath()%>/index/main">
+                <a href="<%=application.getContextPath()%>/main">
                    <img src="<%=application.getContextPath() %>/resources/img/logo7.PNG" alt="logo">
                  </a>
                     
@@ -36,20 +36,20 @@
                <div class="head-searchbar">
                   <form class="formStyle" method="get" action="search" style="display:flex; width:100%">
                     <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
-                    <button class="searchButton" type="submit" onclick="location.href='<%=application.getContextPath()%>/index/search'">
+                    <button class="searchButton" type="submit" onclick="location.href='<%=application.getContextPath()%>/product/search'">
                         <i class="fas fa-search"></i>
                     </button>
                   </form>
                 </div>
                 <div class="header-sideBar">
                     <div class="mypage">
-                      <a href="<%=application.getContextPath()%>/index/login">
+                      <a href="<%=application.getContextPath()%>/user/login">
                         <i class="fas fa-user mypage-icon"></i>
                         <span class="mypage-text">MY</span>
                       </a>
                     </div>
                     <div class="cart">
-                      <a href="<%=application.getContextPath()%>/index/cart">
+                      <a href="<%=application.getContextPath()%>/order/cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-text">장바구니</span>
                       </a>
@@ -58,39 +58,4 @@
             </div>
         </div>
     </header>
-    <section class="main">
-        <div class="main-container">
-            <div class="nav-inner">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding: .5rem 0;">
-                    <div class="container-fluid" style="padding-left: 0;">
-                      <ul class="navbar-nav">
-                        <li class="nav-item dropdown" style="margin-left: 0;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="category">카테고리</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">티셔츠</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">후드티</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">패딩/코트</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">원피스</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/index/search">올인원</a>
-                             
-                          </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/new">신규</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/rank">랭킹</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/rec">추천</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/index/my">고객센터</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
-            </div>
-        </div>
-    </section>
+   

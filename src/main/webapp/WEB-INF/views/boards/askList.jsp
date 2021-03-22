@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
     <title>Document></title>
 
@@ -29,10 +30,10 @@
                 <div class="col-2">
                     <div class="list-group" id="list-tab" role="tablist">
 	                    <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
-	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                     </div>
                 </div>
                 <div class="col-10">
@@ -44,7 +45,7 @@
                             <div>
                                 <div class="div1" style="margin-bottom: 20px;">
                                 <h5 class="qa">고객센터(1:1문의)</h5>
-                                <a href="<%=application.getContextPath() %>/index/askWrite" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">문의하기</a>
+                                <a href="<%=application.getContextPath() %>/boards/askWrite" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">문의하기</a>
                                 </div>
                                 
                                 <div class="div2" style="padding-bottom: 200px;">
@@ -61,7 +62,7 @@
                                         </button>
                                         <div class="answer" id="ans-1">상품에 관해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
@@ -80,7 +81,7 @@
                                         </button>
                                         <div class="answer" id="ans-2">배송에 관해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
@@ -100,7 +101,7 @@
                                         </button>
                                         <div class="answer" id="ans-3">주문/결제 방법에 대해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/index/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>

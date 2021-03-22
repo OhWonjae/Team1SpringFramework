@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
 
 
@@ -32,10 +33,10 @@
                 <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/user/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -57,7 +58,7 @@
                                         <div class="cart-info-box col-sm-5">
                                             <div class="cart-info">
                                             <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
-                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/index/detail">플로트 스탠다드 맨투맨 V라인 멜로</a>
+                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">플로트 스탠다드 맨투맨 V라인 멜로</a>
                                             </div>
                                         </div>        
                                         <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
@@ -86,7 +87,7 @@
                                         <div class="cart-info-box col-sm-5">
                                             <div class="cart-info">
                                             <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
-                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/index/detail">플로트 스탠다드 맨투맨 V라인 멜로</a>
+                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">플로트 스탠다드 맨투맨 V라인 멜로</a>
                                             </div>
                                         </div>        
                                         <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
@@ -136,7 +137,7 @@
                                         <div class="total-price">
                                             <div style="text-align:center; margin-right:1px">합계 : </div>
                                             <div style="font-weight: bold; text-align: center; margin-right:5px">2000000원</div>
-                                            <button type="submit" onclick="location.href='<%=application.getContextPath()%>/index/pay'" class="btn btn-secondary">구매하기</button>
+                                            <button type="submit" onclick="location.href='<%=application.getContextPath()%>/order/pay'" class="btn btn-secondary">구매하기</button>
                                         </div>
                                       </div>
                                   </div>

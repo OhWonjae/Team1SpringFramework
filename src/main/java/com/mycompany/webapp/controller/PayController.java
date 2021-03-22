@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping("/index")
-public class OrderController {
+@RequestMapping("/order")
+public class PayController {
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
 	public String putcart(
@@ -31,16 +32,25 @@ public class OrderController {
 		System.out.println("배송 주소 : " + addr1);
 		System.out.println("배송 상세주소 : " + addr2);
 		System.out.println("배송시 요청사항 : " + receiver_delivery_request);
-		return "/index/payFinish";
+		return "/order/payFinish";
 	}
 	@GetMapping("/payFinish")
 	public String payFinish() {
-		return "/index/payFinish";
+		return "/order/payFinish";
 	}
 	
 	@GetMapping("/history")
 	public String history() {
-		return "/index/history";
+		return "/order/history";
+	}
+	
+	// 바로구매 버튼 클릭
+	@GetMapping("/pay")
+	public String pay() {
+			
+		//해당 상품정보 가지고 결재상세 페이지로 이동
+		//get메서드 파라미터를 통해 해당 상품의 정보 가져옴
+		return "/order/pay";
 	}
 	
 }

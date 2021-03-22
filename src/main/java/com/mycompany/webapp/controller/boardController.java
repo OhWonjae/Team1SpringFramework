@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/index")
-public class askController {
+@RequestMapping("/boards")
+public class boardController {
 
 	//1:1문의 게시판으로 이동
 	@GetMapping("/askList")
 	public String askList() {
-		return "/index/askList";
+		return "/boards/askList";
 	}
 	//'문의하기'버튼 클릭시 작성란으로 이동
 	@GetMapping("/askWrite")
 	public String askWrite() {
-		return "/index/askWrite";
+		return "/boards/askWrite";
 	}
 	//'1:1 문의하기 등록'버튼 클릭 
 	@PostMapping("/insertAskWirte")
@@ -30,6 +30,6 @@ public class askController {
 	// 1:1 문의 게시판에서 '수정'버튼 클릭
 	@GetMapping("/editAskWirte")
 	public String editAskWirte() {
-		return "/index/askWrite";
+		return "/boards/askWrite";
 	}
 }

@@ -63,7 +63,7 @@
             </div>
             
             <div class="form-group" >
-                <button type="submit" class="btn btn-primary btn-block" onclick="location.href='<%=application.getContextPath()%>/index/login' " style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
+                <button type="submit" class="btn btn-primary btn-block" onclick="location.href='<%=application.getContextPath()%>/user/login' " style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                     <strong>회원가입</strong> 
                 </button>
             </div>      

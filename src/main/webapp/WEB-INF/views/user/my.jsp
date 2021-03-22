@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>   
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <body>
     <div class="header2"> 
         <div class="inner">
@@ -28,10 +29,10 @@
                 <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
-	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -51,16 +52,16 @@
                             </div>                  
                             <div class="tab">
                                 <div class="tab1">휴대전화</div>
-                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/phoneChange'" class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/user/phoneChange'" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
                                 <div class="tab1">비밀번호</div>
-                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='<%=application.getContextPath()%>/index/pwChange'" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='<%=application.getContextPath()%>/user/pwChange'" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
-                                <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/index/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+                                <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
                             </div>
                         </div>
                     </div>

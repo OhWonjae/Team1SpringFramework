@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
     <style type="text/css">
       * {
             box-sizing:border-box;
@@ -155,7 +156,7 @@
          </div>
             <div class="center">
                 <div class="box col-sm2" style="float: left;"> 
-                    <a href="<%=application.getContextPath()%>/index/detail"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="100%" ></div></a>
+                    <a href="<%=application.getContextPath()%>/product/detail"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="100%" ></div></a>
                    <a href="#">디크디크 퀄팅 자켓 블랙</a>
                     <p><strong>69,000원</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)

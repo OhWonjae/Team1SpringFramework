@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 	<head>
 		<title>Spring</title>
 		<%-- application: servletContext(웹 애플래케이션 실행 정보를 가지고 있는 객체)참조 --%>
@@ -30,7 +31,7 @@
           </div>
           <!--확인 버튼-->
           <div style="width: 30%;" style="margin:5%;">
-          	<a type="button" class="btn btn-danger text-center btn-lg btn-block" href="<%=application.getContextPath()%>/index/history" style=" width: 100%;">확인</a>
+          	<a type="button" class="btn btn-danger text-center btn-lg btn-block" href="<%=application.getContextPath()%>/order/history" style=" width: 100%;">확인</a>
           </div>
       </div>
   </div>

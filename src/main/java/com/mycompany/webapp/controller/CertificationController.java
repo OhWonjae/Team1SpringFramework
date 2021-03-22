@@ -6,53 +6,56 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping()
 public class CertificationController {
 	
 	@GetMapping("/login")
 	public String login() {
-		return "/index/login";
+		return "/user/login";
 	}
 	
-	@PostMapping("/main")
-	public String main() {
-		 return "redirect:/index/main";
-	}
+	
 	
 	@GetMapping("/signUp")
 	public String signUp() {
-		return "/index/signUp";
+		return "/user/signUp";
 	}
 	
 	@PostMapping("/login")
 	public String PostLogin() {
-		return "redirect:/index/login";
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/searchId")
 	public String searchId() {
-		return "/index/searchId";
+		return "/user/searchId";
 	}
 	
 	@GetMapping("/searchPw")
 	public String searchPw() {
-		return "/index/searchPw";
+		return "/user/searchPw";
 	}
 	
 	@GetMapping("/pwChange")
 	public String pwChange() {
-		return "/index/pwChange";
+		return "/user/pwChange";
 	}
 	
 	@GetMapping("/phoneChange")
 	public String phoneChange() {
-		return "/index/phoneChange";
+		return "/user/phoneChange";
 	}
 	
 	@PostMapping("/my")
 	public String change() {
-		return "redirect:/index/my";
+		return "redirect:/user/my";
 	}
+	
+	
+	@GetMapping("/my")
+	 public String my() {
+		return "/user/my";
+	 }
 	
 	
 	

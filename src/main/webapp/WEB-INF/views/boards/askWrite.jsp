@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/askWrite.css">
     <title>Document></title>
 
@@ -28,10 +29,10 @@
                     <div class="col-2">
                         <div class="list-group" id="list-tab" role="tablist">
 		               				<a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/my" role="tab" aria-controls="home" >회원정보</a>
-			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/history" role="tab" aria-controls="profile">주문내역</a>
-			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/index/cart" role="tab" aria-controls="messages">장바구니</a>
-			                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/index/askList" role="tab" aria-controls="settings">고객센터</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+			                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+			                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                     		</div>
                     </div>
                     <div class="col-10">

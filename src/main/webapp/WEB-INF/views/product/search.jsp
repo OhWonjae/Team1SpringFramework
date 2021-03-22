@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
    <%@ include file="/WEB-INF/views/common/header.jsp"%>   
+   <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 	<head>
 		<title>Spring</title>
 

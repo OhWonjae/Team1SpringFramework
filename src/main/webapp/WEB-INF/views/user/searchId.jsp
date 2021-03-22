@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
    <style type="text/css">
 		* {
@@ -96,7 +97,7 @@
                 <br>
                 
                 <div class="form-group" >
-                    <button type="submit" class="btn btn-primary btn-block" onclick="location.href='<%=application.getContextPath()%>/index/login' "  style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 
+                    <button type="submit" class="btn btn-primary btn-block" onclick="location.href='<%=application.getContextPath()%>/user/login' "  style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 
                         확인 
                     </button>
                 </div>
