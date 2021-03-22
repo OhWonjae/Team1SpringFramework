@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class mainController {
+public class MainController {
 	
 	@GetMapping("/main")
 	public String main() {
@@ -15,9 +15,8 @@ public class mainController {
 	}
 	
 	@PostMapping("/main")
-	public String Postmain() {
-		 return "redirect:/main";
-		 
+	public String PostMain() {
+		return "redirect:/main";
 	}
 
 }
