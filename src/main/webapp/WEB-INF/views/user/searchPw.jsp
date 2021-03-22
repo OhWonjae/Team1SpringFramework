@@ -23,7 +23,7 @@
                 <strong>비밀번호 찾기</strong>
             </h4>
 
-            <form method="post" action="login">
+            <form method="post" action="<%=application.getContextPath()%>/user/login">
                 <div style="padding: 5px 0 0 0;">
                     <strong>필수 입력</strong><span style="color: red;">*</span>
                     <div class="form-group input-group">
@@ -53,7 +53,7 @@
                 <br>
 
                 <div class="form-group" >
-                    <button type="submit" onclick="location.href='<%=application.getContextPath()%>/user/login'" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                         확인 
                     </button>
                 </div>

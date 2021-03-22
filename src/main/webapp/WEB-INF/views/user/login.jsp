@@ -35,7 +35,7 @@
                 <br>
 
                 <div class="form-group" >
-                    <button type="submit" onclick="location.href='<%=application.getContextPath()%>/main'" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                             로그인 
                     </button>
                 </div>      
