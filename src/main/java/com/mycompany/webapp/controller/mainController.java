@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class mainController {
 	
-	@GetMapping("main")
+	@GetMapping("/main")
 	public String main() {
-		return "main";
+		return "/main";
 	}
 	
-	@PostMapping("main")
+	@PostMapping("/main")
 	public String Postmain() {
-		 return "redirect:main";
+		 return "redirect:/main";
 		 
 	}
 
