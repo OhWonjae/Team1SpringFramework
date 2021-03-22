@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
-// 형윤- 주문결제 주문내역 
-
-
-
 @Controller
 @RequestMapping("/order")
 public class PayController {
@@ -35,10 +31,18 @@ public class PayController {
 		System.out.println("배송시 요청사항 : " + receiver_delivery_request);
 		return "/order/payFinish";
 	}
+	
+	@GetMapping("/do_payment")
+	public String Postputcart() {
+		return "redirect:/order/payFinish";
+	}
+	
+
 	@GetMapping("/payFinish")
 	public String payFinish() {
 		return "/order/payFinish";
 	}
+	
 	
 	@GetMapping("/history")
 	public String history() {
