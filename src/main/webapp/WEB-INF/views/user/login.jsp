@@ -23,7 +23,7 @@
                 <strong>로그인</strong>
             </h4>
                 <br>
-            <form  method="post" action="main">
+            <form  method="post" action="<%=pageContext.getServletContext().getContextPath()%>/main">
                 <div class="form-group input-group">
                     <input name="" class="form-control" placeholder="이메일을 입력하세요." type="email">
                 </div> 

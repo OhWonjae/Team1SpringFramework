@@ -183,11 +183,11 @@
                         <div class="row " style="margin: 70px 5px;">
                             <!--장바구니 담기 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="location.href='putcart?price=2400';"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
+                                <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/putcart';"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
                             </div>
                             <!--바로구매 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="location.href='buy?price=2400'" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
+                                <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/pay'" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
                             </div>
                         </div>
                     </div>

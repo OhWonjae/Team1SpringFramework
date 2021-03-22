@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/order")
 public class CartController {
 
-	@GetMapping("/pay")
-	public String pay() {
-		return "/order/pay";
-	}
-	
 	@GetMapping("/cart")
 	public String cart() {
 		return "/order/cart";
 	}
-	
+	@GetMapping("/putcart")
+	public String putcart() {
+		return "redirect:/product/detail";
+	}
 }
