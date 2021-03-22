@@ -34,9 +34,9 @@
                 </div>
                 
                <div class="head-searchbar">
-                  <form class="formStyle" method="get" action="search" style="display:flex; width:100%">
+                  <form class="formStyle" method="get" action="<%=application.getContextPath()%>/product/search" style="display:flex; width:100%">
                     <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
-                    <button class="searchButton" type="submit" onclick="location.href='<%=application.getContextPath()%>/product/search'">
+                    <button class="searchButton" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                   </form>
