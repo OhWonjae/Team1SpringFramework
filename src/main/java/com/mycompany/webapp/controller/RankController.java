@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/index")
-public class rankController {
+public class RankController {
 	
 	@GetMapping("/rank")
 	public String login() {

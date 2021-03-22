@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/index")
-public class myController {
+public class MyController {
 	@GetMapping("/my")
 	   public String my() {
 	      return "/index/my";

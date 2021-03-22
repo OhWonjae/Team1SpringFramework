@@ -7,16 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/index")
-public class cartController {
+public class NewController {
+	@GetMapping("/new")
+	   public String newMethod() {
+	      return "/index/new";
+	   }
 
-	@GetMapping("/pay")
-	public String pay() {
-		return "/index/pay";
-	}
-	
-	@GetMapping("/cart")
-	public String cart() {
-		return "/index/cart";
-	}
-	
 }
