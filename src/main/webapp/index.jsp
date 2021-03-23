@@ -3,3 +3,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%response.sendRedirect(application.getContextPath()+ "/index/main");%>
+

@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <title>휴대전화번호 변경</title>
     <style type="text/css">
         *{
@@ -111,7 +112,7 @@
             <div class="inner">
                 <div class="info" style="height: 120px;">
                     <picture style="float: left;">
-                        <img src="..\common\dog\profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                        <img src="${pageContext.request.contextPath}/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
                     </picture>
                         <div style="float: left; padding-left: 20px; padding-top: 15px;">
                             <strong>봉상근</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -137,7 +138,7 @@
                                     <article class="card-body mx-auto" style="width: 500px;">
                                         <h4 class="card-title mt-4 mb-4 text-center"><strong>휴대전화번호 변경</strong></strong></h4>
                                         </p>
-                                        <form>       
+                                        <form method="post" action="<%=application.getContextPath()%>/user/my">       
                                         <div style="font:bolder;">
                                             <strong>휴대전화</strong><span style="color: red;">*</span>
                                         </div>
@@ -155,7 +156,7 @@
                                         </br>
                                     </div>
                                         <div class="form-group" >
-                                            <button type="button" onclick="location.href='my.html' "  class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 확인 </button>
+                                            <button type="submit" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);"> 확인 </button>
                                         </div> <!-- form-group// -->      
                                     </form>
                                     </article>

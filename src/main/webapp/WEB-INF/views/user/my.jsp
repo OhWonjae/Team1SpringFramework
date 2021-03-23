@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>   
+<%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <body>
     <div class="header2"> 
         <div class="inner">
@@ -17,7 +18,7 @@
     <div class="inner" style="margin-bottom: 80px;">
         <div class="info" style="height: 120px;">
              <picture style="float: left;">
-                 <img src="../img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
+                 <img src="${pageContext.request.contextPath}/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
               </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                      <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -28,10 +29,10 @@
                 <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">고객센터</a>
+	                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+	                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -51,16 +52,16 @@
                             </div>                  
                             <div class="tab">
                                 <div class="tab1">휴대전화</div>
-                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='phoneChange.html' "  class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong>010-9479-1058</strong><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/user/phoneChange'" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
                                 <div class="tab1">비밀번호</div>
-                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='pwChange.html' " type="button" class="btn btn-outline-secondary btn-sm">수정</button>
+                                <div class="tab2"><strong> ***********</strong> <button style="margin-left: 10px;" onclick="location.href='<%=application.getContextPath()%>/user/pwChange'" type="button" class="btn btn-outline-secondary btn-sm">수정</button>
                                 </div>
                             </div>
                             <div class="tab">
-                                <div class="event"><button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+                                <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
                             </div>
                         </div>
                     </div>
@@ -273,7 +274,6 @@
                                             const items = document.querySelectorAll('.question');
                                                 function openCloseAnswer() {
                                                     const answerId = this.id.replace('que', 'ans');
-
                                                     if(document.getElementById(answerId).style.display === 'block') {
                                                     document.getElementById(answerId).style.display = 'none';
                                                     document.getElementById(this.id + '-toggle').textContent = '∨';
@@ -294,4 +294,4 @@
 </div>
     </body>
   </html>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%> 
