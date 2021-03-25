@@ -55,7 +55,7 @@
                       </a>
                     </div>
                     <div>
-	<c:if test="${connStatus == '성공' }">
+ 	<c:if test="${connStatus == '성공' }">
 		<div class="alert alert-primary">
 		DB연결 성공
 		</div>
@@ -64,7 +64,7 @@
 		<div class="alert alert-danger">
 		DB연결 실패
 		</div>
-	</c:if>
+	</c:if> 
 	</div>
                 </div>
             </div>
