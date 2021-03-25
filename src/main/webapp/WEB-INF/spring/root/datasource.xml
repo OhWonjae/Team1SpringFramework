@@ -13,7 +13,7 @@
       <property name="password" value="12345"/>
       <property name="initialSize" value="2"/>
       <property name="maxTotal" value="5"/>
-      <property name="maxIdle" value="2"/>
+      <property name="maxIdle" value="5"/>
    </bean>
    
    <!--  My Batis -->
