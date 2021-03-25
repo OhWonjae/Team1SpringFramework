@@ -54,6 +54,18 @@
                         <span class="cart-text">장바구니</span>
                       </a>
                     </div>
+                    <div>
+	<c:if test="${connStatus == '성공' }">
+		<div class="alert alert-primary">
+		DB연결 성공
+		</div>
+	</c:if>
+	<c:if test="${connStatus == '실패' }">
+		<div class="alert alert-danger">
+		DB연결 실패
+		</div>
+	</c:if>
+	</div>
                 </div>
             </div>
         </div>
