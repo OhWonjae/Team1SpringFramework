@@ -9,21 +9,20 @@
    </select>
    
    <insert id="insert" parameterType="review">
-    
-   	<if test="battachoname != null">
-   		insert into REVIEW
-	   	(REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE, P_ID, ORDER_ID, USER_ID )
-	   	values
-	   	(#{REVIEW_ID}, #{REVIEW_SCORE}, #{REVIEW_TITLE}, #{REVIEW_CONTENT}, #{REVIEW_PHTOTO}, #{REVIEW_DATE}, #{P_ID}, #{ORDER_ID}, #{USER_ID})
-   	</if>
-   	
+    insert into QNA
+    (REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHOTO,REVIEW_DATE)
+    values
+    (#{REVIEW_ID},#{REVIEW_SCORE},#{REVIEW_TITLE},#{REVIEW_CONTENT},#{REVIEW_PHOTO},#{REVIEW_DATE})
    </insert>
    
-   <select id="selectByREVIEW_ID" parameterType="int" resultType="review">
-   		select REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE,
-   			P_ID, ORDER_ID, USER_ID
-   		from REVIEW
-   		where REVIEW_ID=#{REVIEW_ID}
+   <resultMap id="userResultMap" type="user">
+   		<result column="user_name" property="uname"/>
+   </resultMap>
+   
+   <select id="selectUser" resultType="review" resultMap="userResultMap">
+   select u.user_id, u.user_name, u.dog_size
+   from user
+   where user_id=#{user_id}
    </select>
    
    <update id="update" parameterType="review">
@@ -33,19 +32,13 @@
    		REVIEW_CONTENT=#{REVIEW_CONTENT},
    		REVIEW_PHTOTO=#{REVIEW_PHTOTO},
    		REVIEW_DATE=#{REVIEW_DATE},
-   		P_ID=#{P_ID},
-   		ORDER_ID=#{ORDER_ID},
-   		USER_ID=#{USER_ID}
    	where REVIEW_ID=#{REVIEW_ID}
    </update>
    
    <delete id="deleteByREVIEW_ID" parameterType="int">
 	   	delete from REVIEW
 	   	where REVIEW_ID=#{REVIEW_ID}
+	   	user_id=#{user_id}
    </delete>
-   
-   <select id="count" resultType="int">
-   	select count(*) from REVIEW
-   </select>
    
 </mapper>

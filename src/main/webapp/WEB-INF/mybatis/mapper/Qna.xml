@@ -9,37 +9,28 @@
    </select>
    
    <insert id="insert" parameterType="qna">
-    
-   	<if test="battachoname != null">
-   		insert into QNA
-	   	(QA_ID, QA_CATEGORY, QA_TITLE, QA_CONTENT, QA_PHOTO_ONAME, QA_PHOTO_SNAME, QA_PHOTO_TYPE, QA_STATUS, QA_DATE, USER_ID, QNA_CATEGORY_CATEGORY_NUMBER )
-	   	values
-	   	(#{QA_ID}, #{QA_CATEGORY}, #{QA_TITLE}, #{QA_CONTENT}, #{QA_PHOTO_ONAME}, #{QA_PHOTO_SNAME}, #{QA_PHOTO_TYPE}, #{QA_STATUS}, #{QA_DATE}, #{USER_ID}, #{QNA_CATEGORY_CATEGORY_NUMBER})
-   	</if>
-   	
+    insert into QNA 
+    (QA_ID, QA_CATEGORY, QA_TITLE, QA_CONTENT, QA_PHOTO_ONAME, QA_PHOTO_SNAME, QA_PHOTO_TYPE, QA_STATUS, QA_DATE, USER_ID, QNA_CATEGORY_CATEGORY_NUMBER)
+	values
+	(#{QA_ID}, #{QA_CATEGORY}, #{QA_TITLE}, #{QA_CONTENT}, #{QA_PHOTO_ONAME}, #{QA_PHOTO_SNAME}, #{QA_PHOTO_TYPE}, #{QA_STATUS}, #{QA_DATE}, #{USER_ID}, #{QNA_CATEGORY_CATEGORY_NUMBER})
    </insert>
-   
-   <select id="selectByQA_ID" parameterType="int" resultType="qna">
-   		select QA_ID, QA_CATEGORY, QA_TITLE, QA_CONTENT, QA_PHOTO_ONAME, QA_PHOTO_SNAME,
-   			QA_PHOTO_TYPE, QA_STATUS, QA_DATE,  USER_ID, QNA_CATEGORY_CATEGORY_NUMBER
-   		from QNA
-   		where QA_ID=#{QA_ID}
-   </select>
    
    <update id="update" parameterType="qna">
    	update QNA set
    		QA_CATEGORY=#{QA_CATEGORY},
-   		QA_TITLE=#{QA_TITLE}
+   		QA_TITLE=#{QA_TITLE},
+   		QA_CONTENT=#{QA_CONTENT}
+   		QA_PHOTO_ONAME=#{QA_PHOTO_ONAME}
+   		QA_PHOTO_SNAME=#{QA_PHOTO_SNAME}
+   		QA_PHOTO_TYPE=#{QA_PHOTO_TYPE}
+   		QA_DATE=#{QA_DATE}
    	where QA_ID=#{QA_ID}
    </update>
    
    <delete id="deleteByQA_ID" parameterType="int">
 	   	delete from QNA
 	   	where QA_ID=#{QA_ID}
+	   	user_id=#{user_id}
    </delete>
-   
-   <select id="count" resultType="int">
-   	select count(*) from QNA
-   </select>
-   
+
 </mapper>
