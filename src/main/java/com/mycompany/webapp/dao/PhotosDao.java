@@ -9,5 +9,4 @@ public interface PhotosDao {
 	public int insert(Photo photo);
 	public int update(Photo photo);
 	public int deleteByPhotoid(int photoId);
-	public int selectByPhotoid(int photoId); 
 }

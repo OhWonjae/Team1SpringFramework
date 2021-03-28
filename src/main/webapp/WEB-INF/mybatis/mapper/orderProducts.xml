@@ -11,13 +11,10 @@
    </select>  
    
 	 <insert id="insert" parameterType="orderproduct">
-   	 <selectKey keyProperty="bno" resultType="int" order="BEFORE">
-         select seq_boards_bno.nextval from dual
-      </selectKey>
-         insert into order_products
-         (order_id, order_date, p_id, p_name, p_price, delivery_status)
-         values
-         (#{orderId}, #{orderDate}, #{pId}, #{pName}, #{pPrice}, #{deliveryStatus})      
+      insert into order_products
+         		(order_id, order_date, p_id, p_name, p_price, delivery_status)
+      values
+         		(#{orderId}, #{orderDate}, #{pId}, #{pName}, #{pPrice}, #{deliveryStatus})      
    </insert>
    
     <update id="updateStatus" parameterType="orderproduct">
