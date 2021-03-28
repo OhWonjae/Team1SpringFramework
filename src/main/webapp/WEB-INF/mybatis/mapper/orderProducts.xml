@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.OrderProductsDao">
+
+
+   <select id="orderList" resultType="orderproduct">
+      select order_id, order_date, p_id, p_name, p_price, delivery_status
+      from order_products
+      where order_id=#{orderId} and p_id=#{pId}
+      
+   </select>  
+   
+	 <insert id="insert" parameterType="orderproduct">
+   	 <selectKey keyProperty="bno" resultType="int" order="BEFORE">
+         select seq_boards_bno.nextval from dual
+      </selectKey>
+         insert into order_products
+         (order_id, order_date, p_id, p_name, p_price, delivery_status)
+         values
+         (#{orderId}, #{orderDate}, #{pId}, #{pName}, #{pPrice}, #{deliveryStatus})      
+   </insert>
+   
+    <update id="updateStatus" parameterType="orderproduct">
+      update order_products 
+      set delivery_status=#{delivery_status}
+         where orderId=#{orderId} and pId=#{pId}
+   </update>
+   
+</mapper>
