@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class QNA {
+public class Qna {
 	private int QA_id;
 	private String QA_CATEGORY;
 	private String QA_TITLE;

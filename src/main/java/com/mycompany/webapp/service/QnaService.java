@@ -8,34 +8,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import com.mycompany.webapp.dao.QNADao;
-import com.mycompany.webapp.dto.QNA;
+import com.mycompany.webapp.dao.QnaDao;
+import com.mycompany.webapp.dto.Qna;
 
 @Service
-public class QNAService {
+public class QnaService {
    @Autowired
-   private QNADao qnaDao;
+   private QnaDao qnaDao;
    private static final Logger logger =
-            LoggerFactory.getLogger(QNAService.class);
+            LoggerFactory.getLogger(QnaService.class);
    
-   public List<QNA> getQnaList(){
-      List<QNA> list = qnaDao.selectAll();
+   public List<Qna> getQnaList(){
+      List<Qna> list = qnaDao.selectAll();
        return list;
    }
    
-   public void saveQna(QNA qna) {
+   public void saveQna(Qna qna) {
       logger.info("저장 전 bno:" + qna.getQA_id());
       qnaDao.insert(qna);
       logger.info("저장 후 bno:" + qna.getQA_id());
 
    }
 
-   public QNA getQna(int bno) {
-      QNA qna = qnaDao.selectByQA_ID(bno);
+   public Qna getQna(int bno) {
+      Qna qna = qnaDao.selectByQA_ID(bno);
       return qna;
    }
 
-   public void updateQna(QNA qna) {
+   public void updateQna(Qna qna) {
 	   qnaDao.update(qna);
    }
    

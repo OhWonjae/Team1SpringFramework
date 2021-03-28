@@ -4,28 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.mycompany.webapp.dto.REVIEW;
+import com.mycompany.webapp.dto.Qna;
 
 
 @Mapper
-public interface REVIEWDao {
-	public static List<REVIEW> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public static int insert(REVIEW review) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public REVIEW selectByREVIEW_ID(int REVIEW_ID);
-	public static int update(REVIEW review) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public static int deleteByREVIEW_ID(int REVIEW_ID) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+public interface QnaDao {
+	public List<Qna> selectAll();
+	public int insert(Qna qna);
+	public Qna selectByQA_ID(int QA_ID);
+	public int update(Qna board);
+	public int deleteByQA_ID(int QA_ID);
 	public int count();
 }
 

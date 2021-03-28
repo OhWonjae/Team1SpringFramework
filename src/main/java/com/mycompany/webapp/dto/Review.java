@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class REVIEW {
+public class Review {
 	private int REVIEW_ID;
 	private int REVIEW_SCORE;
 	private int REVIEW_TITLE;
