@@ -17,6 +17,7 @@ public interface QnaDao {
 	public int count();
 }
 
+
 //mybatis에서 제공해주는 annotation -> 이거 사용하려면 pom.xml에 이와 관련한 것이 있어야 함.
 //mybatis에서 mapper라는 annotation으로 자동적으로 인터페이스를 구현한 객체를 만들어줌,
 //Mapper가 해석될려면 추가적으로 설정해줄 것이 있음.

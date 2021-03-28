@@ -16,6 +16,7 @@ public class Review {
 	private int USER_ID;
 	
 	
+	
 	public int getREVIEW_ID() {
 		return REVIEW_ID;
 	}

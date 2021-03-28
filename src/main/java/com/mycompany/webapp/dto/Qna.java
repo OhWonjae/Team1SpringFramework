@@ -18,6 +18,7 @@ public class Qna {
 	private int QNA_CATEGORY_CATEGORY_NUMBER;
 	
 	
+	
 	public int getQA_id() {
 		return QA_id;
 	}
