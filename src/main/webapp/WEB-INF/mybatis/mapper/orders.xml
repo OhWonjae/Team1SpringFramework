@@ -31,6 +31,10 @@
 		delete
 		From orders
 		where order_id=#{ono}
-	
 	</delete>
+	<select id="orderSelectByAll" parameterType="int" resultType="orders">
+		select *
+		from orders
+		where order_id=#{ono} AND user_id=#{uno}
+	</select>
 </mapper>

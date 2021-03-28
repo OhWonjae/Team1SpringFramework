@@ -23,12 +23,9 @@
    </update>
    
     <delete id="deleteByPhotoid" parameterType="int">
-      delete from boards where photo_id=#{photo_id}
+      delete from boards 
+      where photo_id=#{photo_id}
    </delete>
    
-   <select id="selectByPhotoid" parameterType="int" resultType="photo">
-		 select photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role
-		 from photos
-		 where photo_id=#{photoId} 
-   </select>
+ 
 </mapper>

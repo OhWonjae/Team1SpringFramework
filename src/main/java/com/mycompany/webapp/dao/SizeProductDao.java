@@ -6,15 +6,15 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Product;
-import com.mycompany.webapp.dto.Size;
+import com.mycompany.webapp.dto.SizeProduct;
 
 @Mapper
-public interface SizeDao {
+public interface SizeProductDao {
 
-	int insert(Product product);
+	int insert(SizeProduct sizeproduct);
 
 	Product selectBypid(int p_id);
 
-	List<Size> selectAllBypid(int p_id);
+	List<SizeProduct> selectAllBypid(int p_id);
 
 }

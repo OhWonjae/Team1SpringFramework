@@ -3,12 +3,12 @@
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
 
-<!-- Size테이블 이름 바꾸기 -->
-<!--    <select id="selectAllBypid" resultType="size">
+
+   <select id="selectAllBypid" resultType="size">
    	select p_size
-   	from Size
+   	from SizeProduct
    	order by p_size asc
-   </select> -->
+   </select>
    
 
 </mapper>

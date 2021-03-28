@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
+   <insert id="insert" parameterType="product">
+   	insert into products
+   	(p_id, p_name, p_price, p_stock, salescount, category_name,
+   	p_upload_date, p_description)
+   	values
+   	(#{p_id}, #{p_name}, #{p_price}, #{p_stock}, #{salescount}, #{category_name},
+   	#{p_upload_date}, #{p_description})
+   </insert>
+   
+
 
    <select id="selectBypid" parameterType="int" resultType="product">
    	select *
@@ -16,18 +26,17 @@
    </select>
    
    
-   <!-- 아직 뭘로 정렬할지 못정함 -->
-   <!-- <select id="selectRecommandAll" resultType="product">
+   
+    <select id="selectRecommandAll" resultType="product">
    	select p_id, p_name, p_price
    	from products
-   	order by salescount desc
    </select>
    
    <select id="selectBestReviewAll" resultType="product">
    	select p_id, p_name, p_price
    	from products
    	order by salescount desc
-   </select> -->
+   </select>
    
    <select id="selectRankAll" resultType="product">
    	select p_id, p_name, p_price
@@ -63,10 +72,22 @@
    	order by p_upload_date desc
    	</select>
    	
-   	<select id="updateSalescountAndStock" parameterType="int">
+   	<update id="update" parameterType="product">
+   	update products set p_id=#{p_id}, p_name=#{p_name}, p_price=#{p_price}, p_stock=#{p_stock}, salescount=#{salescount}, category_name=#{category_name},
+   	p_upload_date=#{p_upload_date}, p_description=#{p_description}
+   	where p_id=#{p_id}
+   	</update>
+   	
+   	<update id="updateSalescountAndStock" parameterType="int">
    	update products set salescount=salescount+1, p_stock=p_stock+1
    	where p_id=#{p_id}
-   	</select>
+   	</update>
+   
+    <delete id="deleteBypid" parameterType="int">
+	   	delete from products
+	   	where p_id=#{p_id}
+   </delete>
+   
    
 
 </mapper>
