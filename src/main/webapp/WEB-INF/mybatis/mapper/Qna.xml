@@ -9,7 +9,7 @@
    </select>
    
    <insert id="insert" parameterType="qna">
-   
+    
    	<if test="battachoname != null">
    		insert into QNA
 	   	(QA_ID, QA_CATEGORY, QA_TITLE, QA_CONTENT, QA_PHOTO_ONAME, QA_PHOTO_SNAME, QA_PHOTO_TYPE, QA_STATUS, QA_DATE, USER_ID, QNA_CATEGORY_CATEGORY_NUMBER )

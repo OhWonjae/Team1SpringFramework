@@ -9,7 +9,7 @@
    </select>
    
    <insert id="insert" parameterType="review">
-   
+    
    	<if test="battachoname != null">
    		insert into REVIEW
 	   	(REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE, P_ID, ORDER_ID, USER_ID )

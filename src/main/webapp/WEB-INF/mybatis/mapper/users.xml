@@ -18,7 +18,7 @@
      <result property="uenabled" column="enabled"/>
      <result property="uauthority" column="authority"/>
    </resultMap>
-   
+    
    <!--select userid as uid 이런 식으로도 가능합니다. -->
    <select id="selectByUid" parameterType="string" resultMap="userResultMap">
       select user_id, user_name, user_email, user_password, user_phone, dog_size, enabled, authority  

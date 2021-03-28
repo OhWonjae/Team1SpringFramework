@@ -10,6 +10,8 @@
 		<typeAlias type="com.mycompany.webapp.dto.Cart" alias="cart"/>
 		<typeAlias type="com.mycompany.webapp.dto.OrderProduct" alias="orderproduct"/>
       	<typeAlias type="com.mycompany.webapp.dto.Photo" alias="photo"/>
+      	<typeAlias type="com.mycompany.webapp.dto.Review" alias="review"/>
+      	<typeAlias type="com.mycompany.webapp.dto.Qna" alias="qna"/>
 		
 		
    </typeAliases>
