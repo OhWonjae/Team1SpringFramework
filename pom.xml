@@ -73,36 +73,36 @@
 	    <version>20210307</version>
 	</dependency>
 	
-	<!-- DB 관련 라이브러리 -->
+	<!-- DB관련 라이브러리 -->
 	<dependency>
-	    <groupId>org.apache.commons</groupId>
-	    <artifactId>commons-dbcp2</artifactId>
-	    <version>2.8.0</version>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-dbcp2</artifactId>
+    <version>2.8.0</version>
 	</dependency>
-		<dependency>
-	    <groupId>com.oracle</groupId>
-	    <artifactId>ojdbc7</artifactId>
-	    <version>12.1.0.2</version>
-	</dependency>
-	<!--  
-	      <dependency>
-          <groupId>com.oracle</groupId>
-          <artifactId>ojdbc7</artifactId>
-          <version>12.1.0.2</version>
-          <scope>system</scope>
-          <systemPath>C:/backEnd/springFramework/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
-      </dependency>-->
-	<dependency>
+	
+       <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc7</artifactId>
+        <version>12.1.0.2</version>
+  	   </dependency> 
+  	   
+  	<dependency>
 	    <groupId>org.mybatis</groupId>
 	    <artifactId>mybatis</artifactId>
 	    <version>3.5.6</version>
 	</dependency>
 	
 	<dependency>
-	    <groupId>org.mybatis</groupId>
-	    <artifactId>mybatis-spring</artifactId>
-	    <version>2.0.6</version>
+   	 <groupId>org.mybatis</groupId>
+   	 <artifactId>mybatis-spring</artifactId>
+   	 <version>2.0.6</version>
 	</dependency>
+	
+	<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
+</dependency>
 	
 	<!-- File Upload -->
 	<dependency>
