@@ -10,7 +10,7 @@
          (photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
          values
          (#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})      
-   </insert>
+   </insert> 
  
    <update id="update" parameterType="photo">
       update  photos
