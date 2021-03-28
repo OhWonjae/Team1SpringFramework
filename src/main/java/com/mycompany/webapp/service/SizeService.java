@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.ProductDao;
-import com.mycompany.webapp.dao.SizeDao;
+import com.mycompany.webapp.dao.SizeProductDao;
 import com.mycompany.webapp.dto.Product;
-import com.mycompany.webapp.dto.Size;
+import com.mycompany.webapp.dto.SizeProduct;
 
 @Service
 public class SizeService {
 	@Autowired
-	SizeDao sizeDao;
+	SizeProductDao sizeDao;
 	
 	
 	
 	//Read
 	//특정 상품의 사이즈 가져오기
-	public List<Size> getSizes(int p_id) {
-		List<Size> sizes = sizeDao.selectAllBypid(p_id);
+	public List<SizeProduct> getSizes(int p_id) {
+		List<SizeProduct> sizes = sizeDao.selectAllBypid(p_id);
 		return sizes;
 	}
 	

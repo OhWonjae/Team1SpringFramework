@@ -4,7 +4,7 @@
 <configuration>
    <typeAliases>
  		<typeAlias type="com.mycompany.webapp.dto.Product" alias="product"/>
-		<typeAlias type="com.mycompany.webapp.dto.Size" alias="size"/>	
+		<typeAlias type="com.mycompany.webapp.dto.SizeProduct" alias="size"/>	
 		<typeAlias type="com.mycompany.webapp.dto.Orders" alias="orders"/>
 		<typeAlias type="com.mycompany.webapp.dto.User" alias="user"/>
 		<typeAlias type="com.mycompany.webapp.dto.Cart" alias="cart"/>
