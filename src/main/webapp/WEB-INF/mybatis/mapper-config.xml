@@ -3,7 +3,7 @@
                         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
- 
-
+ 		<typeAlias type="com.mycompany.webapp.dto.Product" alias="product"/>
+		<typeAlias type="com.mycompany.webapp.dto.Size" alias="size"/>	
    </typeAliases>
 </configuration>

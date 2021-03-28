@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.ProductDao">
+
+
+   <select id="selectBypid" parameterType="int" resultType="product">
+   	select *
+   	from products
+   	where p_id=#{p_id}
+   </select>
+   
+   <select id="selectAll" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	order by p_upload_date desc
+   </select>
+   
+   
+   <!-- 아직 뭘로 정렬할지 못정함 -->
+   <!-- <select id="selectRecommandAll" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	order by salescount desc
+   </select>
+   
+   <select id="selectBestReviewAll" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	order by salescount desc
+   </select> -->
+   
+   <select id="selectRankAll" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	order by salescount desc
+   </select>
+   
+   <select id="selectRankCategory" parameterType="string" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	where category_name=#{category_name}
+   	order by salescount desc
+   </select>
+   
+   <select id="selectCategory" parameterType="string" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	where category_name=#{category_name}
+   	order by p_upload_date desc
+   </select>
+   
+   <select id="selectSearchAll" parameterType="string" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	where p_name like '%'||#{searchword}||'%'
+   	order by p_upload_date desc
+   </select>
+   
+    <select id="selectSearchCategory" parameterType="string" resultType="product">
+   	select p_id, p_name, p_price
+   	from products
+   	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
+   	order by p_upload_date desc
+   	</select>
+   	
+   	<select id="updateSalescountAndStock" parameterType="int">
+   	update products set salescount=salescount+1, p_stock=p_stock+1
+   	where p_id=#{p_id}
+   	</select>
+   
+
+</mapper>

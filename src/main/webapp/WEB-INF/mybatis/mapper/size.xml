@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.ProductDao">
+
+
+<!-- Size테이블 이름 바꾸기 -->
+<!--    <select id="selectAllBypid" resultType="size">
+   	select p_size
+   	from Size
+   	order by p_size asc
+   </select> -->
+   
+
+</mapper>
