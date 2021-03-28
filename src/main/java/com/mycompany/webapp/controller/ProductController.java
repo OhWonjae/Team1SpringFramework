@@ -76,7 +76,7 @@ public class ProductController {
 	public String detail() {
 		
 		
-		logger.info("1번 상품 구매했을때 변화");
+		/*logger.info("1번 상품 구매했을때 변화");
 		productService.UpdateSaledProduct(1);
 		Product p = productService.getProduct(1);
 		logger.info(""+p.getP_id());
@@ -85,7 +85,7 @@ public class ProductController {
 		logger.info(""+p.getCategory_name());
 		logger.info(""+p.getP_stock());
 		logger.info(""+p.getSalescount());
-		logger.info(""+p.getP_upload_date());
+		logger.info(""+p.getP_upload_date());*/
 		
 		return "/product/detail";
 	}
