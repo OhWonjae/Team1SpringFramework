@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.REVIEWDao">
+
+   <select id="selectAll" resultType="review">
+   	select REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE, P_ID, ORDER_ID, USER_ID
+   	from REVIEW
+   	order by REVIEW desc
+   </select>
+   
+   <insert id="insert" parameterType="review">
+   
+   	<if test="battachoname != null">
+   		insert into REVIEW
+	   	(REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE, P_ID, ORDER_ID, USER_ID )
+	   	values
+	   	(#{REVIEW_ID}, #{REVIEW_SCORE}, #{REVIEW_TITLE}, #{REVIEW_CONTENT}, #{REVIEW_PHTOTO}, #{REVIEW_DATE}, #{P_ID}, #{ORDER_ID}, #{USER_ID})
+   	</if>
+   	
+   </insert>
+   
+   <select id="selectByREVIEW_ID" parameterType="int" resultType="review">
+   		select REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE,
+   			P_ID, ORDER_ID, USER_ID
+   		from REVIEW
+   		where REVIEW_ID=#{REVIEW_ID}
+   </select>
+   
+   <update id="update" parameterType="review">
+   	update REVIEW set
+   		REVIEW_SCORE=#{REVIEW_SCORE},
+   		REVIEW_TITLE=#{REVIEW_TITLE},
+   		REVIEW_CONTENT=#{REVIEW_CONTENT},
+   		REVIEW_PHTOTO=#{REVIEW_PHTOTO},
+   		REVIEW_DATE=#{REVIEW_DATE},
+   		P_ID=#{P_ID},
+   		ORDER_ID=#{ORDER_ID},
+   		USER_ID=#{USER_ID}
+   	where REVIEW_ID=#{REVIEW_ID}
+   </update>
+   
+   <delete id="deleteByREVIEW_ID" parameterType="int">
+	   	delete from REVIEW
+	   	where REVIEW_ID=#{REVIEW_ID}
+   </delete>
+   
+   <select id="count" resultType="int">
+   	select count(*) from REVIEW
+   </select>
+   
+</mapper>
