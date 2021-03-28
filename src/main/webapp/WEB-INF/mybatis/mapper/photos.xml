@@ -11,7 +11,7 @@
          values
          (#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})      
    </insert>
-
+ 
    <update id="update" parameterType="photo">
       update  photos
       set

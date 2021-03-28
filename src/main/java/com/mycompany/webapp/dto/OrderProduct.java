@@ -11,7 +11,7 @@ public class OrderProduct {
 	private String deliveryStatus;
 	private int orderCount;
 	private Date orderDate;
-	public int getOrderId() {
+	public int getOrderId() { 
 		return orderId;
 	}
 	public void setOrderId(int orderId) {

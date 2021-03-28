@@ -8,7 +8,7 @@ public class Photo {
 	private String photoType;
 	private String photoRole;
 	public int getPhotoId() {
-		return photoId;
+		return photoId; 
 	}
 	public void setPhotoId(int photoId) {
 		this.photoId = photoId;

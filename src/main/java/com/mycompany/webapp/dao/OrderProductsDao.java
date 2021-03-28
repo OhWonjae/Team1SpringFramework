@@ -10,7 +10,7 @@ public interface OrderProductsDao {
 	public List<OrderProduct> orderList();
     public int insert(OrderProduct orderproduct);
     public int updateStatus(OrderProduct orderproduct);
-   
+    
 }
 
 
