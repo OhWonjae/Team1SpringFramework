@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.UsersDao">
+   <insert id="insert" parameterType="user">
+   	insert into users
+   	(userid, username, userpassword, userauthority, userenabled)
+   	values
+   	(#{uid},#{uname},#{uemail},#{upassword},#{uphone},#{udogsize},1,'ROLE_USER')	
+   </insert>
+   
+   <resultMap id="userResultMap" type="user">
+	  <result property="uid" column="user_id"/>
+	  <result property="uname" column="user_name"/>
+	  <result property="uemail" column="user_email"/>
+	  <result property="upassword" column="user_password"/>
+	  <result property="uphone" column="user_phone"/>
+	  <result property="udogsize" column="dog_size"/>
+	  <result property="uenabled" column="enabled"/>
+	  <result property="uauthority" column="authority"/>
+   </resultMap>
+   
+   <!--select userid as uid 이런 식으로도 가능합니다. -->
+   <select id="selectByUid" parameterType="string" resultMap="userResultMap">
+   	select user_id, user_name, user_email, user_password, user_phone, dog_size, enabled, authority  
+   	from users
+   	where userid=#{uid}
+   </select>
+</mapper>
