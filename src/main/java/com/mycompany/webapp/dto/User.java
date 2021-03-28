@@ -6,10 +6,9 @@ public class User {
 	private String uemail;
 	private String upassword;
 	private String uphone;
-	private String udogsize;
+	private String dogsize;
 	private int uenabled;
 	private String uauthority;
-	
 	
 	
 	public int getUid() {
@@ -42,11 +41,13 @@ public class User {
 	public void setUphone(String uphone) {
 		this.uphone = uphone;
 	}
-	public String getUdogsize() {
-		return udogsize;
+
+	
+	public String getDogsize() {
+		return dogsize;
 	}
-	public void setUdogsize(String udogsize) {
-		this.udogsize = udogsize;
+	public void setDogsize(String dogsize) {
+		this.dogsize = dogsize;
 	}
 	public int getUenabled() {
 		return uenabled;
