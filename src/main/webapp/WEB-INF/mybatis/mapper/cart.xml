@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.CartDao">
+
+	<insert id="insert" parameterType="cart">
+		<selectKey keyProperty="cid" resultType="int" order="BEFORE">
+			select
+			seq_cart_cno.nextval from dual
+		</selectKey>
+		insert into cart
+		(cart_id, cart_amount, user_id, p_id)
+		values
+		(#{cid},#{camount},#{user_id},#{p_id})
+	</insert>
+
+	<resultMap id="cartResultMap" type="cart">
+		<result property="cid" column="cart_id" />
+		<result property="camount" column="cart_amount" />
+	</resultMap>
+
+
+	<select id="selectProduct" parameterType="cart" resultMap="cartResultMap">
+		select p.p_name, p.p_price, cart_amount, pho.photo_id, ph.photo_oname,
+		pho.photo_sname, pho.photo_type, pho.photo_role
+		from cart, products p,
+		users u, photos pho
+		where user_id = #{user_id} and
+		cart.p_id = #{p.p_id}
+		and
+		p.p_id = #{pho.p_id}
+	</select>
+
+
+	<delete id="deleteCart" parameterType="cart">
+		delete from cart
+		where
+		user_id=#{user_id} and
+		p_id=#{p_id}
+	</delete>
+
+
+	<update id="updateCartAmount" parameterType="int" >
+		update cart
+		set
+		cart_amount=#{cart_amount}
+		where user_id=#{user_id} and
+		p_id=#{p_id}
+	</update>
+
+
+
+</mapper> 
