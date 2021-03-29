@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.OrdesDao">
 	<insert id="ordersInsert" parameterType="orders">
-	insert into orders(	order_id,
-						order_date,
-						order_request,
-						total_price,
-						payment,
-						delivery_address_city,
-						delivery_address_county,
-						delivery_address_distinct,
-						delivery_address_detail,
-						zip,
-						user_id
-	)
-	values(	#{ono},
-			sysdate,
-			#{orequest},
-			#{tpirce}',
-			#{payment},
-			#{city},
-			#{county},
-			#{distinct},
-			#{addetail},
-			#{zip},
-			#{uno}
+		insert into orders(	order_id,
+							order_date,
+							order_request,
+							total_price,
+							payment,
+							delivery_address_city,
+							delivery_address_county,
+							delivery_address_distinct,
+							delivery_address_detail,
+							zip,
+							user_id
+		)
+		values(	#{ono},
+				sysdate,
+				#{orequest},
+				#{tpirce}',
+				#{payment},
+				#{city},
+				#{county},
+				#{distinct},
+				#{addetail},
+				#{zip},
+				#{uno}
 	)
 	</insert>
 	<delete id="ordersDelete" parameterType="int">
