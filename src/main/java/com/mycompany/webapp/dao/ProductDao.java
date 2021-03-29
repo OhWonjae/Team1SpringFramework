@@ -12,7 +12,7 @@ public interface ProductDao {
 
 	int insert(Product product);
 
-	Product selectBypid(int p_id);
+	Product selectBypid(int pid);
 
 	List<Product> selectAll();
 
@@ -28,9 +28,9 @@ public interface ProductDao {
 
 	int update(Product product);
 
-	int updateSalescountAndStock(int p_id);
+	int updateSalescountAndStock(int pid);
 
-	int deleteBypid(int p_id);
+	int deleteBypid(int pid);
 
 	List<Product> selectSearchAll(String searchword);
 

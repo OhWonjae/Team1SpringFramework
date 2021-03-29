@@ -13,8 +13,8 @@ public interface SizeProductDao {
 
 	int insert(SizeProduct sizeproduct);
 
-	Product selectBypid(int p_id);
+	Product selectBypid(int pid);
 
-	List<SizeProduct> selectAllBypid(int p_id);
+	List<SizeProduct> selectAllBypid(int pid);
 
 }

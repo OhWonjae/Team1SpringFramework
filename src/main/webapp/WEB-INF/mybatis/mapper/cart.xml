@@ -14,8 +14,8 @@
 	</insert>
 
 	<resultMap id="cartResultMap" type="cart">
-		<result property="cid" column="cart_id" />
-		<result property="camount" column="cart_amount" />
+	<!-- 	<result property="cid" column="cart_id" />
+		<result property="camount" column="cart_amount" /> -->
 	</resultMap>
 
 

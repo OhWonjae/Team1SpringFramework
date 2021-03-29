@@ -27,8 +27,8 @@ public class ProductService {
 	
 	//Read
 	//특정 상품 가져오기
-	public Product getProduct(int p_id) {
-		Product product = productDao.selectBypid(p_id);
+	public Product getProduct(int pid) {
+		Product product = productDao.selectBypid(pid);
 		return product;
 	}
 	//신규 상품 리스트 가져오기
@@ -93,8 +93,8 @@ public class ProductService {
 		productDao.update(product);
 	}
 	//구매된 상품 업데이트(구매횟수 추가 + 재고수량 감소)
-	public void UpdateSaledProduct(int p_id) {
-		productDao.updateSalescountAndStock(p_id);
+	public void UpdateSaledProduct(int pid) {
+		productDao.updateSalescountAndStock(pid);
 	}
 	
 	
@@ -102,8 +102,8 @@ public class ProductService {
 	
 	//Delete
 	//상품 삭제하기
-	public void RemoveProduct(int p_id) {
-		productDao.deleteBypid(p_id);
+	public void RemoveProduct(int pid) {
+		productDao.deleteBypid(pid);
 	}
 	
 }
