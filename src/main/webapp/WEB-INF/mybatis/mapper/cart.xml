@@ -8,7 +8,7 @@
 			seq_cart_cno.nextval from dual
 		</selectKey>
 		insert into cart
-		(cid, camount, user_id, p_id)
+		(cart_id, cart_amount, user_id, p_id)
 		values
 		(#{cid},#{camount},#{user_id},#{p_id})
 	</insert>
@@ -20,7 +20,7 @@
 
 
 	<select id="selectProduct" parameterType="cart" resultMap="cartResultMap">
-		select p.p_name, p.p_price, camount, pho.photo_id, ph.photo_oname,
+		select p.p_name, p.p_price, cart_amount, pho.photo_id, ph.photo_oname,
 		pho.photo_sname, pho.photo_type, pho.photo_role
 		from cart, products p,
 		users u, photos pho
