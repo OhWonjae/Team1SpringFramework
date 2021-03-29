@@ -14,7 +14,7 @@
 		<result property="pdescription" column="p_description"/>
 	</resultMap>
 
-
+ 
    <insert id="insert" parameterType="product">
    <selectKey keyProperty="pid" resultType="int" order="BEFORE">
    	select seq_product_pno.nextval from dual
