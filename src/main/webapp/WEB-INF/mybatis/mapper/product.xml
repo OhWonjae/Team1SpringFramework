@@ -79,7 +79,7 @@
    	</update>
    	
    	<update id="updateSalescountAndStock" parameterType="int">
-   	update products set salescount=salescount+1, p_stock=p_stock+1
+   	update products set salescount=salescount+1, p_stock=p_stock-1
    	where p_id=#{p_id}
    	</update>
    

@@ -24,7 +24,7 @@
    from user
    where user_id=#{user_id}
    </select>
-   
+    
    <update id="update" parameterType="review">
    	update REVIEW set
    		REVIEW_SCORE=#{REVIEW_SCORE},
