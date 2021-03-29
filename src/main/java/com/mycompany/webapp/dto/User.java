@@ -11,6 +11,7 @@ public class User {
 	private String uauthority;
 	
 	
+	
 	public int getUid() {
 		return uid;
 	}

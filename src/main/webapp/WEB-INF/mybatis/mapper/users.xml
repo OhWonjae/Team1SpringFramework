@@ -3,9 +3,13 @@
 <mapper namespace="com.mycompany.webapp.dao.UsersDao">
 
 	<insert id="insert" parameterType="user">
+		<selectKey keyProperty="uid" resultType="int" order="BEFORE">
+			select seq_user_uno.nextval from dual
+		</selectKey>
 		insert into users
 		(user_id,
-		user_name, user_email, user_password, user_phone, dog_size, enabled,
+		user_name, user_email, user_password,
+		user_phone, dog_size, enabled,
 		authority)
 		values
 		(#{uid},#{uname},#{uemail},#{upassword},#{uphone},#{dogsize},1,'ROLE_USER')
@@ -22,60 +26,33 @@
 		<result property="uauthority" column="authority" />
 	</resultMap>
 
-	<select id="selectInfoByUid" parameterType="user"
+
+
+	<!-- <select id="selectByUid" parameterType="string" resultMap="userResultMap"> 
+		select user_id, user_name, user_email, user_password, user_phone, dog_size, 
+		enabled, authority from users where user_id=#{uid} </select> -->
+
+	<select id="selectInfoByUid" parameterType="string"
 		resultMap="userResultMap">
 		select user_id,
 		user_name, user_email, user_password,
-		user_phone
+		user_phone, dog_size, enabled,
+		authority
 		from users
 		where
 		user_id=#{uid}
 	</select>
 
-	<select id="selectNameAndEmailByUid" parameterType="user"
-		resultMap="userResultMap">
-		select user_id,
-		user_name, user_email
-		from users
-		where
-		user_id=#{uid}
-	</select>
-
-	<select id="selectEmailByUid" parameterType="user"
-		resultMap="userResultMap">
-		select user_email
-		from
-		users
-		where user_id=#{uid}
-	</select>
-
-	<select id="selectPasswordByUid" parameterType="user"
-		resultMap="userResultMap">
-		select
-		user_password
-		from users
-		where user_id=#{uid}
-	</select>
-
-	<update id="updatePassword" parameterType="string">
-		update users set
-		user_password=#{upassword},
-		where user_id=#{uid}
-	</update>
-
-	<update id="updatePhone" parameterType="string">
-		update users set
-		user_phone=#{uphone},
-		where user_id=#{uid}
-	</update>
-
-
-	<delete id="deleteByUid" parameterType="int">
-		delete from users
-		where
-		user_id=#{uid}
-	</delete>
-
+	<!-- <select id="selectNameAndEmailByUid" parameterType="user" resultMap="userResultMap"> 
+		select user_id, user_name, user_email from users where user_id=#{uid} </select> 
+		<select id="selectEmailByUid" parameterType="user" resultMap="userResultMap"> 
+		select user_email from users where user_id=#{uid} </select> <select id="selectPasswordByUid" 
+		parameterType="user" resultMap="userResultMap"> select user_password from 
+		users where user_id=#{uid} </select> <update id="updatePassword" parameterType="string"> 
+		update users set user_password=#{upassword}, where user_id=#{uid} </update> 
+		<update id="updatePhone" parameterType="string"> update users set user_phone=#{uphone}, 
+		where user_id=#{uid} </update> <delete id="deleteByUid" parameterType="int"> 
+		delete from users where user_id=#{uid} </delete> -->
 
 
 </mapper>

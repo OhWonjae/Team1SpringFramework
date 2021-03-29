@@ -17,6 +17,18 @@
             홈 > 로그인
         </div>
     </div>
+    
+    <%-- <c:if test="${loginError != null }">
+	
+		<div class="alert alert-primary">
+			<c:if test="${loginError == 'wrongUid'}">
+				<span>아이디가 존재하지 않습니다.</span>
+			</c:if>
+			<c:if test="${loginError == 'wrongUpassword'}">
+				<span>비밀번호가 틀립니다.</span>
+			</c:if>
+		</div>
+	</c:if>  --%>
 
     <div class="card" style="border: white;">
         <article class="card-body align-self-center" style="width: 500px;">
@@ -28,30 +40,24 @@
                 <div class="form-group input-group">
                     <input name="" class="form-control" placeholder="이메일을 입력하세요." type="email">
                 </div> 
-                
                 <div class="form-group input-group">
                     <input name="" class="form-control" placeholder="비밀번호을 입력하세요." type="password">
                 </div> 
-                
                 <br>
-
                 <div class="form-group" >
                     <button type="submit" class="btn btn-primary btn-block" style="background-color : rgb(255, 81, 82); height: 50px ;border-color: rgb(255, 81, 82);">
                             로그인 
                     </button>
                 </div>      
-                
                 <div class="form-group" >
                     <button type="button" onclick="location.href='<%=application.getContextPath()%>/user/signUp'"  class="btn btn-primary btn-block" onclick="location.href='signUp.html'"  style="background-color : white; color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
                          회원가입 
                     </button>
                 </div>  
-                
                 <div class="text-center" style="text-align: center; font-size: 0.7em;">
                     <button type="button" class="button" onclick="location.href='<%=application.getContextPath()%>/user/searchId' " > 아이디 찾기 | </button>
                     <button type="button" class="button" onclick="location.href='<%=application.getContextPath()%>/user/searchPw' "> 비밀번호 찾기 </button>
                 </div>  
-            
             </form>
         </article>
     </div> 
