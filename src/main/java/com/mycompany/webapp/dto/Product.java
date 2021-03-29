@@ -12,6 +12,19 @@ public class Product {
 	private Date puploaddate;
 	private String pdescription;
 
+	// product 생성자 - 상품 생성을 위한 테스트 코드
+//	public Product( String pname, int pprice, int pstock, int salescount, String categoryname, Date puploaddate, String pdescription ) {
+//		this.pid = 1;
+//		this.pname = pname;
+//		this.pprice = pprice;
+//		this.pstock = pstock;
+//		this.salescount = salescount;
+//		this.categoryname = categoryname;
+//		this.puploaddate = puploaddate;
+//		this.pdescription = pdescription;
+//	}
+	
+	
 	public int getPid() {
 		return pid;
 	}

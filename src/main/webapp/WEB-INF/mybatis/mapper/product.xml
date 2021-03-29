@@ -16,12 +16,16 @@
 
  
    <insert id="insert" parameterType="product">
+   <selectKey keyProperty="pid" resultType="int" order="BEFORE">
+   	select seq_product_pno.nextval from dual
+   
+   </selectKey>
    	insert into products
    	(p_id, p_name, p_price, p_stock, salescount, category_name,
    	p_upload_date, p_description)
    	values
    	(#{pid}, #{pname}, #{pprice}, #{pstock}, #{salescount}, #{categoryname},
-   	#{p_uploaddate}, #{pdescription})
+   	#{puploaddate}, #{pdescription})
    </insert>
    
  
@@ -31,11 +35,20 @@
    	from products
    	where p_id=#{pid}
    </select>
+    
+   <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="products">
+    select rnum, p_id, p_name, p_price
+      from (
+          select rownum as rnum, p_id, p_name, p_price
+          from (
+              select p_id, p_name, p_price
+              from products
+              order by p_upload_date desc
+          )
+          where rownum &lt;= #{endRowNo}
+      )
+      where rnum &gt;= #{startRowNo}  
    
-   <select id="selectAll" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
-   	from products
-   	order by p_upload_date desc
    </select>
    
    

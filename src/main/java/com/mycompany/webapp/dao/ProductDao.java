@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Product;
 
 @Mapper
@@ -14,7 +15,7 @@ public interface ProductDao {
 
 	Product selectBypid(int pid);
 
-	List<Product> selectAll();
+	List<Product> selectAllByPager(Pager pager);
 
 	List<Product> selectRecommandAll();
 
