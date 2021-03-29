@@ -39,7 +39,7 @@
 			result = false;
 			$("#errorUemail").html("필수사항 입니다.");
 		}
-		
+
 		if (uemail === "") { // 비어있으면 문제있지
 			result = false;
 			$("#errorUphone").html("필수사항 입니다.");
@@ -123,7 +123,6 @@
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary btn-block"
-			
 			style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 			<strong>회원가입</strong>
 		</button>

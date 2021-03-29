@@ -20,8 +20,8 @@ public class SizeService {
 	
 	//Read
 	//특정 상품의 사이즈 가져오기
-	public List<SizeProduct> getSizes(int p_id) {
-		List<SizeProduct> sizes = sizeDao.selectAllBypid(p_id);
+	public List<SizeProduct> getSizes(int pid) {
+		List<SizeProduct> sizes = sizeDao.selectAllBypid(pid);
 		return sizes;
 	}
 	

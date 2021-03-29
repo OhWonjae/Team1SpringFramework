@@ -3,39 +3,51 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class Product {
-	private int p_id;
-	private String p_name;
-	private int p_price;
-	private int p_stock;
+	private int pid;
+	private String pname;
+	private int pprice;
+	private int pstock;
 	private int salescount;
-	private String category_name;
-	private Date p_upload_date;
-	private String p_description; 
+	private String categoryname;
+	private Date puploaddate;
+	private String pdescription;
 
+	// product 생성자 - 상품 생성을 위한 테스트 코드
+//	public Product( String pname, int pprice, int pstock, int salescount, String categoryname, Date puploaddate, String pdescription ) {
+//		this.pid = 1;
+//		this.pname = pname;
+//		this.pprice = pprice;
+//		this.pstock = pstock;
+//		this.salescount = salescount;
+//		this.categoryname = categoryname;
+//		this.puploaddate = puploaddate;
+//		this.pdescription = pdescription;
+//	}
 	
-	public int getP_id() {
-		return p_id;
+	
+	public int getPid() {
+		return pid;
 	}
-	public void setP_id(int p_id) {
-		this.p_id = p_id;
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
-	public String getP_name() {
-		return p_name;
+	public String getPname() {
+		return pname;
 	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
-	public int getP_price() {
-		return p_price;
+	public int getPprice() {
+		return pprice;
 	}
-	public void setP_price(int p_price) {
-		this.p_price = p_price;
+	public void setPprice(int pprice) {
+		this.pprice = pprice;
 	}
-	public int getP_stock() {
-		return p_stock;
+	public int getPstock() {
+		return pstock;
 	}
-	public void setP_stock(int p_stock) {
-		this.p_stock = p_stock;
+	public void setPstock(int pstock) {
+		this.pstock = pstock;
 	}
 	public int getSalescount() {
 		return salescount;
@@ -43,22 +55,23 @@ public class Product {
 	public void setSalescount(int salescount) {
 		this.salescount = salescount;
 	}
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryname() {
+		return categoryname;
 	}
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
 	}
-	public Date getP_upload_date() {
-		return p_upload_date;
+	public Date getPuploaddate() {
+		return puploaddate;
 	}
-	public void setP_upload_date(Date p_upload_date) {
-		this.p_upload_date = p_upload_date;
+	public void setPuploaddate(Date puploaddate) {
+		this.puploaddate = puploaddate;
 	}
-	public String getP_description() {
-		return p_description;
+	public String getPdescription() {
+		return pdescription;
 	}
-	public void setP_description(String p_description) {
-		this.p_description = p_description;
+	public void setPdescription(String pdescription) {
+		this.pdescription = pdescription;
 	}
+	
 }

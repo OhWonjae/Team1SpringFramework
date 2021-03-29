@@ -2,30 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.PhotosDao">
 
-	 <insert id="insert" parameterType="photo">
-   	 <selectKey keyProperty="photo_id" resultType="int" order="BEFORE">
-         select seq_boards_photo_id.nextval from dual
-      </selectKey>
-         insert into order_products
-         (photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
-         values
-         (#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})      
-   </insert> 
- 
-   <update id="update" parameterType="photo">
-      update  photos
-      set
-         photo_oname=#{photoOname},
-         photo_sname=#{photoSname},
-         photo_type=#{photoType},
-         photo_role=#{photoRole}
-         where photo_id=#{photoId} and p_id=#{pId}
-   </update>
-   
-    <delete id="deleteByPhotoid" parameterType="int">
-      delete from boards 
-      where photo_id=#{photo_id}
-   </delete>
-   
- 
+	<insert id="insert" parameterType="photo">
+		<selectKey keyProperty="photo_id" resultType="int"
+			order="BEFORE">
+			select seq_boards_photo_id.nextval from dual
+		</selectKey>
+		insert into order_products
+		(photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
+		values
+		(#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})
+	</insert>
+
+	<update id="update" parameterType="photo">
+		update photos
+		set
+		photo_oname=#{photoOname},
+		photo_sname=#{photoSname},
+		photo_type=#{photoType},
+		photo_role=#{photoRole}
+		where photo_id=#{photoId} and p_id=#{pId}
+	</update>
+
+	<delete id="deleteByPhotoid" parameterType="int">
+		delete from boards
+		where photo_id=#{photo_id}
+	</delete>
+
+
 </mapper>

@@ -28,6 +28,7 @@
 
 
 
+
 	<!-- <select id="selectByUid" parameterType="string" resultMap="userResultMap"> 
 		select user_id, user_name, user_email, user_password, user_phone, dog_size, 
 		enabled, authority from users where user_id=#{uid} </select> -->
@@ -41,6 +42,15 @@
 		from users
 		where
 		user_id=#{uid}
+	</select>
+	
+	<select id="selectByUemail" parameterType="string"
+		resultMap="userResultMap">
+		select user_email, user_password
+		
+		from users
+		where
+		user_email=#{uemail}
 	</select>
 
 	<!-- <select id="selectNameAndEmailByUid" parameterType="user" resultMap="userResultMap"> 

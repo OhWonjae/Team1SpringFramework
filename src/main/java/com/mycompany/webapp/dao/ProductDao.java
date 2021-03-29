@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Product;
 
 @Mapper
@@ -12,9 +13,9 @@ public interface ProductDao {
 
 	int insert(Product product);
 
-	Product selectBypid(int p_id);
+	Product selectBypid(int pid);
 
-	List<Product> selectAll();
+	List<Product> selectAllByPager(Pager pager);
 
 	List<Product> selectRecommandAll();
 
@@ -28,9 +29,9 @@ public interface ProductDao {
 
 	int update(Product product);
 
-	int updateSalescountAndStock(int p_id);
+	int updateSalescountAndStock(int pid);
 
-	int deleteBypid(int p_id);
+	int deleteBypid(int pid);
 
 	List<Product> selectSearchAll(String searchword);
 

@@ -14,11 +14,11 @@
 	</insert>
 
 	<resultMap id="cartResultMap" type="cart">
-		<result property="cid" column="cart_id" />
-		<result property="camount" column="cart_amount" />
+	<!-- 	<result property="cid" column="cart_id" />
+		<result property="camount" column="cart_amount" /> -->
 	</resultMap>
 
-
+ 
 	<select id="selectProduct" parameterType="cart" resultMap="cartResultMap">
 		select p.p_name, p.p_price, cart_amount, pho.photo_id, ph.photo_oname,
 		pho.photo_sname, pho.photo_type, pho.photo_role
