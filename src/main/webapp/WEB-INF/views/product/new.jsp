@@ -155,262 +155,48 @@
             <span style="padding: 10px;"><strong>30</strong>개의 상품</span>
          </div>
             <div class="center">
-                <div class="box col-sm2" style="float: left;"> 
+            	<!--신규 상품 리스트 출력 -->
+            	<c:forEach var="product" items="${list}">
+				 <div class="box col-sm2" style="float: left;"> 
                     <a href="<%=application.getContextPath()%>/product/detail"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="100%" ></div></a>
-                   <a href="#">디크디크 퀄팅 자켓 블랙</a>
-                    <p><strong>69,000원</strong></p>
+                   <a href="#">${product.pname}</a>
+                    <p><strong>${product.pprice}</strong></p>
                     <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
                     <br>
                     <div class="event">신상품</div>
                 </div>
-                <div class="box col-sm2" ,style="float: left;">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog2.JPG" width="100%"></a>
-                    <a href="#">디크디크 퀄팅 자켓 베이지</a>
-                    <p><strong>69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>           
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog3.JPG" width="100%"></a>
-                    <a href="#">헤이제리 힙스터 파자마 스카이블루</a>
-                    <p><strong>39,000원 ~ 40,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog4.JPG" width="100%"></a>
-                    <a href="#">헤이제리 힙스터 파자마 그린</a>
-                    <p><strong>39,000원 ~ 40,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog5.JPG" width="100%"></a>
-                    <a href="#">헤이제리 힙스터 파자마 살몬</a>
-                    <p><strong>39,000원 ~ 40,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog6.JPG" width="100%"></a>
-                    <a href="#">헤이제리 프레피 스트라이프 가디건 스카이블루레드</a>
-                    <p><strong>30,000원 ~ 31,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-            </div>
-            <div class="center">
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog7.JPG" width="100%"></a>
-                    <a href="#">헤이제리 프레피 스트라이프 가디건 핑크블루</a>
-                    <p><strong>30,000원 ~ 31,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog8.JPG" width="100%"></a>
-                    <a href="#">헤이제리 프레피 스트라이프 가디건 옐로우네이비</a>
-                    <p><strong>30,000원 ~ 31,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog9.JPG" width="100%"></a>
-                    <a href="#">헤이제리 프레피 스트라이프 가디건 화이트블랙</a>
-                    <p><strong>30,000원 ~ 31,000원</strong></p> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>               
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog10.JPG" width="100%"></a>
-                    <a href="#">헤이제리 레인보우떡 올인원 오리지널 트로피칼</a>
-                    <p><strong>35,000원 ~ 36,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog11.JPG" width="100%"></a>
-                    <a href="#">헤이제리 레인보우떡 올인원 오리지널 베리베리</a>
-                    <p><strong>35,000원 ~ 36,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog12.JPG" width="100%"></a>
-                    <a href="#">헤이제리 레인보우떡 올인원 오리지널 핑크소다</a>
-                    <p><strong>35,000원 ~ 36,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-            </div>
-            <div class="center">
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog13.jpg" width="100%"></a>
-                    <a href="#">이츠독 판쵸 올인원 꿀벌우비</a>
-                    <p><strong>49,000원 ~ 64,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog14.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 레드</a>
-                    <p><strong>35,000원 ~ 58,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog15.jpg" width="100%"></a>
-                    <a href="#">스니프 개구리 레인코트</a>
-                    <p><strong>31,000원 ~ 38,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div> 
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog16.jpg" width="100%"></a>
-                    <a href="#">이츠독 판쵸 올인원 체리우비</a>
-                    <p><strong>49,000원 ~ 64,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog17.jpg" width="100%"></a>
-                    <a href="#">이츠독 삐약이 수면 조끼 아이보리</a>
-                    <p><strong>27,000원 ~ 32,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog18.jpg" width="100%"></a>
-                    <a href="#">이츠독 삐약이 수면 조끼 옐로우</a>
-                    <p><strong>27,000원 ~ 32,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-            </div>
-            <div class="center">
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog19.jpg" width="100%"></a>
-                    <a href="#">이츠독 왈 패딩 베스트 아이보리</a>
-                    <p><strong>59,000원 ~ 69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog20.jpg" width="100%"></a>
-                    <a href="#">이츠독 왈 패딩 베스트 레드</a>
-                    <p><strong>59,000원 ~ 69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog21.jpg" width="100%"></a>
-                    <a href="#">이츠독 왈 패딩 베스트 핑크</a>
-                    <p><strong>59,000원 ~ 69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog22.jpg" width="100%"></a>
-                    <a href="#">이츠독 왈 패딩 베스트 민트</a>
-                    <p><strong>59,000원 ~ 69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog23.jpg" width="100%"></a>
-                    <a href="#">이츠독 왈 패딩 베스트 네이비</a>
-                    <p><strong>59,000원 ~ 69,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog24.jpg" width="100%"></a>
-                    <a href="#">이츠독 스노우라떼 무스탕 베리라떼 핑크</a>
-                    <p><strong>54,000원 ~ 64,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-            </div>
-            <div class="center">
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog25.jpg" width="100%"></a>
-                    <a href="#">이츠독 스노우라떼 무스탕 초코라떼 브라운</a>
-                    <p><strong>54,000원 ~ 64,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog26.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 옐로우</a>
-                    <p><strong>35,000원 ~ 58,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog27.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 블루</a>
-                    <p><strong>35,000원 ~ 58,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog28.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 핑크</a>
-                    <p><strong>35,000원 ~ 58,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog29.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 브라운</a>
-                    <p><strong>35,000원 ~ 38,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-                <div class="box col-sm2">
-                    <a href="#"><img src="${pageContext.request.contextPath}/resources/img/dog30.jpg" width="100%"></a>
-                    <a href="#">퍼피아 베이스 점퍼 레인코트 카모</a>
-                    <p><strong>35,000원 ~ 58,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
-                </div>
-            </div>    
+				</c:forEach>
+            </div> 
+            <div class="d-flex ">
+					<div class="flex-grow-1">
+				
+						<!-- 6 7 8 9 10 -->
+						<a class="btn btn-outline-primary btn-sm"
+							href="list?pageNo=1">처음</a>
+							
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+							href="list?pageNo=${pager.startPageNo-1}">이전</a>
+						</c:if>	
+						
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<a class="btn 
+							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							
+							btn-sm" href="list?pageNo=${i}">${i}</a>
+						</c:forEach>
+						
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+							href="list?pageNo=${pager.endPageNo+1}">다음</a>
+						</c:if>		
+							
+						<a class="btn btn-outline-primary btn-sm"
+							href="list?pageNo=${pager.totalPageNo}">맨끝</a>
+					</div>
+			</div>   
       </div>
-        
-      <br/>
-      <br/>
-      <br/>
-      
-
    </div>
 </div>
  <%@ include file="/WEB-INF/views/common/footer.jsp"%> 

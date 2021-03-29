@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.ProductDao;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Product;
 
 @Service
@@ -25,15 +26,15 @@ public class ProductService {
 	
 	
 	
-	//Read
+	//Read	
 	//특정 상품 가져오기
 	public Product getProduct(int pid) {
 		Product product = productDao.selectBypid(pid);
 		return product;
 	}
 	//신규 상품 리스트 가져오기
-	public List<Product> getProducts(){
-		List<Product> products = productDao.selectAll();
+	public List<Product> getProductsByPager(Pager pager){
+		List<Product> products = productDao.selectAllByPager(pager);
 		return products;
 	}
 	//추천 상품 리스트 가져오기
