@@ -63,10 +63,14 @@
          height: 20px;            
       }
       .center{
-         display: flex;
-         justify-content: center;
+        display: flex;
+    	flex-direction: row;
+   		 flex-wrap: wrap;
       }
-      
+      .flex-items{
+	   flex: auto;
+
+　	}
       .left{
          display: flex;
          justify-content: left;
@@ -154,29 +158,31 @@
          <div class="jss486" style="padding: 3px;">
             <span style="padding: 10px;"><strong>30</strong>개의 상품</span>
          </div>
-            <div class="center">
+            <div class="center">  
             	<!--신규 상품 리스트 출력 -->
             	<c:forEach var="product" items="${list}">
-				 <div class="box col-sm2" style="float: left;"> 
-                    <a href="<%=application.getContextPath()%>/product/detail"> <div class="scale"><img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="100%" ></div></a>
-                   <a href="#">${product.pname}</a>
-                    <p><strong>${product.pprice}</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)
-                    <br>
-                    <div class="event">신상품</div>
+				 <div class="flex-items"> 
+				 	<figure>
+      					<img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="200px">
+      					<figcaption>${product.pname}</figcaption>
+      					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+    					<figcaption>신상품</figcaption>
+    				</figure>
                 </div>
 				</c:forEach>
             </div> 
-            <div class="d-flex ">
+            
+      </div>
+      <div class="d-flex text-center">
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->
 						<a class="btn btn-outline-primary btn-sm"
-							href="list?pageNo=1">처음</a>
+							href="new?pageNo=1">처음</a>
 							
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
-							href="list?pageNo=${pager.startPageNo-1}">이전</a>
+							href="new?pageNo=${pager.startPageNo-1}">이전</a>
 						</c:if>	
 						
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
@@ -184,19 +190,18 @@
 							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
 							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
 							
-							btn-sm" href="list?pageNo=${i}">${i}</a>
+							btn-sm" href="new?pageNo=${i}">${i}</a>
 						</c:forEach>
 						
 						<c:if test="${pager.groupNo<pager.totalGroupNo}">
 							<a class="btn btn-outline-info btn-sm"
-							href="list?pageNo=${pager.endPageNo+1}">다음</a>
+							href="new?pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if>		
 							
 						<a class="btn btn-outline-primary btn-sm"
-							href="list?pageNo=${pager.totalPageNo}">맨끝</a>
+							href="new?pageNo=${pager.totalPageNo}">맨끝</a>
 					</div>
-			</div>   
-      </div>
-   </div>
-</div>
+		</div>   
+ 
+
  <%@ include file="/WEB-INF/views/common/footer.jsp"%> 

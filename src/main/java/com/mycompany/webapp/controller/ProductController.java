@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,34 +58,70 @@ public class ProductController {
 //	    return "/product/new";
 //	}
 	
-	
-	
+
 	
 	// 신규페이지 이동
 	@GetMapping("/new")
-	public String newMethod(Model model) {
-		Pager pager = new Pager(30,5,200,1);
-		List<Product> list = productService.getProductsByPager(pager);
-		model.addAttribute("list", list);
+	public String newMethod(String pageNo,Model model, HttpSession session) {
+		 int intPageNo = 1;
+	      //세션에서 pager를 찾고, 있으면 pageNo설정
+	      if(pageNo == null) {   //클라이언트에서 pageNo가 넘어오지 않았을 경우
+	         Pager pager = (Pager)session.getAttribute("pager");
+	         if(pager!=null) {
+	            intPageNo = pager.getPageNo();
+	         }
+	      }else { //클라이언트에서 pageNo가 넘어왔을 때
+	         intPageNo = Integer.parseInt(pageNo);
+	      }
+	      
+	      int totalRows = productService.getProductsCount();
+	      Pager pager = new Pager(20,5,totalRows,intPageNo);
+	      session.setAttribute("pager", pager);
+	      List<Product> list = productService.getProductsByPager(pager);
+	    
+	      model.addAttribute("list", list);
+	      model.addAttribute("pager",pager);
 		
 	    return "/product/new";
 	}
 	
-	
+	// 랭크페이지(카테고리 All) 이동
 	@GetMapping("/rank")
-	public String rank() {
-		List<Product> list = productService.getRankProducts("점퍼");
-		for(Product p:list) {
-			logger.info(""+p.getPid()); 
-			logger.info(""+p.getPname());
-			logger.info(""+p.getPprice());
-		}
+	public String Rank(Model model, HttpSession session) {
+
+		  List<Product> list = productService.getRankProducts("전체");
+		  model.addAttribute("list", list);
 		return "/product/rank";
 	}
-	
-	
+	// 랭크페이지(카테고리) 이동
+	@GetMapping("/rankcategory")
+	public String RankCategory(String category,Model model, HttpSession session) {
+
+		  List<Product> list = productService.getRankProducts(category);
+		  model.addAttribute("list", list);
+		return "/product/rank";
+	}	
+	// 추천페이지 이동
 	@GetMapping("/rec")
-	public String rec() {
+	public String rec(String pageNo,Model model, HttpSession session) {
+	 int intPageNo = 1;
+	  //세션에서 pager를 찾고, 있으면 pageNo설정
+	  if(pageNo == null) {   //클라이언트에서 pageNo가 넘어오지 않았을 경우
+	     Pager pager = (Pager)session.getAttribute("pager");
+	     if(pager!=null) {
+	        intPageNo = pager.getPageNo();
+	     }
+	  }else { //클라이언트에서 pageNo가 넘어왔을 때
+	     intPageNo = Integer.parseInt(pageNo);
+	  }
+	  
+	  int totalRows = productService.getRecommandProductCount();
+	  Pager pager = new Pager(20,5,totalRows,intPageNo);
+	  session.setAttribute("pager", pager);
+	  List<Product> list = productService.getProductsByPager(pager);
+	
+	  model.addAttribute("list", list);
+	  model.addAttribute("pager",pager);
 		return "/product/rec";
 	}
 	

@@ -51,12 +51,20 @@
    
    </select>
    
+   <select id="count" resultType="int">
+   	select count(*) from products
+   </select>
    
    
     <select id="selectRecommandAll" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
    	from products
    </select>
+   
+   <select id="recommandcount" resultType="int">
+   	select count(*) from products
+   </select>
+   
    
    <select id="selectBestReviewAll" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
@@ -66,23 +74,35 @@
    
    <select id="selectRankAll" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
-   	from products
-   	order by salescount desc
+   	from (select p_id, p_name, p_price from products order by salescount desc)
+   	where ROWNUM&lt;31 
    </select>
    
    <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
+   	from (select p_id, p_name, p_price from products where category_name=#{categoryname} order by salescount desc)
+   	where ROWNUM&lt;31
+   </select>
+
+	<select id="rankcategorycount" parameterType="string" resultType="int">
+   	select count(*)
    	from products
    	where category_name=#{categoryname}
-   	order by salescount desc
-   </select>
+   	</select>   
+   
    
    <select id="selectCategory" parameterType="string" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
    	from products
-   	where category_name=#{categoryname}
+   	where category_name=#{categoryname}  
    	order by p_upload_date desc
    </select>
+   
+   <select id="categorycount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	where category_name=#{categoryname}
+   	</select> 
    
    <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
@@ -91,12 +111,32 @@
    	order by p_upload_date desc
    </select>
    
+   <select id="searchcount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	where p_name like '%'||#{searchword}||'%'
+   	order by p_upload_date desc
+   	</select> 
+   
     <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="products">
    	select p_id, p_name, p_price
    	from products
    	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
    	order by p_upload_date desc
    	</select>
+   	
+   	<select id="searchcategorycount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	from products
+   	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
+   	order by p_upload_date desc
+   	</select> 
+   	
+   	
+   	
+   	
+   	
    	
    	<update id="update" parameterType="product">
    	update products set p_id=#{pid}, p_name=#{pname}, p_price=#{pprice}, p_stock=#{pstock}, salescount=#{salescount}, category_name=#{categoryname},

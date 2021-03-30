@@ -10,248 +10,197 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
+<style type="text/css">
+      * {
+            box-sizing:border-box;
+         margin: 0px;
+         padding: 0px;
+      }
+      .scale {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+     }   
+     .scale:hover {
+         transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+    }   
+    .img {width:325px; height:280px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
+      .event{
+            background-color: rgb(255, 81, 82);
+            color: white;
+            font-size: 0.9em;
+            display: inline;
+            padding-inline: 8px;
+            border-radius: 5px;
+        }
+        <!--
+        A:link {text-decoration:none; color: black;}
+        A:visited {text-decoration: none; color: black;}
+        A:hover{text-decoration: none; color: black;}
+        -->
+      .jss486 {
+          height: 40px;
+          padding: 10 5 2 4px;
+          margin: 0px 0px 10px 0px;
+          border-top: 1px solid rgba(235, 235, 235, 1);
+          border-bottom: 1px solid #cfcfd0;
+      }
+      .header1 {
+         background-color: #ff3357;
+         text-align: center;
+         height: 130px;   
+         color: white;
+         font-size: 3em;   
+      }
+      .header2 {
+         background-color: gray;
+         height: 20px;            
+      }
+      .center{
+        display: flex;
+    	flex-direction: row;
+   		 flex-wrap: wrap;
+      }
+      .flex-items{
+	   flex: auto;
 
-	<div class="header2">
-        <div class="inner" style="font-size: 0.85em; padding-top: 5px;">
-            홈 > 추천
-        </div>
-	</div>
-	
-	<div class="center inner">
-		
-		<div class="content" >
-			
-			
-			<div class="box"> 
-				<h3 style="padding-top: 10px;">추천</h3>	
-			</div>		
-
-			<div class="jss486" style="padding: 3px;">
-			    <span style="padding: 10px;"><strong>15</strong>개의 상품</span>
-			</div>
-
-			<div class="center">
-                <div class="box col-sm2" style="float: left;" > 
-                    <a href="<%=application.getContextPath()%>/product/detail" style="color: black;">
-                    
-                        <img src="<%=application.getContextPath() %>/resources/img/photo1.jpg" width="100%">
-                        플로트 스탠다드 골지 티셔츠 옐로우
-                        <p><strong style="font-size: 1.2em;">17,000원</strong></p>
-                        <i class="fas fa-star" style="color: #ff3357;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357;"></i>
-                        <a style="color: silver;"> (25)</a>
-                    </a>
-                    </br>
-                    <div class="event">이벤트</div>
-                </div>
-                <div class="box col-sm2" style="float: left;">
-    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo2.jpg"  width="100%">
-                    플로트 스탠다드 민소매 티셔츠 옐로우블루
-                    <p><strong style="font-size: 1.2em;">14,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: silver;"></i>     
-                    <a style="color: silver;"> (25)</a>
-                    </br>
-                    <div class="event">이벤트</div>
+　	}
+      .left{
+         display: flex;
+         justify-content: left;
+      }
       
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-    
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo3.jpg"  width="100%">
-                    플로트 스탠다드 골지 티셔츠 그린
-                    <p><strong style="font-size: 1.2em;">17,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (14)</a>
-                    </br>
-                    <div class="event">이벤트</div>
-
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo4.jpg"  width="100%">
-                    스니프 페인트 티셔츠 멀티
-                    <p><strong style="font-size: 1.2em;">11,200원 ~ 18,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: silver;"></i>     
-                    <a style="color: silver;"> (10)</a>
-                    </br>
-                    <div class="event">이벤트</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo5.jpg"  width="100%">
-                    스니프 도트 셔츠 드레스
-                    <p><strong style="font-size: 1.2em;">16,900원 ~ 26,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star-half-alt" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (4)</a> 
-                    </br>
-                    <div class="event">이벤트</div>
-                    
-                </div>
-                
-            </div>
-            <div class="center">
-
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo6.jpg"  width="100%">
-                    베니즈 배색 카라 티셔츠 핑크
-                    <p><strong style="font-size: 1.2em;">12,000원 ~ 17,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (1)</a>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo7.jpg"  width="100%">
-                    스니프 체리 가운
-                    <p><strong style="font-size: 1.2em;">15,500원 ~ 24,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star-half-alt" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (2)</a>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo8.jpg"  width="100%">
-                    이츠독 브루노 스판 면 티셔츠 머스타드
-                    <p><strong style="font-size: 1.2em;">19,000원 ~ 24,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                </br>
-                    <div class="event">
-                        이벤트
-                    </div>
-                    
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo9.jpg"  width="100%">
-                    플로트 스탠다드 맨투맨 V라인 옐로우
-                    <p><strong style="font-size: 1.2em;">19,000원</strong></p>      
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>          
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                   
-                    <img src="<%=application.getContextPath() %>/resources/img/photo10.jpg"  width="100%">
-                    플로트 스탠다드 맨투맨 V라인 아이보리
-                    <p><strong style="font-size: 1.2em;">19,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                </div>
-            </div>
-                
-            <div class="center">
-                <div class="box col-sm2"  style="float: left;">
-                    
-                    <img src="<%=application.getContextPath() %>/resources/img/photo11.jpg"  width="100%">
-                    패리스독 베이직 티셔츠 핑크
-                    <p><strong style="font-size: 1.2em;">9,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                   
-                    <img src="<%=application.getContextPath() %>/resources/img/photo12.jpg"  width="100%">
-                    패리스독 베이직 티쳐츠 네이비
-                    <p><strong style="font-size: 1.2em;">8,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                    </br>
-                    <div class="event">이벤트</div>
-                </div>
-            
-                <div class="box col-sm2"  style="float: left;">
-                    <img src="<%=application.getContextPath() %>/resources/img/photo13.jpg"  width="100%">
-                    헤이제리 무지개 러브 탑 컷 아웃
-                    <p><strong style="font-size: 1.2em;">24,700원 ~ 26,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                    </br>
-                    <div class="event">이벤트</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <img src="<%=application.getContextPath() %>/resources/img/photo14.jpg"  width="100%">
-                    스니프 개구리 레인코트
-                    <p><strong style="font-size: 1.2em;">31,000원 ~ 38,000원</strong></p>
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                    </br>
-                    <div class="event">이벤트</div>
-                </div>
-                <div class="box col-sm2"  style="float: left;">
-                    <img src="<%=application.getContextPath() %>/resources/img/photo15.jpg"  width="100%">
-                    스니프 스트라이프 버디 프렌치 올인원 멀티
-                    <p><strong style="font-size: 1.2em;">14,000원 ~ 22,000원</strong></p> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i> 
-                    <i class="fas fa-star" style="color: #ff3357;"></i>
-                    <a style="color: silver;"> (25)</a>
-                </div>
-            </div>
-                
-		</div>
+      .bodyleftblank {
+         list-style-type: none;
+         padding: 10px;
+         background-color: white;
+         flex: 0.2;
+      }
+      
+      .content {
+         padding: 10px;
+         background-color: white;
+         flex: 6;
+      }
+      
+      .bodyrightblank {
+         list-style-type: none;
+         padding: 10px;
+         background-color: white;
+         flex: 0.2;
+      }
+      
+      .footer{
+         background-color: #ff3357;
+         font-size: 3em;
+         color: white;
+         text-align: center;
+         height: 300px;
+      }
+      
+      .box{
+         padding: 10px;
+         background-color: white;
+         flex: 2;
+            font-size: 0.8em;
+            font-family: Noto Sans KR, sans-serif;
+            font-weight: 400;
+      }
         
-    </div>  
-    <br>
-    <br>
-    <br>
-    <br>
+    
 
+        .jss909{
+            width: 24px;
+            border: 0 none;
+            height: 24px;
+            display: inline-block;
+            overflow: hidden;
+            text-indent: -1000em;
+            background-size: 24px 24px;
+        }
+        
+        .icon_color{
+            
+            color : gold;
+            border: 0 none;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .rank_text{
+            text-decoration: #ff3357;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            transform: translate( -50%, -50% );
+        }
+        .header2 {
+            padding-left: 25px;
+         background-color: rgb(244, 244, 245);
+         height: 30px;            
+            font-size: 0.85em;   
+      }
+       
+   </style>
+   
+   
+	<div class="header2">
+        <div class="inner" style="font-size: 0.85em; padding-top: 5px;">홈 > 추천</div>
+   </div>
+    <div class="inner">
+         <div class="jss486" style="padding: 3px;">
+            <span style="padding: 10px;"><strong>30</strong>개의 상품</span>
+         </div>
+            <div class="center">  
+            	<!--신규 상품 리스트 출력 -->
+            	<c:forEach var="product" items="${list}">
+				 <div class="flex-items"> 
+				 	<figure>
+      					<img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="200px">
+      					<figcaption>${product.pname}</figcaption>
+      					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+    					<figcaption>추천</figcaption>
+    				</figure>
+                </div>
+				</c:forEach>
+            </div>            
+      </div>
+      <div class="d-flex text-center">
+					<div class="flex-grow-1">
+				
+						<!-- 6 7 8 9 10 -->
+						<a class="btn btn-outline-primary btn-sm"
+							href="rec?pageNo=1">처음</a>
+							
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+							href="rec?pageNo=${pager.startPageNo-1}">이전</a>
+						</c:if>	
+						
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<a class="btn 
+							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							
+							btn-sm" href="rec?pageNo=${i}">${i}</a>
+						</c:forEach>
+						
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+							href="rec?pageNo=${pager.endPageNo+1}">다음</a>
+						</c:if>		
+							
+						<a class="btn btn-outline-primary btn-sm"
+							href="rec?pageNo=${pager.totalPageNo}">맨끝</a>
+					</div>
+		</div>   
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
