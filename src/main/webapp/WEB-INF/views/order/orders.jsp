@@ -3,11 +3,16 @@
 
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
+
  <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/orders.css">
+ 
+  <%int delivery = 3000; %>
+  
 
 <div class="header2"> 
     <div class="inner">
@@ -17,7 +22,7 @@
      <div class="inner">
         <div class="info" style="height: 120px;">
             <picture style="float: left;">
-                <img src="/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                <img src="<%=application.getContextPath()%>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -42,8 +47,8 @@
                         <div class="orders">
                             <div class="orders-inner" style="background-color: rgba(244,244,245,1);">
                                 <div class="orders-top">
-                                    <div class="topContents">주문일자:2021.03.29</div>
-                                    <div class="topContents">주문번호:1614345435</div>
+                                    <div class="topContents">주문일자: <fmt:formatDate value="${orders.odate}" pattern="yyyy-MM-dd"/></div>
+                                    <div class="topContents">주문번호: ${orders.ono}</div>
                                 </div>
                             </div>
                             <div class="orders-info">
@@ -51,19 +56,20 @@
                                     <div class="info-container">
                                         <dl class="info1">
                                             <dt class="info-detail">받는 사람</dt>
-                                            <dd class="data-name">김명휘</dd>
+                                            <dd class="data-name">${orders.oname}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">휴대전화</dt>
-                                            <dd class="data-name">010-5319-3079</dd>
+                                            <dd class="data-name">${orders.ophone}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송주소</dt>
-                                            <dd class="data-name">경기도 고양시 일산서구 덕이동</dd>
+                                            <dd class="data-name">
+                                            ${orders.address} ${orders.addetail}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송 요청사항</dt>
-                                            <dd class="data-name">부재시 문앞에 놓고 가주세요</dd>
+                                            <dd class="data-name">${orders.orequest}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -85,7 +91,7 @@
                                             배송비
                                           </div>
                                           <div class="col-9 tdata">
-                                            +3000원
+                                            <%=delivery %>원
                                           </div>
                                         </div>
                                         <div class="row trow">
@@ -109,8 +115,7 @@
                                               결제방법
                                             </div>
                                             <div class="col-9 tdata">
-                                              신용카드<br/>
-                                              신한은행2123324324<br/>
+                                             	${orders.payment}
                                             </div>
                                           </div>
                                           <div class="row trow">
@@ -118,7 +123,7 @@
                                              총 결제금액
                                             </div>
                                             <div class="col-9 tdata">
-                                              5160원
+                                             ${orders.oprice}원
                                             </div>
                                           </div>
                                     </div>
@@ -128,7 +133,7 @@
                     </div>
                 </div>
                 <div style="text-align: center;">
-                    <button type="button" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;">주문내역으로 이동</button>
+                    <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;">주문내역으로 이동</button>
                 </div>
             </div>
         </div>

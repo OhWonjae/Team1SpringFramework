@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.webapp.dao.OrdesDao">
+<mapper namespace="com.mycompany.webapp.dao.OrdersDao">
 	<insert id="ordersInsert" parameterType="orders">
+	   <selectKey keyProperty="ono" resultType="int" order="BEFORE">
+           select max(order_id)+1 from orders
+    	</selectKey>
 		insert into orders(	order_id,
-							order_date,
+							orders_date,
 							order_request,
 							total_price,
 							payment,
-							delivery_address_city,
-							delivery_address_county,
-							delivery_address_distinct,
+							delivery_address,
 							delivery_address_detail,
 							zip,
-							user_id
+							user_id,
+							order_name,
+							order_phone
 		)
 		values(	#{ono},
 				sysdate,
 				#{orequest},
-				#{tpirce}',
+				5100,
 				#{payment},
-				#{city},
-				#{county},
-				#{distinct},
+				#{address},
 				#{addetail},
 				#{zip},
-				#{uno}
+				1,
+				#{oname},
+				#{ophone}
 	)
 	</insert>
 	<delete id="ordersDelete" parameterType="int">
@@ -35,6 +38,37 @@
 	<select id="orderSelectByAll" parameterType="int" resultType="orders">
 		select *
 		from orders
-		where order_id=#{ono} AND user_id=#{uno}
+	</select>
+	
+	 <resultMap type="orders" id="orders">
+      <result property="ono" column="order_id"/>
+      <result property="odate" column="orders_date"/>
+      <result property="tprice" column="total_price"/>
+      <result property="payment" column="payment"/>
+      <result property="address" column="delivery_address"/>
+      <result property="addetail" column="delivery_address_detail"/>
+      <result property="orequest" column="order_request"/>
+      <result property="zip" column="zip"/>
+      <result property="uno" column="user_id"/>
+      <result property="oname" column="order_name"/>
+      <result property="ophone" column="order_phone"/>
+   </resultMap>
+	
+	
+	
+	
+	<select id="orderSelectByOne" parameterType="int" resultType="orders" resultMap="orders">
+		select 	order_id,
+				order_name,
+				order_phone,
+				orders_date,
+				order_request,
+				delivery_address,
+				delivery_address_detail,
+				payment,
+				total_price
+		from orders
+		where order_id = #{ono}
+				
 	</select>
 </mapper>
