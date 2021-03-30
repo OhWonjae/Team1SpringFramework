@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,10 @@ public class OrdersService {
 		
 		
 		//주문서 생성
-		public void CreateOrders(Orders orders) {
+		public void createOrders(Orders orders){
+			
 			ordersDao.ordersInsert(orders);
+		
 		}
 		
 		//주문서 삭제
@@ -25,8 +29,10 @@ public class OrdersService {
 		}
 		
 		//주문서 읽어오기
-		public void ReadOrders(int oid,int uid) {
-			ordersDao.orderSelectByAll(oid,uid);
+		public Orders ReadOrders(int ono) {
+			
+			Orders orders=ordersDao.orderSelectByOne(ono);
+			return orders;
 		}
 		
 		
