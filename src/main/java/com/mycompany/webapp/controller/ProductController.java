@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.service.PhotosService;
 import com.mycompany.webapp.service.ProductService;
 
 @Controller
@@ -28,6 +30,24 @@ public class ProductController {
 	// ProductService 전역변수 의존성 주입
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private PhotosService photosService;
+	
+	// 테스트용 컨트롤러 - 상품 무작위 생성
+	@GetMapping("/photo")
+	public String photo(Model model) {
+		Photo p = new Photo();
+		p.setpId(110);
+		p.setPhotoRole("main");
+		
+		String url = photosService.GetProductPhotoUrl(p);
+		logger.info(url);
+
+	    return "/product/new";
+	}
+	
+	
 	
 	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
@@ -58,7 +78,11 @@ public class ProductController {
 //	    return "/product/new";
 //	}
 	
-
+	
+	
+	
+	  
+	
 	
 	// 신규페이지 이동
 	@GetMapping("/new")

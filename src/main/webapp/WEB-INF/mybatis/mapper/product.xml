@@ -11,7 +11,7 @@
 		<result property="salescount" column="salescount"/>
 		<result property="categoryname" column="category_name"/>
 		<result property="puploaddate" column="p_upload_date"/>
-		<result property="pdescription" column="p_description"/>
+		<result property="pdescription" column="p_description"/>	
 	</resultMap>
 
  
@@ -42,7 +42,9 @@
           select rownum as rnum, p_id, p_name, p_price
           from (
               select p_id, p_name, p_price
-              from products
+              from products p, photo ph
+              where p.p_id = ph.p_id and
+              ph. 
               order by p_upload_date desc
           )
           where rownum &lt;= #{endRowNo}
