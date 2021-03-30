@@ -9,24 +9,24 @@ import com.mycompany.webapp.dto.User;
 
 @Service
 public class UsersService {
-	@Autowired
-	private UsersDao usersDao;
-	
-	public void join(User user) {
-		usersDao.insert(user);
-	}
+   @Autowired
+   private UsersDao usersDao;
+   
+   public void join(User user) {
+      usersDao.insert(user);
+   }
 
-	public String login(User user) {
-		User dbUser = usersDao.selectByUemail(user.getUemail());
-		if(dbUser == null) {
-			return "wrongUemail";
-		} else {
-			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-			boolean result = bpe.matches(user.getUpassword(), dbUser.getUpassword());
-			if(result == false) {
-				return "wrongUpassword";				
-			}
-		}
-		return "success";
-	}
+   public String login(User user) {
+      User dbUser = usersDao.selectByUemail(user.getUemail());
+      if(dbUser == null) {
+         return "wrongUemail";
+      } else {
+         BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+         boolean result = bpe.matches(user.getUpassword(), dbUser.getUpassword());
+         if(result == false) {
+            return "wrongUpassword";            
+         }
+      }
+      return "success";
+   }
 }
