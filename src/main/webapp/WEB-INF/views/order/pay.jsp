@@ -12,15 +12,21 @@
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+
 function openZipSearch() {
 	new daum.Postcode({
 		oncomplete: function(data) {
 			$('[name=zip]').val(data.zonecode); // 우편번호 (5자리)
-			$('[name=addr1]').val(data.address);
-			$('[name=addr2]').val(data.buildingName);
+			$('[name=address]').val(data.address);
+			$('[name=addetail]').val(data.buildingName);
 		}
 	}).open();
 }
+
+	
+
+
 </script>
 
        
@@ -47,14 +53,14 @@ function openZipSearch() {
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="receiver_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
+                                    <input name="oname" id="oname" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="receiver_hp" class="form-control" placeholder="휴대전화 번호를 입력하세요." type="number">
+                                    <input name="ophone" id="ophone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text">
                                 </div>
                             </div> 
                             
@@ -63,7 +69,7 @@ function openZipSearch() {
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송지 주소</span> 
 <!--                                     <input class="form-control" placeholder="우편번호를 입력하세요." type="number">
- -->                                <input class="form-control" type="text" name="zip" />
+ -->                                <input class="form-control" type="text" name="zip" id="zip" />
                                     
                                     <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">검색</button>
                                     
@@ -71,12 +77,12 @@ function openZipSearch() {
  -->                                </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="addr1" >
+                                    <input class="form-control" type="text" name="address" id="address" >
 <!--                                     <input class="form-control" placeholder="주소를 입력하세요." type="text">
  -->                                </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="addr2" >
+                                    <input class="form-control" type="text" name="addetail" id="addetail" >
 <!--                                     <input class="form-control" placeholder="상세주소를 입력하세요." type="text">
  -->                                </div>   
                             </div>
@@ -84,7 +90,7 @@ function openZipSearch() {
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송 요청사항</span>  
-                                    <input name="receiver_delivery_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
+                                    <input name="orequest" id="orequest" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
                     <span class="history-subtitle">주문상품</span>
@@ -93,7 +99,7 @@ function openZipSearch() {
                         <table class="table" style="font-size: 1.5em;">
                             <thead class="thead-light">
                                 <tr>
-                                    <th style=" text-align: left">업체발송  상품 (플로트)<br> 
+                                    <th style=" text-align: left">업체발송  상품 <br> 
                                     <span style="color: rgb(255, 81, 82); font-size: 0.9em">발송일: 3월 10일 수</span></th>
                                     <th></th>    
                                 </tr>
@@ -149,21 +155,21 @@ function openZipSearch() {
                         <div style="color: #666;">
 
                             <div class="form-check" style="padding: 7px;">
-                                <input class="form-check-input " type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input " type="radio" name="payment" id="exampleRadios1" value="무통장입금" checked>
                                     <label class="form-check-label " for="exampleRadios1">
                                         <i class="fas fa-coins"></i> 무통장입금
                                     </label>
                             </div>
 
                             <div class="form-check" style="padding: 7px;">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="신용카드">
                                     <label class="form-check-label" for="exampleRadios2">
                                         <i class="far fa-credit-card"></i> 신용카드                             
                                     </label>
                             </div>
 
                             <div class="form-check" style="padding: 7px;">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+                                <input class="form-check-input" type="radio" name="payment" id="exampleRadios3" value="실시간 계좌이체" >
                                     <label class="form-check-label" for="exampleRadios3">
                                         <i class="fas fa-hand-holding-usd"></i> 실시간 계좌이체
                                     </label>

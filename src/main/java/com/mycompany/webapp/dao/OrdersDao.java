@@ -7,6 +7,6 @@ import com.mycompany.webapp.dto.Orders;
 @Mapper
 public interface OrdersDao {
 	public int ordersInsert(Orders orders);
-	public int ordersDelete(int oid);
-	public Orders orderSelectByAll(int ono, int uno);
+	public int ordersDelete(int ono);
+	public Orders orderSelectByOne(int ono);
 }
