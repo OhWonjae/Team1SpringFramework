@@ -14,8 +14,8 @@ public class CartsService {
 	@Autowired
 	private CartDao cartDao;
 	
-	public List<CartItem> getCartList(){ 
-		List<CartItem> list = cartDao.cartList(20);
+	public List<CartItem> getCartList(int uid){ 
+		List<CartItem> list = cartDao.cartList(uid);
 		return list;
 	}
 	

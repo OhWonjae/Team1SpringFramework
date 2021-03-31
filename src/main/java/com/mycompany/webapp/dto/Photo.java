@@ -1,48 +1,47 @@
 package com.mycompany.webapp.dto;
 
 public class Photo {
-   private int photo_Id;
-   private int p_Id;
-   private String photo_Oname;
-   private String photo_Sname;
-   private String photo_Type;
-   private String photo_Role;
-   public int getPhoto_Id() {
-      return photo_Id;
-   }
-   public void setPhoto_Id(int photo_Id) {
-      this.photo_Id = photo_Id;
-   }
-   public int getP_Id() {
-      return p_Id;
-   }
-   public void setP_Id(int p_Id) {
-      this.p_Id = p_Id;
-   }
-   public String getPhoto_Oname() {
-      return photo_Oname;
-   }
-   public void setPhoto_Oname(String photo_Oname) {
-      this.photo_Oname = photo_Oname;
-   }
-   public String getPhoto_Sname() {
-      return photo_Sname;
-   }
-   public void setPhoto_Sname(String photo_Sname) {
-      this.photo_Sname = photo_Sname;
-   }
-   public String getPhoto_Type() {
-      return photo_Type;
-   }
-   public void setPhoto_Type(String photo_Type) {
-      this.photo_Type = photo_Type;
-   }
-   public String getPhoto_Role() {
-      return photo_Role;
-   }
-   public void setPhoto_Role(String photo_Role) {
-      this.photo_Role = photo_Role;
-   }
-   
+   private int photo_id;
+   private int p_id;
+   private String photo_oname;
+   private String photo_sname;
+   private String photo_type;
+   private String photo_role;
+public int getPhoto_id() {
+	return photo_id;
+}
+public void setPhoto_id(int photo_id) {
+	this.photo_id = photo_id;
+}
+public int getP_id() {
+	return p_id;
+}
+public void setP_id(int p_id) {
+	this.p_id = p_id;
+}
+public String getPhoto_oname() {
+	return photo_oname;
+}
+public void setPhoto_oname(String photo_oname) {
+	this.photo_oname = photo_oname;
+}
+public String getPhoto_sname() {
+	return photo_sname;
+}
+public void setPhoto_sname(String photo_sname) {
+	this.photo_sname = photo_sname;
+}
+public String getPhoto_type() {
+	return photo_type;
+}
+public void setPhoto_type(String photo_type) {
+	this.photo_type = photo_type;
+}
+public String getPhoto_role() {
+	return photo_role;
+}
+public void setPhoto_role(String photo_role) {
+	this.photo_role = photo_role;
+}
    
 }
