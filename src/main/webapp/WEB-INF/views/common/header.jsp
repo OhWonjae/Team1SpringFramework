@@ -1,8 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,6 +44,28 @@
                   </form>
                 </div>
                 <div class="header-sideBar">
+                <!--  새로 추가한 행  시작-->
+                <c:if test="${loginUemail == null}">
+		    		<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/login">로그인</a>
+		   		</c:if>
+			    <c:if test="${loginUemail != null}">
+			    	<span class="mr-2">로그인Email: ${loginUemail}</span> 
+			    	<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/my">로그아웃</a>
+			    </c:if>  
+                
+                <%-- <sec:authorize access="isAnonymous()">
+					<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/login">
+						로그인
+					</a>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<span class="mr-2">로그인Email: <sec:authentication property="name"/></span> 
+					<form method="post" class="d-inline-block" action="<%=application.getContextPath()%>/user/my">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<button class="btn btn-success btn-sm" >로그아웃</button>
+					</form>
+				</sec:authorize> --%>
+		<!--  새로 추가한 행 끝 -->
                     <div class="mypage">
                       <a href="<%=application.getContextPath()%>/user/login">
                         <i class="fas fa-user mypage-icon"></i>

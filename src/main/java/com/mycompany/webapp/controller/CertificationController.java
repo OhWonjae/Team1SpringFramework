@@ -17,88 +17,109 @@ import com.mycompany.webapp.service.UsersService;
 @Controller
 @RequestMapping("/user")
 public class CertificationController {
-	@Autowired
-	private UsersService usersService;
-	private static final Logger logger = LoggerFactory.getLogger(CertificationController.class);
+   @Autowired
+   private UsersService usersService;
+   private static final Logger logger = LoggerFactory.getLogger(CertificationController.class);
 
-	@GetMapping("/login")
-	public String login() {
-		return "/user/login";
-	}
+   @GetMapping("/login")
+   public String login() {
+      return "/user/login";
+   }
 
-	@GetMapping("/signUp")
-	public String signUp() {
-		return "/user/signUp";
-	}
+   @GetMapping("/signUp")
+   public String signUp() {
+      return "/user/signUp";
+   }
 
-	@GetMapping("/searchId")
-	public String searchId() {
-		return "/user/searchId";
-	}
+   @GetMapping("/searchId")
+   public String searchId() {
+      return "/user/searchId";
+   }
 
-	@GetMapping("/searchPw")
-	public String searchPw() {
-		return "/user/searchPw";
-	}
+   @GetMapping("/searchPw")
+   public String searchPw() {
+      return "/user/searchPw";
+   }
 
-	@GetMapping("/pwChange")
-	public String pwChange() {
-		return "/user/pwChange";
-	}
+   @GetMapping("/pwChange")
+   public String pwChange() {
+      return "/user/pwChange";
+   }
 
-	@GetMapping("/phoneChange")
-	public String phoneChange() {
-		return "/user/phoneChange";
-	}
+   @GetMapping("/phoneChange")
+   public String phoneChange() {
+      return "/user/phoneChange";
+   }
 
-	@PostMapping("/my")
-	public String change() {
-		return "redirect:/user/my";
-	}
+   @PostMapping("/my")
+   public String change() {
+      return "redirect:/user/my";
+   }
 
-	@GetMapping("/my")
-	public String my() {
-		return "/user/my";
-	}
+   @GetMapping("/my")
+   public String my() {
+      return "/user/my";
+   }
 
-	@PostMapping("/join")
-	public String join(User user) {
-		logger.info(user.getUname());
-		logger.info(user.getUemail());
-		logger.info(user.getUpassword());
-		logger.info(user.getUphone());
-		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-		user.setUpassword(bpe.encode(user.getUpassword()));
-		usersService.join(user);
-		return "redirect:/user/login";
-	}
+   @PostMapping("/join")
+   public String join(User user) {
+      logger.info(user.getUname());
+      logger.info(user.getUemail());
+      logger.info(user.getUpassword());
+      logger.info(user.getUphone());
+      BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+      user.setUpassword(bpe.encode(user.getUpassword()));
+      usersService.join(user);
+      return "redirect:/user/login";
+   }
 
-	@PostMapping("/login")
+   @PostMapping("/login")
+   public String login(User user, HttpSession session) {
+      String result = usersService.login(user);
+
+      if (result.equals("success")) {
+         logger.info(result);
+         session.removeAttribute("loginError");
+         session.setAttribute("loginUemail", user.getUemail());
+         return "redirect:/main";
+      } else {
+         session.setAttribute("loginError", result);
+         return "redirect:/user/login"; // home
+      }
+   }
+   
+	/*@PostMapping("/find")
 	public String login(User user, HttpSession session) {
-		String result = usersService.login(user);
+	  String result = usersService.login(user);
+	
+	  if (result.equals("success")) {
+	     logger.info(result);
+	     session.removeAttribute("loginError");
+	     session.setAttribute("loginUemail", user.getUemail());
+	     return "redirect:/main";
+	  } else {
+	     session.setAttribute("loginError", result);
+	     return "redirect:/user/login"; // home
+	  }
+	}*/
 
-		if (result.equals("success")) {
-			logger.info(result);
-			session.removeAttribute("loginError");
-			session.setAttribute("loginUemail", user.getUemail());
-			return "redirect:/main";
-		} else {
-			session.setAttribute("loginError", result);
-			return "redirect:/user/login"; // home
-		}
-	}
-
-	/*
-	 * @GetMapping("/logout") public String logout(HttpSession session) {
-	 * session.removeAttribute("loginUid");
-	 * 
-	 * return "redirect:/home"; }
-	 */
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		// session.invalidate();
-		session.removeAttribute("loginUid");
-		return "redirect:/main";
-	}
+   /*
+    * @GetMapping("/logout") public String logout(HttpSession session) {
+    * session.removeAttribute("loginUid");
+    * 
+    * return "redirect:/home"; }
+    */
+   @PostMapping("/logout")
+   public String logout(HttpSession session) {
+      //session.invalidate();
+	  session.removeAttribute("loginUemail");
+      return "redirect:/main";
+   }
+   
+   @GetMapping("/error403")
+   public String error403() {
+      return "user/error403";
+   }
+   
 
 }

@@ -60,6 +60,18 @@
 			<strong>로그인</strong>
 		</h4>
 		<br>
+
+		<c:if test="${loginError != null }">
+
+			<div class="alert alert-primary">
+				<c:if test="${loginError == 'wrongUemail'}">
+					<span>아이디가 존재하지 않습니다.</span>
+				</c:if>
+				<c:if test="${loginError == 'wrongUpassword'}">
+					<span>비밀번호가 틀립니다.</span>
+				</c:if>
+			</div>
+		</c:if>
 		<form id="joinForm" name="joinForm" method="post" action="login"
 			onsubmit="validate()" novalidate="novalidate">
 			<div class="form-group input-group">
