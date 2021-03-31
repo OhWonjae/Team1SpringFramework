@@ -69,7 +69,7 @@
 	                                    <div class="row cart-content1-box">
 	                                        <div class="cart-info-box col-sm-5">
 	                                            <div class="cart-info">
-	                                            <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="cart1" style="margin:5px 0"/>
+	                                            <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photoSname}&photoType=${cart.photoType}" alt="cart1" style="margin:5px 0"/>
 	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">${cart.pname}</a>
 	                                            </div>
 	                                        </div>        
