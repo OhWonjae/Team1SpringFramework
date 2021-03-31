@@ -61,7 +61,11 @@
                                 </div>
                             </div>
                             <div class="tab">
-                                <div class="event"><button style="margin-left: 10px;" type="button" onclick="location.href='<%=application.getContextPath()%>/main'" class="btn btn-outline-secondary btn-sm">로그아웃</button></div>
+                                <div class="event">
+                                <form method="post" action="logout">
+                                <button style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm">로그아웃</button>
+                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,17 +1,16 @@
 package com.mycompany.webapp.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mycompany.webapp.dto.OrderProduct;
+import com.mycompany.webapp.dto.Orders;
+import com.mycompany.webapp.service.OrdersService;
 
 
 
@@ -19,22 +18,29 @@ import com.mycompany.webapp.dto.OrderProduct;
 @RequestMapping("/order")
 public class PayController {
 	
+	@Autowired
+	OrdersService ordersService;
+	
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(
-		@RequestParam() String receiver_name,
-		@RequestParam() String receiver_hp, 
-		@RequestParam() String receiver_delivery_request,
-		@RequestParam() String zip,
-		@RequestParam() String addr1,
-		@RequestParam() String addr2) {
+	public String putcart(Orders orders) {
 		
-		System.out.println("받는사람 이름 : " + receiver_name);
-		System.out.println("받는사람 휴대전화 : " + receiver_hp);
-		System.out.println("배송 우편번호 : " + zip);
-		System.out.println("배송 주소 : " + addr1);
-		System.out.println("배송 상세주소 : " + addr2);
-		System.out.println("배송시 요청사항 : " + receiver_delivery_request);
+		System.out.println("받는사람 이름 : " + orders.getOname());
+		System.out.println("받는사람 번호 : " + orders.getOphone());
+		System.out.println("주소 : " + orders.getAddress());
+		System.out.println("주소상세 : " + orders.getAddetail());
+		System.out.println("요청사항 : " + orders.getOrequest());
+		System.out.println("결제방법 : " + orders.getPayment());
+		System.out.println(orders.getTprice());
+		System.out.println(orders.getZip());
+		System.out.println(orders.getUno());
+		System.out.println(orders.getOno());
+		System.out.println(orders.getOdate());
+		orders.setOdate(new Date());
+		orders.setTprice(1000000);
+		
+		ordersService.createOrders(orders);
+		
 		return "/order/payFinish";
 	}
 	
@@ -53,6 +59,16 @@ public class PayController {
 	@GetMapping("/history")
 	public String history() {
 		return "/order/history";
+	}
+	
+	@GetMapping("/orders")
+	public String orders(int ono,Model model) {
+		int delivery =3000;
+		Orders orders=ordersService.ReadOrders(ono);
+		int sum = delivery + orders.getTprice();
+		orders.setOprice(sum);
+		model.addAttribute("orders", orders);
+		return "/order/orders";
 	}
 	
 	

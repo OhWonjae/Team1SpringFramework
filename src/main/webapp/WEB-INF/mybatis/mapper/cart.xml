@@ -40,6 +40,7 @@
 					 c.p_id = p.p_id and
 					 p.p_id = photos.p_id and
 					 photos.photo_role = 'main'
+
 	</select>
 
 	<!-- 해당 상품만 장바구니에서 삭제 -->

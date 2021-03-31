@@ -1,6 +1,14 @@
 package com.mycompany.webapp.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +20,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.service.PhotosService;
 import com.mycompany.webapp.service.ProductService;
 
 @Controller
@@ -20,23 +31,147 @@ import com.mycompany.webapp.service.ProductService;
 public class ProductController {
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
+	// ProductService 전역변수 의존성 주입
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/rank")
-	public String rank() {
-		List<Product> list = productService.getRankProducts("점퍼");
-		for(Product p:list) {
-			logger.info(""+p.getPid()); 
-			logger.info(""+p.getPname());
-			logger.info(""+p.getPprice());
-		}
-		return "/product/rank";
+	@Autowired
+	private PhotosService photosService;
+	
+	// 테스트용 컨트롤러 - 상품 무작위 생성
+	@GetMapping("/photo")
+	public String photo(Model model) {
+//		Photo p = new Photo();
+//		p.setpId(110);
+//		p.setPhotoRole("main");
+//		
+//		String url = photosService.GetProductPhotoUrl(p);
+//		logger.info(url);
+
+	    return "/product/new";
 	}
 	
+//	@GetMapping("/create")
+//	public String create(Model model) {
+//		
+//		for(int i=1; i< 100; i++) {
+//			String name = "dog";
+//			name+=""+(i%30+1);
+//			
+//			
+//			Photo p = new Photo(i,i,name,name,"JPG","main");
+//			System.out.println(i);			
+//			photosService.createPhoto(p);
+//		}
+//
+//	    return "/product/new";
+//	}
 	
+	
+	
+	// 테스트용 컨트롤러 - 상품 무작위 생성
+//	@GetMapping("/create")
+//	public String create(Model model) {
+//		
+//		Random random = new Random();
+//		for(int i=2; i< 100; i++) {
+//			int r = random.nextInt(5);
+//			String category = "티셔츠";
+//			switch(r) {
+//			case 0: category = "티셔츠";
+//			break;
+//			case 1: category = "후드티";
+//			break;
+//			case 2: category = "패딩/코트";
+//			break;
+//			case 3: category = "원피스";
+//			break;
+//			case 4: category = "올인원";
+//			break;
+//			}
+//			Date now = new Date();
+//			Calendar cal = Calendar.getInstance();
+//			cal.setTime(now);
+//			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
+//			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//			String randomDate = format.format(cal.getTime());
+//			
+//			Product p = new Product(""+i,i,i,random.nextInt(100),category, cal.getTime(),""+i);
+//			System.out.println(cal.getTime());
+//			productService.createProduct(p);
+//		}
+//
+//	    return "/product/new";
+//	}
+	
+	
+	
+	
+	  
+	
+	
+	// 신규페이지 이동
+	@GetMapping("/new")
+	public String newMethod(String pageNo,Model model, HttpSession session) {
+		 int intPageNo = 1;
+	      //세션에서 pager를 찾고, 있으면 pageNo설정
+	      if(pageNo == null) {   //클라이언트에서 pageNo가 넘어오지 않았을 경우
+	         Pager pager = (Pager)session.getAttribute("pager");
+	         if(pager!=null) {
+	            intPageNo = pager.getPageNo();
+	         }
+	      }else { //클라이언트에서 pageNo가 넘어왔을 때
+	         intPageNo = Integer.parseInt(pageNo);
+	      }
+	      
+	      int totalRows = productService.getProductsCount();
+	      Pager pager = new Pager(20,5,totalRows,intPageNo);
+	      session.setAttribute("pager", pager);
+	      List<Product> list = productService.getProductsByPager(pager);
+	      model.addAttribute("list", list);
+	      model.addAttribute("pager",pager);
+		
+	    return "/product/new";
+	}
+	
+	// 랭크페이지(카테고리 All) 이동
+	@GetMapping("/rank")
+	public String Rank(Model model, HttpSession session) {
+
+		  List<Product> list = productService.getRankProducts("전체");
+		  model.addAttribute("list", list);
+		return "/product/rank";
+	}
+	// 랭크페이지(카테고리) 이동
+	@GetMapping("/rankcategory")
+	public String RankCategory(String category,Model model, HttpSession session) {
+
+		  List<Product> list = productService.getRankProducts(category);
+		  model.addAttribute("list", list);
+		return "/product/rank";
+	}	
+	// 추천페이지 이동
 	@GetMapping("/rec")
-	public String rec() {
+	public String rec(String pageNo,Model model, HttpSession session) {
+	 int intPageNo = 1;
+	  //세션에서 pager를 찾고, 있으면 pageNo설정
+	  if(pageNo == null) {   //클라이언트에서 pageNo가 넘어오지 않았을 경우
+	     Pager pager = (Pager)session.getAttribute("pager");
+	     if(pager!=null) {
+	        intPageNo = pager.getPageNo();
+	     }
+	  }else { //클라이언트에서 pageNo가 넘어왔을 때
+	     intPageNo = Integer.parseInt(pageNo);
+	  }
+	  
+	  int totalRows = productService.getRecommandProductCount();
+	  Pager pager = new Pager(20,5,totalRows,intPageNo);
+	  session.setAttribute("pager", pager);
+	  List<Product> list = productService.getRecommandProductsByPager(pager);
+	
+	  model.addAttribute("list", list);
+	  model.addAttribute("pager",pager);
 		return "/product/rec";
 	}
 	
@@ -59,18 +194,7 @@ public class ProductController {
 		return "/product/search";
 	}
 	
-	@GetMapping("/new")
-	public String newMethod() {
-		List<Product> list = productService.getProducts();
-		System.out.println(list.get(0));
-		for(Product p:list) {
-			logger.info(""+p.getPid());
-			logger.info(""+p.getPname());
-			logger.info(""+p.getPprice());
-		}
-		
-	    return "/product/new";
-	}
+
 	
 	//제품 상세페이지 이동
 	@GetMapping("/detail")

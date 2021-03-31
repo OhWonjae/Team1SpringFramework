@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Product;
 
 @Mapper
@@ -14,17 +15,17 @@ public interface ProductDao {
 
 	Product selectBypid(int pid);
 
-	List<Product> selectAll();
+	
 
-	List<Product> selectRecommandAll();
+	
 
-	List<Product> selectBestReviewAll();
+	
 
 	List<Product> selectRankAll();
 
-	List<Product> selectRankCategory(String category);
+	
 
-	List<Product> selectCategory(String category);
+	
 
 	int update(Product product);
 
@@ -32,9 +33,28 @@ public interface ProductDao {
 
 	int deleteBypid(int pid);
 
+	
+
+	List<Product> selectAllByPager(Pager pager);
+	int count();
+	
+	List<Product> selectRecommandAllByPager(Pager pager);
+	int recommandcount();
+	
+	List<Product> selectBestReviewAll();
+	int bestReviewcount();
+
+	List<Product> selectRankCategory(String category);
+	int rankcategorycount(String category);
+	
 	List<Product> selectSearchAll(String searchword);
+	int searchcount(String searchkeyword);
+	
+	List<Product> selectCategory(String category);
+	int categorycount(String category);
 
 	List<Product> selectSearchCategory(@Param("searchword")String searchword, @Param("category")String category);
+	int searchcategorycount(@Param("searchword")String searchword, @Param("category")String category);
 	
 
 }

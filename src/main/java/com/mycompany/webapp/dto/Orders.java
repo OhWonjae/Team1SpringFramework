@@ -5,16 +5,23 @@ import java.util.Date;
 public class Orders {
 	private int ono;
 	private Date odate;
-	private String orequset;
+	private String orequest;
 	private int tprice;
 	private String payment;
-	private String city;
-	private String county;
-	private String district;
+	private String address;
 	private String addetail;
 	private int zip;
 	private int uno;
+	private String oname;
+	private int ophone;
+	private int oprice;
 
+	public int getOprice() {
+		return oprice;
+	}
+	public void setOprice(int oprice) {
+		this.oprice = oprice;
+	}
 	public int getOno() {
 		return ono;
 	}
@@ -27,11 +34,11 @@ public class Orders {
 	public void setOdate(Date odate) {
 		this.odate = odate;
 	}
-	public String getOrequset() {
-		return orequset;
+	public String getOrequest() {
+		return orequest;
 	}
-	public void setOrequset(String orequset) {
-		this.orequset = orequset;
+	public void setOrequest(String orequset) {
+		this.orequest = orequset;
 	}
 	public int getTprice() {
 		return tprice;
@@ -45,23 +52,11 @@ public class Orders {
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
-	public String getCity() {
-		return city;
+	public String getAddress() {
+		return address;
 	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getCounty() {
-		return county;
-	}
-	public void setCounty(String county) {
-		this.county = county;
-	}
-	public String getDistrict() {
-		return district;
-	}
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getAddetail() {
 		return addetail;
@@ -81,4 +76,17 @@ public class Orders {
 	public void setUno(int uno) {
 		this.uno = uno;
 	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
+	}
+	public int getOphone() {
+		return ophone;
+	}
+	public void setOphone(int ophone) {
+		this.ophone = ophone;
+	}
+
 }

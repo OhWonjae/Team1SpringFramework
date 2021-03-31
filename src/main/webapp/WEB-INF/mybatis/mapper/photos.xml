@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.PhotosDao">
+	
+	
+		<resultMap type="photo" id="photos">
+		<result property="photoId" column="photo_id"/>
+		<result property="pId" column="p_id"/>
+		<result property="photoOname" column="photo_oname"/>
+		<result property="photoSname" column="photo_sname"/>
+		<result property="photoType" column="photo_type"/>
+		<result property="photoRole" column="photo_role"/>
+		</resultMap>
+	
+	<select id="selectname" parameterType="photo" resultType="photo" resultMap="photos">
+   	select p_id, photo_oname, photo_sname, photo_type, photo_role
+   	from photos
+   	where p_id=#{pId} and photo_role=#{photoRole}
+   	</select>
+
+
 
 	<insert id="insert" parameterType="photo">
-		<selectKey keyProperty="photo_id" resultType="int"
-			order="BEFORE">
-			select seq_boards_photo_id.nextval from dual
-		</selectKey>
-		insert into order_products
+		insert into photos
 		(photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
 		values
 		(#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})

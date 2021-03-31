@@ -3,25 +3,42 @@
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
 
-	<resultMap type="product" id="products">
-		<result property="pid" column="p_id"/>
+	<resultMap type="product" id="productMap">
+		<id property="pid" column="p_id"/>
 		<result property="pname" column="p_name"/>
 		<result property="pprice" column="p_price"/>
 		<result property="pstock" column="p_stock"/>
 		<result property="salescount" column="salescount"/>
 		<result property="categoryname" column="category_name"/>
 		<result property="puploaddate" column="p_upload_date"/>
-		<result property="pdescription" column="p_description"/>
+		<result property="pdescription" column="p_description"/>	
+		 <collection property="photolist" resultMap="photoMap"/>
+			
 	</resultMap>
+	
+	
+	<resultMap type="photo" id="photoMap">
+        <result property="photoId" column="photo_id"/>
+		<result property="pId" column="p_id"/>
+		<result property="photoOname" column="photo_oname"/>
+		<result property="photoSname" column="photo_sname"/>
+		<result property="photoType" column="photo_type"/>
+		<result property="photoRole" column="photo_role"/>
+    </resultMap>
+
 
  
    <insert id="insert" parameterType="product">
+   <selectKey keyProperty="pid" resultType="int" order="BEFORE">
+   	select seq_product_pno.nextval from dual
+   
+   </selectKey>
    	insert into products
    	(p_id, p_name, p_price, p_stock, salescount, category_name,
    	p_upload_date, p_description)
    	values
    	(#{pid}, #{pname}, #{pprice}, #{pstock}, #{salescount}, #{categoryname},
-   	#{p_uploaddate}, #{pdescription})
+   	#{puploaddate}, #{pdescription})
    </insert>
    
  
@@ -31,59 +48,133 @@
    	from products
    	where p_id=#{pid}
    </select>
+    
+   <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
-   <select id="selectAll" resultType="product" resultMap="products">
+    select rnum, p_name,p_price, photo_sname, photo_type
+      from (
+          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          from (
+               select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+              from products p Join photos ph
+              on p.p_id = ph.p_id and
+              ph.photo_role='main'
+              order by p.p_upload_date desc
+          )
+          where rownum &lt;= #{endRowNo}
+      )
+      where rnum &gt;= #{startRowNo}  
+   </select>
+   
+   <select id="count" resultType="int">
+   	select count(*) from products
+   </select>
+   
+    <select id="selectRecommandAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
+   
+    select rnum, p_name,p_price, photo_sname, photo_type
+      from (
+          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          from (
+               select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+              from products p Join photos ph
+              on p.p_id = ph.p_id and
+              ph.photo_role='main'
+          )
+          where rownum &lt;= #{endRowNo}
+      )
+      where rnum &gt;= #{startRowNo}  
+   </select>
+   
+   <select id="recommandcount" resultType="int">
+   	select count(*) from products
+   </select>
+   
+   
+   <select id="selectBestReviewAll" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
+   	order by salescount desc
+   </select>
+   
+   <select id="selectRankAll" resultType="product" resultMap="productMap">
+   select p_name, p_price, photo_sname, photo_type
+   from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+    from products p Join photos ph
+    on p.p_id = ph.p_id and
+    ph.photo_role='main'
+    order by salescount desc
+   )
+   where ROWNUM&lt;31
+   
+   
+   </select>
+   
+   <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="productMap">
+ 	select p_name, p_price, photo_sname, photo_type
+   from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+    from products p Join photos ph
+    on p.p_id = ph.p_id and
+    ph.photo_role='main' and
+    category_name=#{categoryname}
+    order by salescount desc
+   )
+   where ROWNUM&lt;31
+   </select>
+
+	<select id="rankcategorycount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	where category_name=#{categoryname}
+   	</select>   
+   
+   
+   <select id="selectCategory" parameterType="string" resultType="product" resultMap="productMap">
+   	select p_id, p_name, p_price
+   	from products
+   	where category_name=#{categoryname}  
    	order by p_upload_date desc
    </select>
    
-   
-   
-    <select id="selectRecommandAll" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
-   	from products
-   </select>
-   
-   <select id="selectBestReviewAll" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
-   	from products
-   	order by salescount desc
-   </select>
-   
-   <select id="selectRankAll" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
-   	from products
-   	order by salescount desc
-   </select>
-   
-   <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
+   <select id="categorycount" parameterType="string" resultType="int">
+   	select count(*)
    	from products
    	where category_name=#{categoryname}
-   	order by salescount desc
-   </select>
+   	</select> 
    
-   <select id="selectCategory" parameterType="string" resultType="product" resultMap="products">
-   	select p_id, p_name, p_price
-   	from products
-   	where category_name=#{categoryname}
-   	order by p_upload_date desc
-   </select>
-   
-   <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="products">
+   <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
    	where p_name like '%'||#{searchword}||'%'
    	order by p_upload_date desc
    </select>
    
-    <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="products">
+   <select id="searchcount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	where p_name like '%'||#{searchword}||'%'
+   	order by p_upload_date desc
+   	</select> 
+   
+    <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
    	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
    	order by p_upload_date desc
    	</select>
+   	
+   	<select id="searchcategorycount" parameterType="string" resultType="int">
+   	select count(*)
+   	from products
+   	from products
+   	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
+   	order by p_upload_date desc
+   	</select> 
+   	
+   	
+   	
+   	
+   	
    	
    	<update id="update" parameterType="product">
    	update products set p_id=#{pid}, p_name=#{pname}, p_price=#{pprice}, p_stock=#{pstock}, salescount=#{salescount}, category_name=#{categoryname},
