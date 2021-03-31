@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Pager;
-import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.service.ProductService;
 

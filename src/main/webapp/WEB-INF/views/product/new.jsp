@@ -152,26 +152,24 @@
        
    </style>
 </head>
-<script>
-$.post("http://domain/test/", { fruit1: "apple", fruit2: "banana" } );
-</script>
+
 
     <div class="header2">
         <div class="inner" style="font-size: 0.85em; padding-top: 5px;">홈 > 신규</div>
    </div>
     <div class="inner">
          <div class="jss486" style="padding: 3px;">
-            <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
+            <span style="padding: 10px;"><strong>{listcount}</strong>개의 상품</span>
          </div>
             <div class="center">  
             	<!--신규 상품 리스트 출력 -->
-            	<c:forEach var="product" items="${list}">
+            	<c:forEach var="product" items="{list}">
 				 <div class="flex-items"> 
 				 	<figure>
-      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photoSname}&photoType=${product.photolist[0].photoType}" width="200px">
-      					<figcaption>${product.pname}</figcaption>
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+      					<figcaption>${product.p_name}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
-    					<figcaption>${product.pprice}</figcaption>
+    					<figcaption>${product.p_price}</figcaption>
     					<figcaption>신상품</figcaption>
     				</figure>
                 </div>

@@ -76,7 +76,7 @@
    </select>
    
    
-   <select id="selectBestReviewAll" resultType="product" resultMap="productMap">
+   <select id="selectBestReviewAll" resultType="product">
    	select p_id, p_name, p_price
    	from products
    	order by p_salescount desc
@@ -114,7 +114,7 @@
    	</select>   
    
    
-   <select id="selectCategory" parameterType="string" resultType="product" resultMap="productMap">
+   <select id="selectCategory" parameterType="string" resultType="product">
    	select p_id, p_name, p_price
    	from products
    	where p_category_name=#{p_category_name}  
@@ -127,7 +127,7 @@
    	where p_category_name=#{p_category_name}
    	</select> 
    
-   <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="productMap">
+   <select id="selectSearchAll" parameterType="string" resultType="product">
    	select p_id, p_name, p_price
    	from products
    	where p_name like '%'||#{searchword}||'%'
@@ -141,7 +141,7 @@
    	order by p_upload_date desc
    	</select> 
    
-    <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="productMap">
+    <select id="selectSearchCategory" parameterType="string" resultType="product">
    	select p_id, p_name, p_price
    	from products
    	where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
@@ -164,7 +164,7 @@
    	<update id="update" parameterType="product">
    	update products set p_id=#{p_id}, p_name=#{p_name}, p_price=#{p_price}, p_stock=#{p_stock}, p_salescount=#{p_salescount}, p_category_name=#{p_category_name},
    	p_upload_date=#{p_upload_date}, p_description=#{p_description}
-   	where p_id=#{pid}
+   	where p_id=#{p_id}
    	</update>
    	
    	<update id="updatep_salescountAndStock" parameterType="int">

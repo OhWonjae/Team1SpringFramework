@@ -12,10 +12,18 @@ public class Product {
    private String p_categoryname;
    private Date p_upload_date;
    private String p_description;
-   
-   
    private List<Photo> photolist;
-   public int getP_id() {
+   
+   
+   
+   
+   public List<Photo> getPhotolist() {
+	return photolist;
+   }
+	public void setPhotolist(List<Photo> photolist) {
+		this.photolist = photolist;
+	}
+	public int getP_id() {
       return p_id;
    }
    public void setP_id(int p_id) {
