@@ -23,7 +23,7 @@ public class CartController {
 	@GetMapping("/cart")
 	public String cart(Model model) {
 		
-		List<CartItem> list = cartsService.getCartList();
+		List<CartItem> list = cartsService.getCartList(20);
 		model.addAttribute("list", list);
 		
 		return "/order/cart";
@@ -42,20 +42,20 @@ public class CartController {
 		return "redirect:/order/cart";
 	}
 	
-	/*@GetMapping("/cart/decrease")
+	@GetMapping("/cart/decrease")
 	public String decrease(int uid, int pid) {
-		List<CartItem> list = cartsService.getCartList();
+		List<CartItem> list = cartsService.getCartList(uid);
 		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getUid() == uid
-					&& list.get(i).getPid() == pid) {
-				if(Integer.parseInt(list.get(i).getamount()) > 1) {
+			if(list.get(i).getUser_id() == uid
+					&& list.get(i).getP_id() == pid) {
+				if(list.get(i).getAmount() > 1) {
 					cartsService.minusAmount(uid, pid);	
 					break;
 				}
 			}
 		}
 		return "redirect:/order/cart";
-	}*/
+	}
 	
 	@GetMapping("/cart/delete")
 	public String delete(int uid, int pid) {
