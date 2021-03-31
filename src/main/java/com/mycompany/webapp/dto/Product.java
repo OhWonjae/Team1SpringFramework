@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
    private int p_id;
@@ -12,6 +13,8 @@ public class Product {
    private Date p_upload_date;
    private String p_description;
    
+   
+   private List<Photo> photolist;
    public int getP_id() {
       return p_id;
    }

@@ -3,27 +3,12 @@
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
 
-	<resultMap type="product" id="productMap">
-		<id property="pid" column="p_id"/>
-		<result property="pname" column="p_name"/>
-		<result property="pprice" column="p_price"/>
-		<result property="pstock" column="p_stock"/>
-		<result property="salescount" column="salescount"/>
-		<result property="categoryname" column="category_name"/>
-		<result property="puploaddate" column="p_upload_date"/>
-		<result property="pdescription" column="p_description"/>	
-		 <collection property="photolist" resultMap="photoMap"/>
-			
+	<resultMap type="product" id="productMap">	
+	<collection property="photolist" resultMap="photoMap"/>		
 	</resultMap>
 	
 	
 	<resultMap type="photo" id="photoMap">
-        <result property="photoId" column="photo_id"/>
-		<result property="pId" column="p_id"/>
-		<result property="photoOname" column="photo_oname"/>
-		<result property="photoSname" column="photo_sname"/>
-		<result property="photoType" column="photo_type"/>
-		<result property="photoRole" column="photo_role"/>
     </resultMap>
 
 
@@ -34,19 +19,19 @@
    
    </selectKey>
    	insert into products
-   	(p_id, p_name, p_price, p_stock, salescount, category_name,
+   	(p_id, p_name, p_price, p_stock, p_salescount, p_category_name,
    	p_upload_date, p_description)
    	values
-   	(#{pid}, #{pname}, #{pprice}, #{pstock}, #{salescount}, #{categoryname},
-   	#{puploaddate}, #{pdescription})
+   	(#{p_id}, #{p_name}, #{p_price}, #{p_stock}, #{p_salescount}, #{p_category_name},
+   	#{p_upload_date}, #{p_description})
    </insert>
    
  
 
    <select id="selectBypid" parameterType="int" resultType="product">
-   	select p_id, p_name, p_price, p_stock, category_name, p_description
+   	select p_id, p_name, p_price, p_stock, p_category_name, p_description
    	from products
-   	where p_id=#{pid}
+   	where p_id=#{p_id}
    </select>
     
    <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
@@ -94,7 +79,7 @@
    <select id="selectBestReviewAll" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
-   	order by salescount desc
+   	order by p_salescount desc
    </select>
    
    <select id="selectRankAll" resultType="product" resultMap="productMap">
@@ -103,7 +88,7 @@
     from products p Join photos ph
     on p.p_id = ph.p_id and
     ph.photo_role='main'
-    order by salescount desc
+    order by p_salescount desc
    )
    where ROWNUM&lt;31
    
@@ -116,8 +101,8 @@
     from products p Join photos ph
     on p.p_id = ph.p_id and
     ph.photo_role='main' and
-    category_name=#{categoryname}
-    order by salescount desc
+    p_category_name=#{p_category_name}
+    order by p_salescount desc
    )
    where ROWNUM&lt;31
    </select>
@@ -125,21 +110,21 @@
 	<select id="rankcategorycount" parameterType="string" resultType="int">
    	select count(*)
    	from products
-   	where category_name=#{categoryname}
+   	where p_category_name=#{p_category_name}
    	</select>   
    
    
    <select id="selectCategory" parameterType="string" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
-   	where category_name=#{categoryname}  
+   	where p_category_name=#{p_category_name}  
    	order by p_upload_date desc
    </select>
    
    <select id="categorycount" parameterType="string" resultType="int">
    	select count(*)
    	from products
-   	where category_name=#{categoryname}
+   	where p_category_name=#{p_category_name}
    	</select> 
    
    <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="productMap">
@@ -159,7 +144,7 @@
     <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="productMap">
    	select p_id, p_name, p_price
    	from products
-   	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
+   	where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
    	order by p_upload_date desc
    	</select>
    	
@@ -167,7 +152,7 @@
    	select count(*)
    	from products
    	from products
-   	where p_name like '%'||#{searchword}||'%' and category_name=#{category}
+   	where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
    	order by p_upload_date desc
    	</select> 
    	
@@ -177,19 +162,19 @@
    	
    	
    	<update id="update" parameterType="product">
-   	update products set p_id=#{pid}, p_name=#{pname}, p_price=#{pprice}, p_stock=#{pstock}, salescount=#{salescount}, category_name=#{categoryname},
-   	p_upload_date=#{puploaddate}, p_description=#{pdescription}
+   	update products set p_id=#{p_id}, p_name=#{p_name}, p_price=#{p_price}, p_stock=#{p_stock}, p_salescount=#{p_salescount}, p_category_name=#{p_category_name},
+   	p_upload_date=#{p_upload_date}, p_description=#{p_description}
    	where p_id=#{pid}
    	</update>
    	
-   	<update id="updateSalescountAndStock" parameterType="int">
-   	update products set salescount=salescount+1, p_stock=p_stock-1
-   	where p_id=#{pid}
+   	<update id="updatep_salescountAndStock" parameterType="int">
+   	update products set p_salescount=p_salescount+1, p_stock=p_stock-1
+   	where p_id=#{p_id}
    	</update>
    
     <delete id="deleteBypid" parameterType="int">
 	   	delete from products
-	   	where p_id=#{pid}
+	   	where p_id=#{p_id}
    </delete>
    
    
