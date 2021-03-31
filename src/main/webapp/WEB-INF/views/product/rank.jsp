@@ -171,7 +171,7 @@
 			</div>		
 
 			<div class="jss486" style="padding: 3px;">
-			    <span style="padding: 10px;"><strong>30</strong>개의 상품</span>
+			    <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
 			</div>
 	
 			 <div class="center">  

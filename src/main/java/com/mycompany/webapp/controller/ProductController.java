@@ -129,6 +129,7 @@ public class ProductController {
 	      Pager pager = new Pager(20,5,totalRows,intPageNo);
 	      session.setAttribute("pager", pager);
 	      List<Product> list = productService.getProductsByPager(pager);
+	      model.addAttribute("listcount",totalRows);
 	      model.addAttribute("list", list);
 	      model.addAttribute("pager",pager);
 		
@@ -140,14 +141,16 @@ public class ProductController {
 	public String Rank(Model model, HttpSession session) {
 
 		  List<Product> list = productService.getRankProducts("전체");
+		  model.addAttribute("listcount",30);
 		  model.addAttribute("list", list);
 		return "/product/rank";
 	}
 	// 랭크페이지(카테고리) 이동
 	@GetMapping("/rankcategory")
 	public String RankCategory(String category,Model model, HttpSession session) {
-
+		int totalRows = productService.RankProductCount(category);
 		  List<Product> list = productService.getRankProducts(category);
+		  model.addAttribute("listcount",totalRows );
 		  model.addAttribute("list", list);
 		return "/product/rank";
 	}	
@@ -169,7 +172,7 @@ public class ProductController {
 	  Pager pager = new Pager(20,5,totalRows,intPageNo);
 	  session.setAttribute("pager", pager);
 	  List<Product> list = productService.getRecommandProductsByPager(pager);
-	
+	  model.addAttribute("listcount",totalRows);
 	  model.addAttribute("list", list);
 	  model.addAttribute("pager",pager);
 		return "/product/rec";
