@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
@@ -49,6 +49,7 @@
                                 </div>
                                 
                                 <div class="div2" style="padding-bottom: 200px;">
+                                <c:forEach var="qna" items="${qna}">
                                     <div class="faq-content">
                                         <button class="question" id="que-1">
                                             <div>
@@ -56,17 +57,19 @@
                                                 <span class="wait">답변 대기</span>
                                             </div>
                                             <div>
-                                                <span class="orderDate">2021-03-12</span>
+                                                <span class="orderDate"><fmt:formatDate value="${qna.qa_date}"
+							pattern="yyyy-MM-dd" /></span>
                                                 <span id="que-1-toggle">∨</span>
                                             </div>
                                         </button>
-                                        <div class="answer" id="ans-1">상품에 관해서 문의합니다.
+                                        <div class="answer" id="ans-1">${qna.qa_content}
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
                                     </div>
+                                    </c:forEach>
     
                                     <div class="faq-content">
                                         <button class="question" id="que-2">
@@ -81,7 +84,7 @@
                                         </button>
                                         <div class="answer" id="ans-2">배송에 관해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>
@@ -101,7 +104,7 @@
                                         </button>
                                         <div class="answer" id="ans-3">주문/결제 방법에 대해서 문의합니다.
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editAskWirte" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
                                             </div>
                                         </div>

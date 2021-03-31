@@ -51,7 +51,7 @@
                                                     </div>
                                                 </div>
                                                 <!--1:1문의 입력 폼-->
-                              								  <form action="insertAskWirte" method="post">        
+                              								  <form action="insertAskWrite" method="post">        
 	                                                <!-- 1:1문의 입력 컨테이너 -->
 	                                                <div class ="writeBox" style="display:flex; flex-direction: column; margin-bottom: 40px; height: 100%;">
                                                     
@@ -60,25 +60,17 @@
                                                            
                                                             <div class="form-group">
                                                             <label>문의 유형</label>
-                                                            <select class="form-control" id="qnaList" name="qnaList">
-                                                                <option value="product">상품 문의</option>
-                                                                <option value="delivery">배송 문의</option>
-                                                                <option value="order/pay">주문/결제 문의</option>
+                                                            <select class="form-control" id="qa_category" name="qa_category">
+                                                                <option value="상품 문의">상품 문의</option>
+                                                                <option value="배송 문의">배송 문의</option>
+                                                                <option value="주문/결제 문의">주문/결제 문의</option>
                                                               </select>
                                                               </div>
                                                         </div>
                                                         <div style="display: flex; flex-direction: column; padding-top: 20px;">
                                                             <label>문의 내용</label>
-                                                            <textarea class="form-control" id="message-text" name="qcontext" style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
+                                                            <textarea class="form-control" id="qa_content" name="qa_content" style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
                                                         </div>
-                                                        <div style="padding-top:20px">
-                                                            <label>사진 첨부</label>
-                                                            <button type="button" class="form-control" id="recipient-pic" name="qphoto" style="border:1px black dashed; height: 70px;">
-                                                                <i class="fas fa-camera"></i>
-                                                                첨부하기
-                                                            </button>
-                                                        </div>
-                        
                                                         <div style="padding-top: 20px;">
                                                             <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
@@ -87,10 +79,8 @@
                                                         </div>
                                                         </div>
                                                   </form>
-                                         </div>
-                                         
+                                         </div>       
                             </div>
-                                            
                       </div>
                   </div>
                 </div>
