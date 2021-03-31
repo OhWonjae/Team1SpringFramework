@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
 
-	<resultMap type="product" id="productMap">	
+	<resultMap type="product" id="productMap"> 	
 	<collection property="photolist" resultMap="photoMap"/>		
 	</resultMap>
 	

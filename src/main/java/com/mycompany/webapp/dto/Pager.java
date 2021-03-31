@@ -37,7 +37,7 @@ public class Pager {
 		startRowNo = (pageNo - 1) * rowsPerPage + 1;
 		startRowIndex = startRowNo - 1;
 		endRowNo = pageNo * rowsPerPage;
-		endRowIndex = endRowNo - 1; 
+		endRowIndex = endRowNo - 1;
 	}
 
 	public int getTotalRows() {
@@ -142,6 +142,10 @@ public class Pager {
 
 	public void setEndRowIndex(int endRowIndex) {
 		this.endRowIndex = endRowIndex;
+	}
+	
+	public int selectByPage() {//내가 추가 한코드
+		return endRowIndex;
 	}
 }
 
