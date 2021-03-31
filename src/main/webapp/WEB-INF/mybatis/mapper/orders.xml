@@ -17,47 +17,35 @@
 							order_name,
 							order_phone
 		)
-		values(	#{ono},
+		values(	#{order_id},
 				sysdate,
-				#{orequest},
+				#{order_request},
 				5100,
 				#{payment},
-				#{address},
-				#{addetail},
+				#{delivery_address},
+				#{delivery_address_detail},
 				#{zip},
 				1,
-				#{oname},
-				#{ophone}
+				#{order_name},
+				#{order_phone}
 	)
 	</insert>
 	<delete id="ordersDelete" parameterType="int">
 		delete
 		From orders
-		where order_id=#{ono}
+		where order_id=#{order_id}
 	</delete>
 	<select id="orderSelectByAll" parameterType="int" resultType="orders">
 		select *
 		from orders
 	</select>
 	
-	 <resultMap type="orders" id="orders">
-      <result property="ono" column="order_id"/>
-      <result property="odate" column="orders_date"/>
-      <result property="tprice" column="total_price"/>
-      <result property="payment" column="payment"/>
-      <result property="address" column="delivery_address"/>
-      <result property="addetail" column="delivery_address_detail"/>
-      <result property="orequest" column="order_request"/>
-      <result property="zip" column="zip"/>
-      <result property="uno" column="user_id"/>
-      <result property="oname" column="order_name"/>
-      <result property="ophone" column="order_phone"/>
-   </resultMap>
+
 	
 	
 	
 	
-	<select id="orderSelectByOne" parameterType="int" resultType="orders" resultMap="orders">
+	<select id="orderSelectByOne" parameterType="int" resultType="orders">
 		select 	order_id,
 				order_name,
 				order_phone,
@@ -68,7 +56,7 @@
 				payment,
 				total_price
 		from orders
-		where order_id = #{ono}
+		where order_id = #{order_id}
 				
 	</select>
 </mapper>
