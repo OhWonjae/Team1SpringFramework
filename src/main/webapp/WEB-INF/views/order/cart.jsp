@@ -69,16 +69,16 @@
 	                                    <div class="row cart-content1-box">
 	                                        <div class="cart-info-box col-sm-5">
 	                                            <div class="cart-info">
-	                                            <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photoSname}&photoType=${cart.photoType}" alt="cart1" style="margin:5px 0"/>
-	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">${cart.pname}</a>
+	                                            <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photo_sname}&photoType=${cart.photo_type}" alt="cart1" style="margin:5px 0"/>
+	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">${cart.p_name}</a>
 	                                            </div>
 	                                        </div>        
 	                                        <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
 	                                            <div class="count-button">
 	                                                <div class="btn-group" role="group" aria-label="Basic example">
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?uid=20&pid=${cart.pid}" class="btn btn-light btn-sm">-</a>
-	                                                    <span id="numberUpDown" class="count-text">${cart.camount}</span>
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?uid=20&pid=${cart.pid}" class="btn btn-light btn-sm">+</a>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?uid=20&pid=${cart.p_id}" class="btn btn-light btn-sm">-</a>
+	                                                    <span id="numberUpDown" class="count-text">${cart.amount}</span>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?uid=20&pid=${cart.p_id}" class="btn btn-light btn-sm">+</a>
 	                                                  </div>
 	                                            </div>
 	                                        </div>
@@ -87,7 +87,7 @@
 	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef;">
 	                                            <div class="cart-price">
 	                                                <div style="font-weight: bold;">
-	                                                    ${cart.pprice}
+	                                                    ${cart.p_price}
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -97,7 +97,7 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
-	                               <c:set var="sum" value="${sum + (cart.pprice * cart.camount)}" />      
+	                               <c:set var="sum" value="${sum + (cart.p_price * cart.c_amount)}" />      
 	                              </c:forEach> 
                                
                                    
