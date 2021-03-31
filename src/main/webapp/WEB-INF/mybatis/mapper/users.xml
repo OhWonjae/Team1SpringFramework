@@ -6,7 +6,7 @@
 		insert into users
 		(user_id, user_name, user_password,
 		user_phone, dog_size, enabled,
-		authority)
+		authority) 
 		values
 		(#{user_id,jdbcType=VARCHAR},#{user_name},#{user_password},#{user_phone},#{dog_size},1,'ROLE_USER')
 	</insert>  
