@@ -61,14 +61,21 @@ public class AuthController {
       return "/user/my";
    }
 
+   
    @PostMapping("/join")
    public String join(User user) {
+	  logger.info(user.getUser_name());
+      logger.info(user.getUser_id());
+      logger.info(user.getUser_password());
+      logger.info(user.getUser_phone());
+      logger.info(user.getDog_size());
+      logger.info(user.getUser_phone());
+
 
       BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
       user.setUser_password(bpe.encode(user.getUser_password()));
-		/*
-		 * usersService.join(user);
-		 */      
+	  usersService.join(user);
+
       return "redirect:/user/login";
    }
 
@@ -79,7 +86,7 @@ public class AuthController {
       if (result.equals("success")) {
          logger.info(result);
          session.removeAttribute("loginError");
-         session.setAttribute("loginUser_id", user.getUser_name());
+         session.setAttribute("loginUser_id", user.getUser_id());
          return "redirect:/main";
       } else {
          session.setAttribute("loginError", result);
