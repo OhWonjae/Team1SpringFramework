@@ -22,7 +22,7 @@
 	</resultMap> -->
 
 
-	<select id="selectByUid" parameterType="string" resultMap="userResultMap"> 
+	<select id="selectByUid" parameterType="string"> 
 		select user_id, user_name, user_password, user_phone, dog_size, 
 		enabled, authority 
 		from users 
