@@ -26,14 +26,15 @@ public class UsersService {
 	 */
 
    public String login(User user) {
-      User dbUser = usersDao.selectByUemail(user.getUemail());
+      User dbUser = usersDao.selectByUser_id(user.getUser_id());
       if(dbUser == null) {
-         return "wrongUemail";	
+
+         return "wrongUser_id";
       } else {
          BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-         boolean result = bpe.matches(user.getUpassword(), dbUser.getUpassword());
+         boolean result = bpe.matches(user.getUser_password(), dbUser.getUser_password());
          if(result == false) {
-            return "wrongUpassword";            
+            return "wrongUser_password";            
          }
       }
       return "success";

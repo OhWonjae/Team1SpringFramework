@@ -20,29 +20,29 @@
 
 		// 유효성 검사 시작
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
-		const uname = $("#uname").val();
-		const upassword = $("#upassword").val();
-		const uemail = $("#uemail").val();
-		const uphone = $("#uphone").val();
+		const user_name = $("#user_name").val();
+		const user_password = $("#user_password").val();
+		const user_id= $("#user_id").val();
+		const user_phone = $("#user_phone").val();
 
-		if (uname === "") { // 비어있으면 문제있지
+		if (user_name === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUname").html("필수사항 입니다.");
+			$("#errorUser_name").html("필수사항 입니다.");
 		}
 
-		if (upassword === "") { // 비어있으면 문제있지
+		if (user_password === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUpassword").html("필수사항 입니다.");
+			$("#errorUser_password").html("필수사항 입니다.");
 		}
 
-		if (uemail === "") { // 비어있으면 문제있지
+		if (user_id === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUemail").html("필수사항 입니다.");
+			$("#errorUser_id").html("필수사항 입니다.");
 		}
 
-		if (uemail === "") { // 비어있으면 문제있지
+		if (user_phone === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUphone").html("필수사항 입니다.");
+			$("#errorUser_phone").html("필수사항 입니다.");
 		}
 
 		if (result) {
@@ -51,20 +51,19 @@
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		}
-		if (!re.test($email)) {
+		if (!re.test($user_id)) {
 			result = false;
-			$("#errorUemail").html("이메일 형식이 아닙니다.")
+			$("#errorUser_id").html("이메일 형식이 아닙니다.")
 		}
 	}
 	/* // 비밀번호 확인
 	$(function()){
-		$('#upassword2
-				').blur(function() {
-			if($('#upassword').val() != $('#upassword2').val()){
-				if($('#upassword2').val( != ''){
+		$('#user_password2').blur(function() {
+			if($('#user_password').val() != $('#user_password2').val()){
+				if($('#user_password2').val( != ''){
 					alert("비밀번호가 일치하지 않습니다.");
-					$('#upassword2').val('');
-					$('#upassword2').focus();
+					$('#user_password2').val('');
+					$('#user_password2').focus();
 				}
 			}
 		})
@@ -84,7 +83,7 @@
 	</h4>
 	<c:if test="${joinError != null }">
 		<div class="alert alert-primary">
-			<c:if test="${joinError == 'wrongUemail'}">
+			<c:if test="${joinError == 'wrongUser_id'}">
 				<span>이미 사용중인 이메일입니다.</span>
 			</c:if>
 		</div>
@@ -94,17 +93,17 @@
 		<div>
 			<strong>이름</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="uname" name="uname" class="form-control"
-					placeholder="이름을 입력하세요." type="text"><span id="errorUname"
+				<input id="user_name" name="user_name" class="form-control"
+					placeholder="이름을 입력하세요." type="text"><span id="errorUser_name"
 					class="text-danger error"></span>
 			</div>
 		</div>
 		<div>
 			<strong>이메일</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="uemail" name="uemail" class="form-control"
+				<input id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
-					id="errorUemail" class="text-danger error"></span>
+					id="errorUser_id" class="text-danger error"></span>
 				<!-- <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">중복확인</button> -->
 					
 			</div>
@@ -112,17 +111,17 @@
 		<div>
 			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="upassword" name="upassword" class="form-control"
+				<input id="user_password" name="user_password" class="form-control"
 					placeholder="비밀번호를 6자 이상 입력해 주세요." type="password"><span
-					id="errorUpassword" class="text-danger error"></span>
+					id="errorUser_password" class="text-danger error"></span>
 			</div>
 		</div>
 		<div>
 			<strong>비밀번호 확인</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="upassword2" name="upassword2" class="form-control"
+				<input id="user_password2" name="user_password2" class="form-control"
 					placeholder="비밀번호를 한번 더 입력해주세요." type="password"><span
-					id="errorUpassword" class="text-danger error"></span>
+					id="errorUser_password" class="text-danger error"></span>
 					<!-- <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">비밀번호 확인</button> -->
 					
 			</div>
@@ -130,15 +129,15 @@
 		<div>
 			<strong>핸드폰 번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="uphone" name="uphone" class="form-control"
+				<input id="user_phone" name="user_phone" class="form-control"
 					placeholder="핸드폰 번호를 입력해 주세요." type="text"><span
-					id="errorUphone" class="text-danger error"></span>
+					id="errorUser_phone" class="text-danger error"></span>
 			</div>
 		</div>
 		<div>
 			<strong>크기(소형,중형,대형)</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<select class="form-control" id="dogsize" name="dogsize">
+				<select class="form-control" id="dog_size" name="dog_size">
 					<option selected="" value="">강아지의 사이즈를 선택하세요.</option>
 					<option>소형</option>
 					<option>중형</option>

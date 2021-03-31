@@ -17,8 +17,8 @@
       <!-- 로그인/로그아웃 설정-->
       <security:form-login login-page="/user/login" 
                      login-processing-url="/login"
-                     username-parameter="uemail"  
-                     password-parameter="upassword"
+                     username-parameter="user_id"  
+                     password-parameter="user_password"
 
                      authentication-success-handler-ref="authSuccessHandler"
                      authentication-failure-handler-ref="authFailureHandler"
@@ -61,8 +61,8 @@
    
    <security:jdbc-user-service id="jdbcUsersService"
                            data-source-ref="dataSource"
-                           users-by-username-query="select useremail,userpassword,userenabled from users where useremail=?"
-                           authorities-by-username-query="select useremail,userauthority from users where useremail=?"/>
+                           users-by-username-query="select user_id,user_password,enabled from users where user_id=?"
+                           authorities-by-username-query="select user_id,authority from users where user_id=?"/>
    <bean id="roleHierachyAuthoritiesMapper"
          class="org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper">
       <constructor-arg>

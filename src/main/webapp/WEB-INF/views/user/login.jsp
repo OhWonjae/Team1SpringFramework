@@ -23,17 +23,17 @@
 
 		// 유효성 검사 시작
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
-		const uemail = $("#uemail").val();
-		const upassword = $("#upassword").val();
+		const user_id = $("#user_id").val();
+		const user_password = $("#user_password").val();
 
-		if (upassword === "") { // 비어있으면 문제있지
+		if (user_password === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUpassword").html("필수사항 입니다.");
+			$("#errorUser_password").html("필수사항 입니다.");
 		}
 
-		if (uemail === "") { // 비어있으면 문제있지
+		if (user_id === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUemail").html("필수사항 입니다.");
+			$("#errorUser_id").html("필수사항 입니다.");
 		}
 
 		if (result) {
@@ -42,9 +42,9 @@
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		}
-		if (!re.test($email)) {
+		if (!re.test($user_id)) {
 			result = false;
-			$("#errorUemail").html("이메일 형식이 아닙니다.")
+			$("#errorUser_id").html("이메일 형식이 아닙니다.")
 		}
 	}
 </script>
@@ -64,10 +64,10 @@
 		<c:if test="${loginError != null }">
 
 			<div class="alert alert-primary">
-				<c:if test="${loginError == 'wrongUemail'}">
+				<c:if test="${loginError == 'wrongUser_id'}">
 					<span>아이디가 존재하지 않습니다.</span>
 				</c:if>
-				<c:if test="${loginError == 'wrongUpassword'}">
+				<c:if test="${loginError == 'wrongUser_password'}">
 					<span>비밀번호가 틀립니다.</span>
 				</c:if>
 			</div>
@@ -75,15 +75,15 @@
 		<form id="joinForm" name="joinForm" method="post" action="login"
 			onsubmit="validate()" novalidate="novalidate">
 			<div class="form-group input-group">
-				<input id="uemail" name="uemail" class="form-control"
+				<input id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
-					id="errorUemail" class="text-danger error"></span>
+					id="errorUser_id" class="text-danger error"></span>
 			</div>
 
 			<div class="form-group input-group">
-				<input id="upassword" name="upassword" class="form-control"
+				<input id="user_password" name="user_password" class="form-control"
 					placeholder="비밀번호을 입력하세요." type="password"><span
-					id="errorUpassword" class="text-danger error"></span>
+					id="errorUser_password" class="text-danger error"></span>
 			</div>
 
 
