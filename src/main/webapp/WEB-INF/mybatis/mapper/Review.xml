@@ -15,11 +15,9 @@
     (#{REVIEW_ID},#{REVIEW_SCORE},#{REVIEW_TITLE},#{REVIEW_CONTENT},#{REVIEW_PHOTO},#{REVIEW_DATE})
    </insert>
    
-   <resultMap id="userResultMap" type="user">
-   		<result column="user_name" property="uname"/>
-   </resultMap>
+
    
-   <select id="selectUser" resultType="review" resultMap="userResultMap">
+   <select id="selectUser" resultType="review">
    select u.user_id, u.user_name, u.dog_size
    from user
    where user_id=#{user_id}
