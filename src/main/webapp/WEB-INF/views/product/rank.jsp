@@ -67,10 +67,12 @@
         display: flex;
     	flex-direction: row;
    		 flex-wrap: wrap;
-      }
+   		 justify-content: flex-start;
+   		 padding:0px 20px;
+   		
+   	  }
       .flex-items{
-	   flex: auto;
-
+      margin: 0px 5px;
 　	}
       .left{
          display: flex;
@@ -178,9 +180,10 @@
 				 <div class="flex-items"> 
 				 	<figure>
 				 		<figcaption>${status.count}위</figcaption>
-      					<img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="200px">
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photoSname}&photoType=${product.photolist[0].photoType}" width="200px">
       					<figcaption>${product.pname}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+    					<figcaption>${product.pprice}</figcaption>
     				</figure>
                 </div>
 				</c:forEach>

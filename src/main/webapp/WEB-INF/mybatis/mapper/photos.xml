@@ -21,11 +21,7 @@
 
 
 	<insert id="insert" parameterType="photo">
-		<selectKey keyProperty="photo_id" resultType="int"
-			order="BEFORE">
-			select seq_boards_photo_id.nextval from dual
-		</selectKey>
-		insert into order_products
+		insert into photos
 		(photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
 		values
 		(#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})

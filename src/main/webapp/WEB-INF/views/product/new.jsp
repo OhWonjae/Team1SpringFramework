@@ -66,9 +66,11 @@
         display: flex;
     	flex-direction: row;
    		 flex-wrap: wrap;
+   		 align-content: flex-start;
       }
       .flex-items{
 	   flex: auto;
+	   
 
 　	}
       .left{
@@ -150,6 +152,9 @@
        
    </style>
 </head>
+<script>
+$.post("http://domain/test/", { fruit1: "apple", fruit2: "banana" } );
+</script>
 
     <div class="header2">
         <div class="inner" style="font-size: 0.85em; padding-top: 5px;">홈 > 신규</div>
@@ -163,9 +168,10 @@
             	<c:forEach var="product" items="${list}">
 				 <div class="flex-items"> 
 				 	<figure>
-      					<img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="200px">
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photoSname}&photoType=${product.photolist[0].photoType}" width="200px">
       					<figcaption>${product.pname}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+    					<figcaption>${product.pprice}</figcaption>
     					<figcaption>신상품</figcaption>
     				</figure>
                 </div>

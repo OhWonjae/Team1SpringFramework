@@ -43,8 +43,8 @@ public class ProductService {
 		return count;
 	}
 	//추천 상품 리스트 가져오기
-	public List<Product> getRecommandProducts(){
-		List<Product> products = productDao.selectRecommandAll();
+	public List<Product> getRecommandProductsByPager(Pager pager){
+		List<Product> products = productDao.selectRecommandAllByPager(pager);
 		return products;
 	}
 	//추천 상품 리스트 개수 가져오기

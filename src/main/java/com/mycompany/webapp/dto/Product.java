@@ -13,36 +13,9 @@ public class Product {
 	private Date puploaddate;
 	private String pdescription;
 
-	private String photoOname;	
-	private String photoSname;
-	private String photoType;
-	private String photoRole;
+	List<Photo> photolist;
 	
 	
-	public String getPhotoOname() {
-		return photoOname;
-	}
-	public void setPhotoOname(String photoOname) {
-		this.photoOname = photoOname;
-	}
-	public String getPhotoSname() {
-		return photoSname;
-	}
-	public void setPhotoSname(String photoSname) {
-		this.photoSname = photoSname;
-	}
-	public String getPhotoType() {
-		return photoType;
-	}
-	public void setPhotoType(String photoType) {
-		this.photoType = photoType;
-	}
-	public String getPhotoRole() {
-		return photoRole;
-	}
-	public void setPhotoRole(String photoRole) {
-		this.photoRole = photoRole;
-	}
 	// product 생성자 - 상품 생성을 위한 테스트 코드
 //	public Product( String pname, int pprice, int pstock, int salescount, String categoryname, Date puploaddate, String pdescription ) {
 //		this.pid = 1;
@@ -55,6 +28,12 @@ public class Product {
 //		this.pdescription = pdescription;
 //	}
 	
+	public List<Photo> getPhotolist() {
+		return photolist;
+	}
+	public void setPhotolist(List<Photo> photolist) {
+		this.photolist = photolist;
+	}
 	public int getPid() {
 		return pid;
 	}

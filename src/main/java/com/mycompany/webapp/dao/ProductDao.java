@@ -38,7 +38,7 @@ public interface ProductDao {
 	List<Product> selectAllByPager(Pager pager);
 	int count();
 	
-	List<Product> selectRecommandAll();
+	List<Product> selectRecommandAllByPager(Pager pager);
 	int recommandcount();
 	
 	List<Product> selectBestReviewAll();

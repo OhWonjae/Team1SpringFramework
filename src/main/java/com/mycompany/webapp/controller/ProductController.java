@@ -1,5 +1,9 @@
 package com.mycompany.webapp.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -37,16 +41,31 @@ public class ProductController {
 	// 테스트용 컨트롤러 - 상품 무작위 생성
 	@GetMapping("/photo")
 	public String photo(Model model) {
-		Photo p = new Photo();
-		p.setpId(110);
-		p.setPhotoRole("main");
-		
-		String url = photosService.GetProductPhotoUrl(p);
-		logger.info(url);
+//		Photo p = new Photo();
+//		p.setpId(110);
+//		p.setPhotoRole("main");
+//		
+//		String url = photosService.GetProductPhotoUrl(p);
+//		logger.info(url);
 
 	    return "/product/new";
 	}
 	
+//	@GetMapping("/create")
+//	public String create(Model model) {
+//		
+//		for(int i=1; i< 100; i++) {
+//			String name = "dog";
+//			name+=""+(i%30+1);
+//			
+//			
+//			Photo p = new Photo(i,i,name,name,"JPG","main");
+//			System.out.println(i);			
+//			photosService.createPhoto(p);
+//		}
+//
+//	    return "/product/new";
+//	}
 	
 	
 	
@@ -56,7 +75,7 @@ public class ProductController {
 //		
 //		Random random = new Random();
 //		for(int i=2; i< 100; i++) {
-//			int r = random.nextInt(4);
+//			int r = random.nextInt(5);
 //			String category = "티셔츠";
 //			switch(r) {
 //			case 0: category = "티셔츠";
@@ -70,8 +89,16 @@ public class ProductController {
 //			case 4: category = "올인원";
 //			break;
 //			}
-//			Date data = new Date();
-//			Product p = new Product(""+i,i,i,random.nextInt(100),category,data,""+i);
+//			Date now = new Date();
+//			Calendar cal = Calendar.getInstance();
+//			cal.setTime(now);
+//			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
+//			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//			String randomDate = format.format(cal.getTime());
+//			
+//			Product p = new Product(""+i,i,i,random.nextInt(100),category, cal.getTime(),""+i);
+//			System.out.println(cal.getTime());
 //			productService.createProduct(p);
 //		}
 //
@@ -102,7 +129,6 @@ public class ProductController {
 	      Pager pager = new Pager(20,5,totalRows,intPageNo);
 	      session.setAttribute("pager", pager);
 	      List<Product> list = productService.getProductsByPager(pager);
-	    
 	      model.addAttribute("list", list);
 	      model.addAttribute("pager",pager);
 		
@@ -142,7 +168,7 @@ public class ProductController {
 	  int totalRows = productService.getRecommandProductCount();
 	  Pager pager = new Pager(20,5,totalRows,intPageNo);
 	  session.setAttribute("pager", pager);
-	  List<Product> list = productService.getProductsByPager(pager);
+	  List<Product> list = productService.getRecommandProductsByPager(pager);
 	
 	  model.addAttribute("list", list);
 	  model.addAttribute("pager",pager);

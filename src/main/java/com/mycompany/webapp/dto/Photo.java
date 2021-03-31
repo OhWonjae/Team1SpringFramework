@@ -7,6 +7,18 @@ public class Photo {
 	private String photoSname;
 	private String photoType;
 	private String photoRole;
+	
+	
+	
+//	public Photo(int photoId, int pId, String photoOname, String photoSname, String photoType, String photoRole) {
+//		super();
+//		this.photoId = photoId;
+//		this.pId = pId;
+//		this.photoOname = photoOname;
+//		this.photoSname = photoSname;
+//		this.photoType = photoType;
+//		this.photoRole = photoRole;
+//	}
 	public int getPhotoId() {
 		return photoId; 
 	}

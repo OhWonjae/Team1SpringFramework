@@ -21,6 +21,12 @@ public class PhotosService {
 		url+=savename;
 		return url;
 	}
+
+	public void createPhoto(Photo p) {
+		// TODO Auto-generated method stub
+		photosDao.insert(p);
+		
+	}
 	
 
 }

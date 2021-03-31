@@ -164,9 +164,10 @@
             	<c:forEach var="product" items="${list}">
 				 <div class="flex-items"> 
 				 	<figure>
-      					<img src="${pageContext.request.contextPath}/resources/img/dog1.JPG" width="200px">
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photoSname}&photoType=${product.photolist[0].photoType}" width="200px">
       					<figcaption>${product.pname}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+    					<figcaption>${product.pprice}</figcaption>
     					<figcaption>추천</figcaption>
     				</figure>
                 </div>
