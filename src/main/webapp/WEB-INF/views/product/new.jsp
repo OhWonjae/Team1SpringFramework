@@ -62,16 +62,16 @@
          background-color: gray;
          height: 20px;            
       }
-      .center{
+     .center{
         display: flex;
     	flex-direction: row;
    		 flex-wrap: wrap;
-   		 align-content: flex-start;
-      }
+   		 justify-content: flex-start;
+   		 padding:0px 20px;
+   		
+   	  }
       .flex-items{
-	   flex: auto;
-	   
-
+      margin: 0px 5px;
 　	}
       .left{
          display: flex;
@@ -161,7 +161,7 @@ $.post("http://domain/test/", { fruit1: "apple", fruit2: "banana" } );
    </div>
     <div class="inner">
          <div class="jss486" style="padding: 3px;">
-            <span style="padding: 10px;"><strong>30</strong>개의 상품</span>
+            <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
          </div>
             <div class="center">  
             	<!--신규 상품 리스트 출력 -->

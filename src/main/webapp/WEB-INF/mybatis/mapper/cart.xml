@@ -2,51 +2,77 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.CartDao">
 
-	<insert id="insert" parameterType="cart">
-		<selectKey keyProperty="cid" resultType="int" order="BEFORE">
-			select
-			seq_cart_cno.nextval from dual
-		</selectKey>
-		insert into cart
-		(cart_id, cart_amount, user_id, p_id)
-		values
-		(#{cid},#{camount},#{user_id},#{p_id})
-	</insert>
-
-	<resultMap id="cartResultMap" type="cart">
-	<!-- 	<result property="cid" column="cart_id" />
-		<result property="camount" column="cart_amount" /> -->
+	<resultMap type="cart" id="cartResultMap">
+		<result property="uid" column="user_id"/>
+		<result property="camount" column="amount"/>
+		<result property="pid" column="p_id"/>
+		<result property="psize" column="p_size"/>   
+		<result property="pname" column="p_name"/>
+		<result property="pprice" column="p_price"/>
+		<result property="photoId" column="photo_id"/>
+		<result property="photoOname" column="photo_oname"/>
+		<result property="photoSname" column="photo_sname"/>
+		<result property="photoType" column="photo_type"/>
+		<result property="photoRole" column="photo_role"/>
 	</resultMap>
 
+	<insert id="insertCart" parameterType="cart">
+		insert into cart 
+		(user_id, p_id, amount, p_size)
+		values
+		(#{uid}, #{pid}, #{camount}, #{psize})
+	</insert>
  
-	<select id="selectProduct" parameterType="cart" resultMap="cartResultMap">
-		select p.p_name, p.p_price, cart_amount, pho.photo_id, ph.photo_oname,
-		pho.photo_sname, pho.photo_type, pho.photo_role
-		from cart, products p,
-		users u, photos pho
-		where user_id = #{user_id} and
-		cart.p_id = #{p.p_id}
-		and
-		p.p_id = #{pho.p_id}
+ 
+	<select id="cartList" resultMap="cartResultMap">
+		select 	
+						c.user_id,
+						c.p_id,
+						c.p_size,
+						c.amount,
+						p.p_name,  
+						p.p_price, 
+						photos.photo_id,
+						photos.photo_oname, 
+						photos.photo_sname, 
+						photos.photo_type, 
+						photos.photo_role
+		from  cart c, products p, photos
+		where	 c.user_id = #{uid} and
+					 c.p_id = p.p_id and
+					 p.p_id = photos.p_id and
+					 photos.photo_role = 'main'
+
 	</select>
 
-
+	<!-- 해당 상품만 장바구니에서 삭제 -->
 	<delete id="deleteCart" parameterType="cart">
 		delete from cart
-		where
-		user_id=#{user_id} and
-		p_id=#{p_id}
+		where 	user_id=#{uid} and
+						p_id=#{pid}
 	</delete>
-
-
-	<update id="updateCartAmount" parameterType="int" >
+ 
+ 	<!-- 장바구니 전체 비우기 -->
+	<delete id="deleteCartAll" parameterType="cart">
+	delete from cart
+	where 	user_id=#{uid}
+	</delete>
+	
+	<!-- 수량 증가 -->
+	<update id="increaseAmount" parameterType="int" >
 		update cart
-		set
-		cart_amount=#{cart_amount}
-		where user_id=#{user_id} and
-		p_id=#{p_id}
+		set	amount = amount+1
+		where user_id=#{uid} and
+						p_id=#{pid}
 	</update>
-
+	
+	<!-- 수량 감소 --> 
+ 	<update id="decreaseAmount" parameterType="int" >
+		update cart
+		set	amount = amount-1
+		where user_id=#{uid} and
+						p_id=#{pid}
+	</update>
 
 
 </mapper> 
