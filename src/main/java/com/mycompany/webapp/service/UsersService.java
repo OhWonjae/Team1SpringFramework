@@ -28,6 +28,7 @@ public class UsersService {
    public String login(User user) {
       User dbUser = usersDao.selectByUser_id(user.getUser_id());
       if(dbUser == null) {
+
          return "wrongUser_id";
       } else {
          BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();

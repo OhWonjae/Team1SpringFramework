@@ -3,19 +3,11 @@
 <mapper namespace="com.mycompany.webapp.dao.PhotosDao">
 	
 	
-		<resultMap type="photo" id="photos">
-		<result property="photoId" column="photo_id"/>
-		<result property="pId" column="p_id"/>
-		<result property="photoOname" column="photo_oname"/>
-		<result property="photoSname" column="photo_sname"/>
-		<result property="photoType" column="photo_type"/>
-		<result property="photoRole" column="photo_role"/>
-		</resultMap>
 	
-	<select id="selectname" parameterType="photo" resultType="photo" resultMap="photos">
+	<select id="selectname" parameterType="photo" resultType="photo">
    	select p_id, photo_oname, photo_sname, photo_type, photo_role
    	from photos
-   	where p_id=#{pId} and photo_role=#{photoRole}
+   	where p_id=#{p_id} and photo_role=#{photo_role}
    	</select>
 
 
@@ -24,17 +16,17 @@
 		insert into photos
 		(photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
 		values
-		(#{photoId}, #{pId}, #{photoOname}, #{photoSname}, #{photoType}, #{photoRole})
+		(#{photo_id}, #{p_id}, #{photo_oname}, #{photo_sname}, #{photo_type}, #{photo_role})
 	</insert>
 
 	<update id="update" parameterType="photo">
 		update photos
 		set
-		photo_oname=#{photoOname},
-		photo_sname=#{photoSname},
-		photo_type=#{photoType},
-		photo_role=#{photoRole}
-		where photo_id=#{photoId} and p_id=#{pId}
+		photo_oname=#{photo_oname},
+		photo_sname=#{photo_sname},
+		photo_type=#{photo_type},
+		photo_role=#{photo_role}
+		where photo_id=#{photo_id} and p_id=#{p_id}
 	</update>
 
 	<delete id="deleteByPhotoid" parameterType="int">
