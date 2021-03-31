@@ -14,7 +14,7 @@
 		<result property="pdescription" column="p_description"/>
 	</resultMap>
 
-
+ 
    <insert id="insert" parameterType="product">
    	insert into products
    	(p_id, p_name, p_price, p_stock, salescount, category_name,

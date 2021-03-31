@@ -75,7 +75,7 @@
 		where
 		user_id=#{uid}
 	</delete>
-
+ 
 
 
 </mapper>
