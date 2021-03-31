@@ -69,6 +69,7 @@ public class ProductController {
 	
 	
 	
+	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
 //	@GetMapping("/create")
 //	public String create(Model model) {
@@ -112,7 +113,7 @@ public class ProductController {
 	
 	
 	// 신규페이지 이동
-	@GetMapping("/new")
+	@GetMapping("/user/new")
 	public String newMethod(String pageNo,Model model, HttpSession session) {
 		 int intPageNo = 1;
 	      //세션에서 pager를 찾고, 있으면 pageNo설정
