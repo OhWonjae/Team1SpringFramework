@@ -6,7 +6,7 @@
    <select id="orderList" resultType="orderproduct">
       select order_id, order_date, p_id, p_name, p_price, delivery_status
       from order_products
-      where order_id=#{orderId} and p_id=#{pId}
+      where order_id=#{order_id} and p_id=#{p_id}
       
    </select>  
    
@@ -14,13 +14,13 @@
       insert into order_products
          		(order_id, order_date, p_id, p_name, p_price, delivery_status)
       values
-         		(#{orderId}, #{orderDate}, #{pId}, #{pName}, #{pPrice}, #{deliveryStatus})      
+         		(#{order_id}, #{order_date}, #{p_id}, #{p_name}, #{p_price}, #{delivery_status})      
    </insert>
    
     <update id="updateStatus" parameterType="orderproduct">
       update order_products 
       set delivery_status=#{delivery_status}
-         where orderId=#{orderId} and pId=#{pId}
+         where order_id=#{order_id} and p_id=#{p_id}
    </update>
    
 </mapper>
