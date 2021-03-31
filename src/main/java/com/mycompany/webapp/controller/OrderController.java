@@ -16,7 +16,7 @@ import com.mycompany.webapp.service.OrdersService;
 
 @Controller
 @RequestMapping("/order")
-public class PayController {
+public class OrderController {
 	
 	@Autowired
 	OrdersService ordersService;

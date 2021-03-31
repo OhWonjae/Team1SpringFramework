@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
-import com.mycompany.webapp.service.PhotosService;
 import com.mycompany.webapp.service.ProductService;
 
 @Controller
@@ -35,8 +34,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	private PhotosService photosService;
+
 	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
 	@GetMapping("/photo")
@@ -184,11 +182,7 @@ public class ProductController {
 	public String search() {
 		logger.info("블루 , 전체카테고리 검색");
 		List<Product> list = productService.getSearchProducts("블루","티셔츠");
-		for(Product p:list) {
-			logger.info(""+p.getPid());
-			logger.info(""+p.getPname());
-			logger.info(""+p.getPprice());
-		}
+
 		/*
 		 * logger.info("블루 , 점퍼카테고리 검색"); list =
 		 * productService.getSearchProducts("블루","점퍼"); for(Product p:list) {

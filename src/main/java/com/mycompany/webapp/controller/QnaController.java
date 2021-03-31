@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/boards")
-public class BoardController {
+public class QnaController {
 
 	//1:1문의 게시판으로 이동
 	@GetMapping("/askList")

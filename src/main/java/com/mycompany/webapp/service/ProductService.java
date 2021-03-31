@@ -7,25 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.ProductDao;
+import com.mycompany.webapp.dao.ReviewDao;
+import com.mycompany.webapp.dao.SizeProductDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.Review;
+import com.mycompany.webapp.dto.SizeProduct;
 
 @Service
 public class ProductService {
 	@Autowired
 	ProductDao productDao;
-	
-	
-	
+
+	@Autowired
+	SizeProductDao sizeDao;
+
+	@Autowired
+	private ReviewDao qnaDao;
+
+
 	//Create
 	// 상품 생성
 	public void createProduct(Product product) {
 		productDao.insert(product);
 	}
-	
-	
-	
-	
+
+
+
+
 	//Read	
 	//특정 상품 가져오기
 	public Product getProduct(int pid) {
@@ -103,8 +112,8 @@ public class ProductService {
 		int count = productDao.searchcategorycount(searchword,category);
 		return count;
 	}
-	
-	
+
+
 	//선택한 카테고리 상품 리스트 가져오기
 	public List<Product> getCategoryProducts(String category){
 		List<Product> products;
@@ -123,7 +132,7 @@ public class ProductService {
 		int count = productDao.categorycount(category);
 		return count;
 	}			
-			
+
 	//Update
 	//상품 수정하기
 	public void UpdateProduct(Product product) {
@@ -133,14 +142,50 @@ public class ProductService {
 	public void UpdateSaledProduct(int pid) {
 		productDao.updateSalescountAndStock(pid);
 	}
-	
-	
-	
-	
+
+	//Read
+	//특정 상품의 사이즈 가져오기
+	public List<SizeProduct> getSizes(int pid) {
+		List<SizeProduct> sizes = sizeDao.selectAllBypid(pid);
+		return sizes;
+	}
+
 	//Delete
 	//상품 삭제하기
 	public void RemoveProduct(int pid) {
 		productDao.deleteBypid(pid);
 	}
-	
+
+	/////////////////////
+
+	public List<Review> getREVIEWList(){
+		List<Review> list = ReviewDao.selectAll();
+		return list;
+	}
+
+	public void saveREVIEW(Review review) {
+
+		ReviewDao.insert(review);
+
+
+	}
+
+	public Review getQna(int bno) {
+		Review qna = qnaDao.selectByREVIEW_ID(bno);
+		return qna;
+	}
+
+	public void updateREVIEW(Review review) {
+		ReviewDao.update(review);
+	}
+
+	public void deleteREVIEW(int bno) {
+		ReviewDao.deleteByREVIEW_ID(bno);
+	}
+
+	public int getTotalRows() {
+		int rows = qnaDao.count();
+		return rows;
+	}
+
 }

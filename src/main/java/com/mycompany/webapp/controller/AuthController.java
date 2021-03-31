@@ -20,10 +20,10 @@ import com.mycompany.webapp.service.UsersService;
 
 @Controller
 @RequestMapping("/user")
-public class CertificationController {
+public class AuthController {
    @Autowired
    private UsersService usersService;
-   private static final Logger logger = LoggerFactory.getLogger(CertificationController.class);
+   private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
    @GetMapping("/login")
    public String login() {
@@ -67,10 +67,7 @@ public class CertificationController {
 
    @PostMapping("/join")
    public String join(User user) {
-      logger.info(user.getUname());
-      logger.info(user.getUemail());
-      logger.info(user.getUpassword());
-      logger.info(user.getUphone());
+
       BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
       user.setUpassword(bpe.encode(user.getUpassword()));
 		/*

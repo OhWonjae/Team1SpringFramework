@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.CartDao;
-import com.mycompany.webapp.dto.Cart;
+import com.mycompany.webapp.dto.CartItem;
 
 @Service
 public class CartsService {
@@ -14,8 +14,8 @@ public class CartsService {
 	@Autowired
 	private CartDao cartDao;
 	
-	public List<Cart> getCartList(){ 
-		List<Cart> list = cartDao.cartList(20);
+	public List<CartItem> getCartList(){ 
+		List<CartItem> list = cartDao.cartList(20);
 		return list;
 	}
 	
