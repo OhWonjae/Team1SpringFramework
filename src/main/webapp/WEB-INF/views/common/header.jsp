@@ -45,11 +45,11 @@
                 </div>
                 <div class="header-sideBar">
                 <!--  새로 추가한 행  시작-->
-                <c:if test="${loginUemail == null}">
+                <c:if test="${loginUser_id == null}">
 		    		<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/login">로그인</a>
 		   		</c:if>
-			    <c:if test="${loginUemail != null}">
-			    	<span class="mr-2">로그인Email: ${loginUemail}</span> 
+			    <c:if test="${loginUser_id != null}">
+			    	<span class="mr-2">로그인ID(Email): ${loginUser_id}</span> 
 			    	<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/my">로그아웃</a>
 			    </c:if>  
                 

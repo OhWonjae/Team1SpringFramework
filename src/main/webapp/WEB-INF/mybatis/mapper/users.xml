@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.UsersDao">
 
-	<!-- <insert id="insert" parameterType="user">
+	<insert id="insert" parameterType="user">
 		insert into users
-		(user_email, user_name, user_password,
+		(user_id, user_name, user_password,
 		user_phone, dog_size, enabled,
 		authority)
 		values
-		(#{uemail,jdbcType=VARCHAR},#{uname},#{upassword},#{uphone},#{dogsize},1,'ROLE_USER')
+		(#{user_id,jdbcType=VARCHAR},#{user_name},#{user_password},#{user_phone},#{dog_size},1,'ROLE_USER')
 	</insert>
 
-	<resultMap id="userResultMap" type="user">
-		<result property="uemail" column="user_email" />
+<!-- 	<resultMap id="userResultMap" type="user">
+		<result property="uid" column="user_id" />
 		<result property="uname" column="user_name" />
 		<result property="upassword" column="user_password" />
 		<result property="uphone" column="user_phone" />
@@ -22,35 +22,36 @@
 	</resultMap> -->
 
 
-	<!-- <select id="selectByUid" parameterType="string" resultMap="userResultMap"> 
-		select user_id, user_name, user_email, user_password, user_phone, dog_size, 
-		enabled, authority from users where user_id=#{uid} </select> -->
+	<select id="selectByUid" parameterType="string" resultMap="userResultMap"> 
+		select user_id, user_name, user_password, user_phone, dog_size, 
+		enabled, authority 
+		from users 
+		where user_id=#{user_id} 
+	</select>
 
-	<!-- <select id="selectInfoByUid" parameterType="string"
-		resultMap="userResultMap">
+	<select id="selectInfoByUser_id" parameterType="string">
 		select 
-		user_email, user_name, user_password,
+		user_id, user_name, user_password,
 		user_phone, dog_size, enabled,
 		authority
 		from users
 		where
-		user_email=#{uemail}
+		user_id=#{user_id}
 	</select>
 
-	<select id="selectByUemail" parameterType="string"
-		resultMap="userResultMap">
-		select user_email, user_password
+	<select id="selectByUser_id" parameterType="string">
+		select user_id, user_password
 		from users
 		where
-		user_email=#{uemail, jdbcType=VARCHAR}
+		user_id=#{user_id, jdbcType=VARCHAR}
 	</select>
- -->
-	<!-- <select id="emailCheck" resultType="int">
-		select count (*)
+
+	<select id="idCheck" resultType="int">
+		select count(*)
 		from users
 		where
-		user_email=#{uemail, jdbcType=VARCHAR}
-	</select> -->
+		user_id=#{user_id, jdbcType=VARCHAR}
+	</select>
 
 	<!-- <select id="selectNameAndEmailByUid" parameterType="user" resultMap="userResultMap"> 
 		select user_id, user_name, user_email from users where user_id=#{uid} </select> 

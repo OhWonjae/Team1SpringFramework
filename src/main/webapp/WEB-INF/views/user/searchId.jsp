@@ -73,14 +73,14 @@
          <div style="padding: 5px 0 0 0;">
             <strong>이름</strong><span style="color: red;">*</span>
             <div class="form-group input-group">
-               <input class="form-control" id="uname" name="uname"
+               <input class="form-control" id="user_name" name="user_name"
                   placeholder="이름을 입력하세요." type="text">
             </div>
          </div>
          <div style="font: bolder;">
             <strong>휴대전화</strong><span style="color: red;">*</span>
             <div class="form-group input-group">
-               <input class="form-control" id="uphone" name="uphone"
+               <input class="form-control" id="user_phone" name="user_phone"
                   placeholder="휴대전화 번호를 입력하세요." type="number">
             </div>
          </div>
@@ -88,7 +88,7 @@
             style="text-align: center; font-size: 0.7em;">구매내역이 있는 회원만 등록된
             휴대전화번호로 찾을 수 있습니다.</div>
          <br>
-         email: ${user.uemail} 
+         email: ${user.user_email} 
          <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"
                style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">

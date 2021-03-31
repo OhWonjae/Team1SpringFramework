@@ -1,6 +1,5 @@
 package com.mycompany.webapp.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,9 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
@@ -69,7 +65,7 @@ public class AuthController {
    public String join(User user) {
 
       BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-      user.setUpassword(bpe.encode(user.getUpassword()));
+      user.setUser_password(bpe.encode(user.getUser_password()));
 		/*
 		 * usersService.join(user);
 		 */      
@@ -83,7 +79,7 @@ public class AuthController {
       if (result.equals("success")) {
          logger.info(result);
          session.removeAttribute("loginError");
-         session.setAttribute("loginUemail", user.getUemail());
+         session.setAttribute("loginUser_id", user.getUser_name());
          return "redirect:/main";
       } else {
          session.setAttribute("loginError", result);
@@ -98,7 +94,7 @@ public class AuthController {
 	  if (result.equals("success")) {
 	     logger.info(result);
 	     session.removeAttribute("loginError");
-	     session.setAttribute("loginUemail", user.getUemail());
+	     session.setAttribute("loginUser_id", user.getUser_id());
 	     return "redirect:/main";
 	  } else {
 	     session.setAttribute("loginError", result);
@@ -108,14 +104,14 @@ public class AuthController {
 
    /*
     * @GetMapping("/logout") public String logout(HttpSession session) {
-    * session.removeAttribute("loginUid");
+    * session.removeAttribute("loginUser_id");
     * 
     * return "redirect:/home"; }
     */
    @PostMapping("/logout")
    public String logout(HttpSession session) {
       //session.invalidate();
-	  session.removeAttribute("loginUemail");
+	  session.removeAttribute("loginUser_id");
       return "redirect:/main";
    }
    
