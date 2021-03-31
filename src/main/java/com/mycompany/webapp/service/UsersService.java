@@ -12,9 +12,18 @@ public class UsersService {
    @Autowired
    private UsersDao usersDao;
    
-   public void join(User user) {
-      usersDao.insert(user);
-   }
+	/*
+	 * public int emailCheck() throws Exception { int result = usersDao.idCheck();
+	 * return result; }
+	 * 
+	 * public int passCheck() throws Exception { int result = usersDao.passCheck();
+	 * return result; }
+	 * 
+	 * 
+	 * public String join(User user) { User dbUser =
+	 * usersDao.selectByUemail(user.getUemail()); if(dbUser == user.getUemail()) {
+	 * return "overlapUemail"; } usersDao.insert(user); return "success"; }
+	 */
 
    public String login(User user) {
       User dbUser = usersDao.selectByUemail(user.getUemail());
@@ -29,4 +38,6 @@ public class UsersService {
       }
       return "success";
    }
+   
+   
 }

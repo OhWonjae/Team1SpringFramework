@@ -86,7 +86,6 @@
 					id="errorUpassword" class="text-danger error"></span>
 			</div>
 
-			<br>
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block"

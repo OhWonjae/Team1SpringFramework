@@ -7,7 +7,10 @@ import com.mycompany.webapp.dto.User;
 @Mapper
 public interface UsersDao {
    public int insert(User user);
-   public User selectInfoByUid(int uid);
+
+	/*
+	 * public int join(User user);
+	 */   public User selectInfoByUid(int uid);
    /*
     * public User selectNameAndEmailByUid(int uid); public User
     * selectEmailByUid(int uid); public User selectPasswordByUid(int uid); public
@@ -15,5 +18,11 @@ public interface UsersDao {
     * deleteByUid(int uid);
     */
    public User selectByUemail(String uemail);
+	/*
+	 * public int idCheck() throws Exception; public int passCheck() throws
+	 * Exception;
+	 */
+   
+   
 
 }

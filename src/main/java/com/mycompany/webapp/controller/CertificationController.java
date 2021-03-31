@@ -1,5 +1,6 @@
 package com.mycompany.webapp.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
@@ -69,7 +73,9 @@ public class CertificationController {
       logger.info(user.getUphone());
       BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
       user.setUpassword(bpe.encode(user.getUpassword()));
-      usersService.join(user);
+		/*
+		 * usersService.join(user);
+		 */      
       return "redirect:/user/login";
    }
 
@@ -120,6 +126,36 @@ public class CertificationController {
    public String error403() {
       return "user/error403";
    }
+   
+	/*
+	 * // 아이디(이메일) 찾기
+	 * 
+	 * @RequestMapping(value = "/user/searchId", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public String searchId(@RequestParam("inputName_1") String
+	 * user_name,
+	 * 
+	 * @RequestParam("inputPhone_1") String user_phone) {
+	 * 
+	 * String result = usersService.get_searchId(user_name, user_phone);
+	 * 
+	 * return result; }
+	 * 
+	 * // 비밀번호 찾기
+	 * 
+	 * @RequestMapping(value = "/user/searchPw", method = RequestMethod.GET)
+	 * 
+	 * @ResponseBody public String searchPw(@RequestParam("userId")String user_id,
+	 * 
+	 * @RequestParam("userEmail")String user_email, HttpServletRequest request) {
+	 * 
+	 * mailsender.mailSendWithPassword(user_id, user_email, request);
+	 * 
+	 * return "user/userSearchPassword"; }
+	 */
+
+
+
    
 
 }

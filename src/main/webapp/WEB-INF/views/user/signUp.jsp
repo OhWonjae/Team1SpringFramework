@@ -56,6 +56,20 @@
 			$("#errorUemail").html("이메일 형식이 아닙니다.")
 		}
 	}
+	/* // 비밀번호 확인
+	$(function()){
+		$('#upassword2
+				').blur(function() {
+			if($('#upassword').val() != $('#upassword2').val()){
+				if($('#upassword2').val( != ''){
+					alert("비밀번호가 일치하지 않습니다.");
+					$('#upassword2').val('');
+					$('#upassword2').focus();
+				}
+			}
+		})
+	}); */
+		
 </script>
 
 
@@ -68,7 +82,13 @@
 	<h4 class="card-title mt-3 text-center">
 		<strong>회원 가입</strong>
 	</h4>
-
+	<c:if test="${joinError != null }">
+		<div class="alert alert-primary">
+			<c:if test="${joinError == 'wrongUemail'}">
+				<span>이미 사용중인 이메일입니다.</span>
+			</c:if>
+		</div>
+	</c:if>
 	<form id="joinForm" name="joinForm" method="post" action="join"
 		onsubmit="validate()" novalidate="novalidate">
 		<div>
@@ -85,10 +105,12 @@
 				<input id="uemail" name="uemail" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
 					id="errorUemail" class="text-danger error"></span>
+				<!-- <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">중복확인</button> -->
+					
 			</div>
 		</div>
 		<div>
-			<strong>비밀번호 확인</strong><span style="color: red;">*</span>
+			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="upassword" name="upassword" class="form-control"
 					placeholder="비밀번호를 6자 이상 입력해 주세요." type="password"><span
@@ -101,6 +123,8 @@
 				<input id="upassword2" name="upassword2" class="form-control"
 					placeholder="비밀번호를 한번 더 입력해주세요." type="password"><span
 					id="errorUpassword" class="text-danger error"></span>
+					<!-- <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">비밀번호 확인</button> -->
+					
 			</div>
 		</div>
 		<div>
@@ -115,7 +139,7 @@
 			<strong>크기(소형,중형,대형)</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<select class="form-control" id="dogsize" name="dogsize">
-					<option selected="">강아지의 사이즈를 선택하세요.</option>
+					<option selected="" value="">강아지의 사이즈를 선택하세요.</option>
 					<option>소형</option>
 					<option>중형</option>
 					<option>대형</option>
@@ -127,7 +151,7 @@
 			<strong>회원가입</strong>
 		</button>
 		<div class="text-center" style="text-align: center; font-size: 0.9em;">
-			본인은 민 14세 이상이며, DOGSINSA <span style="color: #228be6;">이용약관,
+			본인은 만 14세 이상이며, DOGSINSA <span style="color: #228be6;">이용약관,
 				개인정보 수집 및 이용</span> 내용을 확인 하였으며, 동의합니다.
 		</div>
 	</form>
