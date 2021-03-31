@@ -34,5 +34,9 @@ public class CartsService {
 	public void removeCartAll(int uid) {
 		cartDao.deleteCartAll(uid);
 	}
+	
+	public void addCart(int pid) {
+		cartDao.insertCart(pid);
+	}
 
 }

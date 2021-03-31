@@ -10,7 +10,7 @@ import com.mycompany.webapp.dto.Cart;
 
 @Mapper
 public interface CartDao {
-	public int insert(Cart cart);
+	public int insertCart(int pid);
 	public int deleteCart(@Param("uid") int uid, @Param("pid") int pid);
 	public int deleteCartAll(int uid);
 	public List<Cart> cartList(int uid);

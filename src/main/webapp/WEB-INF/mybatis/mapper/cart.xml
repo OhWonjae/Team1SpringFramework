@@ -4,8 +4,9 @@
 
 	<resultMap type="cart" id="cartResultMap">
 		<result property="uid" column="user_id"/>
-		<result property="camount" column="cart_amount"/>
-		<result property="pid" column="p_id"/> 
+		<result property="camount" column="amount"/>
+		<result property="pid" column="p_id"/>
+		<result property="psize" column="p_size"/>   
 		<result property="pname" column="p_name"/>
 		<result property="pprice" column="p_price"/>
 		<result property="photoId" column="photo_id"/>
@@ -15,11 +16,11 @@
 		<result property="photoRole" column="photo_role"/>
 	</resultMap>
 
-	<insert id="insert" parameterType="cart">
-		insert into cart
-		(user_id, p_id, cart_amount)
+	<insert id="insertCart" parameterType="cart">
+		insert into cart 
+		(user_id, p_id, amount, p_size)
 		values
-		(#{uid}, #{pid}, #{camount})
+		(#{uid}, #{pid}, #{camount}, #{psize})
 	</insert>
  
  
@@ -27,9 +28,10 @@
 		select 	
 						c.user_id,
 						c.p_id,
+						c.p_size,
+						c.amount,
 						p.p_name,  
 						p.p_price, 
-						c.cart_amount, 
 						photos.photo_id,
 						photos.photo_oname, 
 						photos.photo_sname, 
@@ -59,7 +61,7 @@
 	<!-- 수량 증가 -->
 	<update id="increaseAmount" parameterType="int" >
 		update cart
-		set	cart_amount = cart_amount+1
+		set	amount = amount+1
 		where user_id=#{uid} and
 						p_id=#{pid}
 	</update>
@@ -67,7 +69,7 @@
 	<!-- 수량 감소 --> 
  	<update id="decreaseAmount" parameterType="int" >
 		update cart
-		set	cart_amount = cart_amount-1
+		set	amount = amount-1
 		where user_id=#{uid} and
 						p_id=#{pid}
 	</update>

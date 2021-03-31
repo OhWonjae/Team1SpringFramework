@@ -12,8 +12,16 @@ public class Cart {
    private String photoType;
    private String photoRole;
    private int uid;
+   private int psize;
    
 
+
+public int getPsize() {
+	return psize;
+}
+public void setPsize(int psize) {
+	this.psize = psize;
+}
 public int getUid() {
 	return uid;
 }
