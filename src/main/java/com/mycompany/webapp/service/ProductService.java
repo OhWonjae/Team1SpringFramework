@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.webapp.dao.PhotosDao;
 import com.mycompany.webapp.dao.ProductDao;
 import com.mycompany.webapp.dao.ReviewDao;
 import com.mycompany.webapp.dao.SizeProductDao;
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.Review;
 import com.mycompany.webapp.dto.SizeProduct;
@@ -24,6 +26,9 @@ public class ProductService {
 
 	@Autowired
 	private ReviewDao qnaDao;
+	
+	@Autowired
+	PhotosDao photosDao;
 
 
 	//Create
@@ -44,6 +49,7 @@ public class ProductService {
 	//신규 상품 리스트 가져오기
 	public List<Product> getProductsByPager(Pager pager){
 		List<Product> products = productDao.selectAllByPager(pager);
+		
 		return products;
 	}
 	//신규 상품 리스트 개수 가져오기
@@ -157,6 +163,13 @@ public class ProductService {
 	}
 
 	/////////////////////
+	
+	//사진 생성
+	public void createPhoto(Photo p) {
+		photosDao.insert(p);
+	}
+	
+	
 
 	public List<Review> getREVIEWList(){
 		List<Review> list = ReviewDao.selectAll();

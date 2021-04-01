@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.service.ProductService;
 
@@ -51,14 +53,14 @@ public class ProductController {
 //	@GetMapping("/create")
 //	public String create(Model model) {
 //		
-//		for(int i=1; i< 100; i++) {
+//		for(int i=1; i<= 100; i++) {
 //			String name = "dog";
 //			name+=""+(i%30+1);
 //			
 //			
 //			Photo p = new Photo(i,i,name,name,"JPG","main");
 //			System.out.println(i);			
-//			photosService.createPhoto(p);
+//			productService.createPhoto(p);
 //		}
 //
 //	    return "/product/new";
@@ -93,8 +95,7 @@ public class ProductController {
 //			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
 //			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//			String randomDate = format.format(cal.getTime());
-//			
+//			String randomDate = format.format(cal.getTime());		
 //			Product p = new Product(""+i,i,i,random.nextInt(100),category, cal.getTime(),""+i);
 //			System.out.println(cal.getTime());
 //			productService.createProduct(p);
@@ -127,9 +128,8 @@ public class ProductController {
 	      Pager pager = new Pager(20,5,totalRows,intPageNo);
 	      session.setAttribute("pager", pager);
 	      List<Product> list = productService.getProductsByPager(pager);
-	      
-	     // logger.info(list.get(0).getPhotolist().get(0).getPhoto_sname());
-	      
+	      logger.info(""+list.get(0).getPhotolist().get(0).getPhoto_sname());
+	      logger.info("hi");
 	      model.addAttribute("listcount",totalRows);
 	      model.addAttribute("list", list);
 	      model.addAttribute("pager",pager);
@@ -198,8 +198,8 @@ public class ProductController {
 	
 	//제품 상세페이지 이동
 	@GetMapping("/detail")
-	public String detail() {
-		
+	public String detail(Authentication auth) {
+		logger.info(auth.getName());
 		
 		/*logger.info("1번 상품 구매했을때 변화");
 		productService.UpdateSaledProduct(1);

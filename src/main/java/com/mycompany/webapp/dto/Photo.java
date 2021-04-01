@@ -1,13 +1,27 @@
 package com.mycompany.webapp.dto;
 
 public class Photo {
-   private int photo_id;
-   private int p_id;
+
+
+	   private int photo_id;
+private int p_id;
    private String photo_oname;
    private String photo_sname;
    private String photo_type;
    private String photo_role;
-public int getPhoto_id() {
+   
+   
+//   public Photo(int photo_id, int p_id, String photo_oname, String photo_sname, String photo_type, String photo_role) {
+//		super();
+//		this.photo_id = photo_id;
+//		this.p_id = p_id;
+//		this.photo_oname = photo_oname;
+//		this.photo_sname = photo_sname;
+//		this.photo_type = photo_type;
+//		this.photo_role = photo_role;
+//	}
+   
+   public int getPhoto_id() {
 	return photo_id;
 }
 public void setPhoto_id(int photo_id) {
