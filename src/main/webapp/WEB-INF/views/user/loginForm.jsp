@@ -97,7 +97,7 @@
 		
 			
 				<button type="button"
-					onclick="location.href='<%=application.getContextPath()%>/user/joinForm'"
+					onclick="location.href='<%=application.getContextPath()%>/joinForm'"
 					class="btn btn-primary btn-block"
 					style="background-color: white; color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 					회원가입</button>

@@ -121,7 +121,7 @@ public class AuthController {
 
    @GetMapping("/error403")
    public String error403() {
-      return "user/error403";
+      return "/error403";
    }
    
 	/*
