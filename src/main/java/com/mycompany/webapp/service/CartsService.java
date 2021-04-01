@@ -18,7 +18,10 @@ public class CartsService {
 		List<CartItem> list = cartDao.cartList(uid);
 		return list;
 	}
-	
+	public CartItem getCartOne(String uid, int pid) {
+		CartItem cartitem =cartDao.cartListOne(uid, pid);
+		return cartitem;
+	}
 	public void plusAmount(String uid, int pid) {
 		cartDao.increaseAmount(uid, pid);
 	}
