@@ -16,6 +16,6 @@ public interface CartDao {
 	public List<CartItem> cartList(String uid);
 	public int increaseAmount(@Param("uid") String uid, @Param("pid") int pid);
 	public int decreaseAmount(@Param("uid") String uid, @Param("pid") int pid);
-
+	public CartItem cartListOne(@Param("uid") String uid, @Param("pid") int pid);
 		
 }

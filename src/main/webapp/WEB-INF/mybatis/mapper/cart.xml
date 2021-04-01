@@ -31,12 +31,23 @@
 					 photos.photo_role = 'main'
 
 	</select>
-
+	
+	<!-- 한 가지 상품의 amount를 조절하기 위해서 그 정보만 가져오기 위함 -->
+	<select id="cartListOne" resultType="cart">
+		select 
+					  user_id,
+						p_id,
+						amount				
+		from  cart
+		where	 user_id = #{uid} and
+					 p_id = #{pid} 		
+	</select>
+	
 	<!-- 해당 상품만 장바구니에서 삭제 -->
 	<delete id="deleteCart" parameterType="cart">
 		delete from cart
-		where 	user_id=#{user_id} and
-						p_id=#{p_id}
+		where 	user_id=#{uid} and
+						p_id=#{pid}
 	</delete>
  
  	<!-- 장바구니 전체 비우기 -->
@@ -46,19 +57,19 @@
 	</delete>
 	
 	<!-- 수량 증가 -->
-	<update id="increaseAmount" parameterType="int" >
+	<update id="increaseAmount">
 		update cart
 		set	amount = amount+1
-		where user_id=#{user_id} and
-						p_id=#{p_id}
+		where user_id=#{uid} and
+						p_id=#{pid}
 	</update>
 	
 	<!-- 수량 감소 --> 
- 	<update id="decreaseAmount" parameterType="int" >
+ 	<update id="decreaseAmount">
 		update cart
 		set	amount = amount-1
-		where user_id=#{user_id} and
-						p_id=#{p_id}
+		where user_id=#{uid} and
+						p_id=#{pid}
 	</update>
 
 

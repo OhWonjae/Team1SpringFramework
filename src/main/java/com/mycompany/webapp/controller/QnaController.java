@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,8 +57,8 @@ public class QnaController {
 	}
 	// 1:1 문의 게시판에서 '삭제'버튼 클릭
 	@GetMapping("/delete")
-	public String delete(int qa_id) {
-		qnaService.deleteQna(qa_id);
+	public String delete(int qa_id, Authentication auth) {
+		qnaService.deleteQna(qa_id, auth.getName());
 		return "redirect:askList";
 	}
 }
