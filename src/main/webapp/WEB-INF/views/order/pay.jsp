@@ -111,6 +111,8 @@ function openZipSearch() {
                                 </tr>
                             </thead>
                            	<tbody>
+                           	 	<c:set var="sum" value="0" />
+                           	 	<c:set var="psum" value="0" />
                            		<c:forEach var="cart" items="${list}">
                                 <tr>
                                     <th style="color: rgb(195, 195, 195); font-size: 0.8em"> 
@@ -118,7 +120,8 @@ function openZipSearch() {
                                     	<span style="color: rgb(134, 134, 138)">${cart.p_name}</span><br> 
                                         <span>사이즈: ${cart.p_size}</span><br> 
                                         <span>수량: ${cart.amount}</span></th>
-                                    <td style="border-right: white; text-align: center; vertical-align: middle;">${cart.p_price}</td>
+                                        <c:set var="psum" value="${psum + (cart.p_price * cart.amount)}" />
+                                    <td style="border-right: white; text-align: center; vertical-align: middle;">${cart.p_price * cart.amount}원</td>
                                 </tr>
                                 </c:forEach>
                             </tbody>
@@ -132,7 +135,7 @@ function openZipSearch() {
                             <thead class="thead-light" style="text-align: left; color: rgb(134, 134, 138);">
                             <tr>
                                 <th style="width: 20%;">총 상품금액</th>
-                                <td style="text-align: left;">14,000원</td>
+                                <td style="text-align: left;"> ${psum}원</td>
                             </tr>
                             <tr>
                                 <th>배송비</th>
@@ -148,7 +151,9 @@ function openZipSearch() {
                             </tr>
                             <tr>
                                 <th>총 결제금액</th>
-                                <td style="text-align: left; color: black; font-weight: 900;">17,000원</td>
+                                <c:set var="sum" value="${psum+3000}" />
+                                <td style="text-align: left; color: black; font-weight: 900;">${sum}원</td>
+                                <input type="hidden" name="total_price" id="total_price" value="${sum}"/>
                             </tr>
                     
                             </thead>
