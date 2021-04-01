@@ -178,19 +178,68 @@ public class ProductController {
 	  model.addAttribute("pager",pager);
 		return "/product/rec";
 	}
-	
-	//제품 검색페이지 이동
-	@GetMapping("/search")
-	public String search() {
-		logger.info("블루 , 전체카테고리 검색");
-		List<Product> list = productService.getSearchProducts("블루","티셔츠");
 
-		/*
-		 * logger.info("블루 , 점퍼카테고리 검색"); list =
-		 * productService.getSearchProducts("블루","점퍼"); for(Product p:list) {
-		 * logger.info(""+p.getPid()); logger.info(""+p.getPname());
-		 * logger.info(""+p.getPprice()); }
-		 */
+	//제품 검색페이지 이동(카테고리 포함)
+	@GetMapping("/search")
+	public String search(String pageNo,Model model, HttpSession session,String category, String searchword ) {
+		// searchword가 이름에 들어간 상품 쭉 찾고 해당 상품들의 카테고리가 왼쪽 바에 선택한 카테고리와 같은걸로 뽑아냄
+		int intPageNo = 1;
+		  //세션에서 pager를 찾고, 있으면 pageNo설정
+		  if(pageNo == null) {   //클라이언트에서 pageNo가 넘어오지 않았을 경우
+		     Pager pager = (Pager)session.getAttribute("pager");
+		     if(pager!=null) {
+		        intPageNo = pager.getPageNo();
+		     }
+		  }else { //클라이언트에서 pageNo가 넘어왔을 때
+		     intPageNo = Integer.parseInt(pageNo);
+		  }
+		  
+		  int totalRows=0;
+		  Pager pager=null; 
+		  List<Product> list=null;
+		  String resultName="";
+		  //카테고리 검색할때
+		  if(searchword.equals("")) {
+			  //전체 카테고리
+			  if(category.equals("전체"))
+			  {
+				  totalRows= productService.getProductsCount();
+				  pager= new Pager(20,5,totalRows,intPageNo);
+				  list = productService.getProductsByPager(pager);
+			  }
+			  //특정 카테고리
+			  else {
+				  totalRows= productService.CategoryProductCount(category);
+				  pager= new Pager(20,5,totalRows,intPageNo);
+				  list = productService.getCategoryProducts(category,pager);
+			  }
+			  
+			  resultName += category;
+		  }
+		  //키워드 검색할때(카테고리는 전체)
+		  else if(category.equals("전체")&&!searchword.equals("") ) {
+			  totalRows= productService.SearchProductCount(searchword,"전체");
+			  logger.info("total : "+totalRows);
+			  pager= new Pager(20,5,totalRows,intPageNo);
+			  list = productService.getSearchProducts(pager, searchword, "전체");
+			  resultName += searchword+"에 대한 검색 결과입니다.";
+		  }
+		  //키워드 - 카테고리 검색결과
+		  else {
+			  totalRows= productService.SearchProductCount(searchword, category);
+			  logger.info("total : "+totalRows);
+			  pager= new Pager(20,5,totalRows,intPageNo);
+			  list = productService.getSearchProducts(pager, searchword, category);
+			  resultName += searchword+"에 대한 검색 결과입니다.";
+		  }
+
+		  session.setAttribute("pager", pager);
+		  model.addAttribute("category",category);			  
+		  model.addAttribute("word",searchword);
+		  model.addAttribute("listcount",totalRows);
+		  model.addAttribute("resultname", resultName);
+		  model.addAttribute("list", list);
+		  model.addAttribute("pager",pager);
 		return "/product/search";
 	}
 	

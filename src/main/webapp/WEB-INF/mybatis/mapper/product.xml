@@ -121,53 +121,78 @@
    )
    where ROWNUM&lt;31
    </select>
-
-	<select id="rankcategorycount" parameterType="string" resultType="int">
-   	select count(*)
-   	from products
-   	where p_category_name=#{categoryname}
-   	</select>   
+ 
    
    
-   <select id="selectCategory" parameterType="string" resultType="product" resultMap="productMap">
-   	select p_id, p_name, p_price
-   	from products
-   	where p_category_name=#{categoryname}  
-   	order by p_upload_date desc
+   <select id="selectCategory" resultType="product" resultMap="productMap">
+   select rnum, p_name,p_price, photo_sname, photo_type
+      from (
+          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          from (
+               	select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+			    from products p Join photos ph
+			    on p.p_id = ph.p_id and
+			    ph.photo_role='main'
+			    and p.p_category_name=#{category}
+			    order by p_upload_date desc
+          )
+          where rownum &lt;= #{pager.endRowNo}
+      )
+      where rnum &gt;= #{pager.startRowNo} 
+   
+  
    </select>
    
    <select id="categorycount" parameterType="string" resultType="int">
    	select count(*)
    	from products
-   	where p_category_name=#{categoryname}
+   	where p_category_name=#{category}
    	</select> 
    
-   <select id="selectSearchAll" parameterType="string" resultType="product" resultMap="productMap">
-   	select p_id, p_name, p_price
-   	from products
-   	where p_name like '%'||#{searchword}||'%'
-   	order by p_upload_date desc
+   <select id="selectSearchAll" resultType="product" resultMap="productMap">
+   select rnum, p_name,p_price, photo_sname, photo_type
+      from (
+          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          from (
+               	select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+			    from products p Join photos ph
+			    on p.p_id = ph.p_id and
+			    ph.photo_role='main'
+			    and p.p_name like '%'||#{searchword}||'%'
+			    order by p_upload_date desc
+          )
+          where rownum &lt;= #{pager.endRowNo}
+      )
+      where rnum &gt;= #{pager.startRowNo} 
    </select>
    
    <select id="searchcount" parameterType="string" resultType="int">
    	select count(*)
    	from products
    	where p_name like '%'||#{searchword}||'%'
-   	order by p_upload_date desc
    	</select> 
    
-    <select id="selectSearchCategory" parameterType="string" resultType="product" resultMap="productMap">
-   	select p_id, p_name, p_price
-   	from products
-   	where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
-   	order by p_upload_date desc
+    <select id="selectSearchCategory" resultType="product" resultMap="productMap">
+   select rnum, p_name,p_price, photo_sname, photo_type
+    from (
+          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          from (
+               	select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+			    from products p Join photos ph
+			    on p.p_id = ph.p_id and
+			    ph.photo_role='main'
+			    and p.p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
+			    order by p_upload_date desc
+          )
+          where rownum &lt;= #{pager.endRowNo}
+      )
+      where rnum &gt;= #{pager.startRowNo} 
    	</select>
    	
-   	<select id="searchcategorycount" parameterType="string" resultType="int">
+   	<select id="searchcategorycount"  resultType="int">
    	select count(*)
    	from products
    	where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
-   	order by p_upload_date desc
    	</select> 
    	
    	
