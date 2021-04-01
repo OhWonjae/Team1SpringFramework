@@ -50,6 +50,7 @@ function openZipSearch() {
                 <div class="inner2" style="border: 1px solid #e9ecef; font-size: 0.8em"> 
                     <span class="history-subtitle">배송정보</span>
                     <form class="history_underborder" action="do_payment" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  

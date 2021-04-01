@@ -1,8 +1,7 @@
 package com.mycompany.webapp.controller;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +22,13 @@ public class OrderController {
 	
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(Orders orders) {	
+	public String putcart(Orders orders, Authentication auth) {	
+		auth.getName();
 		int subNum=0;
 		for(int i=1; i<=6; i++) {
 			subNum += Math.random() * 10;
 		}
+		
 		orders.setOrder_id(subNum);
 		orders.setUser_id("hwee1115@naver.com");
 		ordersService.createOrders(orders);

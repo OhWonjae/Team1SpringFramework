@@ -10,7 +10,7 @@
    <!-- 보안 필터 체인(프로세싱) -->
    <security:http>
       <!-- 요청 경로 체크 -->
-      	 <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+      	<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
        <security:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
        <security:intercept-url pattern="/order/**" access="hasRole('ROLE_USER')"/>
        <security:intercept-url pattern="/boards/**" access="hasRole('ROLE_USER')"/> 
