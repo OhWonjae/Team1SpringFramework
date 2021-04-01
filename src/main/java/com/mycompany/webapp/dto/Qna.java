@@ -10,7 +10,7 @@ public class Qna {
 	private String qa_category;
 	private String qa_status;
 	private Date qa_date;
-	private int user_id;
+	private String user_id;
 	private int qa_cn;
 	public int getQa_id() {
 		return qa_id;
@@ -36,10 +36,10 @@ public class Qna {
 	public void setQa_date(Date qa_date) {
 		this.qa_date = qa_date;
 	}
-	public int getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 	public int getQa_cn() {

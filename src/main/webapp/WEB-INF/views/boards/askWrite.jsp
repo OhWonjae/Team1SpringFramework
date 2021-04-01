@@ -51,7 +51,8 @@
                                                     </div>
                                                 </div>
                                                 <!--1:1문의 입력 폼-->
-                              								  <form action="insertAskWrite" method="post">        
+                              								  <form action="insertAskWrite" method="post"> 
+                              								  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />       
 	                                                <!-- 1:1문의 입력 컨테이너 -->
 	                                                <div class ="writeBox" style="display:flex; flex-direction: column; margin-bottom: 40px; height: 100%;">
                                                     
