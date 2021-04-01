@@ -31,7 +31,7 @@
     insert into qna 
     (qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id)
    values
-   (#{qa_id}, #{qa_category}, #{qa_content}, '답변 대기', sysdate, 7, #{user_id})
+   (#{qa_id}, #{qa_category}, #{qa_content}, '답변 대기', sysdate, 7, 12)
    </insert>
    
    <!-- <update id="update" parametertype="qna">
@@ -42,9 +42,9 @@
       where qa_id=#{qa_id}
    </update> -->
    
-   <delete id="deleteByQa_id" parameterType="int">
+   <delete id="deleteByQa_id">
          delete from QNA
-         where qa_id=#{qa_id}
+         where qa_id=#{qa_id} and
          user_id=#{user_id}
    </delete>
 

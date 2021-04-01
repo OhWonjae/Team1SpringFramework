@@ -80,7 +80,7 @@
                                         <div class="answer" id="ans-1">${qna.qa_content}
                                             <div class="btn-2">
                                                 <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/delete?qa_id=${qna.qa_id}" class="btn btn-outline-secondary btn-sm">삭제</a>
                                             </div>
                                         </div>
                                     </div>
@@ -102,6 +102,7 @@
                                                     }
                                                 items.forEach(item => item.addEventListener('click', openCloseAnswer));
                                             </script>
+                                            
                                 </div>
                             </div>
                         </div>
