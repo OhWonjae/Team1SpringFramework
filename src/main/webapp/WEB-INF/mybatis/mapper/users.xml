@@ -14,6 +14,12 @@
 		select user_id, user_name, user_password, user_phone, dog_size, 
 		enabled, authority 
 		from users 
-		where user_id=#{user_id} 
+		where user_id=#{user_id}
 	</select>
+	
+	
+	<update id="updatePassword" >
+		update users 
+		set user_password = #{user_password} where user_id=#{user_id}
+	</update>
 </mapper>
