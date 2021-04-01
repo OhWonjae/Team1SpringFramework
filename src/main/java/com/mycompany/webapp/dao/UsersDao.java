@@ -8,7 +8,6 @@ import com.mycompany.webapp.dto.User;
 public interface UsersDao {
    public int insert(User user);
    
-
    public User selectByUserid(String user_id);
    
    

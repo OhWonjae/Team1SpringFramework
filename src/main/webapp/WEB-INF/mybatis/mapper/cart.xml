@@ -7,7 +7,7 @@
 		insert into cart 
 		(user_id, p_id, amount, p_size)
 		values
-		(#{user_id}, #{p_id}, #{amount}, #{p_size})
+		(#{user_id}, 13, 1, 'S')
 	</insert>
  
  

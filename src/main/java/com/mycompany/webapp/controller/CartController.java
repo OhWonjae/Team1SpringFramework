@@ -26,11 +26,13 @@ public class CartController {
 		return "/order/cart";
 	}
 	
-	@PostMapping("/putcart")
+	@GetMapping("/putcart")
 	public String putcart(CartItem cart, Authentication auth) {
 		
 		cart.setUser_id(auth.getName());
 		cartsService.addCart(cart);
+		System.out.println(cart.getP_id());
+			
 		return "redirect:/product/detail";
 	}
 	
