@@ -51,6 +51,7 @@
                                     </thead>
     
                                     <tbody>
+                                    	<c:forEach begin="0" end="3">
                                         <tr>
                                             <th scope="row" style="color:rgb(138, 138, 146);">1556290343861</th>
                                             <td style="color:rgb(138, 138, 146);"> 2019.04.26</td>
@@ -64,19 +65,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row" style="color:rgb(138, 138, 146); align-items: center;">1556290343861</th>
-                                            <td style="color:rgb(138, 138, 146);">2017.06.08</td>
-                                            <td> <img src="<%=application.getContextPath() %>/resources/img/photo32.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                <strong style="font-size: 1.2em;">플로트 컬러 블록 후드 블루블랙</strong></br> <strong style="font-size: 1.2em;">26,000원</strong>
-                                            </td>
-                                            <td style="border-right: white; text-align: center;">
-                                            	 <div>발송처리완료</div>
-                                                <div style="margin-top: 5px; font-size: 14px;">
-                                                    <a href="<%=application.getContextPath()%>/order/orders?ono=1">주문 상세내역</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                             </table>
                         
