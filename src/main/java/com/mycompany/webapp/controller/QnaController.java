@@ -20,7 +20,7 @@ import com.mycompany.webapp.service.QnaService;
 @RequestMapping("/boards")
 public class QnaController {
 	@Autowired
-	private QnaService qnaService;
+	private QnaService qnaService;	
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 	
 	//1:1문의 게시판으로 이동
@@ -29,10 +29,13 @@ public class QnaController {
 			  
 			  int totalRows = qnaService.getTotalRows();
 		      Pager pager = new Pager(10, 5, totalRows, pageNo);
-		      System.out.print(pager.getEndRowIndex());//테스트
-			  //list<Qna> list = qnaService.getBoardList( pager.getEndPageNo());
-		      //model.addAttribute("list", list);
-		      model.addAttribute("pager", pager.getEndRowIndex());
+		      
+			  List<Qna> list = qnaService.getBoardList( pager );		  
+			  model.addAttribute("qna", list);//as -is => list , be -to => qna
+		      model.addAttribute("pager", pager.getTotalRows());
+		      
+		      //System.out.println(list);//테스트 여기서 list 값을 잘 활용 하면 됨. 지금 insert 하면 값 들어가고,콘솔에 보면 값은 계속 쌓이고는 있음 
+		      
 		return "/boards/askList";
 	}
 	//'문의하기'버튼 클릭시 작성란으로 이동

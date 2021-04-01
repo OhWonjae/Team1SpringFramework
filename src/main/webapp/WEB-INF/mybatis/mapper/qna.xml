@@ -2,11 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.QnaDao">
 
-   <select id="selectall" resultType="qna">
+   <select id="selectAll" resultType="qna">
       select qa_id, qa_category, qa_content, qa_status, qa_date, user_id, qa_cn
-      from qna
+      from QNA
       order by qa_id desc
    </select>
+   
+   <select id="selectByPage" parameterType="pager" resultType="qna">
+   select rnum, qa_id, qa_category, qa_content, qa_status, qa_date, user_id, qa_cn
+      from (
+          select rownum as rnum, qa_id, qa_category, qa_content, qa_status, qa_date, user_id, qa_cn
+          from (
+              select qa_id, qa_category, qa_content, qa_status, qa_date, user_id, qa_cn
+              from QNA
+              order by qa_id desc
+          )
+          where rownum &lt;= #{endRowNo}
+      )
+      where rnum &gt;= #{startRowNo}  
+   
+   </select> 
+      
    
    <insert id="insert" parameterType="qna">
    <selectKey keyProperty="qa_id" resultType="int" order="BEFORE">

@@ -38,7 +38,7 @@ public class QnaService {
 	      return list;
    }
    public List<Qna> getBoardList(Pager pager) { // 메소드 오버로딩
-	      List<Qna> list = qnaDao.selectByPage(pager);
+	      List<Qna> list = qnaDao.selectByPage(pager);	      
 	      return list;
    }
 
