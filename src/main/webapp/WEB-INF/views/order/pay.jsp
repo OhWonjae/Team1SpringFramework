@@ -4,11 +4,16 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.mycompany.webapp.dto.*"%>
 
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
+<% Date date = new Date();%>
+<%SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");%>
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/hungyun.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -50,6 +55,7 @@ function openZipSearch() {
                 <div class="inner2" style="border: 1px solid #e9ecef; font-size: 0.8em"> 
                     <span class="history-subtitle">배송정보</span>
                     <form class="history_underborder" action="do_payment" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
@@ -100,11 +106,12 @@ function openZipSearch() {
                             <thead class="thead-light">
                                 <tr>
                                     <th style=" text-align: left">업체발송  상품 <br> 
-                                    <span style="color: rgb(255, 81, 82); font-size: 0.9em">발송일: 3월 10일 수</span></th>
+                                    <span style="color: rgb(255, 81, 82); font-size: 0.9em"><%=sf.format(date)%></span></th>
                                     <th></th>    
                                 </tr>
                             </thead>
                            	<tbody>
+                           		<c:forEach begin="0" end="3">
                                 <tr>
                                     <th style="color: rgb(195, 195, 195); font-size: 0.8em"> 
                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/photo2.jpg" width="20%" style="float: left; margin-right: 10px;">
@@ -113,6 +120,7 @@ function openZipSearch() {
                                         <span>수량: 1개</span></th>
                                     <td style="border-right: white; text-align: center; vertical-align: middle;">14,000원</td>
                                 </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
