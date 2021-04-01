@@ -17,7 +17,20 @@ public class Product {
    
    
    
-   public List<Photo> getPhotolist() {
+//   public Product(int p_id, String p_name, int p_price, int p_stock, int p_salescount, String p_categoryname,
+//		Date p_upload_date, String p_description, List<Photo> photolist) {
+//	super();
+//	this.p_id = p_id;
+//	this.p_name = p_name;
+//	this.p_price = p_price;
+//	this.p_stock = p_stock;
+//	this.p_salescount = p_salescount;
+//	this.p_categoryname = p_categoryname;
+//	this.p_upload_date = p_upload_date;
+//	this.p_description = p_description;
+//	this.photolist = photolist;
+//}
+public List<Photo> getPhotolist() {
 	return photolist;
    }
 	public void setPhotolist(List<Photo> photolist) {

@@ -38,11 +38,11 @@ public class ProductController {
 	// 테스트용 컨트롤러 - 상품 무작위 생성
 	@GetMapping("/photo")
 	public String photo(Model model) {
-//		Photo p = new Photo();
-//		p.setpId(110);
-//		p.setPhotoRole("main");
-//		
-//		String url = photosService.GetProductPhotoUrl(p);
+		//Photo p = new Photo();
+	//	p.setpId(110);
+		//p.setPhotoRole("main");
+		
+	//	String url = photosService.GetProductPhotoUrl(p);
 //		logger.info(url);
 
 	    return "/product/new";
@@ -127,6 +127,9 @@ public class ProductController {
 	      Pager pager = new Pager(20,5,totalRows,intPageNo);
 	      session.setAttribute("pager", pager);
 	      List<Product> list = productService.getProductsByPager(pager);
+	      
+	     // logger.info(list.get(0).getPhotolist().get(0).getPhoto_sname());
+	      
 	      model.addAttribute("listcount",totalRows);
 	      model.addAttribute("list", list);
 	      model.addAttribute("pager",pager);
