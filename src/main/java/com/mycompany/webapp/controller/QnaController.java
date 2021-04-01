@@ -54,5 +54,11 @@ public class QnaController {
 	public String editaskWrite() {
 		return "/boards/askWrite";
 	}
+	// 1:1 문의 게시판에서 '삭제'버튼 클릭
+	@GetMapping("/delete")
+	public String delete(int qa_id) {
+		qnaService.deleteQna(qa_id);
+		return "redirect:askList";
+	}
 }
 

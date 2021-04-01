@@ -14,7 +14,7 @@
 
  
    <insert id="insert" parameterType="product">
-   <selectKey keyProperty="pid" resultType="int" order="BEFORE">
+   <selectKey keyProperty="p_id" resultType="int" order="BEFORE">
    	select seq_product_pno.nextval from dual
    
    </selectKey>

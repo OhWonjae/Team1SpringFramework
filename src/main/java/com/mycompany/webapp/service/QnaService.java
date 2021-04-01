@@ -26,8 +26,8 @@ public class QnaService {
 	   qnaDao.update(qna);
    }
    
-   public void deleteqna(int bno) {
-	   qnaDao.deleteByQa_id(bno);
+   public void deleteQna(int qa_id) {
+	   qnaDao.deleteByQa_id(qa_id);
    }
    public void insert(Qna qna) {
 	   logger.info(qna.getQa_content());
