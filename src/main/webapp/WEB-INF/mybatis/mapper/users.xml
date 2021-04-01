@@ -17,9 +17,21 @@
 		where user_id=#{user_id}
 	</select>
 	
+	<select id="selectByUsername" parameterType="string" resultType="user"> 
+		select user_id, user_name, user_password, user_phone, dog_size, 
+		enabled, authority 
+		from users 
+		where user_name=#{user_name} and user_phone=#{user_phone} 
+	</select>
 	
-	<update id="updatePassword" >
+	
+   
+	<update id="updatePwByUserid" >
 		update users 
 		set user_password = #{user_password} where user_id=#{user_id}
+	</update>
+	<update id="updateHpPUserid" >
+		update users 
+		set user_phone = #{user_phone} where user_id=#{user_id}
 	</update>
 </mapper>

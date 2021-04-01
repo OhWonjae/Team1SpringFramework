@@ -23,17 +23,17 @@
 
 		// 유효성 검사 시작
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
-		const user_id = $("#user_id").val();
-		const user_password = $("#user_password").val();
+		const uid = $("#user_id").val();
+		const upassword = $("#user_password").val();
 
 		if (user_password === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUser_password").html("필수사항 입니다.");
+			$("#errorUserpassword").html("필수사항 입니다.");
 		}
 
-		if (user_id === "") { // 비어있으면 문제있지
+		if (uid === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUser_id").html("필수사항 입니다.");
+			$("#errorUserid").html("필수사항 입니다.");
 		}
 
 		if (result) {
@@ -42,9 +42,9 @@
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		}
-		if (!re.test($user_id)) {
+		if (!re.test(uid)) {
 			result = false;
-			$("#errorUser_id").html("이메일 형식이 아닙니다.")
+			alert("이메일에 맞는 형식이 아닙니다.");
 		}
 	}
 </script>
@@ -107,10 +107,10 @@
 			<div class="text-center"
 				style="text-align: center; font-size: 0.7em;">
 				<button type="button" class="button"
-					onclick="location.href='<%=application.getContextPath()%>/user/searchId' ">
+					onclick="location.href='<%=application.getContextPath()%>/searchId' ">
 					아이디 찾기 |</button>
 				<button type="button" class="button"
-					onclick="location.href='<%=application.getContextPath()%>/user/searchPw' ">
+					onclick="location.href='<%=application.getContextPath()%>/searchPw' ">
 					비밀번호 찾기</button>
 			</div>
 

@@ -11,50 +11,9 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
-<style type="text/css">
-* {
-   box-sizing: border-box;
-   margin: 0px;
-   padding: 0px;
-}
-
-.jss486 {
-   height: 40px;
-   padding: 10 5 2 4px;
-   margin: 0px 0px 10px 0px;
-   border-top: 1px solid rgba(235, 235, 235, 1);
-   border-bottom: 1px solid #cfcfd0;
-}
-
-.header2 {
-   padding-left: 25px;
-   background-color: rgb(244, 244, 245);
-   height: 30px;
-   font-size: 0.85em;
-}
-
-.center {
-   display: flex;
-   justify-content: center;
-}
-
-.box {
-   padding: 10px;
-   background-color: white;
-   flex: 2;
-   font-size: 0.8em;
-   font-family: Noto Sans KR, sans-serif;
-   font-weight: 400;
-}
-
-.event {
-   background-color: rgb(255, 81, 82);
-   color: white;
-   font-size: 0.9em;
-   display: inline;
-   padding-inline: 8px;
-   border-radius: 5px;
-}
+<link rel="stylesheet"
+	href="<%=pageContext.getServletContext().getContextPath()%>/resources/css/hungyun.css">
+<style>
 </style>
 
 <div class="header2">
@@ -68,8 +27,9 @@
          <strong>아이디 찾기</strong>
       </h4>
 
-      <form method="post"
-         action="searchId">
+      <form method="post" action="searchId">
+      <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
          <div style="padding: 5px 0 0 0;">
             <strong>이름</strong><span style="color: red;">*</span>
             <div class="form-group input-group">
@@ -84,11 +44,8 @@
                   placeholder="휴대전화 번호를 입력하세요." type="number">
             </div>
          </div>
-         <div class="text-center"
-            style="text-align: center; font-size: 0.7em;">구매내역이 있는 회원만 등록된
-            휴대전화번호로 찾을 수 있습니다.</div>
+         {user.user_id}
          <br>
-         email: ${user.user_email} 
          <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"
                style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">

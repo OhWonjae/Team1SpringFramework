@@ -29,15 +29,15 @@ public class AuthController {
 		return "/user/joinForm";
 	}
 
-	@GetMapping("/searchId")
+	/*@GetMapping("/searchId")
 	public String searchId() {
 		return "/user/searchId";
 	}
-
+	
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "/user/searchPw";
-	}
+	}*/
 
 	@GetMapping("/pwChange")
 	public String pwChange() {
@@ -60,7 +60,7 @@ public class AuthController {
 	}*/
 
 	@PostMapping("/join")
-	public String join(User user) {
+	public String join(User user) throws Exception {
 		logger.info(user.getUser_name());
 		logger.info(user.getUser_id());
 		logger.info(user.getUser_password());
@@ -75,11 +75,55 @@ public class AuthController {
 		return "redirect:/user/loginForm";
 	}
 
+	@GetMapping("/searchId")
+	public String read1(String user_name, String user_phone, Model model) {
+		User user = usersService.getUser2(user_name, user_phone);
+		model.addAttribute("user", user);
+		return "/user/searchId";
+	}
+
+	@GetMapping("/searchPw")
+	public String read2(String user_id, Model model)  {
+		User user = usersService.getUser(user_id);
+		model.addAttribute("user", user);
+		return "/user/searchPw";
+	}
+
 	@GetMapping("user/my")
-	public String read(String user_id, Model model, Authentication auth) {
+	public String read(Model model, Authentication auth) throws Exception {
 		User user = usersService.getUser(auth.getName());
 		model.addAttribute("user", user);
 		return "/user/my";
+	}
+	
+	@GetMapping("user/phoneChange")
+	public String read2(String user_id, Model model, Authentication auth) throws Exception {
+		User user = usersService.getUser(auth.getName());
+		model.addAttribute("user", user);
+		return "/user/phoneChange";
+	}
+	
+	@GetMapping("user/pwChange")
+	public String read3(String user_id, Model model, Authentication auth) throws Exception {
+		User user = usersService.getUser(auth.getName());
+		model.addAttribute("user", user);
+		return "/user/pwChange";
+	}
+
+	
+	
+	//PW 변경
+	@PostMapping("user/update1")
+	public String update1(User user) {
+		usersService.updateUser(user);
+		return "redirect:/user/loginForm";
+	}
+	
+	//PHONE 변경
+	@PostMapping("user/update2")
+	public String update2(User user) {
+		usersService.updateUser2(user);
+		return "redirect:/user/loginForm";
 	}
 
 

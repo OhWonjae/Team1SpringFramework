@@ -22,10 +22,9 @@
 				style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;">
 			</picture>
 			<div style="float: left; padding-left: 20px; padding-top: 15px;">
-				<strong>1조</strong> <i class="fas fa-cog"></i>
-				<div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user_id}</div>
-				<input type="text" class="form-control" value="${user.user_id}"
-					readonly>
+				<strong>${user.user_name}</strong> <i class="fas fa-cog"></i>
+				<div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
+				
 			</div>
 		</div>
 		<br />

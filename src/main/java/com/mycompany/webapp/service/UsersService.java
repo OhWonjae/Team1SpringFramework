@@ -42,16 +42,23 @@ public class UsersService {
 		return "success";
 	}
 
-	/*// 읽어오기
-	public User readUser(String user_id) {
-		User readUser = usersDao.selectByUserid(user_id);
-		return readUser;
-	}*/
-	
 	// 읽어오기
 	public User getUser(String user_id) {
 		User user = usersDao.selectByUserid(user_id);
 		return user;
+	}
+
+	public User getUser2(String user_name, String user_phone) {
+		User user = usersDao.selectByUsername(user_name, user_phone);
+		return user;
+	}
+
+	public void updateUser(User user) {
+		usersDao.updatePwByUserid(user);
+	}
+
+	public void updateUser2(User user) {
+		usersDao.updateHpByUserid(user);
 	}
 
 }
