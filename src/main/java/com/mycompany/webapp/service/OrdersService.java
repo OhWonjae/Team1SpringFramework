@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.OrderProductsDao;
 import com.mycompany.webapp.dao.OrdersDao;
+import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.OrderProduct;
 import com.mycompany.webapp.dto.Orders;
 
@@ -48,6 +49,11 @@ public class OrdersService {
 	public List<OrderProduct> getorderList(){
 		List<OrderProduct> orderproducts = orderProductDao.orderList();
 		return orderproducts;
+	}
+	
+	public List<CartItem> getOrderList(String uid){ 
+		List<CartItem> list = orderProductDao.orderList(uid);
+		return list;
 	}
 
 	public void updateStatus(OrderProduct orderproduct) {
