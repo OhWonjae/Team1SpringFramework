@@ -111,14 +111,14 @@ function openZipSearch() {
                                 </tr>
                             </thead>
                            	<tbody>
-                           		<c:forEach begin="0" end="3">
+                           		<c:forEach var="cart" items="${list}">
                                 <tr>
                                     <th style="color: rgb(195, 195, 195); font-size: 0.8em"> 
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/photo2.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                    	<span style="color: rgb(134, 134, 138)">플로트 스탠다드 민소매 티셔츠 옐로우블루</span><br> 
-                                        <span>사이즈: L</span><br> 
-                                        <span>수량: 1개</span></th>
-                                    <td style="border-right: white; text-align: center; vertical-align: middle;">14,000원</td>
+                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photo_sname}&photoType=${cart.photo_type}" width="20%" style="float: left; margin-right: 10px;">
+                                    	<span style="color: rgb(134, 134, 138)">${cart.p_name}</span><br> 
+                                        <span>사이즈: ${cart.p_size}</span><br> 
+                                        <span>수량: ${cart.amount}</span></th>
+                                    <td style="border-right: white; text-align: center; vertical-align: middle;">${cart.p_price}</td>
                                 </tr>
                                 </c:forEach>
                             </tbody>

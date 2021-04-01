@@ -3,6 +3,7 @@ package com.mycompany.webapp.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
@@ -14,7 +15,7 @@ public interface QnaDao {
 	public int insert(Qna qna);
 	public Qna selectByQa_id(int qa_id);
 	public int update(Qna board);
-	public int deleteByQa_id(int qa_id);
+	public int deleteByQa_id(@Param("qa_id") int qa_id, @Param("user_id")String user_id);
 	public int count();
 	public List<Qna> selectAll();
 	public List<Qna> selectByPage(Pager pager);
