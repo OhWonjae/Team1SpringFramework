@@ -13,7 +13,7 @@
 	font-size: 0.7em;
 }
 </style>
-<script>
+<!-- <script>
 	function validate() {
 		event.preventDefault(); // 기능 잠시 꺼두기
 		var result = true;
@@ -22,6 +22,8 @@
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
 		const user_name = $("#user_name").val();
 		const user_password = $("#user_password").val();
+		const user_password2 = $("#user_password2").val();
+
 		const user_id= $("#user_id").val();
 		const user_phone = $("#user_phone").val();
 
@@ -31,6 +33,11 @@
 		}
 
 		if (user_password === "") { // 비어있으면 문제있지
+			result = false;
+			$("#errorUser_password").html("필수사항 입니다.");
+		}
+		
+		if (user_password2 === "") { // 비어있으면 문제있지
 			result = false;
 			$("#errorUser_password").html("필수사항 입니다.");
 		}
@@ -69,7 +76,7 @@
 		})
 	}); */
 		
-</script>
+</script> -->
 
 
 <div class="header2">
