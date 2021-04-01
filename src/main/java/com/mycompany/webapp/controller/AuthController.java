@@ -15,20 +15,19 @@ import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
 
 @Controller
-@RequestMapping("/user")
 public class AuthController {
    @Autowired
    private UsersService usersService;
    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-   @GetMapping("/login")
-   public String login() {
-      return "/user/login";
+   @GetMapping("/loginForm")
+   public String loginForm() {
+      return "/user/loginForm";
    }
 
-   @GetMapping("/signUp")
-   public String signUp() {
-      return "/user/signUp";
+   @GetMapping("/joinForm")
+   public String joinForm() {
+      return "/user/joinForm";
    }
 
    @GetMapping("/searchId")
@@ -56,36 +55,47 @@ public class AuthController {
       return "redirect:/user/my";
    }
 
-   @GetMapping("/my")
+   @GetMapping("user/my")
    public String my() {
       return "/user/my";
    }
 
+   
    @PostMapping("/join")
    public String join(User user) {
+	  logger.info(user.getUser_name());
+      logger.info(user.getUser_id());
+      logger.info(user.getUser_password());
+      logger.info(user.getUser_phone());
+      logger.info(user.getDog_size());
+      logger.info(user.getUser_phone());
+
 
       BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
       user.setUser_password(bpe.encode(user.getUser_password()));
-		/*
-		 * usersService.join(user);
-		 */      
-      return "redirect:/user/login";
+	  usersService.join(user);
+
+      return "redirect:/user/loginForm";
    }
 
-   @PostMapping("/login")
+   /*@PostMapping("/login")
    public String login(User user, HttpSession session) {
       String result = usersService.login(user);
+      
+      logger.info(user.getUser_id());
+      logger.info(user.getUser_password());
 
       if (result.equals("success")) {
          logger.info(result);
          session.removeAttribute("loginError");
-         session.setAttribute("loginUser_id", user.getUser_name());
+         session.setAttribute("loginUser_id", user.getUser_id());
          return "redirect:/main";
       } else {
+    	  logger.info(result);
          session.setAttribute("loginError", result);
-         return "redirect:/user/login"; // home
+         return "redirect:/loginForm"; // home
       }
-   }
+   }*/
    
 	/*@PostMapping("/find")
 	public String login(User user, HttpSession session) {
@@ -108,13 +118,7 @@ public class AuthController {
     * 
     * return "redirect:/home"; }
     */
-   @PostMapping("/logout")
-   public String logout(HttpSession session) {
-      //session.invalidate();
-	  session.removeAttribute("loginUser_id");
-      return "redirect:/main";
-   }
-   
+
    @GetMapping("/error403")
    public String error403() {
       return "user/error403";

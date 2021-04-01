@@ -37,7 +37,7 @@
 		}
 
 		if (result) {
-			$("#joinForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
+			$("#loginForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -72,8 +72,9 @@
 				</c:if>
 			</div>
 		</c:if>
-		<form id="joinForm" name="joinForm" method="post" action="login"
+		<form id="loginForm" name="loginForm" method="post" action="login"
 			onsubmit="validate()" novalidate="novalidate">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="form-group input-group">
 				<input id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
@@ -93,16 +94,14 @@
 					로그인</button>
 			</div>
 		</form>
-		<form method="post"
-			action="<%=pageContext.getServletContext().getContextPath()%>/main">
-			<div class="form-group">
+		
+			
 				<button type="button"
-					onclick="location.href='<%=application.getContextPath()%>/user/signUp'"
+					onclick="location.href='<%=application.getContextPath()%>/user/joinForm'"
 					class="btn btn-primary btn-block"
-					onclick="location.href='signUp.html'"
 					style="background-color: white; color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 					회원가입</button>
-			</div>
+			
 
 
 			<div class="text-center"
@@ -115,7 +114,7 @@
 					비밀번호 찾기</button>
 			</div>
 
-		</form>
+		
 	</article>
 </div>
 

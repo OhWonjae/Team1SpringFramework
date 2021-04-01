@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.QnaDao">
+
+   <select id="selectAll" resultType="qna">
+      select qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
+      from QNA
+      order by qa_id desc
+   </select>
+   
+   <select id="selectByPage" parameterType="pager" resultType="qna">
+   select rnum, qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
+      from (
+          select rownum as rnum, qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
+          from (
+              select qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
+              from QNA
+              order by qa_id desc
+          )
+          where rownum &lt;= #{endRowNo}
+      )
+      where rnum &gt;= #{startRowNo}  
+   
+   </select> 
+      
+   
+   <insert id="insert" parameterType="qna">
+   <selectKey keyProperty="qa_id" resultType="int" order="BEFORE">
+         select seq_qna_qno.nextval from dual
+      </selectKey>
+    insert into qna 
+    (qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id)
+   values
+   (#{qa_id}, #{qa_category}, #{qa_content}, '답변 대기', sysdate, 7, #{user_id})
+   </insert>
+   
+   <!-- <update id="update" parametertype="qna">
+      update qna set
+         qa_category=#{qa_category},
+         qa_content=#{qa_content}
+         qa_date=#{qa_date}
+      where qa_id=#{qa_id}
+   </update> -->
+   
+   <delete id="deleteByQa_id" parameterType="int">
+         delete from QNA
+         where qa_id=#{qa_id}
+         user_id=#{user_id}
+   </delete>
+
+</mapper>

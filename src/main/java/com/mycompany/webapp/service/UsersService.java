@@ -11,7 +11,9 @@ import com.mycompany.webapp.dto.User;
 public class UsersService {
    @Autowired
    private UsersDao usersDao;
-   
+   public void join(User user) {
+		usersDao.insert(user);
+	}
 	/*
 	 * public int emailCheck() throws Exception { int result = usersDao.idCheck();
 	 * return result; }
@@ -26,9 +28,8 @@ public class UsersService {
 	 */
 
    public String login(User user) {
-      User dbUser = usersDao.selectByUser_id(user.getUser_id());
+      User dbUser = usersDao.selectByUserid(user.getUser_id());
       if(dbUser == null) {
-
          return "wrongUser_id";
       } else {
          BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
@@ -39,6 +40,8 @@ public class UsersService {
       }
       return "success";
    }
-   
-   
+
+	
 }
+   
+   

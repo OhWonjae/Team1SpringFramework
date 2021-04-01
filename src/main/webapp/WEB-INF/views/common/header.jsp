@@ -18,7 +18,7 @@
     	<script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
 
    	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/style.css">
-     <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/cart.css">
+    <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/cart.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
@@ -44,33 +44,34 @@
                   </form>
                 </div>
                 <div class="header-sideBar">
-                <!--  새로 추가한 행  시작-->
-                <c:if test="${loginUser_id == null}">
-		    		<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/login">로그인</a>
-		   		</c:if>
-			    <c:if test="${loginUser_id != null}">
-			    	<span class="mr-2">로그인ID(Email): ${loginUser_id}</span> 
-			    	<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/my">로그아웃</a>
-			    </c:if>  
-                
-                <%-- <sec:authorize access="isAnonymous()">
-					<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/login">
+               <!--<sec:authorize access="isAnonymous()">
+					<a class="btn btn-success btn-sm" href="<%=application.getContextPath()%>/user/loginForm">
 						로그인
 					</a>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<span class="mr-2">로그인Email: <sec:authentication property="name"/></span> 
-					<form method="post" class="d-inline-block" action="<%=application.getContextPath()%>/user/my">
+					<form method="post" class="d-inline-block" action="<%=application.getContextPath()%>/logout">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<button class="btn btn-success btn-sm" >로그아웃</button>
 					</form>
-				</sec:authorize> --%>
+				</sec:authorize>-->
 		<!--  새로 추가한 행 끝 -->
                     <div class="mypage">
-                      <a href="<%=application.getContextPath()%>/user/login">
-                        <i class="fas fa-user mypage-icon"></i>
-                        <span class="mypage-text">MY</span>
-                      </a>
+                    	
+	                     <sec:authorize access="isAnonymous()">
+							<a href="<%=application.getContextPath()%>/loginForm">
+	                        	<i class="fas fa-user mypage-icon"></i>
+	                        	<span class="mypage-text">MY</span>
+	                      	</a>
+						</sec:authorize>
+					
+						<sec:authorize access="isAuthenticated()">
+							<a href="<%=application.getContextPath()%>/user/my">
+	                        	<i class="fas fa-user mypage-icon"></i>
+	                        	<span class="mypage-text">MY</span>
+	                      	</a>
+						</sec:authorize>
                     </div>
                     <div class="cart">
                       <a href="<%=application.getContextPath()%>/order/cart">
