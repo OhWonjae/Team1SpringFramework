@@ -47,13 +47,13 @@ public interface ProductDao {
 	List<Product> selectRankCategory(String category);
 	int rankcategorycount(String category);
 	
-	List<Product> selectSearchAll(String searchword);
-	int searchcount(String searchkeyword);
+	List<Product> selectSearchAll(@Param("pager") Pager pager, @Param("searchword")String searchword);
+	int searchcount(String searchword);
 	
-	List<Product> selectCategory(String category);
+	List<Product> selectCategory(@Param("category")String category,@Param("pager") Pager pager);
 	int categorycount(String category);
 
-	List<Product> selectSearchCategory(@Param("searchword")String searchword, @Param("category")String category);
+	List<Product> selectSearchCategory(@Param("pager")Pager pager, @Param("searchword")String searchword, @Param("category")String category);
 	int searchcategorycount(@Param("searchword")String searchword, @Param("category")String category);
 	
 

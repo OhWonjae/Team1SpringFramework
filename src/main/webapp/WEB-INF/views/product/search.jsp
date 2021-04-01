@@ -13,7 +13,20 @@
 		<title>Spring</title>
 
 	</head>
-	
+	<style>
+	.center{
+        display: flex;
+    	flex-direction: row;
+   		 flex-wrap: wrap;
+   		 justify-content: flex-start;
+   		 padding:0px 20px;
+   		
+   	  }
+      .flex-items{
+      margin: 0px 5px;
+　	}
+
+	</style>
      <!--검색페이지 시작-->
 
     <!--회색 바-->
@@ -37,18 +50,18 @@
                             카테고리
                         </h5>
                         <div class="collapse" id="collapseExample">
-                            <div class="nav-link2 active"  style="padding: 5% 10%" href="#"><h6>전체</h6></div>
-                            <!--세부 카테고리 드랍다운-->
+                            <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 10%" onclick= "location.href='search?phgeNo=1&category=전체&searchword=${word}'"><h6>전체</h6></button>
+                                    <!--세부 카테고리 드랍다운-->
                             <div class="dropdown" >
                                 <h6  class="nav-link2 dropdown-toggle" style="padding: 5% 10%" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
                                         의류/악세서리
                                 </h6>
                                 <div class="collapse" id="collapseExample2">
-                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">전체</h6>
-                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">티셔츠</h6>
-                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">후드티</h6>
-                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">패딩/코트</h6>
-                                    <h6 class="nav-link2"  style="display:block; padding: 5% 20%" href="#">원피스</h6>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=티셔츠&searchword=${word}'"><h6>티셔츠</h6></button>
+                                    <button type="button" class="btn btn-linknav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=후드티&searchword=${word}'"><h6>후드티</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=패딩/코트&searchword=${word}'"><h6>패딩/코트</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=원피스&searchword=${word}'"><h6>원피스</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=올인원&searchword=${word}'"><h6>올인원</h6></button>
                                 </div>
                             </div>
                         </div>
@@ -58,115 +71,61 @@
                 <div class="col-md-10 border" style="padding: 0 0;" >
                     <!--검색결과 설명--> 
                     <div class="border-bottom" style="font:bold; margin: 1%;">
-                        <h5><strong>'후드'</strong>에 대한 검색결과</h5>
+                        <h5><strong>${resultname}</strong></h5>
                     </div>
                     <!--상품 개수--> 
                     <div class="border-bottom" style="padding:1% 0; margin: 1%; color: gray;">
-                        <h6><strong>38</strong>개의 상품</h6>
+                        <h6><strong>${listcount}</strong>개의 상품</h6>
                     </div>
-                    <div class="container" id="productlist">
-	                  
-                        <!--상품 목록행 1--> 
-              			<div class="row">
-                            <!--상품1--> 
-                            <div class="col-3" OnClick="location.href ='detail.html'" style="cursor:pointer; margin: 0px; text-align: center; padding: 5px 5px;  ">
-                                <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
-                                    <!--상품 사진-->
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/플로트 콤비 후드 옐로우핫핑크_29,000원.PNG" width="100%" >
-                                    <!--상품명-->
-                                    <figcaption class="figure-caption ">플로트 콤비 후드 옐로우핫핑크</figcaption>
-                                    <!--상품 가격-->
-                                    <figcaption class="figure-caption font-weight-bold"  >29,000원</figcaption>
-                                    <!--상품 별점-->
-                                    <figcaption class="figure-caption  ">
-                                        <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px" /><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px">
-                                        (10)
-                                    </figcaption>
-                                    
-                                </figure>
-                            </div>
-                            <!--상품2--> 
-                            <div class="col-3  "OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
-                                <figure class="figure " style="text-align: left;margin:0 0; height: 90%; width: 90%; ">
-                                    <!--상품 사진-->
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/플로트 스탠다드 후드 핑크_26,000원.PNG" width="100%" >
-                                    <!--상품명-->
-                                    <figcaption class="figure-caption ">플로트 스탠다드 후드 핑크</figcaption>
-                                    <!--상품 가격-->
-                                    <figcaption class="figure-caption font-weight-bold">26,000원</figcaption>
-                                    <!--상품 별점-->
-                                    <figcaption class="figure-caption  ">
-                                      <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px" /><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px">   (10)
-                                    </figcaption>
-                                    
-                                </figure>
-                            </div>
-                            <!--상품3--> 
-                            <div class="col-3  " OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
-                                <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
-                                    <!--상품 사진-->
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 플러피 기모 후드 점퍼_26,000~31,000원.PNG" width="100%" >
-                                    <!--상품명-->
-                                    <figcaption class="figure-caption ">이츠독 플러피 후드 점퍼</figcaption>
-                                    <!--상품 가격-->
-                                    <figcaption class="figure-caption font-weight-bold">26,000원 ~31,000원</figcaption>
-                                    <!--상품 별점-->
-                                    <figcaption class="figure-caption  ">
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px" /><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px">    (10)
-                                    </figcaption>
-                                    
-                                </figure>
-                            </div>
-                            <!--상품4--> 
-                            <div class="col-3  " OnClick="location.href ='detail.html'" style="cursor:pointer;margin: 0px; text-align: center; padding: 5px 5px; ">
-                                <figure class="figure " style="text-align: left; margin:0 0; height: 90%; width: 90%; ">
-                                    <!--상품 사진-->
-                                    <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/이츠독 버디 슈퍼 보아 후드티 블루_32,000원 ~ 37,000원.PNG" width="100%" >
-                                    <!--상품명-->
-                                    <figcaption class="figure-caption ">이츠독 버디 슈퍼 후드티</figcaption>
-                                    <!--상품 가격-->
-                                    <figcaption class="figure-caption font-weight-bold">32,000원 ~ 37,000원</figcaption>
-                                    <!--상품 별점-->
-                                    <figcaption class="figure-caption  ">
-                                     <img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px" /><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG" height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px"><img src="<%=pageContext.getServletContext().getContextPath() %>/resources/img/Star.PNG"height="10px">   (10)
-                                    </figcaption>
-                                    
-                                </figure>
-                            </div> 
-                     
-                        </div>
-  						       <script>
-	                    	<!--상품 목록 컨테이너 출력-->
-	                    	var rowhtml = $("#productlist").html(); 
-	                    	console.log(rowhtml);
-	                    	 for(var i=0; i<4; i++){
-	                    		$("#productlist").append(rowhtml);
-	                    	} 
-	                    	 $("#productlist").append("</div>");
-	                   	    </script>
-                      
+                    <div class="center">  
+			            	<!--신규 상품 리스트 출력 -->
+			            	<c:forEach var="product" items="${list}">
+							 <div class="flex-items"> 
+							 	<figure>
+			      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+			      					<figcaption>${product.p_name}</figcaption>
+			      					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
+			    					<figcaption>${product.p_price}</figcaption>
+			    				</figure>
+			                </div>
+							</c:forEach>
+			            </div>      
+			            
+			           
 
+                      
+				 <div class="d-flex text-center">
+					<div class="flex-grow-1">
+				
+						<!-- 6 7 8 9 10 -->
+						<a class="btn btn-outline-primary btn-sm"
+							href="search?pageNo=1&category=${category}&searchword=${word}">처음</a>
+							
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+							href="search?pageNo=${pager.startPageNo-1}&category=${category}&searchword=${word}">이전</a>
+						</c:if>	
+						
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<a class="btn 
+							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							
+							btn-sm" href="search?pageNo=${i}&category=${category}&searchword=${word}">${i}</a>
+						</c:forEach>
+						
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+							href="search?pageNo=${pager.endPageNo+1}&category=${category}&searchword=${word}">다음</a>
+						</c:if>		
+							
+						<a class="btn btn-outline-primary btn-sm"
+							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">맨끝</a>
+					</div>
+				</div>   
 
                         
-                        <!--상품 목록 순서--> 
-                        <div class="container d-flex justify-content-center " style="margin-top:10%; width:100%; height: 70px; "> 
-                            <nav>
-                                <ul class="navbar-nav navbar-expand-lg " style="height:50% ;" >
-                                    <li class="nav-item">
-                                        <button class="nav-link3"  href="#">&lt;</button>
-                                    </li>
-                                    <li class="nav-item">
-                                        <button class="nav-link3 active"  style="background-color:  gainsboro;" href="#">1</button>
-                                    </li>
-                                    <li class="nav-item">
-                                        <button class="nav-link3"  href="#">2</button>
-                                    </li>
-                                    <li class="nav-item">
-                                        <button class="nav-link3"  href="#">&gt;</button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                       
                     </div>
                     
                    
@@ -174,6 +133,6 @@
                 </div>
             </div>
         </div>
-    </div>
+   
 
    <%@ include file="/WEB-INF/views/common/footer.jsp"%>

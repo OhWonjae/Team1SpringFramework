@@ -11,12 +11,12 @@
                                 <span class="category">카테고리</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search">티셔츠</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search">후드티</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search">패딩/코트</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search">원피스</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search">올인원</a>
-                             
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=티셔츠&searchword=">티셔츠</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=후드티&searchword=">후드티</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=패딩/코트&searchword=">패딩/코트</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=원피스&searchword=">원피스</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=올인원&searchword=">올인원</a>
+                             </div>
                           </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/new">신규</a>
