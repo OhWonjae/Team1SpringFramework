@@ -4,7 +4,7 @@ package com.mycompany.webapp.dto;
 public class CartItem {   
    private int amount;
    private String p_size; 
-   private int user_id;
+   private String user_id;
    private int p_id;
    private String p_name;
    private int p_price;
@@ -26,10 +26,10 @@ public String getP_size() {
 public void setP_size(String p_size) {
 	this.p_size = p_size;
 }
-public int getUser_id() {
+public String getUser_id() {
 	return user_id;
 }
-public void setUser_id(int user_id) {
+public void setUser_id(String user_id) {
 	this.user_id = user_id;
 }
 public int getP_id() {
@@ -81,7 +81,6 @@ public void setPhoto_Role(String photo_Role) {
 	this.photo_Role = photo_Role;
 }
    
-	
 	   
 	  
 }
