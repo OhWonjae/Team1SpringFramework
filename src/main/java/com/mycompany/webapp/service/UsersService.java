@@ -9,9 +9,10 @@ import com.mycompany.webapp.dto.User;
 
 @Service
 public class UsersService {
-   @Autowired
-   private UsersDao usersDao;
-   public void join(User user) {
+	@Autowired
+	private UsersDao usersDao;
+
+	public void join(User user) {
 		usersDao.insert(user);
 	}
 	/*
@@ -27,21 +28,30 @@ public class UsersService {
 	 * return "overlapUemail"; } usersDao.insert(user); return "success"; }
 	 */
 
-   public String login(User user) {
-      User dbUser = usersDao.selectByUserid(user.getUser_id());
-      if(dbUser == null) {
-         return "wrongUser_id";
-      } else {
-         BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-         boolean result = bpe.matches(user.getUser_password(), dbUser.getUser_password());
-         if(result == false) {
-            return "wrongUser_password";            
-         }
-      }
-      return "success";
-   }
+	public String login(User user) {
+		User dbUser = usersDao.selectByUserid(user.getUser_id());
+		if (dbUser == null) {
+			return "wrongUser_id";
+		} else {
+			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+			boolean result = bpe.matches(user.getUser_password(), dbUser.getUser_password());
+			if (result == false) {
+				return "wrongUser_password";
+			}
+		}
+		return "success";
+	}
 
+	/*// 읽어오기
+	public User readUser(String user_id) {
+		User readUser = usersDao.selectByUserid(user_id);
+		return readUser;
+	}*/
 	
+	// 읽어오기
+	public User getUser(String user_id) {
+		User user = usersDao.selectByUserid(user_id);
+		return user;
+	}
+
 }
-   
-   
