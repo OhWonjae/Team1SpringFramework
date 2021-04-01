@@ -10,11 +10,12 @@ import com.mycompany.webapp.dto.CartItem;
 
 @Mapper
 public interface CartDao {
-	public int insertCart(int pid);
-	public int deleteCart(@Param("uid") int uid, @Param("pid") int pid);
-	public int deleteCartAll(int uid);
-	public List<CartItem> cartList(int uid);
-	public int increaseAmount(@Param("uid") int uid, @Param("pid") int pid);
-	public int decreaseAmount(@Param("uid") int uid, @Param("pid") int pid);
+	public int insertCart(CartItem cart);
+	public int deleteCart(@Param("uid") String uid, @Param("pid") int pid);
+	public int deleteCartAll(String uid);
+	public List<CartItem> cartList(String uid);
+	public int increaseAmount(@Param("uid") String uid, @Param("pid") int pid);
+	public int decreaseAmount(@Param("uid") String uid, @Param("pid") int pid);
+	public CartItem cartListOne(@Param("uid") String uid, @Param("pid") int pid);
 		
 }

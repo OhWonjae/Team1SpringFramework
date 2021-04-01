@@ -17,7 +17,7 @@
 		values(	#{order_id},
 				sysdate,
 				#{order_request},
-				5100,
+				#{total_price},
 				#{payment},
 				#{delivery_address},
 				#{delivery_address_detail},
@@ -50,4 +50,7 @@
 		from orders
 		where order_id = #{order_id}		
 	</select>
+	
+
+	
 </mapper>

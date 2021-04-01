@@ -13,17 +13,18 @@
 	font-size: 0.7em;
 }
 </style>
-<!-- <script>
+<script>
 	function validate() {
 		event.preventDefault(); // 기능 잠시 꺼두기
 		var result = true;
+		var re_id = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var re_phone = /^\d{3}-\d{3,4}-\d{4}$/;
 
 		// 유효성 검사 시작
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
 		const user_name = $("#user_name").val();
 		const user_password = $("#user_password").val();
 		const user_password2 = $("#user_password2").val();
-
 		const user_id= $("#user_id").val();
 		const user_phone = $("#user_phone").val();
 
@@ -41,6 +42,17 @@
 			result = false;
 			$("#errorUser_password").html("필수사항 입니다.");
 		}
+		if (!re_id.test(user_id)) {
+			result =  false;
+			$("#errorUemail").shtml("이메일 형식이 아닙니다.")
+		}
+		
+		if (!re_phone.test(user_phone)) {
+			result =  false;
+			$("#errorUser_phone").html("휴대폰 번호 형식이 아닙니다.")
+		} else {
+			$("#errorUser_phone").html("")
+		}
 
 		if (user_id === "") { // 비어있으면 문제있지
 			result = false;
@@ -51,20 +63,17 @@
 			result = false;
 			$("#errorUser_phone").html("필수사항 입니다.");
 		}
-
+		
+			
 		if (result) {
 			$("#joinForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
-		} else {
-			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		}
-		if (!re.test($user_id)) {
-			result = false;
-			$("#errorUser_id").html("이메일 형식이 아닙니다.")
-		}
+		} 
+		
+		
 	}
-	/* // 비밀번호 확인
-	$(function()){
+	// 비밀번호 확인
+	/* function validate() {
 		$('#user_password2').blur(function() {
 			if($('#user_password').val() != $('#user_password2').val()){
 				if($('#user_password2').val( != ''){
@@ -74,9 +83,9 @@
 				}
 			}
 		})
-	}); */
+	});  */
 		
-</script> -->
+</script>
 
 
 <div class="header2">
@@ -97,6 +106,7 @@
 	</c:if>
 	<form id="joinForm" name="joinForm" method="post" action="join"
 		onsubmit="validate()" novalidate="novalidate">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<div>
 			<strong>이름</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">

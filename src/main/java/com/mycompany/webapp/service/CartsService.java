@@ -14,29 +14,32 @@ public class CartsService {
 	@Autowired
 	private CartDao cartDao;
 	
-	public List<CartItem> getCartList(int uid){ 
+	public List<CartItem> getCartList(String uid){ 
 		List<CartItem> list = cartDao.cartList(uid);
 		return list;
 	}
-	
-	public void plusAmount(int uid, int pid) {
+	public CartItem getCartOne(String uid, int pid) {
+		CartItem cartitem =cartDao.cartListOne(uid, pid);
+		return cartitem;
+	}
+	public void plusAmount(String uid, int pid) {
 		cartDao.increaseAmount(uid, pid);
 	}
 	
-	public void minusAmount(int uid, int pid) {
+	public void minusAmount(String uid, int pid) {
 		cartDao.decreaseAmount(uid, pid);
 	}
 	
-	public void removeCartList(int uid, int pid) {
+	public void removeCartList(String uid, int pid) {
 		cartDao.deleteCart(uid, pid);
 	}
 	
-	public void removeCartAll(int uid) {
+	public void removeCartAll(String uid) {
 		cartDao.deleteCartAll(uid);
 	}
 	
-	public void addCart(int pid) {
-		cartDao.insertCart(pid);
+	public void addCart(CartItem cart) {
+		cartDao.insertCart(cart);
 	}
 
 }

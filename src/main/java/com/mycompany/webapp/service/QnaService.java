@@ -26,8 +26,9 @@ public class QnaService {
 	   qnaDao.update(qna);
    }
    
-   public void deleteqna(int bno) {
-	   qnaDao.deleteByQa_id(bno);
+   public void deleteQna(int qa_id, String user_id) {
+	   logger.info("userid"+  user_id + "qaid"+  qa_id);
+	   qnaDao.deleteByQa_id(qa_id, user_id);
    }
    public void insert(Qna qna) {
 	   logger.info(qna.getQa_content());
@@ -38,7 +39,7 @@ public class QnaService {
 	      return list;
    }
    public List<Qna> getBoardList(Pager pager) { // 메소드 오버로딩
-	      List<Qna> list = qnaDao.selectByPage(pager);
+	      List<Qna> list = qnaDao.selectByPage(pager);	      
 	      return list;
    }
 

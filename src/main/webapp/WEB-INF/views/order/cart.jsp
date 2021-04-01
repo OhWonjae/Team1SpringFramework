@@ -93,11 +93,11 @@
 	                                        </div>
 	                                        <div class="col-sm-2" style="border-bottom: 1px solid #e9ecef;">
 	                                            <div class="delete-button" >
-	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?uid=20&pid=${cart.pid}" class="btn btn-light">삭제</a>
+	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?uid=20&pid=${cart.p_id}" class="btn btn-light">삭제</a>
 	                                            </div>
 	                                        </div>
 	                                    </div>
-	                               <c:set var="sum" value="${sum + (cart.p_price * cart.c_amount)}" />      
+	                               <c:set var="sum" value="${sum + (cart.p_price * cart.amount)}" />      
 	                              </c:forEach> 
                                
                                    

@@ -6,6 +6,11 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
+
+
+
+
+
     <title>Document></title>
 
 
@@ -50,10 +55,20 @@
                                 
                                 <div class="div2" style="padding-bottom: 200px;">
                                 <c:forEach var="qna" items="${qna}">
+                               		
+			
                                     <div class="faq-content">
                                         <button class="question" id="que-1">
                                             <div>
-                                                <span>상품 문의</span>
+                                            	<c:if test="${qna.qa_category eq '상품 문의'}">
+                                                	<span>상품 문의</span>
+                                                </c:if>
+                                                <c:if test="${qna.qa_category eq '배송 문의'}">
+                                                	<span>배송 문의</span>
+                                                </c:if>
+                                                <c:if test="${qna.qa_category eq '주문/결제 문의'}">
+                                                	<span>주문/결제 문의</span>
+                                                </c:if>
                                                 <span class="wait">답변 대기</span>
                                             </div>
                                             <div>
@@ -65,51 +80,13 @@
                                         <div class="answer" id="ans-1">${qna.qa_content}
                                             <div class="btn-2">
                                                 <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/delete?qa_id=${qna.qa_id}" class="btn btn-outline-secondary btn-sm">삭제</a>
                                             </div>
                                         </div>
                                     </div>
                                     </c:forEach>
-    
-                                    <div class="faq-content">
-                                        <button class="question" id="que-2">
-                                            <div>
-                                                <span>배송 문의</span>
-                                                <span class="wait">답변 대기</span>
-                                            </div>
-                                            <div>
-                                                <span class="orderDate">2021-03-12</span>
-                                                <span id="que-1-toggle">∨</span>
-                                            </div>
-                                        </button>
-                                        <div class="answer" id="ans-2">배송에 관해서 문의합니다.
-                                            <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-    
-                                    <div class="faq-content">
-                                        <button class="question" id="que-3">
-                                        <div>
-                                            <span>주문/결제 문의</span>
-                                            <span class="wait">답변 대기</span>
-                                        </div>
-                                        <div>
-                                            <span class="orderDate">2021-03-12</span>
-                                            <span id="que-3-toggle">∨</span>
-                                        </div>
-                                        </button>
-                                        <div class="answer" id="ans-3">주문/결제 방법에 대해서 문의합니다.
-                                            <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
-                                                <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-    
+   									
+                                    
                                             <script>
                                                 const items = document.querySelectorAll('.question');
                                                     function openCloseAnswer() {
@@ -125,6 +102,7 @@
                                                     }
                                                 items.forEach(item => item.addEventListener('click', openCloseAnswer));
                                             </script>
+                                            
                                 </div>
                             </div>
                         </div>

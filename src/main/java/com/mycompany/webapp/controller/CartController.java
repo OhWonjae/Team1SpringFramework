@@ -1,10 +1,9 @@
 package com.mycompany.webapp.controller;
 
 import java.util.List;
-import java.util.Set;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,51 +20,48 @@ public class CartController {
 	   private CartsService cartsService; 
 	
 	@GetMapping("/cart")
-	public String cart(Model model) {
-		
-		List<CartItem> list = cartsService.getCartList(20);
+	public String cart(Model model, Authentication auth) {
+		List<CartItem> list = cartsService.getCartList(auth.getName());
 		model.addAttribute("list", list);
-		
 		return "/order/cart";
 	}
 	
 	@GetMapping("/putcart")
-	public String putcart(int pid) {
+	public String putcart(CartItem cart, Authentication auth) {
 		
-		cartsService.addCart(pid);
+		cart.setUser_id(auth.getName());
+		cartsService.addCart(cart);
+		System.out.println(cart.getP_id());
+			
 		return "redirect:/product/detail";
 	}
 	
 	@GetMapping("/cart/increase")
-	public String increase(int uid, int pid) {
-		cartsService.plusAmount(uid, pid);
+	public String increase(Authentication auth, int pid) {
+		cartsService.plusAmount(auth.getName(), pid);
 		return "redirect:/order/cart";
 	}
 	
 	@GetMapping("/cart/decrease")
-	public String decrease(int uid, int pid) {
-		List<CartItem> list = cartsService.getCartList(uid);
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getUser_id() == uid
-					&& list.get(i).getP_id() == pid) {
-				if(list.get(i).getAmount() > 1) {
-					cartsService.minusAmount(uid, pid);	
-					break;
-				}
-			}
+	public String decrease(Authentication auth, int pid) {
+
+		CartItem cart = cartsService.getCartOne(auth.getName(), pid);
+		if(cart.getAmount()>1) {
+				cartsService.minusAmount(auth.getName(), pid);	
+				return "redirect:/order/cart";
 		}
 		return "redirect:/order/cart";
 	}
 	
 	@GetMapping("/cart/delete")
-	public String delete(int uid, int pid) {
-		cartsService.removeCartList(uid, pid);
+	public String delete(Authentication auth, int pid) {
+		cartsService.removeCartList(auth.getName(), pid);
 		return "redirect:/order/cart";
 	}
 	
 	@GetMapping("/cart/deleteall")
-	public String deleteAll(int uid) {
-		cartsService.removeCartAll(uid);
+	public String deleteAll(Authentication auth) {
+		cartsService.removeCartAll(auth.getName());
 		return "redirect:/order/cart";
 	}
 	

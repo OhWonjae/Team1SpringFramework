@@ -1,102 +1,107 @@
 package com.mycompany.webapp.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
 
 @Controller
 public class AuthController {
-   @Autowired
-   private UsersService usersService;
-   private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+	@Autowired
+	private UsersService usersService;
+	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-   @GetMapping("/loginForm")
-   public String loginForm() {
-      return "/user/loginForm";
-   }
+	@GetMapping("/loginForm")
+	public String loginForm() {
+		return "/user/loginForm";
+	}
 
-   @GetMapping("/joinForm")
-   public String joinForm() {
-      return "/user/joinForm";
-   }
+	@GetMapping("/joinForm")
+	public String joinForm() {
+		return "/user/joinForm";
+	}
 
-   @GetMapping("/searchId")
-   public String searchId() {
-      return "/user/searchId";
-   }
+	@GetMapping("/searchId")
+	public String searchId() {
+		return "/user/searchId";
+	}
 
-   @GetMapping("/searchPw")
-   public String searchPw() {
-      return "/user/searchPw";
-   }
+	@GetMapping("/searchPw")
+	public String searchPw() {
+		return "/user/searchPw";
+	}
 
-   @GetMapping("/pwChange")
-   public String pwChange() {
-      return "/user/pwChange";
-   }
+	@GetMapping("/pwChange")
+	public String pwChange() {
+		return "/user/pwChange";
+	}
 
-   @GetMapping("/phoneChange")
-   public String phoneChange() {
-      return "/user/phoneChange";
-   }
+	@GetMapping("/phoneChange")
+	public String phoneChange() {
+		return "/user/phoneChange";
+	}
 
-   @PostMapping("/my")
-   public String change() {
-      return "redirect:/user/my";
-   }
+	@PostMapping("/my")
+	public String change() {
+		return "redirect:/user/my";
+	}
 
-   @GetMapping("user/my")
-   public String my() {
-      return "/user/my";
-   }
+	/*@GetMapping("user/my")
+	public String my() {
+		return "/user/my";
+	}*/
 
-   
-   @PostMapping("/join")
-   public String join(User user) {
-	  logger.info(user.getUser_name());
-      logger.info(user.getUser_id());
-      logger.info(user.getUser_password());
-      logger.info(user.getUser_phone());
-      logger.info(user.getDog_size());
-      logger.info(user.getUser_phone());
+	@PostMapping("/join")
+	public String join(User user) {
+		logger.info(user.getUser_name());
+		logger.info(user.getUser_id());
+		logger.info(user.getUser_password());
+		logger.info(user.getUser_phone());
+		logger.info(user.getDog_size());
+		logger.info(user.getUser_phone());
+
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		user.setUser_password(bpe.encode(user.getUser_password()));
+		usersService.join(user);
+
+		return "redirect:/user/loginForm";
+	}
+
+	@GetMapping("user/my")
+	public String read(String user_id, Model model, Authentication auth) {
+		User user = usersService.getUser(auth.getName());
+		model.addAttribute("user", user);
+		return "/user/my";
+	}
 
 
-      BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-      user.setUser_password(bpe.encode(user.getUser_password()));
-	  usersService.join(user);
+	/*@PostMapping("/login")
+	public String login(User user, HttpSession session) {
+	  String result = usersService.login(user);
+	  
+	  logger.info(user.getUser_id());
+	  logger.info(user.getUser_password());
+	
+	  if (result.equals("success")) {
+	     logger.info(result);
+	     session.removeAttribute("loginError");
+	     session.setAttribute("loginUser_id", user.getUser_id());
+	     return "redirect:/main";
+	  } else {
+		  logger.info(result);
+	     session.setAttribute("loginError", result);
+	     return "redirect:/loginForm"; // home
+	  }
+	}*/
 
-      return "redirect:/user/loginForm";
-   }
-
-   /*@PostMapping("/login")
-   public String login(User user, HttpSession session) {
-      String result = usersService.login(user);
-      
-      logger.info(user.getUser_id());
-      logger.info(user.getUser_password());
-
-      if (result.equals("success")) {
-         logger.info(result);
-         session.removeAttribute("loginError");
-         session.setAttribute("loginUser_id", user.getUser_id());
-         return "redirect:/main";
-      } else {
-    	  logger.info(result);
-         session.setAttribute("loginError", result);
-         return "redirect:/loginForm"; // home
-      }
-   }*/
-   
 	/*@PostMapping("/find")
 	public String login(User user, HttpSession session) {
 	  String result = usersService.login(user);
@@ -112,18 +117,18 @@ public class AuthController {
 	  }
 	}*/
 
-   /*
-    * @GetMapping("/logout") public String logout(HttpSession session) {
-    * session.removeAttribute("loginUser_id");
-    * 
-    * return "redirect:/home"; }
-    */
+	/*
+	* @GetMapping("/logout") public String logout(HttpSession session) {
+	* session.removeAttribute("loginUser_id");
+	* 
+	* return "redirect:/home"; }
+	*/
 
-   @GetMapping("/error403")
-   public String error403() {
-      return "user/error403";
-   }
-   
+	@GetMapping("/error403")
+	public String error403() {
+		return "/error403";
+	}
+
 	/*
 	 * // 아이디(이메일) 찾기
 	 * 
@@ -150,9 +155,5 @@ public class AuthController {
 	 * 
 	 * return "user/userSearchPassword"; }
 	 */
-
-
-
-   
 
 }
