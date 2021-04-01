@@ -97,6 +97,7 @@
 	</c:if>
 	<form id="joinForm" name="joinForm" method="post" action="join"
 		onsubmit="validate()" novalidate="novalidate">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<div>
 			<strong>이름</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
