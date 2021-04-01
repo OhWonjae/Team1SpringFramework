@@ -23,7 +23,13 @@ public class OrderController {
 	
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(Orders orders) {		
+	public String putcart(Orders orders) {	
+		int subNum=0;
+		for(int i=1; i<=6; i++) {
+			subNum += Math.random() * 10;
+		}
+		orders.setOrder_id(subNum);
+		orders.setUser_id("hwee1115@naver.com");
 		ordersService.createOrders(orders);
 		
 		return "/order/payFinish";

@@ -11,7 +11,7 @@ public class Orders {
    private String delivery_address;
    private String delivery_address_detail;
    private int zip;
-   private int user_id;
+   private String user_id;
    private String order_name;
    private int order_phone;
    
@@ -63,10 +63,10 @@ public class Orders {
    public void setZip(int zip) {
       this.zip = zip;
    }
-   public int getUser_id() {
+   public String getUser_id() {
       return user_id;
    }
-   public void setUser_id(int user_id) {
+   public void setUser_id(String user_id) {
       this.user_id = user_id;
    }
    public String getOrder_name() {

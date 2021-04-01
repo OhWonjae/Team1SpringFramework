@@ -2,11 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.OrdersDao">
 	<insert id="ordersInsert" parameterType="orders">
-	   <selectKey keyProperty="ono" resultType="int" order="BEFORE">
-           select max(order_id)+1 from orders
-    	</selectKey>
 		insert into orders(	order_id,
-							orders_date,
+							order_date,
 							order_request,
 							total_price,
 							payment,
@@ -25,7 +22,7 @@
 				#{delivery_address},
 				#{delivery_address_detail},
 				#{zip},
-				1,
+				#{user_id},
 				#{order_name},
 				#{order_phone}
 	)
@@ -40,23 +37,17 @@
 		from orders
 	</select>
 	
-
-	
-	
-	
-	
 	<select id="orderSelectByOne" parameterType="int" resultType="orders">
 		select 	order_id,
 				order_name,
 				order_phone,
-				orders_date,
+				order_date,
 				order_request,
 				delivery_address,
 				delivery_address_detail,
 				payment,
 				total_price
 		from orders
-		where order_id = #{order_id}
-				
+		where order_id = #{order_id}		
 	</select>
 </mapper>

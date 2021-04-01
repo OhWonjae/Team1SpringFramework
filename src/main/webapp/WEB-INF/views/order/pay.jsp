@@ -18,8 +18,8 @@ function openZipSearch() {
 	new daum.Postcode({
 		oncomplete: function(data) {
 			$('[name=zip]').val(data.zonecode); // 우편번호 (5자리)
-			$('[name=address]').val(data.address);
-			$('[name=addetail]').val(data.buildingName);
+			$('[name=delivery_address]').val(data.address);
+			$('[name=delivery_address_detail]').val(data.buildingName);
 		}
 	}).open();
 }
@@ -53,14 +53,14 @@ function openZipSearch() {
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="oname" id="oname" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
+                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="ophone" id="ophone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text">
+                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text">
                                 </div>
                             </div> 
                             
@@ -77,12 +77,12 @@ function openZipSearch() {
  -->                                </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="address" id="address" >
+                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" >
 <!--                                     <input class="form-control" placeholder="주소를 입력하세요." type="text">
  -->                                </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="addetail" id="addetail" >
+                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" >
 <!--                                     <input class="form-control" placeholder="상세주소를 입력하세요." type="text">
  -->                                </div>   
                             </div>
@@ -90,7 +90,7 @@ function openZipSearch() {
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송 요청사항</span>  
-                                    <input name="orequest" id="orequest" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
+                                    <input name="order_request" id="order_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
                                 </div> <!-- form-group// -->
                             </div>
                     <span class="history-subtitle">주문상품</span>
