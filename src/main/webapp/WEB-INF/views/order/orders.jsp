@@ -47,8 +47,8 @@
                         <div class="orders">
                             <div class="orders-inner" style="background-color: rgba(244,244,245,1);">
                                 <div class="orders-top">
-                                    <div class="topContents">주문일자: <fmt:formatDate value="${orders.odate}" pattern="yyyy-MM-dd"/></div>
-                                    <div class="topContents">주문번호: ${orders.ono}</div>
+                                    <div class="topContents">주문일자: <fmt:formatDate value="${orders.order_date}" pattern="yyyy-MM-dd"/></div>
+                                    <div class="topContents">주문번호: ${orders.order_id}</div>
                                 </div>
                             </div>
                             <div class="orders-info">
@@ -56,20 +56,20 @@
                                     <div class="info-container">
                                         <dl class="info1">
                                             <dt class="info-detail">받는 사람</dt>
-                                            <dd class="data-name">${orders.oname}</dd>
+                                            <dd class="data-name">${orders.order_name}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">휴대전화</dt>
-                                            <dd class="data-name">${orders.ophone}</dd>
+                                            <dd class="data-name">${orders.order_phone}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송주소</dt>
                                             <dd class="data-name">
-                                            ${orders.address} ${orders.addetail}</dd>
+                                            ${orders.delivery_address} ${orders.delivery_address_detail}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송 요청사항</dt>
-                                            <dd class="data-name">${orders.orequest}</dd>
+                                            <dd class="data-name">${orders.order_request}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                              총 결제금액
                                             </div>
                                             <div class="col-9 tdata">
-                                             ${orders.oprice}원
+                                             ${orders.total_price}원
                                             </div>
                                           </div>
                                     </div>
