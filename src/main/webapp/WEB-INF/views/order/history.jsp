@@ -60,7 +60,7 @@
                                             <td style="border-right: white; text-align: center;">
                                             	 <div>발송처리완료</div>
                                                 <div style="margin-top: 5px; font-size: 14px;">
-                                                    <a href="<%=application.getContextPath()%>/order/orders?ono=1" >주문 상세내역</a>
+                                                    <a href="<%=application.getContextPath()%>/order/orders?ono=2323" >주문 상세내역</a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -62,8 +62,9 @@
                             </div>
                             <div class="tab">
                                 <div class="event">
-                                <form method="post" action="logout">
-                                <button style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm">로그아웃</button>
+                                <form method="post" action="<%=application.getContextPath()%>/logout">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                <button type="submit" style="margin-left: 10px;" class="btn btn-outline-secondary btn-sm">로그아웃</button>
                                 </form>
                                 </div>
                             </div>
