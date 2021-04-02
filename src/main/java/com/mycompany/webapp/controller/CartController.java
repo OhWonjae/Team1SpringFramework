@@ -30,8 +30,12 @@ public class CartController {
 	}
 	
 	@GetMapping("/putcart")
-	public String putcart(CartItem cart, Authentication auth) {
-	
+	public String putcart(int pid, String psize, int pamount, Authentication auth) {
+		CartItem cart = new CartItem();
+		cart.setP_id(pid);
+		cart.setP_size(psize);
+		cart.setAmount(pamount);
+		
 		String userId = auth.getName();
 		cart.setUser_id(userId);
 		
