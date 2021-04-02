@@ -35,32 +35,79 @@ import com.mycompany.webapp.service.ProductService;
 @Controller
 @RequestMapping("/resource")
 public class ResourceController {
-	private static final Logger logger = LoggerFactory.getLogger(ResourceController.class);
-	
-	// 사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/
-	@GetMapping("/GetPhoto")
-	public void GetPhoto(String photoSname, String photoType, HttpServletResponse response) {
-		try {
-			// 응답 HTTP 헤더에 저장될 바디의 타입
-			response.setContentType(photoType);
+   private static final Logger logger = LoggerFactory.getLogger(ResourceController.class);
+   
+   // 메인사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Main
+   @GetMapping("/GetPhoto")
+   public void GetMainPhoto(String photoSname, String photoType, HttpServletResponse response) {
+      try {
+         // 응답 HTTP 헤더에 저장될 바디의 타입
+         response.setContentType(photoType);
 
-			// 한글 파일일 경우, 깨짐 현상을 방지
-			photoSname = new String(photoSname.getBytes("UTF-8"), "ISO-8859-1");
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
+         // 한글 파일일 경우, 깨짐 현상을 방지
+         photoSname = new String(photoSname.getBytes("UTF-8"), "ISO-8859-1");
+         response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
 
-			// 응답 HTTP 바디에 이미지 데이터를 출력
-			InputStream is = new FileInputStream("C:/Photos/ProductPhotos/" + photoSname+"."+photoType);
-			OutputStream os = response.getOutputStream();
-			FileCopyUtils.copy(is, os);
-			os.flush();
-			is.close();
-			os.close();
+         // 응답 HTTP 바디에 이미지 데이터를 출력
+         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Main/" + photoSname+"."+photoType);
+         OutputStream os = response.getOutputStream();
+         FileCopyUtils.copy(is, os);
+         os.flush();
+         is.close();
+         os.close();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-		
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+   
+   
+   //서브사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Main
+   @GetMapping("/GetSubPhoto")
+   public void GetSubPhoto(String photoSname, String photoType, HttpServletResponse response) {
+      try {
+         // 응답 HTTP 헤더에 저장될 바디의 타입
+         response.setContentType(photoType);
+
+         // 한글 파일일 경우, 깨짐 현상을 방지
+         photoSname = new String(photoSname.getBytes("UTF-8"), "ISO-8859-1");
+         response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
+
+         // 응답 HTTP 바디에 이미지 데이터를 출력
+         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Sub/" + photoSname+"."+photoType);
+         OutputStream os = response.getOutputStream();
+         FileCopyUtils.copy(is, os);
+         os.flush();
+         is.close();
+         os.close();
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+   
+   //디테일사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Main
+   @GetMapping("/GetDetailPhoto")
+   public void GetDetailPhoto(String photoSname, String photoType, HttpServletResponse response) {
+      try {
+         // 응답 HTTP 헤더에 저장될 바디의 타입
+         response.setContentType(photoType);
+
+         // 한글 파일일 경우, 깨짐 현상을 방지
+         photoSname = new String(photoSname.getBytes("UTF-8"), "ISO-8859-1");
+         response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
+
+         // 응답 HTTP 바디에 이미지 데이터를 출력
+         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Detail/" + photoSname+"."+photoType);
+         OutputStream os = response.getOutputStream();
+         FileCopyUtils.copy(is, os);
+         os.flush();
+         is.close();
+         os.close();
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
 
 }

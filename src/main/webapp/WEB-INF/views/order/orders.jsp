@@ -83,7 +83,7 @@
                                             총 상품 금액
                                           </div>
                                           <div class="col-9 tdata">
-                                            2160원
+                                            ${orders.order_sprice}원
                                           </div>
                                         </div>
                                         <div class="row trow">

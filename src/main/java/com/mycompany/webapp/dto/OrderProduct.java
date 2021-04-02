@@ -3,16 +3,16 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class OrderProduct {
-   private int order_id;
+   private String order_id;
    private int p_id;
    private int p_price;
    private String p_name;
    private String p_size;
    
-   public int getOrder_id() {
+   public String getOrder_id() {
       return order_id;
    }
-   public void setOrder_id(int order_id) {
+   public void setOrder_id(String order_id) {
       this.order_id = order_id;
    }
    public int getP_id() {

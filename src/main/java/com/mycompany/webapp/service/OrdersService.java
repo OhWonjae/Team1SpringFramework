@@ -36,9 +36,9 @@ public class OrdersService {
 	}
 
 	//주문서 읽어오기
-	public Orders ReadOrders(int ono) {
+	public Orders ReadOrders(String order_id) {
 
-		Orders orders=ordersDao.orderSelectByOne(ono);
+		Orders orders=ordersDao.orderSelectByOne(order_id);
 		return orders;
 	}
 

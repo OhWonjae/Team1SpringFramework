@@ -12,6 +12,6 @@ import com.mycompany.webapp.dto.Product;
 public interface OrdersDao {
 	public int ordersInsert(Orders orders);
 	public int ordersDelete(int ono);
-	public Orders orderSelectByOne(int ono);
+	public Orders orderSelectByOne(String order_id);
 	
 }

@@ -3,7 +3,7 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class Orders {
-   private int order_id;
+   private String order_id;
    private Date order_date;
    private String order_request;
    private int total_price;
@@ -14,11 +14,18 @@ public class Orders {
    private String user_id;
    private String order_name;
    private int order_phone;
+   private int order_sprice;
    
-   public int getOrder_id() {
+   public int getOrder_sprice() {
+	return order_sprice;
+}
+public void setOrder_sprice(int order_sprice) {
+	this.order_sprice = order_sprice;
+}
+public String getOrder_id() {
       return order_id;
    }
-   public void setOrder_id(int order_id) {
+   public void setOrder_id(String order_id) {
       this.order_id = order_id;
    }
    public Date getOrder_date() {

@@ -22,19 +22,34 @@ public class CartController {
 	@GetMapping("/cart")
 	public String cart(Model model, Authentication auth) {
 		List<CartItem> list = cartsService.getCartList(auth.getName());
+		for(CartItem c:list) {
+			System.out.println("realpi : "+c.getP_id());
+		}
 		model.addAttribute("list", list);
 		return "/order/cart";
 	}
 	
 	@GetMapping("/putcart")
-	public String putcart(CartItem cart, Authentication auth) {
-		
-		cart.setUser_id(auth.getName());
-		cartsService.addCart(cart);
-		System.out.println(cart.getP_id());
-			
-		return "redirect:/product/detail";
-	}
+	   public String putcart(int pid, String psize, int pamount, Authentication auth) {
+	      CartItem cart = new CartItem();
+	      cart.setP_id(pid);
+	      cart.setP_size(psize);
+	      cart.setAmount(pamount);
+	      
+	      String userId = auth.getName();
+	      cart.setUser_id(userId);
+	      
+	      List<CartItem> list = cartsService.getCartList(userId);
+	      for(int i=0;i<list.size();i++) {
+	         if(userId.equals(list.get(i).getUser_id())
+	               && list.get(i).getP_id() == cart.getP_id()) {
+	            
+	            cartsService.addCart(cart);
+	            return "redirect:/order/cart";
+	         } 
+	      } 
+	      return "redirect:/product/detail";
+	   }
 	
 	@GetMapping("/cart/increase")
 	public String increase(Authentication auth, int pid) {

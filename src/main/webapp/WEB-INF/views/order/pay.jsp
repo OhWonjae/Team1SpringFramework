@@ -136,6 +136,7 @@ function openZipSearch() {
                             <tr>
                                 <th style="width: 20%;">총 상품금액</th>
                                 <td style="text-align: left;"> ${psum}원</td>
+                                <input type="hidden" name="order_sprice" id="order_sprice" value="${psum}"/>
                             </tr>
                             <tr>
                                 <th>배송비</th>
