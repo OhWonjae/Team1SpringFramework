@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.webapp.dao.PhotosDao;
 import com.mycompany.webapp.dao.ProductDao;
 import com.mycompany.webapp.dao.ReviewDao;
 import com.mycompany.webapp.dao.SizeProductDao;
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.Review;
 import com.mycompany.webapp.dto.SizeProduct;
@@ -24,6 +26,9 @@ public class ProductService {
 
 	@Autowired
 	private ReviewDao qnaDao;
+	
+	@Autowired
+	PhotosDao photosDao;
 
 
 	//Create
@@ -44,6 +49,7 @@ public class ProductService {
 	//신규 상품 리스트 가져오기
 	public List<Product> getProductsByPager(Pager pager){
 		List<Product> products = productDao.selectAllByPager(pager);
+		
 		return products;
 	}
 	//신규 상품 리스트 개수 가져오기
@@ -89,47 +95,59 @@ public class ProductService {
 		int count = productDao.rankcategorycount(category);
 		return count;
 	}
-	//검색한 상품 리스트 가져오기 -> 파라미터 여러개일 경우 HahsMap으로 넘길 예정
-	public List<Product> getSearchProducts(String searchword,String category){
+	//검색한 상품 리스트 가져오기
+	public List<Product> getSearchProducts(Pager pager, String searchword,String category){
 		List<Product> products;
-		//만약 전체 상품 가져와야 한다면
+		//만약 전체카테고리 상품 가져와야 한다면
 		if(category.equals("전체")) {
-			products = productDao.selectSearchAll(searchword);
+			products = productDao.selectSearchAll(pager,searchword);
 		}
-		// 만약 해당 카테고리의 상품을 가져와야 한다면
+		// 만약 특정 카테고리의 상품을 가져와야 한다면
 		else {
-			products = productDao.selectSearchCategory(searchword,category);
+			products = productDao.selectSearchCategory(pager,searchword,category);
 		}
 		return products;
 	}	
-	//검색 상품 리스트 개수 가져오기
-	public int SearchProductCount(String category){
-		int count = productDao.searchcount(category);
+	//검색 상품 리스트 개수 가져오기 - 전체 카테고리
+	public int SearchProductCount(String searchword,String category){
+		int count =0;
+		//전체 카테고리의 검색상품 개수 가져오기
+		if(category.equals("전체")) {
+			count = productDao.searchcount(searchword);
+		}
+		// 특정 카테고리의 검색상품 개수 가져오기
+		else {
+			count = productDao.searchcategorycount(searchword,category);
+		}
 		return count;
 	}
-	//검색 상품 카테고리 리스트 개수 가져오기
-	public int SearchCategoryProductCount(String searchword,String category){
-		int count = productDao.searchcategorycount(searchword,category);
-		return count;
-	}
+
 
 
 	//선택한 카테고리 상품 리스트 가져오기
-	public List<Product> getCategoryProducts(String category){
+	public List<Product> getCategoryProducts(String category, Pager pager){
 		List<Product> products;
 		//만약 전체 상품 가져와야 한다면
 		if(category.equals("전체")) {
-			products = productDao.selectRankAll();
+			products = productDao.selectAllByPager(pager);
 		}
 		// 만약 해당 카테고리의 상품을 가져와야 한다면
 		else {
-			products = productDao.selectCategory(category);
+			products = productDao.selectCategory(category,pager);
 		}
 		return products;
 	}	
 	//선택한 카테고리 상품 리스트 개수 가져오기
 	public int CategoryProductCount(String category){
-		int count = productDao.categorycount(category);
+		int count = 0;
+		if(category.equals("전체")) {
+			count = productDao.count();
+		}
+		// 만약 해당 카테고리의 상품을 가져와야 한다면
+		else {
+			count = productDao.categorycount(category);
+		}
+		
 		return count;
 	}			
 
@@ -157,6 +175,13 @@ public class ProductService {
 	}
 
 	/////////////////////
+	
+	//사진 생성
+	public void createPhoto(Photo p) {
+		photosDao.insert(p);
+	}
+	
+	
 
 	public List<Review> getREVIEWList(){
 		List<Review> list = ReviewDao.selectAll();

@@ -159,11 +159,11 @@
    </div>
     <div class="inner">
          <div class="jss486" style="padding: 3px;">
-            <span style="padding: 10px;"><strong>{listcount}</strong>개의 상품</span>
+            <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
          </div>
             <div class="center">  
             	<!--신규 상품 리스트 출력 -->
-            	<c:forEach var="product" items="{list}">
+            	<c:forEach var="product" items="${list}">
 				 <div class="flex-items"> 
 				 	<figure>
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">

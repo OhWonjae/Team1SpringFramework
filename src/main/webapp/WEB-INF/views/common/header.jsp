@@ -24,6 +24,8 @@
 
 
 </head>
+
+
 <body>
     <header>
         <div class="inner">
@@ -36,8 +38,11 @@
                 </div>
                 
                <div class="head-searchbar">
-                  <form class="formStyle" method="get" action="<%=application.getContextPath()%>/product/search" style="display:flex; width:100%">
-                    <input type="text" placeholder="검색어를 입력하세요." class="searchTab">
+               		<!-- 검색창 -> form에서 고정 파라미터 히든으로 지정한 후 submit시 GetURL 호출 -->
+                  <form class="formStyle" method="get" action="<%=application.getContextPath() %>/product/search?pageNo=1&category=전체&searchword=${searchword}" style="display:flex; width:100%">
+                     <input type="hidden" name="pageNo" value="1"/>
+                     <input type="hidden" name="category" value="전체"/>
+                    <input type="text" placeholder="검색어를 입력하세요." class="searchTab" name="searchword">
                     <button class="searchButton" type="submit">
                         <i class="fas fa-search"></i>
                     </button>

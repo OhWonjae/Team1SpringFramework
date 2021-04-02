@@ -171,16 +171,16 @@
 			</div>		
 
 			<div class="jss486" style="padding: 3px;">
-			    <span style="padding: 10px;"><strong>{listcount}</strong>개의 상품</span>
+			    <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
 			</div>
 	
 			 <div class="center">  
             	<!--랭킹 상품 리스트 출력 -->
-            	<c:forEach var="product" items="{list}" varStatus="status">
+            	<c:forEach var="product" items="${list}" varStatus="status">
 				 <div class="flex-items"> 
 				 	<figure>
-				 		<figcaption>{status.count}위</figcaption>
-      					<img src="{pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+				 		<figcaption>${status.count}위</figcaption>
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
       					<figcaption>${product.p_name}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
     					<figcaption>${product.p_price}</figcaption>
