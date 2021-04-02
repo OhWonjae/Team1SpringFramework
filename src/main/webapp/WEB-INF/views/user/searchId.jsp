@@ -28,8 +28,7 @@
       </h4>
 
       <form method="post" action="searchId">
-      <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+      <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
          <div style="padding: 5px 0 0 0;">
             <strong>이름</strong><span style="color: red;">*</span>
             <div class="form-group input-group">
@@ -44,7 +43,6 @@
                   placeholder="휴대전화 번호를 입력하세요." type="number">
             </div>
          </div>
-         {user.user_id}
          <br>
          <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"

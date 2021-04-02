@@ -154,7 +154,7 @@
 			<strong>휴대번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="user_phone" name="user_phone" class="form-control"
-					placeholder="핸드폰 번호를 입력해 주세요." type="text"><span
+					placeholder="핸드폰 번호를 입력해 주세요." type="number"><span
 					id="errorUserphone" class="text-danger error"></span>
 			</div>
 		</div>

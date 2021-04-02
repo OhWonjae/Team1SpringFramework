@@ -13,7 +13,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
 
-
     <div class="header2"> 
         <div class="inner">
             <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 고객센터</div> 

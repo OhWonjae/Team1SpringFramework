@@ -113,7 +113,9 @@
    </select> 
    
    <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="productMap">
+
     select p_name, p_price, photo_sname, photo_type
+
    from( select p_name, p_price, photo_sname, photo_type, p_category_name
        from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
         from products p Join photos ph

@@ -14,7 +14,7 @@ public interface QnaDao {
 	//public int selectall(Qna qna);//내가 추가 한거 참고
 	public int insert(Qna qna);
 	public Qna selectByQa_id(int qa_id);
-	public int update(Qna board);
+	public int update(Qna qna);
 	public int deleteByQa_id(@Param("qa_id") int qa_id, @Param("user_id")String user_id);
 	public int count();
 	public List<Qna> selectAll();

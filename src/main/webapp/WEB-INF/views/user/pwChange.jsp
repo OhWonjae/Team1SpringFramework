@@ -122,14 +122,7 @@
 								</h4>
 
 								<form method="post" action="update1">
-									<div style="padding: 5px 0 0 0;">
-										<strong>현재 비밀번호</strong><span style="color: red;">*</span>
-									</div>
-									<div class="form-group input-group">
 
-										<input name="" class="form-control"
-											placeholder="현재 비밀번호를 입력하세요." type="text">
-									</div>
 									<div style="font: bold;">
 										<strong>변경 비밀번호</strong><span style="color: red;">*</span>
 									</div>
@@ -145,10 +138,7 @@
 										<input class="form-control" placeholder="비밀번호를 한번 더 입력해 주세요."
 											type="text">
 									</div>
-									<div class="text-center"
-										style="text-align: center; font-size: 0.7em;">정확한 비밀번호
-										입력 시 찾기 쉽습니다.</div>
-									<div></div>
+
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-block"
 											style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">

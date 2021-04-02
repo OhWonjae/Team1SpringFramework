@@ -48,17 +48,20 @@ public class UsersService {
 		return user;
 	}
 
+	// 아이디(이메일) 찾기
 	public User getUser2(String user_name, String user_phone) {
-		User user = usersDao.selectByUsername(user_name, user_phone);
-		return user;
+		User user2 = usersDao.selectIdByNameAndPassword(user_name, user_phone);
+		return user2;
 	}
 
+	// 비번 변경
 	public void updateUser(User user) {
-		usersDao.updatePwByUserid(user);
+		usersDao.updatePasswordById(user);
 	}
 
+	// 휴대번호 변경
 	public void updateUser2(User user) {
-		usersDao.updateHpByUserid(user);
+		usersDao.updatePhoneById(user);
 	}
 
 }
