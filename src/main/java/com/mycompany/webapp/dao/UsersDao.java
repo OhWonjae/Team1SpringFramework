@@ -10,10 +10,10 @@ public interface UsersDao {
 
 	public User selectByUserid(String user_id);
 
-	public User selectByUsername(String user_name, String user_phone);
+	public User selectIdByNameAndPassword(String user_name, String user_phone);
 
-	public int updatePwByUserid(User user);
+	public void updatePasswordById(User user);
 
-	public int updateHpByUserid(User user);
+	public void updatePhoneById(User user);
 
 }

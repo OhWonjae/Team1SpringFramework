@@ -27,11 +27,10 @@
 			<strong>비밀번호 찾기</strong>
 		</h4>
 
-		<form method="get" action="searchPw">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+		<form method="post" action="searchPw">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div style="font: bold;">
-				<strong>아이디</strong><span style="color: red;">*</span>
+				<strong>아이디(이메일)</strong><span style="color: red;">*</span>
 				<div class="form-group input-group">
 					<input name="user_id" class="form-control" placeholder="아이디를 입력하세요."
 						type="email">
