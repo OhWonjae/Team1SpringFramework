@@ -48,7 +48,7 @@
    	from products
    	where p_id=#{pid}
    </select>
-    
+     
    <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
     select rnum, p_name,p_price, photo_sname, photo_type
@@ -108,20 +108,34 @@
    where ROWNUM&lt;31
    
    
-   </select>
+   </select> 
    
    <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="productMap">
  	select p_name, p_price, photo_sname, photo_type
-   from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
-    from products p Join photos ph
-    on p.p_id = ph.p_id and
-    ph.photo_role='main' and
-    p_category_name=#{categoryname}
-    order by p_salescount desc
-   )
+   from( select p_name, p_price, photo_sname, photo_type, p_category_name
+       from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
+        from products p Join photos ph
+        on p.p_id = ph.p_id and
+        ph.photo_role='main'
+        order by p_salescount desc
+       )
    where ROWNUM&lt;31
+        )
+   where p_category_name=#{category}
    </select>
- 
+   
+   
+  <select id="rankcategorycount" parameterType="string" resultType="int">
+ select count(*)
+   from( select *
+       from(select *
+        from products
+        order by p_salescount desc
+       )
+   where ROWNUM&lt;31
+        )
+   where p_category_name=#{category}
+   </select>
    
    
    <select id="selectCategory" resultType="product" resultMap="productMap">
