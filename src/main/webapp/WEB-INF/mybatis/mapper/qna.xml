@@ -34,13 +34,13 @@
    (#{qa_id}, #{qa_category}, #{qa_content}, '답변 대기', sysdate, 7, 12)
    </insert>
    
-   <!-- <update id="update" parametertype="qna">
+   <update id="update" parameterType="qna">
       update qna set
          qa_category=#{qa_category},
-         qa_content=#{qa_content}
-         qa_date=#{qa_date}
+         qa_content=#{qa_content},
+         qa_date=#{qa_date},
       where qa_id=#{qa_id}
-   </update> -->
+   </update>
    
    <delete id="deleteByQa_id">
          delete from QNA
