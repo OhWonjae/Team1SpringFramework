@@ -7,18 +7,21 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.CartItem;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.service.CartsService;
+import com.mycompany.webapp.service.ProductService;
 
 @Controller
 @RequestMapping("/order")
 public class CartController {
 	@Autowired
 	   private CartsService cartsService; 
-	
+	@Autowired
+	   private ProductService productService;
+	   
 	@GetMapping("/cart")
 	public String cart(Model model, Authentication auth) {
 		List<CartItem> list = cartsService.getCartList(auth.getName());
@@ -28,11 +31,19 @@ public class CartController {
 	
 	@GetMapping("/putcart")
 	public String putcart(CartItem cart, Authentication auth) {
+	
+		String userId = auth.getName();
+		cart.setUser_id(userId);
 		
-		cart.setUser_id(auth.getName());
-		cartsService.addCart(cart);
-		System.out.println(cart.getP_id());
-			
+		List<CartItem> list = cartsService.getCartList(userId);
+		for(int i=0;i<list.size();i++) {
+			if(userId.equals(list.get(i).getUser_id())
+					&& list.get(i).getP_id() == cart.getP_id()) {
+				
+				cartsService.addCart(cart);
+				return "redirect:/product/detail";
+			} 
+		} 
 		return "redirect:/product/detail";
 	}
 	
@@ -65,4 +76,25 @@ public class CartController {
 		return "redirect:/order/cart";
 	}
 	
+	
+	/*
+	 * @GetMapping("/cart/create") public String create(Model model) {
+	 * 
+	 * int k=0; for(int i=1; i<= 32; i++) {
+	 * 
+	 * String name = "dog"; name = name+""+i;
+	 * 
+	 * 
+	 * Photo p = new Photo(i+k+206,i,name,name,"JPG","detail"); k++;
+	 * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
+	 * System.out.print(p.getPhoto_oname()+" ");
+	 * System.out.print(p.getPhoto_role()+" ");
+	 * System.out.println(p.getPhoto_type());
+	 * 
+	 * productService.createPhoto(p);
+	 * 
+	 * }
+	 * 
+	 * return "/product/new"; }
+	 */
 }
