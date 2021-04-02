@@ -3,32 +3,93 @@
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
 
    <!-- ResultMap -->
-
    <resultMap type="product" id="productMap">
-      <id property="p_id" column="p_id"/>
-      <result property="p_name" column="p_name"/>
-      <result property="p_price" column="p_price"/>
-      <result property="p_stock" column="p_stock"/>
-      <result property="p_salescount" column="p_salescount"/>
-      <result property="p_category_name" column="p_category_name"/>
-      <result property="p_upload_date" column="p_upload_date"/>
-      <result property="p_description" column="p_description"/>   
-       <collection property="photolist" resultMap="photoMap"/>
+		<id property="p_id" column="p_id"/>
+		<result property="p_name" column="p_name"/>
+		<result property="p_price" column="p_price"/>
+		<result property="p_stock" column="p_stock"/>
+		<result property="p_salescount" column="p_salescount"/>
+		<result property="p_category_name" column="p_category_name"/>
+		<result property="p_upload_date" column="p_upload_date"/>
+		<result property="p_description" column="p_description"/>	
+		
+		
+		 <collection property="photolist" ofType="photo">
+		 	<result property="photo_id" column="photo_id"/>
+			<result property="p_id" column="p_id"/>
+			<result property="photo_oname" column="photo_oname"/>
+			<result property="photo_sname" column="photo_sname"/>
+			<result property="photo_type" column="photo_type"/>
+			<result property="photo_role" column="photo_role"/>
+		 </collection>			
+	</resultMap> 
+   
+   
+   
+   
 
-          
-   </resultMap> 
-   
-   
-   <resultMap type="photo" id="photoMap">
-        <result property="photo_id" column="photo_id"/>
-      <result property="p_id" column="p_id"/>
-      <result property="photo_oname" column="photo_oname"/>
-      <result property="photo_sname" column="photo_sname"/>
-      <result property="photo_type" column="photo_type"/>
-      <result property="photo_role" column="photo_role"/>
-    </resultMap>
+	<resultMap type="product" id="productDetailMap">
+		<id property="p_id" column="p_id"/>
+		<result property="p_name" column="p_name"/>
+		<result property="p_price" column="p_price"/>
+		<result property="p_stock" column="p_stock"/>
+		<result property="p_salescount" column="p_salescount"/>
+		<result property="p_category_name" column="p_category_name"/>
+		<result property="p_upload_date" column="p_upload_date"/>
+		<result property="p_description" column="p_description"/>	
+		
+		
+		 <collection column="p_id" property="photolist" ofType="photo" javaType="List" select="getPhotoList">
+		 	<id property="photo_id" column="photo_id"/>
+			<result property="p_id" column="p_id"/>
+			<result property="photo_oname" column="photo_oname"/>
+			<result property="photo_sname" column="photo_sname"/>
+			<result property="photo_type" column="photo_type"/>
+			<result property="photo_role" column="photo_role"/>
+		 </collection>
+		 
+		 <collection column="p_id" property="reviewlist" ofType="review" javaType="List" select="getReviewList">
+		 	<id property="review_id" column="review_id"/> 
+	        <result property="review_score" column="review_score"/>
+	        <result property="review_title" column="review_title"/>
+	        <result property="review_content" column="review_content"/>
+	        <result property="review_date" column="review_date"/> 
+			<result property="p_id" column="p_id"/> 
+			<result property="order_id" column="order_id"/>
+			<result property="user_id" column="user_id"/> 
+			<result property="photo_oname" column="photo_oname"/>    
+			<result property="photo_sname" column="photo_sname"/>
+			<result property="photo_type" column="photo_type"/>
+		 </collection>
+		 
+		 
+		 <collection column="p_id" property="sizelist" ofType="size" javaType="List" select="getSizeList">
+			<result property="p_size" column="p_size"/> 
+	        <result property="p_id" column="p_id"/>
+		 </collection>
+			
+	</resultMap> 
+	
+
+	<select id="getPhotoList" parameterType="int" resultType="photo">
+      select *
+      from photos
+      where p_id=#{p_id}
+    </select>
+
+	<select id="getReviewList" parameterType="int" resultType="review">
+      select *
+      from review
+      where p_id=#{p_id}
+    </select>
+
+   <select id="getSizeList" parameterType="int" resultType="size">
+      select *
+      from size_products
+      where p_id=#{p_id}
+    </select>
     
-   
+    
    <!-- 상품 insert / seq로 상품 id-->
    <insert id="insert" parameterType="product">
    <selectKey keyProperty="pid" resultType="int" order="BEFORE">
@@ -53,11 +114,11 @@
      
    <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
-    select rnum, p_name,p_price, photo_sname, photo_type
+    select rnum, p_id,p_name,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum,p_id, p_name,p_price, photo_sname, photo_type
           from (
-               select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+               select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
@@ -74,11 +135,11 @@
    
     <select id="selectRecommandAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
-    select rnum, p_name,p_price, photo_sname, photo_type
+     select rnum, p_id,p_name,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum,p_id, p_name,p_price, photo_sname, photo_type
           from (
-               select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+               select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
@@ -100,8 +161,8 @@
    </select>
    
    <select id="selectRankAll" resultType="product" resultMap="productMap">
-   select p_name, p_price, photo_sname, photo_type
-   from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+   select p_id,p_name, p_price, photo_sname, photo_type
+   from( select p.p_id, p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
     from products p Join photos ph
     on p.p_id = ph.p_id and
     ph.photo_role='main'
@@ -114,10 +175,10 @@
    
    <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="productMap">
 
-    select p_name, p_price, photo_sname, photo_type
+    select p_id,p_name, p_price, photo_sname, photo_type
 
-   from( select p_name, p_price, photo_sname, photo_type, p_category_name
-       from( select p.p_name,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
+   from( select p_id,p_name, p_price, photo_sname, photo_type, p_category_name
+       from( select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
         from products p Join photos ph
         on p.p_id = ph.p_id and
         ph.photo_role='main'
@@ -143,11 +204,11 @@
    
    
    <select id="selectCategory" resultType="product" resultMap="productMap">
-   select rnum, p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
           from (
-                  select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -168,11 +229,11 @@
       </select> 
    
    <select id="selectSearchAll" resultType="product" resultMap="productMap">
-   select rnum, p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
           from (
-                  select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -191,11 +252,11 @@
       </select> 
    
     <select id="selectSearchCategory" resultType="product" resultMap="productMap">
-   select rnum, p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_price, photo_sname, photo_type
     from (
-          select rownum as rnum, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
           from (
-                  select p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -213,13 +274,21 @@
       where p_name like '%'||#{searchword}||'%' and p_category_name=#{category}
       </select> 
        
-      <select id="selectProductDetail" parameterType="int" resultType="product" resultMap="productMap">
+       
+       <select id="selectProductDetail" parameterType="int" resultMap="productDetailMap">
+      select *
+   from products
+   where p_id=#{pid}
+      </select>
+       
+       
+      <!-- <select id="selectProductDetail" parameterType="int" resultMap="productDetailMap">
       select p.p_name, p.p_price, p.p_stock, p.p_category_name, p.p_description, ph.photo_sname, ph.photo_oname, ph.photo_type, ph.photo_role,
    rv.review_content, rv.review_date, rv.review_score,rv.review_title,
    sp.p_size
    from products p ,photos ph, review rv, size_products sp
    where p.p_id=#{pid} and p.p_id = ph.p_id and p.p_id = rv.p_id and p.p_id = sp.p_id
-      </select>
+      </select> -->
   
       
       

@@ -150,6 +150,17 @@ public class ProductService {
 		
 		return count;
 	}			
+	
+	// 디테일 정보 가져오기
+	public Product getProductDetail(int pid) {
+		// TODO Auto-generated method stub
+		return productDao.selectProductDetail(pid);
+		
+		
+	}
+	
+	
+	
 
 	//Update
 	//상품 수정하기
