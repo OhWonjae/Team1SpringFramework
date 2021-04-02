@@ -87,7 +87,7 @@
 	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef;">
 	                                            <div class="cart-price">
 	                                                <div style="font-weight: bold;">
-	                                                    ${cart.p_price}
+	                                                    ${(cart.p_price* cart.amount)}
 	                                                </div>
 	                                            </div>
 	                                        </div>

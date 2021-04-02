@@ -14,7 +14,7 @@
 		<result property="p_description" column="p_description"/>	
 		 <collection property="photolist" resultMap="photoMap"/>
 			
-	</resultMap>
+	</resultMap> 
 	
 	
 	<resultMap type="photo" id="photoMap">
