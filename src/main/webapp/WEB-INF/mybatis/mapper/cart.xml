@@ -7,7 +7,7 @@
 		insert into cart 
 		(user_id, p_id, amount, p_size)
 		values
-		(#{user_id}, 13, 1, 'S')
+		(#{user_id}, #{p_id}, #{amount}, #{p_size})
 	</insert>
  
  
@@ -32,7 +32,7 @@
 
 	</select>
 	
-	<!-- 한 가지 상품의 amount를 조절하기 위해서 그 정보만 가져오기 위함 -->
+	<!-- 한 가지 상품의 정보만 가져오기 위함 -->
 	<select id="cartListOne" resultType="cart">
 		select 
 					  user_id,

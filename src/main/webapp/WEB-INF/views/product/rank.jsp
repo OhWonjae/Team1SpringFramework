@@ -164,9 +164,10 @@
 				<h3 style="padding-top: 10px;">랭킹</h3>
                 
 				<button type="button" class="btn btn-light" onclick="location.href='rank'">전체</button>
+				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=티셔츠'">티셔츠</button>
 				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=후드티'">후드티</button>
-				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=원피스'">원피스</button>
 				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=패딩/코트'">패딩/코트</button>
+				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=원피스'">원피스</button>
 				<button type="button" class="btn btn-light" onclick="location.href='rankcategory?category=올인원'">올인원</button>
 			</div>		
 
