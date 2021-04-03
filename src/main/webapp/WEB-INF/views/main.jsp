@@ -46,89 +46,25 @@
             <button type="button" onclick="location.href='<%=application.getContextPath()%>/product/new'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
           <ul class="new-list">
-            <li class="new-goods" style="margin-left: 0;">
+            
             <!--신규 상품 리스트 출력 -->
-            	<c:forEach var="product" items="${list}">
-				 <div class="flex-items"> 
-				 	<figure>
-      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photoSname}&photoType=${product.photolist[0].photoType}" width="200px">
-      					<figcaption>${product.pname}</figcaption>
-      					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
-    					<figcaption>${product.pprice}</figcaption>
-    					<figcaption>신상품</figcaption>
-    				</figure>
-                </div>
+            	<c:forEach var="product" items="${newlist}">
+            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" style="cursor: pointer;">
+				 	
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+      					<div class="goods-title">${product.p_name}</div>
+      					<div class="goods-price">${product.p_price}원</div>
+      					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
+      					<a style="color: silver;"> (2)</a>
+    				
+                </li>
 				</c:forEach>
             
             
-              <a href="<%=application.getContextPath()%>/product/detail">
-                <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 콤비 후드 아이보리블루</div>
-                <div class="goods-price">29000원</div>
-                <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                <i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-                <a style="color: silver;"> (2)</a>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/new2.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 맨투맨 V라인 옐로우</div>
-                <div class="goods-price">19000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/new3.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 민소매 아이보리블루</div>
-                <div class="goods-price">14000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/new4.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트X테디아일랜드 민소매 블루</div>
-                <div class="goods-price">29000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/new5.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                <div class="goods-price">17000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
             <i class="fas fa-chevron-circle-right"></i>
           </ul>
         </div>
@@ -143,76 +79,21 @@
             <button type="button" onclick="location.href='<%=application.getContextPath()%>/product/rec'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
           <ul class="new-list">
-            <li class="new-goods" style="margin-left: 0;">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/rec1.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 콤비 후드 아이보리블루</div>
-                <div class="goods-price">29000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/rec2.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 맨투맨 V라인 옐로우</div>
-                <div class="goods-price">19000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 민소매 아이보리블루</div>
-                <div class="goods-price">14000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail">
-                <img src="<%=application.getContextPath() %>/resources/img/rec4.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트X테디아일랜드 민소매 블루</div>
-                <div class="goods-price">29000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
-            <li class="new-goods">
-              <a href="<%=application.getContextPath()%>/product/detail" >
-                <img src="<%=application.getContextPath() %>/resources/img/rec5.jpg" alt="goods1" class="new-image">
-                <div class="goods-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                <div class="goods-price">17000원</div>
-                <div class="rate">
-                  <label for="star5" title="text">5 stars</label>
-                  <label for="star4" title="text">4 stars</label>
-                  <label for="star3" title="text">3 stars</label>
-                  <label for="star2" title="text">2 stars</label>
-                  <label for="star1" title="text">1 star</label>
-                </div>
-              </a>
-            </li>
+             	<!--추천 상품 리스트 출력 -->
+            	<c:forEach var="product" items="${reclist}">
+            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" style="cursor: pointer;">
+				 	
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+      					<div class="goods-title">${product.p_name}</div>
+      					<div class="goods-price">${product.p_price}원</div>
+      					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
+                		<i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
+      					<a style="color: silver;"> (2)</a>
+                </li>
+				</c:forEach>
             <i class="fas fa-chevron-circle-right"></i>
           </ul>
         </div>
@@ -369,9 +250,11 @@
               <div class="main-title">베스트 리뷰</div>
             </div>
             <ul class="class-list">
-              <li class="class-card">
-                <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="Review1" class="class-image" />
-                <a href="<%=application.getContextPath()%>/product/detail" >
+            <!--베스트 리뷰 상품 리스트 출력 -->
+            	<c:forEach var="product" items="${bestreviewlist}">
+            	<li class="class-card">
+                 <a href="<%=application.getContextPath()%>/product/detail?pid=${product.p_id}" >
+                   <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" alt="Review1" class="class-image" />
                   <div class="class-container">
                     <div class="class-box">
                       <div class="class-type">사이즈 L</div>
@@ -391,50 +274,8 @@
                   </div>
                 </a>
               </li>
-              <li class="class-card">
-                <img src="<%=application.getContextPath() %>/resources/img/new4.jpg" alt="Review1" class="class-image" />
-                <a href="<%=application.getContextPath()%>/product/detail>">
-                  <div class="class-container">
-                    <div class="class-box">
-                      <div class="class-type">사이즈 L</div>
-                      <div class="class-format">
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-                        <a style="color: silver;"> (2)</a>
-                      </div>
-                    </div>
-                    <div class="class-desc">
-                      <div class="class-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                      <div class="class-detail">리뷰: 리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰</div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="class-card">
-                <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="Review1" class="class-image" />
-                <a href="<%=application.getContextPath()%>/product/detail"tar>
-                  <div class="class-container">
-                    <div class="class-box">
-                      <div class="class-type">사이즈 L</div>
-                      <div class="class-format">
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-                        <a style="color: silver;"> (2)</a>
-                      </div>
-                    </div>
-                    <div class="class-desc">
-                      <div class="class-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                      <div class="class-detail">리뷰: 리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰</div>
-                    </div>
-                  </div>
-                </a>
-              </li>
+            	
+            	</c:forEach>
             </ul>
           </div>
         </div>

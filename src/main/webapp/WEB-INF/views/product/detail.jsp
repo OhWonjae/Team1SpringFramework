@@ -17,7 +17,7 @@
      <!--회색 바-->
      <div class="container-fluid border " style="background-color:#f4f4f5">
         <div class="inner">
-            홈 > 의류/액세서리 > 후드티 > 헤이제리 테디베어 퍼 후드 베이지
+            홈 > ${product.p_category_name} > ${product.p_name}
         </div>
     </div>
     <div class="inner">
@@ -56,8 +56,8 @@
                 </div>
                 
 				<script>
-                  	function detailPicClick(srcPic){
-                  		$("#mainPic").attr("src","${pageContext.request.contextPath}/resources/img/"+srcPic );
+                  	function detailPicClick(src){
+                  		$("#mainPic").attr("src",src );
                   	}
                 </script>
                 
@@ -66,20 +66,21 @@
                     <div class="col-md-6 border">
                         <!--메인 사진-->
                         <div class="row border" style="height: 82%;">
-                        	<img class="img" id="mainPic" style="height: 100%; width: 100%;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
+                        	<img class="img" id="mainPic" style="height: 100%; width: 100%;" src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${mainphoto.photo_sname}&photoType=${mainphoto.photo_type}">
                         </div>
                         <!--세부 사진-->
                         <div class="row   justify-content-center" style=" height: 15%; padding:35px">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_1.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;"  src="${pageContext.request.contextPath}/resources/img/detail_Sub_1.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_2.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_2.PNG">
-                            <img input type="button" class="img border" onclick="detailPicClick('detail_Sub_3.PNG')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resources/img/detail_Sub_3.PNG">
-                        </div>
+                            <img input type="button" class="img border" onclick="detailPicClick('${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${mainphoto.photo_sname}&photoType=${mainphoto.photo_type}')" style="margin: 0px 3px; height: 100px; width: 100px;"  src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${mainphoto.photo_sname}&photoType=${mainphoto.photo_type}">
+                            <c:forEach var="subphoto" items="${subphotolist}">
+				    			<img input type="button" class="img border" onclick="detailPicClick('${pageContext.request.contextPath}/resource/GetSubPhoto?photoSname=${subphoto.photo_sname}&photoType=${subphoto.photo_type}')" style="margin: 0px 3px; height: 100px; width: 100px;" src="${pageContext.request.contextPath}/resource/GetSubPhoto?photoSname=${subphoto.photo_sname}&photoType=${subphoto.photo_type}">
+                            </c:forEach>
+                         </div>
                     </div>
                     <!--구매옵션--> 
                     <div class="col-md-6 border" style="padding: 3%;">
                         <!--상품명--> 
                         <div class="row" style="margin-left: 5px; margin-bottom: 20px;">
-                            <h2>헤이제리 테디베어 퍼 후드 베이지</h2>
+                            <h2>${product.p_name}</h2>
                         </div>
                         <!--상품사이즈--> 
                         
@@ -87,37 +88,23 @@
                         <script>
                         function DropSelect(select)
                         {
-                       		var selectid = "#"+select.id;
-                       		console.log(selectid);
-                        	$("#sizedropdownMenuButton").html("사이즈 <br/>"+select.id);
+                        	$("#selectSize").html(select.id);
                         }
                       
                         </script>
                         <div class="row" style="margin: 40px 0">
                             <div class="dropdown" style="width: 100%;">
-                                <button class="btn btn-lg border dropdown-toggle text-left"  style="width: 100%;" type="button" id="sizedropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                             <button class="btn btn-lg border dropdown-toggle text-left"  style="width: 100%;" type="button" id="sizedropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     사이즈</br>
-                                    선택 
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-xl w-100" >
-                                    <a class="dropdown-item" id="S" onclick="DropSelect(this)" href="#">
-                                        S</br>
-                                        20,400원</br>
-                                        재고있음 
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="M" onclick="DropSelect(this)" href="#">
-                                        M</br>
-                                        20,400원</br>
-                                        재고있음 
-                                    </a>
-                                
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="L" onclick="DropSelect(this)" href="#">
-                                        L</br>
-                                        20,400원</br>
-                                        재고있음 
-                                    </a>
+                                    <div id="selectSize">선택</div> 
+                             </button>
+                                <div class="dropdown-menu dropdown-menu-xl w-100">
+	                              <c:forEach var="size" items="${sizelist}">
+	                              	 <a class="dropdown-item" id="${size.p_size}" onclick="DropSelect(this)" href="#">
+	                                        ${size.p_size}</br>
+	                                </a>
+	                              	<div class="dropdown-divider"></div>
+					    		  </c:forEach> 
                                 </div>
                             </div>
                         </div>
@@ -127,7 +114,7 @@
                                 판매가
                             </div>
                             <div class="col text-right">
-                                20,400원
+                                ${product.p_price}원
                             </div>
                         </div>
                         <hr/>
@@ -135,7 +122,13 @@
                         <div class="row justify-content-center" style="padding: 0 0;" >
                             <div class="col-3 "style="font-size: smaller;">
                                 <img  style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/재고있음.PNG">
+                                <c:if test="${product.p_stock>0}">
                                 재고있음
+                                </c:if>
+                                <c:if test="${product.p_stock<1}">
+                                재고없음
+                                </c:if>
+                                
                             </div>  
                             <div class="col-3 "style="font-size: smaller;">
                                 <img style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/업체발송.PNG">
@@ -143,10 +136,39 @@
                             </div>
                             <div class="col-3 " style="font-size: smaller;">
                                 <img  style="margin: 0px 0px;"  src="${pageContext.request.contextPath}/resources/img/무료배송.PNG">
-                                무료배송
+                                배송비
                             </div>
                         </div>
                         <hr/>
+                        
+                        <script>
+                        <!--상품 개수 감소 증가해주는 함수 -->
+                        var price = ${product.p_price};
+                        function decrease(){
+                        	var amount = parseInt($("#selectAmount").text());
+                        	var priceNum = parseInt(price);
+                        	var totalprice = parseInt($("#totalprice").text());
+                        	if(amount>1){
+                        		amount=amount-1;
+                            	$("#selectAmount").text(amount);
+                            	totalprice = totalprice-priceNum;
+                            	$("#totalprice").text(totalprice+"원");
+                        	}
+                        }
+                        
+                        function increase(){
+                        	var amount = parseInt($("#selectAmount").text());
+                        	var priceNum = parseInt(price);
+                        	var totalprice = parseInt($("#totalprice").text());
+                        	if(amount<${product.p_stock}){
+                        		amount=amount+1;
+                            	$("#selectAmount").text(amount);
+                            	totalprice = totalprice+priceNum;
+                            	$("#totalprice").text(totalprice+"원");
+                        	}
+                        }
+                        
+                        </script>
                         <!--수량선택컨테이너--> 
                         <div class="container justify-content-center" style="padding: 20px; margin: 40px 0px; background-color:#f4f4f5 ;">
                             <div class="row" style="margin: 5px;">
@@ -162,36 +184,79 @@
                                 <!--수량선택--> 
                                 <div class="col text-left">
                                     <div class="btn-group btn-group-toggle"  >
-                                        <label class="btn border d-flex align-items-center justify-content-center" style="background-color: white; height: 50px; width: 50px;">
+                                        <a href='javascript:void(0);' onclick="decrease();" class="btn border d-flex align-items-center justify-content-center" style="background-color: white; height: 50px; width: 50px;">
                                         -
-                                        </label>
-                                        <label class="btn border disabled d-flex align-items-center justify-content-center" style="background-color: white; height: 50px; width: 75px;">
-                                            1
-                                        </label>
-                                        <label class="btn border d-flex align-items-center justify-content-center" style="background-color: white; height: 50px; width: 50px;">
+                                        </a>
+                                        <a class="btn border disabled d-flex align-items-center justify-content-center" id="selectAmount" style="background-color: white; height: 50px; width: 75px;">1</a>
+                                        <a href='javascript:void(0);' onclick="increase();" class="btn border d-flex align-items-center justify-content-center" style="background-color: white; height: 50px; width: 50px;">
                                         +
-                                        </label>
+                                        </a>
                                     </div>
                                 </div>
                                 <!--계산된 가격-->
-                                <div class="col text-right align-items-center">
-                                    20,400원
+                                <div class="col text-right align-items-center" id="totalprice">
+                                    ${product.p_price}원
                                 </div>
                             </div>
                         </div>
+                        
+                        <script>
+                        <!--카트 담기-->
+                        const PutCart=(pid)=>{
+                        	event.preventDefault();
+                    		const pamount = $("#selectAmount").text();
+                    		const psize =$("#selectSize").text();
+                    		if(psize==="선택"){
+                    			alert("사이즈를 선택해 주세요")
+                    			return;
+                    		}
+                    		
+                    		$.ajax({
+                    			url:"${pageContext.request.contextPath}/order/putcart",
+                    			data: {pid, pamount, psize},
+                    			method: "get"
+                    		}).then(data=>{
+                    			if(data.result=="success"){
+                    				alert("카트담기 완료");
+                    			}
+                    			
+                    		});
+                        }
+                        <!--바로구매-->
+                        const Buy=(pid)=>{
+                        	event.preventDefault();
+                    		const pamount = $("#selectAmount").text();
+                    		const psize =$("#selectSize").text();
+                    		if(psize==="선택"){
+                    			alert("사이즈를 선택해 주세요");
+                    			return;
+                    		}
+                    		$.ajax({
+                    			url:"test",
+                    			data: {pid, pamount, psize},
+                    			method: "get"
+                    		}).then(data=>{
+                    			if(data.result=="success"){
+                    				console.log("바로구매 완료")
+                    			}
+                    			
+                    		});
+                        }
+                        </script>
+                        
+                        
                         <!--장바구니 담기, 바로구매 버튼 컨테이너-->
                         <div class="row " style="margin: 70px 5px;">
                             <!--장바구니 담기 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button"  onclick="location.href='<%=application.getContextPath()%>/order/putcart?pid=1&psize=S&pamount=1';"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
+                                <button type="button" onclick="PutCart(${product.p_id})"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
                             </div>
                             <!--바로구매 버튼-->
                             <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/pay'" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
+                                <button type="button" onclick="Buy(${product.p_id})" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             
@@ -215,15 +280,15 @@
             </div>
             <!--상세페이지 상품정보 제목 컨테이너-->
             <div class="container " style="  font-weight: bold; font-size: large;">
-                상품정보
+                상품정보 
             </div>
             <!--상세페이지 상품정보 텍스트 컨테이너-->
             <div class="container border" style="font-size: small; border-top: solid 1px black;">
                 <!--상세페이지 상품정보 설명 컨테이너-->
                 <div class="row"style="padding: 20px; border-top: solid 1px black;">
                     설명<br/>
-                    플로트 스탠다는 맨투맨 V라인은 유니크한 매력을 가지고 있는 맨투맨 티셔츠입니다. 소매와 밑단에 같은 배색으로 통일감을 주었으며, 반려견의 체형을 고려한 견체공학 디자인으로 편안한 착용감과 자연스러운 핏으로 데일리 아이템으로 적합한 티셔츠입니다.  구매 전 반드시 사이즈 확인 후 구매 부탁드립니다. 체중과 가슴둘레 기준으로 사이즈를 선택하시는 것을 추천드리며, 반려견 측정치수보다 제품사이즈가 2~3cm 이상 여유 있는 사이즈로 주문해주시길 바랍니다. 
-                </div>
+                    ${product.p_description}
+                 </div>
                 <!--상세페이지 상품정보 특징 컨테이너-->
                 <div class="row" style="padding: 0;">
                 
@@ -238,7 +303,7 @@
             <!--상세페이지 Detail 컨테이너-->
             <div class="row justify-content-md-center mb-5"  >
                 <!--Detail 이미지-->
-                <img src="${pageContext.request.contextPath}/resources/img/상세Detail.PNG" >
+                <img src="${pageContext.request.contextPath}/resource/GetDetailPhoto?photoSname=${detailphoto.photo_sname}&photoType=${detailphoto.photo_type}" >
                 <!--Detail 접기 버튼-->
                 <button type="button" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
             </div>
@@ -271,7 +336,7 @@
                                     </div>
                                     <!--별점-->
                                     <div style="display: flex; ">
-                                        <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
+                                        <img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
                                <!--리뷰 입력 폼-->
@@ -315,79 +380,32 @@
             <div class="container " style="font-size: small; border-top: solid 1px black; padding:0">        
                 <!--상세페이지 구매후기 목록1-->
                 <div class="container "style="margin:1% 0; border-bottom:1px solid gray;">
-                    <!--구매후기 제목 컨테이너-->
-                    <div class="row ">
-                        <!--강아지 얼굴 사진-->
-                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
-                        <!--구매후기 제목 내용 컨테이너-->
-                        <div class="col-9" style="padding:0 ">
-                            <span style="margin:0 0; white-space:nowrap; font-size:medium">
-                                <!--별점-->
-                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
-                                <!--구매인증됨 | 작성 날짜-->
-                                구매인증됨  |  2021.03.12.<br/>
-                            </span>
-                            <!--작성자 및 강아지 정보-->
-                            강*민  · 토이 푸들 · 2살
-                        </div>
-                    </div>
-                    <!--구매후기 내용-->
-                    <div class="row"style="margin-bottom:2%; font-size:medium">
-                        <img src="${pageContext.request.contextPath}/resources/img/review1.PNG" width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
-                        옵션 : 사이즈 L<br/>후드티<br/>어쩜 사이즈가 이렇게 잘 맞는지^^요즘처럼 추운 겨울에 실내에서 입혀놓으니 너무 예뻐요^^
-                    </div>
+                	<c:forEach var="review" items="${reviewlist}">
+                		<!--구매후기 제목 컨테이너-->
+	                    <div class="row ">
+	                        <!--강아지 얼굴 사진-->
+	                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
+	                        <!--구매후기 제목 내용 컨테이너-->
+	                        <div class="col-9" style="padding:0 ">
+	                            <span style="margin:0 0; white-space:nowrap; font-size:medium">
+	                                <!--별점-->
+	                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
+	                                <!--구매인증됨 | 작성 날짜-->
+	                                구매인증됨  |  ${review.review_date}<br/>
+	                            </span>
+	                            <!--작성자 및 강아지 정보-->
+	                            강*민  · 토이 푸들 · 2살
+	                        </div>
+	                    </div>
+	                    <!--구매후기 내용-->
+	                    <div class="row"style="margin-bottom:2%; font-size:medium">
+	                        <img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
+	                        옵션 : ${product.p_category_name}<br/>${review.review_content}
+	                   </div>
+	                
+                	</c:forEach>
                 </div>
-
-                <!--상세페이지 구매후기 목록2-->
-                <div class="container "style="margin:1% 0; border-bottom:1px solid gray;">
-                    <!--구매후기 제목 컨테이너-->
-                    <div class="row ">
-                        <!--강아지 얼굴 사진-->
-                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
-                        <!--구매후기 제목 내용 컨테이너-->
-                        <div class="col-9" style="padding:0 ">
-                            <span style="margin:0 0; white-space:nowrap; font-size:medium">
-                                <!--별점-->
-                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"  ><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
-                                <!--구매인증됨 | 작성 날짜-->
-                                구매인증됨  |  2021.02.22.<br/>
-                            </span>
-                            <!--작성자 및 강아지 정보-->
-                            서*리  · 푸들 · 6살
-                        </div>
-                    </div>
-                    <!--구매후기 내용-->
-                    <div class="row"style="margin-bottom:2%; font-size:medium;">
-                        <img src="${pageContext.request.contextPath}/resources/img/review2.PNG"; width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
-                        옵션 : 사이즈 2XL<br/>사이즈 찰떡이에요<br/>7kg 푸들인데 털이 많이 쪄가지구<br/>투엑스라지가 여유롭게 잘맞아요 색 너무 귀여워요<br/>
-                        기모버전이었으면 조금 더 좋았을거 같아요<br/>
-                    </div>
-                </div>
-
-                <!--상세페이지 구매후기 목록3-->
-                <div class="container "style="margin:1% 0; border-bottom:1px solid gray;">
-                    <!--구매후기 제목 컨테이너-->
-                    <div class="row ">
-                        <!--강아지 얼굴 사진-->
-                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
-                        <!--구매후기 제목 내용 컨테이너-->
-                        <div class="col-9" style="padding:0 ">
-                            <span style="margin:0 0; white-space:nowrap; font-size:medium">
-                                <!--별점-->
-                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"  ><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
-                                <!--구매인증됨 | 작성 날짜-->
-                                구매인증됨  |  2021.01.05.<br/>
-                            </span>
-                            <!--작성자 및 강아지 정보-->
-                            강*민  · 토이 푸들 · 2살
-                        </div>
-                    </div>
-                    <!--구매후기 내용-->
-                    <div class="row"style="margin-bottom:2%; font-size:medium;">
-                        옵션 : 사이즈 L<br/>좋아요<br/>너무 귀여워요:-)♡<br/>
-                    </div>
-                </div>
-            </div> 
+                
 
             <!--상세페이지 질문/답변 제목 컨테이너-->
             <div class="container " style="  font-weight: bold; font-size: large;">

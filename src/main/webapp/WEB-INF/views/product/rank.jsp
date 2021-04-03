@@ -179,7 +179,7 @@
             	<!--랭킹 상품 리스트 출력 -->
             	<c:forEach var="product" items="${list}" varStatus="status">
 				 <div class="flex-items"> 
-				 	<figure>
+				 	<figure onclick="location.href='detail?pid=${product.p_id}'" style="cursor: pointer;">
 				 		<figcaption>${status.count}위</figcaption>
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
       					<figcaption>${product.p_name}</figcaption>

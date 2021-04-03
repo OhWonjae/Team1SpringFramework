@@ -62,7 +62,7 @@ public class ResourceController {
    }
    
    
-   //서브사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Main
+   //서브사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Sub
    @GetMapping("/GetSubPhoto")
    public void GetSubPhoto(String photoSname, String photoType, HttpServletResponse response) {
       try {
@@ -86,7 +86,7 @@ public class ResourceController {
       }
    }
    
-   //디테일사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Main
+   //디테일사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Detail
    @GetMapping("/GetDetailPhoto")
    public void GetDetailPhoto(String photoSname, String photoType, HttpServletResponse response) {
       try {
@@ -99,6 +99,30 @@ public class ResourceController {
 
          // 응답 HTTP 바디에 이미지 데이터를 출력
          InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Detail/" + photoSname+"."+photoType);
+         OutputStream os = response.getOutputStream();
+         FileCopyUtils.copy(is, os);
+         os.flush();
+         is.close();
+         os.close();
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+   
+ //리뷰사진 리소스 요청 메소드. 경로 -> C:/Photos/ProductPhotos/Review
+   @GetMapping("/GetReviewPhoto")
+   public void GetReviewPhoto(String photoSname, String photoType, HttpServletResponse response) {
+      try {
+         // 응답 HTTP 헤더에 저장될 바디의 타입
+         response.setContentType(photoType);
+
+         // 한글 파일일 경우, 깨짐 현상을 방지
+         photoSname = new String(photoSname.getBytes("UTF-8"), "ISO-8859-1");
+         response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
+
+         // 응답 HTTP 바디에 이미지 데이터를 출력
+         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Review/" + photoSname+"."+photoType);
          OutputStream os = response.getOutputStream();
          FileCopyUtils.copy(is, os);
          os.flush();

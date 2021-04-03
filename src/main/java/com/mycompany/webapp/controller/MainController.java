@@ -30,20 +30,20 @@ public class MainController {
 	
 	@GetMapping("/main")
 	public String main(Model model) {
-		 int intPageNo = 1;
+		 
 	      
-//	      Pager pager = new Pager(20,5,10,intPageNo);
-//	      List<Product> newlist = productService.getProductsByPager(pager);
-//	      model.addAttribute("newlist", newlist);
-//		
-//	      List<Product> reclist = productService.getRecommandProductsByPager(pager);
-//	      model.addAttribute("reclist", reclist);
-//	      
-//	      List<Product> ranklist = productService.getRankProducts("전체");
-//	      model.addAttribute("ranklist", ranklist);
-//	      
-//	      List<Product> bestreviewlist = productService.getBestReviewProducts();
-//	      model.addAttribute("bestreviewlist", bestreviewlist);
+	      Pager pager = new Pager(20,5,10,1);
+	      List<Product> newlist = productService.getProductsByPager(pager);
+	      model.addAttribute("newlist", newlist);
+		
+	      List<Product> reclist = productService.getRecommandProductsByPager(pager);
+	      model.addAttribute("reclist", reclist);
+	      
+	      List<Product> ranklist = productService.getRankProducts("전체");
+	      model.addAttribute("ranklist", ranklist);
+	      
+	      List<Product> bestreviewlist = productService.getBestReviewProducts();
+	      model.addAttribute("bestreviewlist", bestreviewlist);
 	      return "/main";
 	}
 	
