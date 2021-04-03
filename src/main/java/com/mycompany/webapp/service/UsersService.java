@@ -15,20 +15,8 @@ public class UsersService {
 	public void join(User user) {
 		usersDao.insert(user);
 	}
-	/*
-	 * public int emailCheck() throws Exception { int result = usersDao.idCheck();
-	 * return result; }
-	 * 
-	 * public int passCheck() throws Exception { int result = usersDao.passCheck();
-	 * return result; }
-	 * 
-	 * 
-	 * public String join(User user) { User dbUser =
-	 * usersDao.selectByUemail(user.getUemail()); if(dbUser == user.getUemail()) {
-	 * return "overlapUemail"; } usersDao.insert(user); return "success"; }
-	 */
-
-	public String login(User user) {
+	
+	/*public String login(User user) {
 		User dbUser = usersDao.selectByUserid(user.getUser_id());
 		if (dbUser == null) {
 			return "wrongUser_id";
@@ -40,28 +28,29 @@ public class UsersService {
 			}
 		}
 		return "success";
-	}
+	}*/
 
-	// 읽어오기
+	// 읽어오기, 비밀번호 찾기(searchId)
 	public User getUser(String user_id) {
 		User user = usersDao.selectByUserid(user_id);
 		return user;
 	}
 
-	// 아이디(이메일) 찾기
-	public User getUser2(String user_name, String user_phone) {
-		User user2 = usersDao.selectIdByNameAndPassword(user_name, user_phone);
-		return user2;
+	// 아이디(이메일) 찾기(searchPw)
+	public User getUserid(String user_name, String user_phone) {
+		User user = usersDao.selectIdByNameAndPassword(user_name, user_phone);
+		return user;
 	}
 
-	// 비번 변경
-	public void updateUser(User user) {
-		usersDao.updatePasswordById(user);
+	// 비밀번호 변경
+	public void updateUser(String user_password, String user_id) {
+		usersDao.updatePasswordById(user_password, user_id);
 	}
-
 	// 휴대번호 변경
-	public void updateUser2(User user) {
-		usersDao.updatePhoneById(user);
+	public void updateUser2(String user_phone, String user_id) {
+		usersDao.updatePhoneById(user_phone, user_id);
 	}
+	
+	
 
 }

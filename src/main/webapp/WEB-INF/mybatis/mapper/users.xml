@@ -32,14 +32,16 @@
 	</select>
 	
 	<!-- 비밂번호 변경 -->
-	<update id="updatePasswordById" >
+	<update id="updatePasswordById" parameterType="string">
 		update users 
-		set user_password=#{user_password} where user_id=#{user_id}
+		set user_password=#{user_password} 
+		where user_id=#{user_id}
 	</update>
 	
 	<!-- 휴대번호 변경 -->
 	<update id="updatePhoneById" >
 		update users 
-		set user_phone=#{user_phone} where user_id=#{user_id}
+		set user_phone=#{user_phone} 
+		where user_id=#{user_id}
 	</update>
 </mapper>

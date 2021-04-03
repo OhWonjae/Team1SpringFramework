@@ -81,7 +81,8 @@
 								<div class="tab1">비밀번호</div>
 								<div class="tab2">
 								
-									<strong>${user.user_password}</strong>
+									<%-- <strong>${user.user_password}</strong> --%>
+									<strong>********</strong> 									
 									<button style="margin-left: 10px;"
 										onclick="location.href='<%=application.getContextPath()%>/user/pwChange'"
 										type="button" class="btn btn-outline-secondary btn-sm">수정</button>
@@ -93,7 +94,7 @@
 										action="<%=application.getContextPath()%>/logout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
-										<button type="submit" style="margin-left: 10px;"
+										<button type="submit" 
 											class="btn btn-outline-secondary btn-sm">로그아웃</button>
 									</form>
 								</div>

@@ -41,11 +41,10 @@
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		}
-		if (!re.test(uid)) {
+		} if (!re.test(uid)) {
 			result = false;
 			alert("이메일에 맞는 형식이 아닙니다.");
-		}
+		} 
 	}
 </script>
 
@@ -61,7 +60,7 @@
 		</h4>
 		<br>
 
-		<c:if test="${loginError != null }">
+		<%-- <c:if test="${loginError != null }">
 
 			<div class="alert alert-primary">
 				<c:if test="${loginError == 'wrongUser_id'}">
@@ -71,7 +70,7 @@
 					<span>비밀번호가 틀립니다.</span>
 				</c:if>
 			</div>
-		</c:if>
+		</c:if> --%>
 		<form id="loginForm" name="loginForm" method="post" action="login"
 			onsubmit="validate()" novalidate="novalidate">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -93,7 +92,7 @@
 					style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 					로그인</button>
 			</div>
-		</form>
+		
 		
 			
 				<button type="button"
@@ -113,7 +112,7 @@
 					onclick="location.href='<%=application.getContextPath()%>/searchPw' ">
 					비밀번호 찾기</button>
 			</div>
-
+</form>
 		
 	</article>
 </div>

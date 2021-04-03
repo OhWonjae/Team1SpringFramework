@@ -17,17 +17,6 @@
 	box-sizing: border-box;
 }
 
-.start {
-	background-color: #e9ecef;
-}
-
-.info {
-	margin: 20px auto 0;
-	padding: 24px 120px 24px 40px;
-	border-radius: 8px;
-	border: 1px solid #e9ecef;
-	flex-direction: row;
-}
 
 .photo {
 	float: left;
@@ -39,12 +28,7 @@
 	font-size: 12px;
 }
 
-.header2 {
-	padding-left: 25px;
-	background-color: rgb(244, 244, 245);
-	height: 36px;
-	align-content: center;
-}
+
 
 .list-group-item-action {
 	color: #222;
@@ -70,7 +54,7 @@
 	border-color: #fff;
 }
 </style>
-	<div class="start">
+	<div>
 		<div class="header2">
 			<div class="inner"
 				style="font-size: 0.75em; padding-top: 10px; color: rgb(134, 134, 138);">홈
@@ -121,22 +105,24 @@
 									<strong>비밀번호 변경</strong>
 								</h4>
 
-								<form method="post" action="update1">
+								<form method="post" action="updateUser">
+								<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
 
 									<div style="font: bold;">
 										<strong>변경 비밀번호</strong><span style="color: red;">*</span>
 									</div>
 									<div class="form-group input-group">
 										<input id="user_password" name="user_password"
-											class="form-control" placeholder="비밀번호를 6자 이상 입력하세요."
-											type="text">
+											class="form-control" placeholder="비밀번호를 4자 이상 입력하세요."
+											type="password">
 									</div>
 									<div style="font: bolder;">
 										<strong>변경 비밀번호 확인</strong><span style="color: red;">*</span>
 									</div>
 									<div class="form-group input-group">
 										<input class="form-control" placeholder="비밀번호를 한번 더 입력해 주세요."
-											type="text">
+											type="password">
 									</div>
 
 									<div class="form-group">

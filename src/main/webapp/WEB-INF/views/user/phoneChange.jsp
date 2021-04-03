@@ -17,10 +17,6 @@
 	box-sizing: border-box;
 }
 
-.start {
-	background-color: #e9ecef;
-}
-
 .info {
 	margin: 20px auto 0;
 	padding: 24px 120px 24px 40px;
@@ -37,13 +33,6 @@
 .col-2 {
 	text-align: left;
 	font-size: 12px;
-}
-
-.header2 {
-	padding-left: 25px;
-	background-color: rgb(244, 244, 245);
-	height: 36px;
-	align-content: center;
 }
 
 .list-group-item-action {
@@ -69,40 +58,10 @@
 	background-color: white;
 	border-color: #fff;
 }
-
-/* .table{
-            background-color: white;
-            border: 1px thin rgb(138, 138, 146);
-            font-size: 1em;
-            font-family: Noto Sans KR, sans-serif;
-            font-weight: 800;
-        }
-        
-        
-        .table .thead-light th {
-            
-            background-color: rgba(244, 244, 245, 160);
-            border-color: rgba(244, 244, 245, 160);
-        }
-
-        
-        thead tr{
-            text-align: center;
-        } 
-        .table td, .table th {
-            padding: .75rem;
-            vertical-align: middle;
-            border-top: 1px solid #dee2e6;
-            border-right: 1px solid #dee2e6;
-        }
-        .table thead th {
-            vertical-align: middle;
-            border-bottom: 2px solid #dee2e6;
-        } */
 </style>
 </head>
 <body>
-	<div class="start">
+	<div>
 		<div class="header2">
 			<div class="inner"
 				style="font-size: 0.75em; padding-top: 10px; color: rgb(134, 134, 138);">홈
@@ -150,24 +109,20 @@
 
 							<article class="card-body mx-auto" style="width: 500px;">
 								<h4 class="card-title mt-4 mb-4 text-center">
-									<strong>휴대전화번호 변경</strong>
+									<strong>휴대번호 변경</strong>
 								</h4>
 
-								<form method="post" action="update2">
+								<form method="post" action="updateUser2">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
 									<div style="font: bolder;">
 										<strong>휴대번호</strong><span style="color: red;">*</span>
 									</div>
 									<div class="form-group input-group">
-										<input class="form-control" id="user_phone"
-											name="user_phone" placeholder="변경할 휴대전화 번호를 입력하세요."
-											type="number">
+										<input class="form-control" id="user_phone" name="user_phone"
+											placeholder="변경할 휴대전화 번호를 입력하세요." type="number">
 									</div>
-									<div class="text-center"
-										style="text-align: center; font-size: 0.7em;">휴대전화번호를
-										정확히 입력해 주세요.</div>
-									<div></div>
+
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-block"
 											style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">

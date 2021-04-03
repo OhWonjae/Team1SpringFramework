@@ -49,7 +49,6 @@
 					확인</button>
 			</div>
 		</form>
-		{user.user_password}
 	</article>
 </div>
 
