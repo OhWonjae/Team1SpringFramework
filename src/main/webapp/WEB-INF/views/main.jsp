@@ -49,9 +49,9 @@
             
             <!--신규 상품 리스트 출력 -->
             	<c:forEach var="product" items="${newlist}">
-            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" style="cursor: pointer;">
+            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'">
 				 	
-      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
       					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
@@ -81,9 +81,9 @@
           <ul class="new-list">
              	<!--추천 상품 리스트 출력 -->
             	<c:forEach var="product" items="${reclist}">
-            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" style="cursor: pointer;">
+            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" >
 				 	
-      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
+      					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
       					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 

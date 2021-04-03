@@ -3,8 +3,16 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class SizeProduct {
-   private int p_id;
-   private String p_size;
+
+private int p_id;
+private String p_size;
+   
+   
+//   public SizeProduct(int p_id, String p_size) {
+//		super();
+//		this.p_id = p_id;
+//		this.p_size = p_size;
+//	}
    public int getP_id() {
       return p_id;
    }

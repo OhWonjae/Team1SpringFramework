@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.SizeProduct;
 import com.mycompany.webapp.service.ProductService;
 
 @Controller
@@ -48,20 +49,40 @@ public class ProductController {
 	}
 	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
-	@GetMapping("/photo")
-	public String photo(Model model) {
-		Product p = productService.getProductDetail(1);
-		logger.info("a"+p.getPhotolist().size());
-		logger.info("a"+p.getReviewlist().size());
-		logger.info("a"+p.getSizelist().size());
+//		@GetMapping("/size")
+//		public String size(Model model) {
+//			
+//			for(int i=6; i<=100; i++)
+//			{
+//				
+//				SizeProduct p = new SizeProduct(i,"S");
+//				productService.createSize(p);
+//				SizeProduct p1 = new SizeProduct(i,"M");
+//				productService.createSize(p1);
+//				SizeProduct p2 = new SizeProduct(i,"L");
+//				productService.createSize(p2);
+//				
+//			}
+//			
+//
+//		    return "/product/new";
+//		}
+	
+	// 테스트용 컨트롤러 - 상품 무작위 생성
+//	@GetMapping("/photo")
+//	public String photo(Model model) {
+//		Product p = productService.getProductDetail(1);
+//		logger.info("a"+p.getPhotolist().size());
+//		logger.info("a"+p.getReviewlist().size());
+//		logger.info("a"+p.getSizelist().size());
 //		for(Photo ps: p.get(0).getPhotolist())
 //		{
 //			logger.info(ps.getPhoto_sname() + " " + ps.getPhoto_role() + " " + ps.getPhoto_type());
 //			
 //		}
-
-	    return "/product/new";
-	}
+//
+//	    return "/product/new";
+//	}
 	
 //	@GetMapping("/create")
 //	public String create(Model model) {
@@ -266,7 +287,7 @@ public class ProductController {
 		
 		Photo mainPhoto = null;
 		Photo detailPhoto = null;
-		List<Photo> subPhotoList = new ArrayList();
+		List<Photo> subPhotoList = new ArrayList<Photo>();
 		for(Photo p: product.getPhotolist()) {
 			if(p.getPhoto_role().equals("main")) {
 				mainPhoto = p;

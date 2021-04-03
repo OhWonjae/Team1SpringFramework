@@ -62,8 +62,8 @@
 		 
 		 
 		 <collection column="p_id" property="sizelist" ofType="size" javaType="List" select="getSizeList">
-			<result property="p_size" column="p_size"/> 
-	        <result property="p_id" column="p_id"/>
+			<id property="p_size" column="p_size"/> 
+	        <id property="p_id" column="p_id"/>
 		 </collection>
 			
 	</resultMap> 
