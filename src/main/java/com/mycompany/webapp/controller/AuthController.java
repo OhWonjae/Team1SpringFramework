@@ -100,7 +100,7 @@ public class AuthController {
 		return "/user/phoneChange";
 	}
 
-	@PostMapping("user/phoneChange")
+	@PostMapping("user/updateUser2")
 	public String updateUser2(String user_phone, Authentication auth) {
 		usersService.updateUser2(user_phone, auth.getName());
 		return "redirect:/user/my";
