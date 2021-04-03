@@ -97,6 +97,9 @@ function openZipSearch() {
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송 요청사항</span>  
                                     <input name="order_request" id="order_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
+                                    <c:forEach var="cart" items="${list}">
+                                    	<input type="hidden" name="prod" id="prod" value=${cart.p_id}/>
+                                     </c:forEach>
                                 </div> <!-- form-group// -->
                             </div>
                     <span class="history-subtitle">주문상품</span>

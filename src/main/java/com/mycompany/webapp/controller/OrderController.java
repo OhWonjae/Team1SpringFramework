@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,7 @@ public class OrderController {
 
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(Orders orders,CartItem cart, Product product, Authentication auth) {	
+	public String putcart(Orders orders, HttpServletRequest request , Authentication auth) {	
 		orders.setUser_id(auth.getName());
 		//orderid 설정
 		Calendar cal =Calendar.getInstance();
@@ -43,11 +45,17 @@ public class OrderController {
 		}
 
 		String orderId = ymdm + "_" + subNum;
-		System.out.println("hi : "+cart.getP_name());
-		System.out.println("hi2 : "+cart.getP_id());
-		System.out.println("hi3" +cart.getAmount());
-		System.out.println("hi3" +cart.getP_size());
 		orders.setOrder_id(orderId);
+
+		//배열로 p_id받기
+		String pid =  request.getParameter("prod");
+		pid = pid.substring(0, pid.length()-1);
+		System.out.println(pid);
+		int firstPid = Integer.parseInt(pid);
+		orders.setP_id(firstPid);
+		
+
+
 		ordersService.createOrders(orders);
 
 		return "/order/payFinish";
@@ -72,7 +80,7 @@ public class OrderController {
 
 	@GetMapping("/orders")
 	public String orders(String order_id,Model model) {
-		
+
 		Orders orders=ordersService.ReadOrders(order_id);
 		model.addAttribute("orders", orders);
 		return "/order/orders";

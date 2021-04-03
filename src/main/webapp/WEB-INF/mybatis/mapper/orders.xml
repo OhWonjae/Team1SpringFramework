@@ -13,7 +13,9 @@
 							user_id,
 							order_name,
 							order_phone,
-							order_sprice
+							order_sprice,
+							p_id,
+							delivery_status
 		)
 		values(	#{order_id},
 				sysdate,
@@ -26,7 +28,9 @@
 				#{user_id},
 				#{order_name},
 				#{order_phone},
-				#{order_sprice}
+				#{order_sprice},
+				#{p_id},
+				'배송준비중'
 	)
 	</insert>
 	<delete id="ordersDelete" parameterType="int">
