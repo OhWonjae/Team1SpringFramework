@@ -218,6 +218,8 @@
                     		}).then(data=>{
                     			if(data.result=="success"){
                     				alert("카트담기 완료");
+                    			}else if(data.result=="fail"){
+                    				alert("이미 추가한 상품입니다.");
                     			}
                     			
                     		});
