@@ -2,17 +2,17 @@ package com.mycompany.webapp.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.CartItem;
-import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.service.CartsService;
-import com.mycompany.webapp.service.ProductService;
 
 @Controller
 @RequestMapping("/order")
@@ -27,26 +27,30 @@ public class CartController {
       return "/order/cart";
    }
    
-   @GetMapping("/putcart")
+   @GetMapping(value = "/putcart", produces = "application/json;charset=UTF-8")
+   @ResponseBody // 리턴되는 값이 바디속으로 들어간다.
    public String putcart(int pid, String psize, int pamount, Authentication auth) {
-      CartItem cart = new CartItem();
-      cart.setP_id(pid);
-      cart.setP_size(psize);
-      cart.setAmount(pamount);
-      String userId = auth.getName();
-      cart.setUser_id(userId);
-      
-      List<CartItem> list = cartsService.getCartList(userId);
-      for(int i=0;i<list.size();i++) {
-         if(userId.equals(list.get(i).getUser_id())
-               && list.get(i).getP_id() == cart.getP_id()) {
-            
-            
-            return "redirect:/product/detail";
+       CartItem cart = new CartItem();
+         cart.setP_id(pid);
+         cart.setP_size(psize);
+         cart.setAmount(pamount);
+         String userId = auth.getName();
+         cart.setUser_id(userId);
+         JSONObject jsonObject = new JSONObject();
+         List<CartItem> list = cartsService.getCartList(userId);
+         for(int i=0;i<list.size();i++) {
+            if(userId.equals(list.get(i).getUser_id())
+                  && list.get(i).getP_id() == cart.getP_id()) {
+               
+               
+               jsonObject.put("result", "fail");
+             return jsonObject.toString();
+            } 
          } 
-      } 
-      cartsService.addCart(cart);
-      return "redirect:/order/cart";
+         cartsService.addCart(cart);
+
+         jsonObject.put("result", "success");
+         return jsonObject.toString();
    }
    
    @GetMapping("/cart/increase")
