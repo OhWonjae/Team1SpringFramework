@@ -9,7 +9,7 @@ import com.mycompany.webapp.dto.OrderProduct;
 @Mapper
 public interface OrderProductsDao {
 	List<OrderProduct> orderList();
-    int insert(OrderProduct orderproduct);
+    int orderProductList(OrderProduct orderproduct);
     int updateStatus(OrderProduct orderproduct);
     public List<CartItem> orderList(String uid);
     

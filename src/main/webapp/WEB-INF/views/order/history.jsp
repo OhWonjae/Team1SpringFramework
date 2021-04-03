@@ -3,6 +3,7 @@
 
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
@@ -51,17 +52,17 @@
                                     </thead>
     
                                     <tbody>
-                                    	<c:forEach begin="0" end="3">
+                                    	 <c:forEach var="orders" items="${list}">
                                         <tr>
-                                            <th scope="row" style="color:rgb(138, 138, 146);">1556290343861</th>
-                                            <td style="color:rgb(138, 138, 146);"> 2019.04.26</td>
-                                            <td> <img src="<%=application.getContextPath() %>/resources/img/photo31.jpg" width="20%" style="float: left; margin-right: 10px;">
-                                                <strong style="font-size: 1.2em;">이츠독 플러피 기모 후드 점퍼</strong> 
+                                            <th scope="row" style="color:rgb(138, 138, 146);">${orders.order_id}</th>
+                                            <td style="color:rgb(138, 138, 146);"><fmt:formatDate value="${orders.order_date}" pattern="yyyy.MM.dd"/></td>
+                                            <td> <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orders.photo_sname}&photoType=${orders.photo_type}"  width="20%" style="float: left; margin-right: 10px;">
+                                                <strong style="font-size: 1.2em;">${orders.p_name}</strong> 
                                             </td>
                                             <td style="border-right: white; text-align: center;">
-                                            	 <div>발송처리완료</div>
+                                            	 <div>${orders.delivery_status}</div>
                                                 <div style="margin-top: 5px; font-size: 14px;">
-                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=20210402492_896935" >주문 상세내역</a>
+                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
                                                 </div>
                                             </td>
                                         </tr>

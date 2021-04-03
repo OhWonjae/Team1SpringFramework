@@ -5,11 +5,11 @@
 
   
    
-	 <insert id="insert" parameterType="orderproduct">
+	 <insert id="orderProductList" parameterType="orderproduct">
       insert into order_products
-         		(order_id, order_date, p_id, p_name, p_price, delivery_status)
+         		(p_id,order_id)
       values
-         		(#{order_id}, #{order_date}, #{p_id}, #{p_name}, #{p_price}, #{delivery_status})      
+         		(#{p_id}, #{order_id})      
    </insert>
    
     <update id="updateStatus" parameterType="orderproduct">

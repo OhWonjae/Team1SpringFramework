@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.CartItem;
+import com.mycompany.webapp.dto.OrderProduct;
 import com.mycompany.webapp.dto.Orders;
-import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.service.CartsService;
 import com.mycompany.webapp.service.OrdersService;
 
 
@@ -27,10 +28,14 @@ public class OrderController {
 
 	@Autowired
 	OrdersService ordersService;
+	
+	@Autowired
+	CartsService cartService;
+	
 
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(Orders orders, HttpServletRequest request , Authentication auth) {	
+	public String putcart(Orders orders, OrderProduct orderProduct, HttpServletRequest request , Authentication auth) {	
 		orders.setUser_id(auth.getName());
 		//orderid 설정
 		Calendar cal =Calendar.getInstance();
@@ -46,18 +51,33 @@ public class OrderController {
 
 		String orderId = ymdm + "_" + subNum;
 		orders.setOrder_id(orderId);
-
-		//배열로 p_id받기
-		String pid =  request.getParameter("prod");
-		pid = pid.substring(0, pid.length()-1);
-		System.out.println(pid);
-		int firstPid = Integer.parseInt(pid);
-		orders.setP_id(firstPid);
+		orderProduct.setOrder_id(orderId);
 		
+		//pid 저장
+		String[] arr = request.getParameterValues("prod");
+		String str="";
+		for(int i=0; i<arr.length; i++) {
+			str += arr[i];
+		}
+		String[] strArr = str.split("/");
 
-
+		int[] intArr = null;
+		if( arr != null ){
+			intArr = new int[ strArr.length ];
+			for( int i=0;i<intArr.length; i++) {
+				intArr[i] = Integer.parseInt( strArr[i] );
+				orderProduct.setP_id(intArr[i]);
+				//orderProduct테이블에 insert
+				ordersService.creatOrderProduct(orderProduct);
+			}
+		}
+		orders.setP_id(intArr[0]);
+		
+		//order테이블에 저장
 		ordersService.createOrders(orders);
-
+		//카트 테이블 삭제
+		cartService.removeCartAll(auth.getName());
+	
 		return "/order/payFinish";
 	}
 
@@ -74,7 +94,9 @@ public class OrderController {
 
 
 	@GetMapping("/history")
-	public String history() {
+	public String history(Model model, Authentication auth) {
+		List<Orders> list = ordersService.getOrdersList(auth.getName());
+		model.addAttribute("list",list);
 		return "/order/history";
 	}
 
