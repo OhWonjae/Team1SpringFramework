@@ -10,10 +10,5 @@
    	order by p_size asc
    </select>
    
-	<insert id="insert" parameterType="size">
-		insert into size_products
-		(photo_id, p_id, photo_oname, photo_sname, photo_type, photo_role)
-		values
-		(#{photo_id}, #{p_id}, #{photo_oname}, #{photo_sname}, #{photo_type}, #{photo_role})
-	</insert>
+
 </mapper>
