@@ -150,9 +150,6 @@
 
 
    <select id="selectBestReviewAll" resultType="product" resultMap="productMap">
-      select p_id, p_name, p_price
-      from products
-      order by p_salescount desc
       select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
