@@ -34,16 +34,21 @@ public class OrdersService {
 	public void RemoveOrders(int oid) {
 		ordersDao.ordersDelete(oid);
 	}
-
+	
 	//주문서 읽어오기
-	public Orders ReadOrders(String order_id) {
+		public Orders ReadOrders(String order_id) {
 
-		Orders orders=ordersDao.orderSelectByOne(order_id);
-		return orders;
+			Orders orders=ordersDao.orderSelectByOne(order_id);
+			return orders;
+		}
+
+	public List<Orders> getOrdersList(String uid){ 
+		List<Orders> list = ordersDao.ordersList(uid);
+		return list;
 	}
 
 	public void creatOrderProduct(OrderProduct orderproduct) {
-		orderProductDao.insert(orderproduct);
+		orderProductDao.orderProductList(orderproduct);
 	}
 
 	public List<OrderProduct> getorderList(){

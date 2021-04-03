@@ -17,7 +17,56 @@ public class Orders {
 	private int order_sprice;
 	private int p_id;
 	private String delivery_status;
+	private int photo_id;
+	private String photo_oname;
+	private String photo_sname;
+	private String photo_type;
+	private String photo_role;
+	private String p_name;
+	private String p_price;
 
+	public int getPhoto_id() {
+		return photo_id;
+	}
+	public void setPhoto_id(int photo_id) {
+		this.photo_id = photo_id;
+	}
+	public String getPhoto_oname() {
+		return photo_oname;
+	}
+	public void setPhoto_oname(String photo_oname) {
+		this.photo_oname = photo_oname;
+	}
+	public String getPhoto_sname() {
+		return photo_sname;
+	}
+	public void setPhoto_sname(String photo_sname) {
+		this.photo_sname = photo_sname;
+	}
+	public String getPhoto_type() {
+		return photo_type;
+	}
+	public void setPhoto_type(String photo_type) {
+		this.photo_type = photo_type;
+	}
+	public String getPhoto_role() {
+		return photo_role;
+	}
+	public void setPhoto_role(String photo_role) {
+		this.photo_role = photo_role;
+	}
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+	public String getP_price() {
+		return p_price;
+	}
+	public void setP_price(String p_price) {
+		this.p_price = p_price;
+	}
 	public int getP_id() {
 		return p_id;
 	}
