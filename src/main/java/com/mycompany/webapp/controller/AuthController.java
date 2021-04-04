@@ -72,7 +72,7 @@ public class AuthController {
 		user.setUser_password(bpe.encode(user.getUser_password()));
 		model.addAttribute("user", user);
 		System.out.println(user.getUser_password());
-		return "/user/loginForm";
+		return "/user/pwChange";
 	}
 	@PostMapping("/searchIdForm")
 	public String searchIdForm(String user_name, String user_phone, Model model) throws Exception {
