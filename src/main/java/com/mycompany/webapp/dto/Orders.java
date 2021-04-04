@@ -17,6 +17,8 @@ public class Orders {
 	private int order_sprice;
 	private int p_id;
 	private String delivery_status;
+	private int total_amount;
+	//조인 데이터
 	private int photo_id;
 	private String photo_oname;
 	private String photo_sname;
@@ -150,6 +152,12 @@ public class Orders {
 	}
 	public void setOrder_phone(int order_phone) {
 		this.order_phone = order_phone;
+	}
+	public int getTotal_amount() {
+		return total_amount;
+	}
+	public void setTotal_amount(int total_amount) {
+		this.total_amount = total_amount;
 	}
 
 

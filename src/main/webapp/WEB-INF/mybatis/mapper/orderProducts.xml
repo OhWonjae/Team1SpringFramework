@@ -7,9 +7,9 @@
    
 	 <insert id="orderProductList" parameterType="orderproduct">
       insert into order_products
-         		(p_id,order_id)
+         		(p_id,order_id, amount)
       values
-         		(#{p_id}, #{order_id})      
+         		(#{p_id}, #{order_id}, #{amount})      
    </insert>
    
     <update id="updateStatus" parameterType="orderproduct">

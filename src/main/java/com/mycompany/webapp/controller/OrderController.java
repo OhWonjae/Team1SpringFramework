@@ -55,23 +55,35 @@ public class OrderController {
 		
 		//pid 저장
 		String[] arr = request.getParameterValues("prod");
+		String [] arr2 = request.getParameterValues("pamount");
+		
 		String str="";
+		String str2="";
 		for(int i=0; i<arr.length; i++) {
 			str += arr[i];
+			str2+= arr2[i];
 		}
+		
+		
 		String[] strArr = str.split("/");
-
+		String[] strArr2 = str2.split("/");
+		
 		int[] intArr = null;
+		int[] intArr2 = null;
 		if( arr != null ){
 			intArr = new int[ strArr.length ];
+			intArr2 = new int[strArr2.length];
 			for( int i=0;i<intArr.length; i++) {
 				intArr[i] = Integer.parseInt( strArr[i] );
+				intArr2[i] = Integer.parseInt( strArr2[i] );
 				orderProduct.setP_id(intArr[i]);
+				orderProduct.setAmount(intArr2[i]);
 				//orderProduct테이블에 insert
 				ordersService.creatOrderProduct(orderProduct);
 			}
 		}
 		orders.setP_id(intArr[0]);
+	
 		
 		//order테이블에 저장
 		ordersService.createOrders(orders);
