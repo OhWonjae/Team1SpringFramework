@@ -32,6 +32,13 @@
 
 	</select>
 	
+	<!-- list 총 개수 -->
+	<select id="listcount" parameterType="string" resultType="int">
+      select count(*)
+      from cart
+      where user_id=#{uid}
+  </select> 
+      
 	<!-- 한 가지 상품의 정보만 가져오기 위함 -->
 	<select id="cartListOne" resultType="cart">
 		select 
