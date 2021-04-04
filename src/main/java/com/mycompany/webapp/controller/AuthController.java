@@ -40,17 +40,19 @@ public class AuthController {
 		return "/user/searchId";
 	}
 	*/
-	@GetMapping("/searchPw")
-	public String searchPw() {
-		return "/user/searchPw";
-	}
+	
 
 	@PostMapping("/join")
 	public String join(User user) throws Exception {
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		user.setUser_password(bpe.encode(user.getUser_password()));
 		usersService.join(user);
-		return "redirect:/user/loginForm";
+		return "/user/loginForm";
+	}
+	
+	@GetMapping("/searchPw")
+	public String searchPw() {
+		return "/user/searchPw";
 	}
 
 	@PostMapping("/searchPw")
@@ -62,32 +64,22 @@ public class AuthController {
 		System.out.println(user.getUser_password());
 		return "/user/loginForm";
 	}
-
-	
 	@PostMapping("/searchIdForm")
 	public String searchIdForm(String user_name, String user_phone, Model model) throws Exception {
 		User user = usersService.getUserid(user_name, user_phone);
 		model.addAttribute("user", user);
-
 		System.out.println(user.getUser_id());
-		
 		return "/user/searchId";
 	}
-	
 	@GetMapping("/searchId")
 	public String searchId(String user_name, String user_phone, Model model) throws Exception {
 		User user = usersService.getUserid(user_name, user_phone);
 		model.addAttribute("user", user);
-
 		System.out.println(user.getUser_id());
-		
 		return "/user/searchId";
 	}
-	
 	@PostMapping("/searchId")
-	public String searchId() throws Exception {
-		
-		
+	public String searchId() throws Exception {		
 		return "/user/loginForm";
 	}
 
