@@ -44,4 +44,11 @@
 		set user_phone=#{user_phone} 
 		where user_id=#{user_id}
 	</update>
+	
+	<!-- 이메일 중복체크 -->
+	<select id="idCheck" resultType="int"> 
+		select count(*)
+		from users 
+		where user_id=#{user_id}
+	</select>
 </mapper>

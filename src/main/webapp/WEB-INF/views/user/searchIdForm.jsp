@@ -37,10 +37,10 @@
 				</div>
 			</div>
 			<div style="font: bolder;">
-				<strong>휴대번호</strong><span style="color: red;">*</span>
+				<strong>휴대폰 번호</strong><span style="color: red;">*</span>
 				<div class="form-group input-group">
 					<input class="form-control" id="user_phone" name="user_phone"
-						placeholder="휴대번호를 입력하세요." type="number">
+						placeholder="휴대폰 번호를 입력하세요." type="number">
 
 				</div>
 			</div>

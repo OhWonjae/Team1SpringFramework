@@ -37,6 +37,18 @@
 			result = false;
 			$("#errorUserid").html("최대 50자 까지만 입력해야 합니다.");
 		}
+		if (uid === "success") { // 비어있으면 문제
+			result = false;
+			alert("개굳.");
+		}
+		
+		if (upassword !== upassword2) {
+			if (upassword !== "" && upassword2 !== "")
+				result = false;
+			alert("비밀번호가 일치하지 않습니다.");
+			$('#user_password2').val('');
+			$('#user_password2').focus();
+		}
 
 		if (uname === "") { // 비어있으면 문제
 			result = false;
@@ -47,12 +59,12 @@
 			result = false;
 			$("#errorUserpassword").html("필수사항 입니다.");
 		}
-		
+
 		if (upassword2 === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserpassword2").html("필수사항 입니다.");
 		}
-		
+
 		if (uphone === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserphone").html("필수사항 입니다.");
@@ -71,26 +83,36 @@
 			$('#user_id').val('');
 			$('#user_id').focus();
 		}
-		
-		if (upassword !== upassword2) {
-			if(upassword !== "" && upassword2 !== "")
-			alert("비밀번호가 일치하지 않습니다.");
-			$('#user_password2').val('');
-			$('#user_password2').focus();
-		} 
-		if (!re_hp.test(uphone)) {
+
+		else
+			(!re_hp.test(uphone))
+		{
 			result = false;
 			alert("휴대번호에 맞는 형식이 아닙니다.");
 			$('#user_phone').val('');
 			$('#user_phone').focus();
 		}
-		
+
+	}
+	function fn_idChk(){
+		logger.info("asd");
+		$.ajax({
+			url : "/idCheck",
+			type : "post",
+			dataType : "json",
+			data : {"user_id" : $("#user_id").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 아이디입니다.");
+				}else if(data == 0){
+					$("#idCheck").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
+				}
+			}
+		})
 	}
 
 	// 비밀번호 확인
-	 
-		
-	  
 </script>
 
 
@@ -104,13 +126,7 @@
 	<h4 class="card-title mt-3 text-center">
 		<strong>회원 가입</strong>
 	</h4>
-	<%-- <c:if test="${joinError != null }">
-		<div class="alert alert-primary">
-			<c:if test="${joinError == 'wrongUser_id'}">
-				<span>이미 사용중인 이메일입니다.</span>
-			</c:if>
-		</div>
-	</c:if> --%>
+
 	<form id="joinForm" name="joinForm" method="post" action="join"
 		onsubmit="validate()" novalidate="novalidate">
 		<input type="hidden" name="${_csrf.parameterName}"
@@ -129,8 +145,18 @@
 				<input id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
 					id="errorUserid" class="text-danger error"></span>
+				<button type="button" class="idCheck"
+					style="width: 120px; margin-left: 20px;" onclick="fn_idChk();" value="N">중복체크</button>
 			</div>
 		</div>
+		<%-- <c:if test="${joinError != null }">
+			<div class="alert alert-primary">
+				<c:if test="${joinError == 'wrongUser_id'}">
+					<span>이미 사용중인 이메일입니다.</span>
+				</c:if>
+			</div>
+		</c:if> --%>
+
 		<div>
 			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
@@ -147,7 +173,6 @@
 					type="password"><span id="errorUserpassword2"
 					class="text-danger error"></span>
 				<!-- <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">비밀번호 확인</button> -->
-
 			</div>
 		</div>
 		<div>
