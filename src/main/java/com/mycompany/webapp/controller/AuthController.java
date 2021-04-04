@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
@@ -35,19 +37,27 @@ public class AuthController {
 		return "/user/searchIdForm";
 	}
 	
-	/*@GetMapping("/searchId")
-	public String searchId() {
-		return "/user/searchId";
-	}
-	*/
-	
 
 	@PostMapping("/join")
 	public String join(User user) throws Exception {
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		user.setUser_password(bpe.encode(user.getUser_password()));
+		int result = usersService.idCheck(user);
 		usersService.join(user);
-		return "/user/loginForm";
+		try {
+			if(result == 1) {
+				return "/user/joinForm";
+			}else if(result == 0) {
+				usersService.join(user);
+			}
+			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
+			// 존재하지 않는다면 -> join
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		return "redirect:/";
+		/*		return "/user/loginForm";
+		*/	
 	}
 	
 	@GetMapping("/searchPw")
@@ -78,6 +88,7 @@ public class AuthController {
 		System.out.println(user.getUser_id());
 		return "/user/searchId";
 	}
+	
 	@PostMapping("/searchId")
 	public String searchId() throws Exception {		
 		return "/user/loginForm";
@@ -97,13 +108,11 @@ public class AuthController {
 		model.addAttribute("user", user);
 		return "/user/pwChange";
 	}
-
 	@PostMapping("user/updateUser")
 	public String updateUser(String user_password, Authentication auth) {
-		usersService.updateUser(user_password, auth.getName());
 		User user = usersService.getUser(auth.getName());
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-		user.setUser_password(bpe.encode(user.getUser_password()));
+		usersService.updateUser(bpe.encode(user_password), auth.getName());
 		return "redirect:/user/my";
 	}
 
@@ -123,24 +132,16 @@ public class AuthController {
 
 	
 	
-	/*@PostMapping("/loginForm")
-	public String login(User user, HttpSession session) {
-		String result = usersService.login(user);
-		logger.info(user.getUser_id());
-		logger.info(user.getUser_password());
-	
-		if (result.equals("success")) {
-			logger.info(result);
-			session.removeAttribute("loginError");
-			session.setAttribute("loginUser_id", user.getUser_id());
-			return "redirect:/user/main";
-		} else {
-			logger.info(result);
-			session.setAttribute("loginError", result);
-			return "redirect:/user/loginForm";
-		}
-	}*/
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value="/idCheck", method = RequestMethod.POST)
+	public int idCheck(User user) throws Exception {
+		int result = usersService.idCheck(user);
+		return result;
+	}
 
+	
+	
 	@GetMapping("user/error403")
 	public String error403() {
 		return "/user/error403";
