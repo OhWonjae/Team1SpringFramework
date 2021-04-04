@@ -11,14 +11,15 @@ import com.mycompany.webapp.dao.QnaDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
 
+
 @Service
 public class QnaService {
    @Autowired
    private QnaDao qnaDao;
    private static final Logger logger = LoggerFactory.getLogger(QnaService.class);
 
-   public Qna getQna(int bno) {
-      Qna qna = qnaDao.selectByQa_id(bno);
+   public Qna getQna(int qno) {
+      Qna qna = qnaDao.selectByQa_id(qno);
       return qna;
    }
 
@@ -30,7 +31,7 @@ public class QnaService {
 	   logger.info("userid"+  user_id + "qaid"+  qa_id);
 	   qnaDao.deleteByQa_id(qa_id, user_id);
    }
-   public void insert(Qna qna) {
+   public void insertQna(Qna qna) {
 	   logger.info(qna.getQa_content());
 	   qnaDao.insert(qna);
    }
@@ -41,6 +42,10 @@ public class QnaService {
    public List<Qna> getBoardList(Pager pager) { // 메소드 오버로딩
 	      List<Qna> list = qnaDao.selectByPage(pager);	      
 	      return list;
+   }
+   public List<Qna> getBoardList(String user_id) {
+	   List<Qna> list = qnaDao.selectAllByUserId(user_id);
+	   return list;
    }
 
 	public int getTotalRows() {
