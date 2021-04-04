@@ -51,9 +51,10 @@
                                                     </div>
                                                 </div>
                                                 <!--1:1문의 입력 폼-->
-                            								  <form action="insertAskWrite" method="post"> 
+                            								  <form action="updateAskWrite" method="post"> 
                             								  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             								  <input type="hidden" id="qa_category_hidden" value="${qna.qa_category}" />
+                            								  <input type="hidden" id="qa_id" name="qa_id" value="${qna.qa_id}" />
 	                                                <!-- 1:1문의 입력 컨테이너 -->
 	                                                <div class ="writeBox" style="display:flex; flex-direction: column; margin-bottom: 40px; height: 100%;">
                                                     
@@ -75,7 +76,7 @@
                                                         </div>
                                                         <div style="padding-top: 20px;">
                                                             <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
-                                                                1:1 문의하기 등록
+                                                                1:1 수정 글 등록
                                                             </button>
                                                         </div>
                                                         </div>
@@ -87,6 +88,17 @@
                   </div>
                 </div>
                 
+                
+                <script>
+                	//var qa_category = $('input[name=qa_category]').val();
+                	var qa_category = $('#qa_category_hidden').val();
+                	$(function(){
+                		$('#qa_category').val(qa_category).prop("selected",true);
+                	})
+                	
+                	
+                	
+               	</script>
                 
                 
    

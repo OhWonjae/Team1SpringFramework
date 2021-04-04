@@ -99,6 +99,7 @@ function openZipSearch() {
                                     <input name="order_request" id="order_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
                                     <c:forEach var="cart" items="${list}">
                                     	<input type="hidden" name="prod" id="prod" value=${cart.p_id}/>
+                                    	<input type="hidden" name="pamount" id="pamount" value=${cart.amount}/>
                                      </c:forEach>
                                 </div> <!-- form-group// -->
                             </div>
@@ -123,12 +124,14 @@ function openZipSearch() {
                                     	<span style="color: rgb(134, 134, 138)">${cart.p_name}</span><br> 
                                         <span>사이즈: ${cart.p_size}</span><br> 
                                         <span>수량: ${cart.amount}</span></th>
+                                        <c:set var="tamount" value="${tamount + (cart.amount)}"/>
                                         <c:set var="psum" value="${psum + (cart.p_price * cart.amount)}" />
                                     <td style="border-right: white; text-align: center; vertical-align: middle;">${cart.p_price * cart.amount}원</td>
                                 </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
+                        <input type="hidden" name="total_amount" id="total_amount" value="${tamount}"/>
                     </div>
 
                     <span class="history-subtitle">최종 결제금액</span>

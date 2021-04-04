@@ -10,9 +10,9 @@
 
 
  <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/orders.css">
+
  
   <%int delivery = 3000; %>
-  
 
 <div class="header2"> 
     <div class="inner">
@@ -22,7 +22,7 @@
      <div class="inner">
         <div class="info" style="height: 120px;">
             <picture style="float: left;">
-                <img src="<%=application.getContextPath()%>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                <img src="/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -48,7 +48,7 @@
                             <div class="orders-inner" style="background-color: rgba(244,244,245,1);">
                                 <div class="orders-top">
                                     <div class="topContents">주문일자: <fmt:formatDate value="${orders.order_date}" pattern="yyyy-MM-dd"/></div>
-                                    <div class="topContents">주문번호: ${orders.order_id}</div>
+                                    <div class="topContents">주문번호:${orders.order_id}</div>
                                 </div>
                             </div>
                             <div class="orders-info">
@@ -64,8 +64,7 @@
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송주소</dt>
-                                            <dd class="data-name">
-                                            ${orders.delivery_address} ${orders.delivery_address_detail}</dd>
+                                            <dd class="data-name">${orders.delivery_address_detail}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송 요청사항</dt>
@@ -83,7 +82,7 @@
                                             총 상품 금액
                                           </div>
                                           <div class="col-9 tdata">
-                                            ${orders.order_sprice}원
+                                             ${orders.order_sprice}
                                           </div>
                                         </div>
                                         <div class="row trow">
@@ -91,7 +90,7 @@
                                             배송비
                                           </div>
                                           <div class="col-9 tdata">
-                                            <%=delivery %>원
+                                             <%=delivery %>원
                                           </div>
                                         </div>
                                         <div class="row trow">
@@ -102,31 +101,57 @@
                                               0원
                                             </div>
                                           </div>
-                                          <div class="row trow">
+                                        <div class="row trow">
                                             <div class="col-3 tname">
                                               보유 현금
                                             </div>
                                             <div class="col-9 tdata">
                                               0원
                                             </div>
-                                          </div>
-                                          <div class="row trow">
+                                        </div>
+                                        <div class="row trow">
                                             <div class="col-3 tname">
                                               결제방법
                                             </div>
                                             <div class="col-9 tdata">
-                                             	${orders.payment}
+                                              ${orders.payment}
                                             </div>
-                                          </div>
-                                          <div class="row trow">
+                                        </div>
+                                        <div class="row trow">
                                             <div class="col-3 tname">
                                              총 결제금액
                                             </div>
                                             <div class="col-9 tdata">
-                                             ${orders.total_price}원
+                                              ${orders.total_price}원
                                             </div>
-                                          </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="orders-list">
+                                <div class="orders-inner" style="background-color: rgba(244,244,245,1);">
+                                    <div class="orders-bottom">
+                                        발송상품
+                                    </div>
+         
+                                </div>
+                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1);; border-top:none">
+                                    <table class="table">
+                                    
+                                        <tbody>
+                                            <c:forEach var="orderProduct" items="${list}">
+                                            <tr>
+                                                <td style="border-top:none; border-right:none"> 
+                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="15%" style="float: left; margin-right: 10px;">
+                                                    <div style="font-size: 13px; font-weight: 700;"> ${orderProduct.p_name} </div>
+                                                    <div style="font-size: 12px; font-weight: bold; "> ${orderProduct.p_price}원 </div> 
+                                                    <div style="font-size: 10px;">수량: ${orderProduct.amount}</div>
+                                                </td>
+                                            </tr>
+											</c:forEach>
+                       
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -138,4 +163,3 @@
             </div>
         </div>
      </div>
- <%@ include file="/WEB-INF/views/common/footer.jsp"%>

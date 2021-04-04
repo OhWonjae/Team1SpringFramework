@@ -22,7 +22,7 @@
 			<result property="photo_role" column="photo_role"/>
 		 </collection>			
 	</resultMap> 
-   
+    
    
    
    

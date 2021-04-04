@@ -15,7 +15,8 @@
 							order_phone,
 							order_sprice,
 							p_id,
-							delivery_status
+							delivery_status,
+							total_amount
 		)
 		values(	#{order_id},
 				sysdate,
@@ -30,7 +31,8 @@
 				#{order_phone},
 				#{order_sprice},
 				#{p_id},
-				'배송준비중'
+				'배송준비중',
+				#{total_amount}
 	)
 	</insert>
 	<delete id="ordersDelete" parameterType="int">
@@ -63,6 +65,7 @@
 						o.order_id,
 						o.order_date,
 						o.p_id,
+						o.total_amount,
 						p.p_name,  
 						p.p_price, 
 						photos.photo_id,
