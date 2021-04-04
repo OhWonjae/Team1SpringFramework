@@ -122,7 +122,7 @@ public class ResourceController {
          response.setHeader("Content-Disposition", "attachment; filename=\"" + photoSname+ "\";");
 
          // 응답 HTTP 바디에 이미지 데이터를 출력
-         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Review/" + photoSname+"."+photoType);
+         InputStream is = new FileInputStream("C:/Photos/ProductPhotos/Review/" + photoSname);
          OutputStream os = response.getOutputStream();
          FileCopyUtils.copy(is, os);
          os.flush();

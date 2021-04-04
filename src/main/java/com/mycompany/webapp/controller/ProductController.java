@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,10 +25,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.Review;
 import com.mycompany.webapp.dto.SizeProduct;
 import com.mycompany.webapp.service.ProductService;
 
@@ -46,6 +50,20 @@ public class ProductController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		return jsonObject.toString();
+	}
+	
+	@GetMapping("/testsql")
+	public String testsql(Model model) {
+		List<String> s = productService.GetOrderIdForReview("user100@naver.com", 3);
+		logger.info("s : "+ s.get(0));
+
+		List<String> s1 = productService.GetOrderIdForReview("user100@naver.com", 7);
+		if(s1.size()==0) {
+			logger.info("s1 : ");	
+	
+		}
+		
+	    return "/product/new";
 	}
 	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
@@ -314,12 +332,68 @@ public class ProductController {
 	
 	//리뷰업로드 버튼 클릭
 	@PostMapping("/reviewupload")
-	public String reviewupload(@RequestParam()String title, @RequestParam()String content,@RequestParam(defaultValue="n") String media, Model model) {
+	public String reviewupload(String title, String content,String score,MultipartFile battach,int pid,Authentication auth,Model model) {
+		   
+			Review review = new Review();
+			Date date = new Date();
+			//유저가 해당 상품을 구매했는지 확인
 			
-		//여기서 리뷰로 쓴 정보 DB에 저장
-		System.out.println(title + content + media);;
-		return "redirect:detail";
-	}
-		
+		    List<String> orderids= productService.GetOrderIdForReview(auth.getName(), pid);
+		   if(orderids.size()!=0) {	
+			   if(battach != null && !battach.isEmpty()) {
+				   review.setOrder_id(orderids.get(0));
+				   review.setPhoto_oname(battach.getOriginalFilename());
+				   review.setPhoto_type(battach.getContentType());
+				   review.setReview_score(Integer.parseInt(score));
+				   review.setReview_date(date);
+				   review.setReview_title(title);
+				   review.setReview_content(content);
+				   review.setUser_id(auth.getName());
+				   review.setP_id(pid);
+				   
+				   String saveName = auth.getName() + "_"+pid +"_"+date.getTime()+"_" + review.getPhoto_oname();
+				   
+				   review.setPhoto_sname(saveName);
+				   File file = new File("C:/Photos/ProductPhotos/Review/" + saveName);
+				   logger.info(saveName);
+				   try {
+					battach.transferTo(file);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();				   
+			   }
+		   }
+		   else {
+				model.addAttribute("reviewuploadresult", "fail");
+				return "redirect:detail?pid="+pid;	
 
+		   		}
+			productService.createReview(review);   
+			model.addAttribute("reviewuploadresult", "success");
+		
+		   }
+		 return "redirect:detail?pid="+pid;		
+	}
+	
+	// 해당 상품이 해당 사용자가 구매한 상품인지 확인
+	 @GetMapping(value = "/confirmOrdered", produces = "application/json;charset=UTF-8")
+	   @ResponseBody // 리턴되는 값이 바디속으로 들어간다.
+		public String write(int pid ,Model model,Authentication auth) {
+			List<String> orderids= productService.GetOrderIdForReview(auth.getName(), pid);
+			JSONObject jsonObject = new JSONObject();
+			logger.info("call!");
+			if(orderids.size()!=0) {
+				jsonObject.put("result", "success");
+		        	
+			}else {
+				jsonObject.put("result", "fail");
+		        
+			}
+			 return jsonObject.toString(); 
+		}
+	
+	
 }
