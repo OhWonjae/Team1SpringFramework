@@ -31,9 +31,12 @@ public class QnaController {
 	public String askList(@RequestParam(defaultValue = "1") int pageNo, Model model, Authentication auth) {
 			  int totalRows = qnaService.getTotalRows();
 		      Pager pager = new Pager(10, 5, totalRows, pageNo);
-
+			  //List<Qna> list = qnaService.getBoardList(pager);
+		      //여기에 이제 user_id 값 받은거 넣어줘야함
+		      logger.info(auth.getName());
 		      List<Qna> list = qnaService.getBoardList(auth.getName());
-
+			  //user_id에 맞는 게시글을 불러오도록 해야함
+			  //where user_id = #{user_id}
 			  model.addAttribute("qna", list);//as -is => list , be -to => qna
 		      model.addAttribute("pager", pager.getTotalRows());
 		      
