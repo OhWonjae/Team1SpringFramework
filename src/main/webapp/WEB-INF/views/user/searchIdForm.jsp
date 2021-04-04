@@ -26,22 +26,32 @@
 			<strong>아이디 찾기</strong>
 		</h4>
 
-		<form method="post" action="searchId">
+		<form method="post" action="searchIdForm">
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
-			<div class="tab">
-								<div class="tab4">이메일</div>
-								<div class="tab2">
-									<strong>${user.user_id}</strong>
-								</div>
-							</div>
+			<div style="padding: 5px 0 0 0;">
+				<strong>이름</strong><span style="color: red;">*</span>
+				<div class="form-group input-group">
+					<input class="form-control" id="user_name" name="user_name"
+						placeholder="이름을 입력하세요." type="text">
+				</div>
+			</div>
+			<div style="font: bolder;">
+				<strong>휴대번호</strong><span style="color: red;">*</span>
+				<div class="form-group input-group">
+					<input class="form-control" id="user_phone" name="user_phone"
+						placeholder="휴대번호를 입력하세요." type="number">
+
+				</div>
+			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block"
+				<button type="submit" class="btn btn-primary btn-block" 
 					style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 					확인</button>
 			</div>
 		</form>
 		
+		<!-- Modal -->
 
 	</article>
 </div>

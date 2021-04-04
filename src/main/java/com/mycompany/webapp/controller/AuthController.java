@@ -1,7 +1,5 @@
 package com.mycompany.webapp.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
@@ -31,11 +30,16 @@ public class AuthController {
 		return "/user/joinForm";
 	}
 
-	@GetMapping("/searchId")
+	@GetMapping("/searchIdForm")
+	public String searchIdForm() {
+		return "/user/searchIdForm";
+	}
+	
+	/*@GetMapping("/searchId")
 	public String searchId() {
 		return "/user/searchId";
 	}
-
+	*/
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "/user/searchPw";
@@ -60,11 +64,30 @@ public class AuthController {
 	}
 
 	
-	@PostMapping("/searchId")
+	@PostMapping("/searchIdForm")
+	public String searchIdForm(String user_name, String user_phone, Model model) throws Exception {
+		User user = usersService.getUserid(user_name, user_phone);
+		model.addAttribute("user", user);
+
+		System.out.println(user.getUser_id());
+		
+		return "/user/searchId";
+	}
+	
+	@GetMapping("/searchId")
 	public String searchId(String user_name, String user_phone, Model model) throws Exception {
 		User user = usersService.getUserid(user_name, user_phone);
 		model.addAttribute("user", user);
+
 		System.out.println(user.getUser_id());
+		
+		return "/user/searchId";
+	}
+	
+	@PostMapping("/searchId")
+	public String searchId() throws Exception {
+		
+		
 		return "/user/loginForm";
 	}
 
@@ -106,6 +129,8 @@ public class AuthController {
 		return "redirect:/user/my";
 	}
 
+	
+	
 	/*@PostMapping("/loginForm")
 	public String login(User user, HttpSession session) {
 		String result = usersService.login(user);

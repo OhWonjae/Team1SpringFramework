@@ -106,7 +106,7 @@
 			<div class="text-center"
 				style="text-align: center; font-size: 0.7em;">
 				<button type="button" class="button"
-					onclick="location.href='<%=application.getContextPath()%>/searchId' ">
+					onclick="location.href='<%=application.getContextPath()%>/searchIdForm' ">
 					아이디 찾기 |</button>
 				<button type="button" class="button"
 					onclick="location.href='<%=application.getContextPath()%>/searchPw' ">
