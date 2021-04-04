@@ -41,7 +41,22 @@
                                 <h5 style="padding-top: 23px; padding-bottom: 17px; font-size: 1.4em;"><strong>주문 · 배송</strong>
                                 </h5>
                             </div>
-                            <table class="table";>
+                              <c:if test="${empty list}">
+                               <div class="cart-content">
+                                <div class="container" style="margin-bottom: 20px;">
+						                    	      <div class="div2">
+						                                <div class="nolist" style= "padding:50px;text-align: center";>
+						                                    <i class="far fa-sticky-note" style="color:gray;font-size:80px;"></i>
+						                                    <div>
+						                                    주문내역이 없습니다.
+						                                    </div>
+						                                </div>
+						                            </div>
+						                           </div>
+						                          </div>
+						                    </c:if>         
+							  <c:if test="${!empty list}">                
+                            <table class="table">
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col" style="width: 10%;">주문 번호</th>
@@ -69,7 +84,7 @@
                                         </c:forEach>
                                     </tbody>
                             </table>
-                        
+                        	  </c:if> 
                         </div>
                     
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">   
