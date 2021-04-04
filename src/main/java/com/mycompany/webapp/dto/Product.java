@@ -8,7 +8,6 @@ public class Product {
 
 
 private int p_id;
-
 private String p_name;
    private int p_price;
    private int p_stock;
@@ -17,9 +16,17 @@ private String p_name;
    private Date p_upload_date;
    private String p_description;
    private List<Photo> photolist;
-   
+   private List<Review> reviewlist;
+   private List<SizeProduct> sizelist;
   
-   public int getP_id() {
+   @Override
+   public String toString() {
+   	return "Product [p_id=" + p_id + ", p_name=" + p_name + ", p_price=" + p_price + ", p_stock=" + p_stock
+   			+ ", p_salescount=" + p_salescount + ", p_category_name=" + p_category_name + ", p_upload_date="
+   			+ p_upload_date + ", p_description=" + p_description + ", photolist=" + photolist + ", reviewlist="
+   			+ reviewlist + ", sizelist=" + sizelist + "]";
+   }
+public int getP_id() {
 	return p_id;
 }
 public void setP_id(int p_id) {
@@ -72,6 +79,18 @@ public List<Photo> getPhotolist() {
 }
 public void setPhotolist(List<Photo> photolist) {
 	this.photolist = photolist;
+}
+public List<Review> getReviewlist() {
+	return reviewlist;
+}
+public void setReviewlist(List<Review> reviewlist) {
+	this.reviewlist = reviewlist;
+}
+public List<SizeProduct> getSizelist() {
+	return sizelist;
+}
+public void setSizelist(List<SizeProduct> sizelist) {
+	this.sizelist = sizelist;
 }
 //   public Product(String p_name, int p_price, int p_stock, int p_salescount, String p_category_name,
 //		Date p_upload_date, String p_description) {

@@ -34,27 +34,34 @@ public class OrdersService {
 	public void RemoveOrders(int oid) {
 		ordersDao.ordersDelete(oid);
 	}
-
+	
 	//주문서 읽어오기
-	public Orders ReadOrders(int ono) {
+		public Orders ReadOrders(String order_id) {
 
-		Orders orders=ordersDao.orderSelectByOne(ono);
-		return orders;
+			Orders orders=ordersDao.orderSelectByOne(order_id);
+			return orders;
+		}
+
+	public List<Orders> getOrdersList(String uid){ 
+		List<Orders> list = ordersDao.ordersList(uid);
+		return list;
 	}
 
 	public void creatOrderProduct(OrderProduct orderproduct) {
-		orderProductDao.insert(orderproduct);
+		orderProductDao.orderProductList(orderproduct);
 	}
 
-	public List<OrderProduct> getorderList(){
-		List<OrderProduct> orderproducts = orderProductDao.orderList();
-		return orderproducts;
+	public List<OrderProduct> getProductList(String oid){
+		List<OrderProduct> plist = orderProductDao.productList(oid);
+		return plist;
 	}
 	
 	public List<CartItem> getOrderList(String uid){ 
 		List<CartItem> list = orderProductDao.orderList(uid);
 		return list;
 	}
+	
+	
 
 	public void updateStatus(OrderProduct orderproduct) {
 		orderProductDao.updateStatus(orderproduct);

@@ -17,21 +17,38 @@
 		where user_id=#{user_id}
 	</select>
 	
-	<select id="selectByUsername" parameterType="string" resultType="user"> 
-		select user_id, user_name, user_password, user_phone, dog_size, 
-		enabled, authority 
+	<!-- 아이디 찾기 -->
+	<select id="selectIdByNameAndPassword" parameterType="string" resultType="user"> 
+		select user_id
 		from users 
 		where user_name=#{user_name} and user_phone=#{user_phone} 
 	</select>
 	
+	<!-- 비밂번호 찾기 -->
+	<select id="selectPasswordById" parameterType="string" resultType="user"> 
+		select user_password
+		from users 
+		where user_name=#{user_name}
+	</select>
 	
-   
-	<update id="updatePwByUserid" >
+	<!-- 비밂번호 변경 -->
+	<update id="updatePasswordById" parameterType="string">
 		update users 
-		set user_password = #{user_password} where user_id=#{user_id}
+		set user_password=#{user_password} 
+		where user_id=#{user_id}
 	</update>
-	<update id="updateHpPUserid" >
+	
+	<!-- 휴대번호 변경 -->
+	<update id="updatePhoneById" >
 		update users 
-		set user_phone = #{user_phone} where user_id=#{user_id}
+		set user_phone=#{user_phone} 
+		where user_id=#{user_id}
 	</update>
+	
+	<!-- 이메일 중복체크 -->
+	<select id="idCheck" resultType="int"> 
+		select count(*)
+		from users 
+		where user_id=#{user_id}
+	</select>
 </mapper>

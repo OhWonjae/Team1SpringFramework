@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.UsersService;
@@ -29,175 +32,119 @@ public class AuthController {
 		return "/user/joinForm";
 	}
 
-	/*@GetMapping("/searchId")
-	public String searchId() {
-		return "/user/searchId";
+	@GetMapping("/searchIdForm")
+	public String searchIdForm() {
+		return "/user/searchIdForm";
+	}
+	
+
+	@PostMapping("/join")
+	public String join(User user) throws Exception {
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		user.setUser_password(bpe.encode(user.getUser_password()));
+		int result = usersService.idCheck(user);
+		usersService.join(user);
+		try {
+			if(result == 1) {
+				return "/user/joinForm";
+			}else if(result == 0) {
+				usersService.join(user);
+			}
+			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
+			// 존재하지 않는다면 -> join
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		return "redirect:/";
+		/*		return "/user/loginForm";
+		*/	
 	}
 	
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "/user/searchPw";
-	}*/
-
-	@GetMapping("/pwChange")
-	public String pwChange() {
-		return "/user/pwChange";
 	}
 
-	@GetMapping("/phoneChange")
-	public String phoneChange() {
-		return "/user/phoneChange";
-	}
-
-	@PostMapping("/my")
-	public String change() {
-		return "redirect:/user/my";
-	}
-
-	/*@GetMapping("user/my")
-	public String my() {
-		return "/user/my";
-	}*/
-
-	@PostMapping("/join")
-	public String join(User user) throws Exception {
-		logger.info(user.getUser_name());
-		logger.info(user.getUser_id());
-		logger.info(user.getUser_password());
-		logger.info(user.getUser_phone());
-		logger.info(user.getDog_size());
-		logger.info(user.getUser_phone());
-
+	@PostMapping("/searchPw")
+	public String searchPw(String user_id, Model model) throws Exception {
+		User user = usersService.getUser(user_id);
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		user.setUser_password(bpe.encode(user.getUser_password()));
-		usersService.join(user);
-
-		return "redirect:/user/loginForm";
-	}
-
-	@GetMapping("/searchId")
-	public String read1(String user_name, String user_phone, Model model) {
-		User user = usersService.getUser2(user_name, user_phone);
 		model.addAttribute("user", user);
+		System.out.println(user.getUser_password());
+		return "/user/pwChange";
+	}
+	@PostMapping("/searchIdForm")
+	public String searchIdForm(String user_name, String user_phone, Model model) throws Exception {
+		User user = usersService.getUserid(user_name, user_phone);
+		model.addAttribute("user", user);
+		System.out.println(user.getUser_id());
 		return "/user/searchId";
 	}
-
-	@GetMapping("/searchPw")
-	public String read2(String user_id, Model model)  {
-		User user = usersService.getUser(user_id);
+	@GetMapping("/searchId")
+	public String searchId(String user_name, String user_phone, Model model) throws Exception {
+		User user = usersService.getUserid(user_name, user_phone);
 		model.addAttribute("user", user);
-		return "/user/searchPw";
+		System.out.println(user.getUser_id());
+		return "/user/searchId";
+	}
+	
+	@PostMapping("/searchId")
+	public String searchId() throws Exception {		
+		return "/user/loginForm";
 	}
 
 	@GetMapping("user/my")
-	public String read(Model model, Authentication auth) throws Exception {
+	public String read(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
 		model.addAttribute("user", user);
 		return "/user/my";
 	}
-	
-	@GetMapping("user/phoneChange")
-	public String read2(String user_id, Model model, Authentication auth) throws Exception {
-		User user = usersService.getUser(auth.getName());
-		model.addAttribute("user", user);
-		return "/user/phoneChange";
-	}
-	
+
+	// PW 변경
 	@GetMapping("user/pwChange")
-	public String read3(String user_id, Model model, Authentication auth) throws Exception {
+	public String pwChange(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
 		model.addAttribute("user", user);
 		return "/user/pwChange";
 	}
-
-	
-	
-	//PW 변경
-	@PostMapping("user/update1")
-	public String update1(User user) {
-		usersService.updateUser(user);
-		return "redirect:/user/loginForm";
-	}
-	
-	//PHONE 변경
-	@PostMapping("user/update2")
-	public String update2(User user) {
-		usersService.updateUser2(user);
-		return "redirect:/user/loginForm";
+	@PostMapping("user/updateUser")
+	public String updateUser(String user_password, Authentication auth) {
+		User user = usersService.getUser(auth.getName());
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		usersService.updateUser(bpe.encode(user_password), auth.getName());
+		return "redirect:/user/my";
 	}
 
+	// PHONE 변경
+	@GetMapping("user/phoneChange")
+	public String phoneChange(Authentication auth, Model model) throws Exception {
+		User user = usersService.getUser(auth.getName());
+		model.addAttribute("user", user);
+		return "/user/phoneChange";
+	}
 
-	/*@PostMapping("/login")
-	public String login(User user, HttpSession session) {
-	  String result = usersService.login(user);
-	  
-	  logger.info(user.getUser_id());
-	  logger.info(user.getUser_password());
+	@PostMapping("user/updateUser2")
+	public String updateUser2(String user_phone, Authentication auth) {
+		usersService.updateUser2(user_phone, auth.getName());
+		return "redirect:/user/my";
+	}
+
 	
-	  if (result.equals("success")) {
-	     logger.info(result);
-	     session.removeAttribute("loginError");
-	     session.setAttribute("loginUser_id", user.getUser_id());
-	     return "redirect:/main";
-	  } else {
-		  logger.info(result);
-	     session.setAttribute("loginError", result);
-	     return "redirect:/loginForm"; // home
-	  }
-	}*/
-
-	/*@PostMapping("/find")
-	public String login(User user, HttpSession session) {
-	  String result = usersService.login(user);
 	
-	  if (result.equals("success")) {
-	     logger.info(result);
-	     session.removeAttribute("loginError");
-	     session.setAttribute("loginUser_id", user.getUser_id());
-	     return "redirect:/main";
-	  } else {
-	     session.setAttribute("loginError", result);
-	     return "redirect:/user/login"; // home
-	  }
-	}*/
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value="/idCheck", method = RequestMethod.POST)
+	public int idCheck(User user) throws Exception {
+		int result = usersService.idCheck(user);
+		return result;
+	}
 
-	/*
-	* @GetMapping("/logout") public String logout(HttpSession session) {
-	* session.removeAttribute("loginUser_id");
-	* 
-	* return "redirect:/home"; }
-	*/
-
-	@GetMapping("/error403")
+	
+	
+	@GetMapping("user/error403")
 	public String error403() {
-		return "/error403";
+		return "/user/error403";
 	}
-
-	/*
-	 * // 아이디(이메일) 찾기
-	 * 
-	 * @RequestMapping(value = "/user/searchId", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public String searchId(@RequestParam("inputName_1") String
-	 * user_name,
-	 * 
-	 * @RequestParam("inputPhone_1") String user_phone) {
-	 * 
-	 * String result = usersService.get_searchId(user_name, user_phone);
-	 * 
-	 * return result; }
-	 * 
-	 * // 비밀번호 찾기
-	 * 
-	 * @RequestMapping(value = "/user/searchPw", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public String searchPw(@RequestParam("userId")String user_id,
-	 * 
-	 * @RequestParam("userEmail")String user_email, HttpServletRequest request) {
-	 * 
-	 * mailsender.mailSendWithPassword(user_id, user_email, request);
-	 * 
-	 * return "user/userSearchPassword"; }
-	 */
 
 }

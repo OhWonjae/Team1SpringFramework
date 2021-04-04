@@ -24,7 +24,6 @@
 			<div style="float: left; padding-left: 20px; padding-top: 15px;">
 				<strong>${user.user_name}</strong> <i class="fas fa-cog"></i>
 				<div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
-				
 			</div>
 		</div>
 		<br />
@@ -55,9 +54,7 @@
 						<h5>
 							<strong>나의 정보</strong>
 						</h5>
-
 						<br>
-
 						<div class="tab-master">
 							<div class="tab">
 								<div class="tab3">이름</div>
@@ -83,7 +80,9 @@
 							<div class="tab">
 								<div class="tab1">비밀번호</div>
 								<div class="tab2">
-									<strong>${user.user_password}</strong>
+								
+									<%-- <strong>${user.user_password}</strong> --%>
+									<strong>********</strong>								
 									<button style="margin-left: 10px;"
 										onclick="location.href='<%=application.getContextPath()%>/user/pwChange'"
 										type="button" class="btn btn-outline-secondary btn-sm">수정</button>
@@ -95,7 +94,7 @@
 										action="<%=application.getContextPath()%>/logout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
-										<button type="submit" style="margin-left: 10px;"
+										<button type="submit" 
 											class="btn btn-outline-secondary btn-sm">로그아웃</button>
 									</form>
 								</div>
@@ -251,7 +250,6 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 					<div class="tab-pane fade" id="list-settings" role="tabpanel"
@@ -262,7 +260,6 @@
 								<a href="cs3.html" class="btn btn-secondary btn-sm"
 									role="button" aria-pressed="true">문의하기</a>
 							</div>
-
 							<div class="div2" style="padding-bottom: 200px;">
 								<div class="faq-content">
 									<button class="question" id="que-1">
@@ -284,7 +281,6 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="faq-content">
 									<button class="question" id="que-2">
 										<div>
@@ -305,8 +301,6 @@
 										</div>
 									</div>
 								</div>
-
-
 								<div class="faq-content">
 									<button class="question" id="que-3">
 										<div>
@@ -327,7 +321,6 @@
 										</div>
 									</div>
 								</div>
-
 								<script>
                                             const items = document.querySelectorAll('.question');
                                                 function openCloseAnswer() {
@@ -347,7 +340,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </body>

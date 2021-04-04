@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.SizeProduct;
 import com.mycompany.webapp.service.ProductService;
 
 @Controller
@@ -35,20 +39,50 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-
+	@GetMapping(value = "/test", produces = "application/json;charset=UTF-8")
+	@ResponseBody // 리턴되는 값이 바디속으로 들어간다.
+	public String update(int pid, String size, String amount) {
+		logger.info(pid + size + amount);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		return jsonObject.toString();
+	}
 	
 	// 테스트용 컨트롤러 - 상품 무작위 생성
-	@GetMapping("/photo")
-	public String photo(Model model) {
-		//Photo p = new Photo();
-	//	p.setpId(110);
-		//p.setPhotoRole("main");
-		
-	//	String url = photosService.GetProductPhotoUrl(p);
-//		logger.info(url);
-
-	    return "/product/new";
-	}
+//		@GetMapping("/size")
+//		public String size(Model model) {
+//			
+//			for(int i=6; i<=100; i++)
+//			{
+//				
+//				SizeProduct p = new SizeProduct(i,"S");
+//				productService.createSize(p);
+//				SizeProduct p1 = new SizeProduct(i,"M");
+//				productService.createSize(p1);
+//				SizeProduct p2 = new SizeProduct(i,"L");
+//				productService.createSize(p2);
+//				
+//			}
+//			
+//
+//		    return "/product/new";
+//		}
+	
+	// 테스트용 컨트롤러 - 상품 무작위 생성
+//	@GetMapping("/photo")
+//	public String photo(Model model) {
+//		Product p = productService.getProductDetail(1);
+//		logger.info("a"+p.getPhotolist().size());
+//		logger.info("a"+p.getReviewlist().size());
+//		logger.info("a"+p.getSizelist().size());
+//		for(Photo ps: p.get(0).getPhotolist())
+//		{
+//			logger.info(ps.getPhoto_sname() + " " + ps.getPhoto_role() + " " + ps.getPhoto_type());
+//			
+//		}
+//
+//	    return "/product/new";
+//	}
 	
 //	@GetMapping("/create")
 //	public String create(Model model) {
@@ -247,20 +281,34 @@ public class ProductController {
 	
 	//제품 상세페이지 이동
 	@GetMapping("/detail")
-	public String detail(Authentication auth) {
-		logger.info(auth.getName());
+	public String detail(int pid ,Model model,Authentication auth) {
+		Product product = productService.getProductDetail(pid);
 		
-		/*logger.info("1번 상품 구매했을때 변화");
-		productService.UpdateSaledProduct(1);
-		Product p = productService.getProduct(1);
-		logger.info(""+p.getPid());
-		logger.info(""+p.getPname());
-		logger.info(""+p.getPprice());
-		logger.info(""+p.getCategoryname());
-		logger.info(""+p.getPstock());
-		logger.info(""+p.getSalescount());
-		logger.info(""+p.getPuploaddate());*/
 		
+		Photo mainPhoto = null;
+		Photo detailPhoto = null;
+		List<Photo> subPhotoList = new ArrayList<Photo>();
+		for(Photo p: product.getPhotolist()) {
+			if(p.getPhoto_role().equals("main")) {
+				mainPhoto = p;
+			}
+			else if(p.getPhoto_role().equals("detail")) {
+				detailPhoto = p;
+			}
+			else {
+				subPhotoList.add(p);
+			}
+		}
+		
+		
+		
+		
+		model.addAttribute("mainphoto", mainPhoto);
+		model.addAttribute("detailphoto", detailPhoto);
+		model.addAttribute("subphotolist", subPhotoList);
+		model.addAttribute("sizelist", product.getSizelist());
+		model.addAttribute("reviewlist", product.getReviewlist());
+		model.addAttribute("product", product);
 		return "/product/detail";
 	}
 	

@@ -26,7 +26,8 @@
 		const uid = $("#user_id").val();
 		const upassword = $("#user_password").val();
 
-		if (user_password === "") { // 비어있으면 문제있지
+
+		if (upassword === "") { // 비어있으면 문제있지
 			result = false;
 			$("#errorUserpassword").html("필수사항 입니다.");
 		}
@@ -41,11 +42,10 @@
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		}
-		if (!re.test(uid)) {
+		} if (!re.test(uid)) {
 			result = false;
 			alert("이메일에 맞는 형식이 아닙니다.");
-		}
+		} 
 	}
 </script>
 
@@ -61,7 +61,7 @@
 		</h4>
 		<br>
 
-		<c:if test="${loginError != null }">
+		<%-- <c:if test="${loginError != null }">
 
 			<div class="alert alert-primary">
 				<c:if test="${loginError == 'wrongUser_id'}">
@@ -71,20 +71,18 @@
 					<span>비밀번호가 틀립니다.</span>
 				</c:if>
 			</div>
-		</c:if>
+		</c:if> --%>
 		<form id="loginForm" name="loginForm" method="post" action="login"
 			onsubmit="validate()" novalidate="novalidate">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="form-group input-group">
 				<input id="user_id" name="user_id" class="form-control"
-					placeholder="이메일을 입력하세요." type="email"><span
-					id="errorUser_id" class="text-danger error"></span>
+					placeholder="이메일을 입력하세요." type="email">
 			</div>
 
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호을 입력하세요." type="password"><span
-					id="errorUser_password" class="text-danger error"></span>
+					placeholder="비밀번호을 입력하세요." type="password">
 			</div>
 
 
@@ -93,7 +91,7 @@
 					style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 					로그인</button>
 			</div>
-		</form>
+		
 		
 			
 				<button type="button"
@@ -107,13 +105,13 @@
 			<div class="text-center"
 				style="text-align: center; font-size: 0.7em;">
 				<button type="button" class="button"
-					onclick="location.href='<%=application.getContextPath()%>/searchId' ">
+					onclick="location.href='<%=application.getContextPath()%>/searchIdForm' ">
 					아이디 찾기 |</button>
 				<button type="button" class="button"
 					onclick="location.href='<%=application.getContextPath()%>/searchPw' ">
 					비밀번호 찾기</button>
 			</div>
-
+</form>
 		
 	</article>
 </div>

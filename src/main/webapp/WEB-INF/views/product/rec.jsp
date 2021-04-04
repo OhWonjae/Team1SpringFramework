@@ -165,7 +165,7 @@
             	<!--신규 상품 리스트 출력 -->
             	<c:forEach var="product" items="${list}">
 				 <div class="flex-items"> 
-				 	<figure>
+				 	<figure onclick="location.href='detail?pid=${product.p_id}'" style="cursor: pointer;">
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
       					<figcaption>${product.p_name}</figcaption>
       					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>

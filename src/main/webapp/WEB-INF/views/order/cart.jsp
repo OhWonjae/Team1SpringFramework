@@ -75,9 +75,9 @@
 	                                        <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
 	                                            <div class="count-button">
 	                                                <div class="btn-group" role="group" aria-label="Basic example">
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?uid=20&pid=${cart.p_id}" class="btn btn-light btn-sm">-</a>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?pid=${cart.p_id}" class="btn btn-light btn-sm">-</a>
 	                                                    <span id="numberUpDown" class="count-text">${cart.amount}</span>
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?uid=20&pid=${cart.p_id}" class="btn btn-light btn-sm">+</a>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?pid=${cart.p_id}" class="btn btn-light btn-sm">+</a>
 	                                                  </div>
 	                                            </div>
 	                                        </div>
@@ -92,7 +92,7 @@
 	                                        </div>
 	                                        <div class="col-sm-2" style="border-bottom: 1px solid #e9ecef;">
 	                                            <div class="delete-button" >
-	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?uid=20&pid=${cart.p_id}" class="btn btn-light">삭제</a>
+	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?pid=${cart.p_id}" class="btn btn-light">삭제</a>
 	                                            </div>
 	                                        </div>
 	                                    </div>

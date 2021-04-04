@@ -22,7 +22,7 @@ public class ProductService {
 	ProductDao productDao;
 
 	@Autowired
-	SizeProductDao sizeDao;
+	SizeProductDao sizeProductDao;
 
 	@Autowired
 	private ReviewDao qnaDao;
@@ -150,6 +150,17 @@ public class ProductService {
 		
 		return count;
 	}			
+	
+	// 디테일 정보 가져오기
+	public Product getProductDetail(int pid) {
+		// TODO Auto-generated method stub
+		return productDao.selectProductDetail(pid);
+		
+		
+	}
+	
+	
+	
 
 	//Update
 	//상품 수정하기
@@ -161,12 +172,7 @@ public class ProductService {
 		productDao.updateSalescountAndStock(pid);
 	}
 
-	//Read
-	//특정 상품의 사이즈 가져오기
-	public List<SizeProduct> getSizes(int pid) {
-		List<SizeProduct> sizes = sizeDao.selectAllBypid(pid);
-		return sizes;
-	}
+
 
 	//Delete
 	//상품 삭제하기
@@ -180,7 +186,10 @@ public class ProductService {
 	public void createPhoto(Photo p) {
 		photosDao.insert(p);
 	}
-	
+	//사이즈 생성
+	public void createSize(SizeProduct s) {
+		sizeProductDao.insertSize(s);
+	}
 	
 
 	public List<Review> getREVIEWList(){

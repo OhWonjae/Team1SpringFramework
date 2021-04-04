@@ -5,70 +5,92 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Review {
-	private int REVIEW_ID;
-	private int REVIEW_SCORE;
-	private int REVIEW_TITLE;
-	private String REVIEW_CONTENT;
-	private String REVIEW_PHTOTO;
-	private Date REVIEW_DATE;
-	private int P_ID;
-	private int ORDER_ID;
-	private int USER_ID;
+	private int review_id;
+	private int review_score;
+	private String review_title;
+	private String review_content;
+	private String review_photo;
+	private Date review_date;
+	private int p_id;
+	private String order_id;
+	private String user_id;
+
+	private String photo_oname; 
+	private String photo_sname;
+	private String photo_type;
+	
+	public int getReview_id() {
+		return review_id;
+	}
+	public void setReview_id(int review_id) {
+		this.review_id = review_id;
+	}
+	public int getReview_score() {
+		return review_score;
+	}
+	public void setReview_score(int review_score) {
+		this.review_score = review_score;
+	}
+	public String getReview_title() {
+		return review_title;
+	}
+	public void setReview_title(String review_title) {
+		this.review_title = review_title;
+	}
+	public String getReview_content() {
+		return review_content;
+	}
+	public void setReview_content(String review_content) {
+		this.review_content = review_content;
+	}
+	public String getReview_photo() {
+		return review_photo;
+	}
+	public void setReview_photo(String review_photo) {
+		this.review_photo = review_photo;
+	}
+	public Date getReview_date() {
+		return review_date;
+	}
+	public void setReview_date(Date review_date) {
+		this.review_date = review_date;
+	}
+	public int getP_id() {
+		return p_id;
+	}
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
+	}
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getPhoto_oname() {
+		return photo_oname;
+	}
+	public void setPhoto_oname(String photo_oname) {
+		this.photo_oname = photo_oname;
+	}
+	public String getPhoto_sname() {
+		return photo_sname;
+	}
+	public void setPhoto_sname(String photo_sname) {
+		this.photo_sname = photo_sname;
+	}
+	public String getPhoto_type() {
+		return photo_type;
+	}
+	public void setPhoto_type(String photo_type) {
+		this.photo_type = photo_type;
+	}
 	
 	
-	
-	public int getREVIEW_ID() {
-		return REVIEW_ID;
-	}
-	public void setREVIEW_ID(int REVIEW_ID) {
-		this.REVIEW_ID = REVIEW_ID;
-	}
-	public int getREVIEW_SCORE() {
-		return REVIEW_SCORE;
-	}
-	public void setREVIEW_SCORE(int REVIEW_SCORE) {
-		this.REVIEW_SCORE = REVIEW_SCORE;
-	}
-	public int getREVIEW_TITLE() {
-		return REVIEW_TITLE;
-	}
-	public void setREVIEW_TITLE(int REVIEW_TITLE) {
-		this.REVIEW_TITLE = REVIEW_TITLE;
-	}
-	public String getREVIEW_CONTENT() {
-		return REVIEW_CONTENT;
-	}
-	public void setREVIEW_CONTENT(String REVIEW_CONTENT) {
-		this.REVIEW_CONTENT = REVIEW_CONTENT;
-	}
-	public String getREVIEW_PHOTO() {
-		return REVIEW_PHTOTO;
-	}
-	public void setREVIEW_PHOTO(String REVIEW_PHTOTO_) {
-		this.REVIEW_PHTOTO = REVIEW_PHTOTO;
-	}
-	public Date getREVIEW_DATE() {
-		return REVIEW_DATE;
-	}
-	public void setREVIEW_DATE(Date REVIEW_DATE) {
-		this.REVIEW_DATE = REVIEW_DATE;
-	}
-	public int getP_ID() {
-		return P_ID;
-	}
-	public void setP_ID(int P_ID) {
-		this.P_ID = P_ID;
-	}
-	public int getORDER_ID() {
-		return ORDER_ID;
-	}
-	public void setORDER_ID(int ORDER_ID) {
-		this.ORDER_ID = ORDER_ID;
-	}
-	public int getUSER_ID() {
-		return USER_ID;
-	}
-	public void setUSER_ID(int USER_ID) {
-		this.USER_ID = USER_ID;
-	}
 }
