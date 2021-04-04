@@ -57,7 +57,7 @@
                                             <th scope="row" style="color:rgb(138, 138, 146);">${orders.order_id}</th>
                                             <td style="color:rgb(138, 138, 146);"><fmt:formatDate value="${orders.order_date}" pattern="yyyy.MM.dd"/></td>
                                             <td> <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orders.photo_sname}&photoType=${orders.photo_type}"  width="20%" style="float: left; margin-right: 10px;">
-                                                <strong style="font-size: 1.2em;">${orders.p_name}</strong> 
+                                                <strong style="font-size: 1.2em;">${orders.p_name} 외 ${orders.total_amount-1}개</strong> 
                                             </td>
                                             <td style="border-right: white; text-align: center;">
                                             	 <div>${orders.delivery_status}</div>

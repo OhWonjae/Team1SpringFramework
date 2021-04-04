@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.CartDao;
 import com.mycompany.webapp.dto.CartItem;
+import com.mycompany.webapp.dto.Pager;
 
 @Service
 public class CartsService {
@@ -41,5 +42,5 @@ public class CartsService {
 	public void addCart(CartItem cart) {
 		cartDao.insertCart(cart);
 	}
-
+	
 }
