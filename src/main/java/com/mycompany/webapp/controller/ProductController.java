@@ -340,19 +340,20 @@ public class ProductController {
 			
 		    List<String> orderids= productService.GetOrderIdForReview(auth.getName(), pid);
 		   if(orderids.size()!=0) {	
+			   review.setOrder_id(orderids.get(0));
+			   review.setReview_score(Integer.parseInt(score));
+			   review.setReview_date(date);
+			   review.setReview_title(title);
+			   review.setReview_content(content);
+			   review.setUser_id(auth.getName());
+			   review.setP_id(pid);
+			   
+			   
 			   if(battach != null && !battach.isEmpty()) {
-				   review.setOrder_id(orderids.get(0));
+				  
 				   review.setPhoto_oname(battach.getOriginalFilename());
 				   review.setPhoto_type(battach.getContentType());
-				   review.setReview_score(Integer.parseInt(score));
-				   review.setReview_date(date);
-				   review.setReview_title(title);
-				   review.setReview_content(content);
-				   review.setUser_id(auth.getName());
-				   review.setP_id(pid);
-				   
 				   String saveName = auth.getName() + "_"+pid +"_"+date.getTime()+"_" + review.getPhoto_oname();
-				   
 				   review.setPhoto_sname(saveName);
 				   File file = new File("C:/Photos/ProductPhotos/Review/" + saveName);
 				   logger.info(saveName);
@@ -366,11 +367,12 @@ public class ProductController {
 					e.printStackTrace();				   
 			   }
 		   }
-		   else {
+		   else 
+		   {
 				model.addAttribute("reviewuploadresult", "fail");
 				return "redirect:detail?pid="+pid;	
 
-		   		}
+		   }
 			productService.createReview(review);   
 			model.addAttribute("reviewuploadresult", "success");
 		
