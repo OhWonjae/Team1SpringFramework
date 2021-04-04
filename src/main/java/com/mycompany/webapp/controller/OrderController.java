@@ -114,9 +114,11 @@ public class OrderController {
 
 	@GetMapping("/orders")
 	public String orders(String order_id,Model model) {
-
+		
 		Orders orders=ordersService.ReadOrders(order_id);
 		model.addAttribute("orders", orders);
+		List<OrderProduct> list =ordersService.getProductList(order_id);
+		model.addAttribute("list",list);
 		return "/order/orders";
 	}
 

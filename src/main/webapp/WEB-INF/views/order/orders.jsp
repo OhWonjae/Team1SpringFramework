@@ -135,41 +135,21 @@
                                     </div>
          
                                 </div>
-                                <div class="orders-inner">
+                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1);; border-top:none">
                                     <table class="table">
                                     
                                         <tbody>
-                                            
+                                            <c:forEach var="orderProduct" items="${list}">
                                             <tr>
-                                                <td> 
-                                                    <img src="..\photo\/rank_photo/photo31.jpg" width="15%" style="float: left; margin-right: 10px;">
-                                                    <div style="font-size: 13px; font-weight: 700;">이츠독 플러피 기모 후드 점퍼</div>
-                                                    <div style="font-size: 12px; font-weight: bold; ">1,5000원</div> 
-                                                    <div style="font-size: 10px;">수량: 1개</div>
-                                                    <div style="font-size: 10px;">발송처리완료</div>
+                                                <td style="border-top:none; border-right:none"> 
+                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="15%" style="float: left; margin-right: 10px;">
+                                                    <div style="font-size: 13px; font-weight: 700;"> ${orderProduct.p_name} </div>
+                                                    <div style="font-size: 12px; font-weight: bold; "> ${orderProduct.p_price}원 </div> 
+                                                    <div style="font-size: 10px;">수량: ${orderProduct.amount}</div>
                                                 </td>
                                             </tr>
-
-                                            <tr>
-                                                <td> 
-                                                    <img src="..\photo\/rank_photo/photo31.jpg" width="15%" style="float: left; margin-right: 10px;">
-                                                    <div style="font-size: 13px; font-weight: 700;">이츠독 플러피 기모 후드 점퍼</div>
-                                                    <div style="font-size: 12px; font-weight: bold; ">1,5000원</div> 
-                                                    <div style="font-size: 10px;">수량: 1개</div>
-                                                    <div style="font-size: 10px;">발송처리완료</div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td> 
-                                                    <img src="..\photo\/rank_photo/photo31.jpg" width="15%" style="float: left; margin-right: 10px;">
-                                                    <div style="font-size: 13px; font-weight: 700;">이츠독 플러피 기모 후드 점퍼</div>
-                                                    <div style="font-size: 12px; font-weight: bold; ">1,5000원</div> 
-                                                    <div style="font-size: 10px;">수량: 1개</div>
-                                                    <div style="font-size: 10px;">발송처리완료</div>
-                                                </td>
-                                            </tr>
-
+											</c:forEach>
+                       
                                         </tbody>
                                     </table>
                                 </div>
@@ -178,7 +158,7 @@
                     </div>
                 </div>
                 <div style="text-align: center;">
-                    <button type="button" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;">주문내역으로 이동</button>
+                    <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;">주문내역으로 이동</button>
                 </div>
             </div>
         </div>

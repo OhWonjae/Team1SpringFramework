@@ -51,15 +51,17 @@ public class OrdersService {
 		orderProductDao.orderProductList(orderproduct);
 	}
 
-	public List<OrderProduct> getorderList(){
-		List<OrderProduct> orderproducts = orderProductDao.orderList();
-		return orderproducts;
+	public List<OrderProduct> getProductList(String oid){
+		List<OrderProduct> plist = orderProductDao.productList(oid);
+		return plist;
 	}
 	
 	public List<CartItem> getOrderList(String uid){ 
 		List<CartItem> list = orderProductDao.orderList(uid);
 		return list;
 	}
+	
+	
 
 	public void updateStatus(OrderProduct orderproduct) {
 		orderProductDao.updateStatus(orderproduct);
