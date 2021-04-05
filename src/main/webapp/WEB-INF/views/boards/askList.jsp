@@ -20,7 +20,7 @@
         </picture>
             <div style="float: left; padding-left: 20px; padding-top: 15px;">
                 <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>
-                <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${qa.user_id}</div>
+                <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
             </div>
     </div>
     <br/>
