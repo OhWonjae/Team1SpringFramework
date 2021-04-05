@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.QnaDao;
+import com.mycompany.webapp.dao.UsersDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
+import com.mycompany.webapp.dto.User;
 
 
 @Service
@@ -17,6 +19,8 @@ public class QnaService {
    @Autowired
    private QnaDao qnaDao;
    private static final Logger logger = LoggerFactory.getLogger(QnaService.class);
+   @Autowired
+   private UsersDao usersDao;
 
    public Qna getQna(int qno) {
       Qna qna = qnaDao.selectByQa_id(qno);
@@ -51,6 +55,9 @@ public class QnaService {
 	public int getTotalRows() {
 		return 0;
 	}
-
+	public User getUser(String user_id) {
+		      User user = usersDao.selectByUserid(user_id);
+		      return user;
+		   }
 	
 }

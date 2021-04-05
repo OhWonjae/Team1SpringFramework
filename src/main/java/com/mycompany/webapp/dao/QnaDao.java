@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
+import com.mycompany.webapp.dto.User;
 
 
 
@@ -21,4 +22,5 @@ public interface QnaDao {
 	public List<Qna> selectAll();
 	public List<Qna> selectByPage(Pager pager);
 	public List<Qna> selectAllByUserId(String user_id);
+	public User selectByUserid(String user_id);
 }
