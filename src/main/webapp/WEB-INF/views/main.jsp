@@ -54,12 +54,14 @@
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
-      					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-      					<a style="color: silver;"> (2)</a>
+      					 <!--별점-->
+                         <c:forEach var="i" begin="1" end="${product.p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${product.p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+                		<a style="color: silver;"> (${product.p_rate})</a>
     				
                 </li>
 				</c:forEach>
@@ -86,12 +88,17 @@
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
-      					<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                		<i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-      					<a style="color: silver;"> (2)</a>
+      					
+     					  <!--별점-->
+                         <c:forEach var="i" begin="1" end="${product.p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${product.p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${product.p_rate})</a>
                 </li>
 				</c:forEach>
             <i class="fas fa-chevron-circle-right"></i>
@@ -114,17 +121,22 @@
                   <i class="fas fa-crown">
                     <div class="rank-text">1</div>
                   </i>
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/rec5.jpg" alt="rank1" class="rank-image"/>
+                    <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[0].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[0].photolist[0].photo_sname}&photoType=${ranklist[0].photolist[0].photo_type}" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
+                        <div class="rank-title">${ranklist[0].p_name}</div>
+                        <div class="rank-price">${ranklist[0].p_price}원</div>
                         <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                           <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[0].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[0].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[0].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -135,17 +147,22 @@
                   
                     <div class="unrank-text">4</div>
                   
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/new5.jpg" alt="rank1" class="rank-image"/>
+                    <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[3].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[3].photolist[0].photo_sname}&photoType=${ranklist[3].photolist[0].photo_type}" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
-                        <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                        <div class="rank-title">${ranklist[3].p_name}</div>
+                        <div class="rank-price">${ranklist[3].p_price}원</div>
+                         <div class="rate">
+                           <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[3].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[3].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[3].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -157,17 +174,22 @@
                   <i class="fas fa-crown" style="color:#868e96 ;">
                     <div class="rank-text">2</div>
                   </i>
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/new2.jpg" alt="rank1" class="rank-image"/>
+                    <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[1].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[1].photolist[0].photo_sname}&photoType=${ranklist[1].photolist[0].photo_type}" alt="rank3" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
-                        <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                        <div class="rank-title">${ranklist[1].p_name}</div>
+                        <div class="rank-price">${ranklist[1].p_price}원</div>
+                         <div class="rate">
+                            <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[1].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[1].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[1].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -178,17 +200,22 @@
                   
                     <div class="unrank-text">5</div>
                   
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/rec3.jpg" alt="rank1" class="rank-image"/>
+                   <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[4].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[4].photolist[0].photo_sname}&photoType=${ranklist[4].photolist[0].photo_type}" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
+                        <div class="rank-title">${ranklist[4].p_name}</div>
+                        <div class="rank-price">${ranklist[4].p_price}원</div>
                         <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                            <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[4].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[4].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[4].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -200,17 +227,22 @@
                   <i class="fas fa-crown" style="color:#0ca678">
                     <div class="rank-text">3</div>
                   </i>
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/rec2.jpg" alt="rank1" class="rank-image"/>
+                    <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[2].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[2].photolist[0].photo_sname}&photoType=${ranklist[2].photolist[0].photo_type}" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
+                        <div class="rank-title">${ranklist[2].p_name}</div>
+                        <div class="rank-price">${ranklist[2].p_price}원</div>
                         <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                           <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[2].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[2].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[2].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -221,17 +253,22 @@
                
                     <div class="unrank-text">6</div>
                   
-                    <a href="<%=application.getContextPath()%>/product/detail">
-                      <img src="<%=application.getContextPath() %>/resources/img/new1.jpg" alt="rank1" class="rank-image"/>
+                    <a href="<%=application.getContextPath()%>/product/detail?pid=${ranklist[5].p_id}">
+                      <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${ranklist[5].photolist[0].photo_sname}&photoType=${ranklist[5].photolist[0].photo_type}" alt="rank1" class="rank-image"/>
                       <div class="rank-info">
-                        <div class="rank-title">플로트 스탠다드 골지 티셔츠 그린</div>
-                        <div class="rank-price">19000원</div>
-                        <div class="rate">
-                          <label for="star5" title="text">5 stars</label>
-                          <label for="star4" title="text">4 stars</label>
-                          <label for="star3" title="text">3 stars</label>
-                          <label for="star2" title="text">2 stars</label>
-                          <label for="star1" title="text">1 star</label>
+                        <div class="rank-title">${ranklist[5].p_name}</div>
+                        <div class="rank-price">${ranklist[5].p_price}원</div>
+                     <div class="rate">
+                           <!--별점-->
+                         <c:forEach var="i" begin="1" end="${ranklist[5].p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${ranklist[5].p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+     					
+                		<a style="color: silver;"> (${ranklist[5].p_rate})</a>
                         </div>
                     </a>
                  </div>
@@ -259,12 +296,15 @@
                     <div class="class-box">
                       <div class="class-type">사이즈 L</div>
                       <div class="class-format">
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star" style="color: #ff3357; font-size: 8px;"></i> 
-                        <i class="fas fa-star-half-alt" style="color: #ff3357; font-size: 8px;"></i>
-                        <a style="color: silver;"> (2)</a>
+                        <!--별점-->
+                         <c:forEach var="i" begin="1" end="${product.p_rate}">
+                         <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                         </c:forEach>
+                         <c:forEach var="i" begin="${product.p_rate+1}" end="5">
+                         <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                         </c:forEach>
+     					  
+                        <a style="color: silver;">(${product.p_rate})</a>
                       </div>
                     </div>
                     <div class="class-desc">

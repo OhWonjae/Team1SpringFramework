@@ -319,8 +319,16 @@
         				console.log("success");
         			}
         			else{
+        				alert("주문한 상품이 아닙니다.");
+    				
+    					  $(".modal-backdrop").remove();
+    					  location.reload(true);
+        			}
+        				function myFunction() {
+        					
+        					
+        					 
         				
-        				$("#closemodal").click('click');
         			}
          			
          		});
@@ -435,15 +443,16 @@
 	                                구매인증됨  |  <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd"/><br/>
 	                            </span>
 	                            <!--작성자 및 강아지 정보-->
-	                            강*민  · 토이 푸들 · 2살
+	                            ${review.user_name}
 	                        </div>
 	                    </div>
 	                    <!--구매후기 내용-->
 	                    <div class="row"style="margin-bottom:2%; font-size:medium">
-	                        <img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" style=" height: 100px; width: 100px; margin-right: 1%;margin-top: 1%;">
+	                    	<c:if test="${review.photo_sname ne null}">
+	                    	<img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" style=" height: 100px; width: 100px; margin-right: 1%;margin-top: 1%;">
+	                    	</c:if>
 	                        옵션 : ${product.p_category_name}<br/>${review.review_content}
 	                   </div>
-	                
                 	</c:forEach>
                 </div>
                 

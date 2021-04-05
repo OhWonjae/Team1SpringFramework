@@ -53,7 +53,9 @@ public class ProductService {
 	//신규 상품 리스트 가져오기
 	public List<Product> getProductsByPager(Pager pager){
 		List<Product> products = productDao.selectAllByPager(pager);
-		
+		System.out.println("rate!!! : "+products.get(2).getP_id()+"  " +products.get(2).getP_rate());
+
+		System.out.println("rate!!! : "+products.get(1).getP_id()+"  " +products.get(1).getP_rate());
 		return products;
 	}
 	//신규 상품 리스트 개수 가져오기
@@ -212,6 +214,19 @@ public class ProductService {
 		List<String> orderid = reviewDao.selectOrderIdForReview(user_id, p_id);
 		
 		return orderid;
+	}
+
+	public void ChangeRate(int p_id,int review_score) {
+		// TODO Auto-generated method stub
+		int reviewcount =reviewDao.getCount(p_id);
+		int p_rate = productDao.selectBypid(p_id).getP_rate();
+		
+		p_rate+=review_score;
+		p_rate /= (reviewcount);
+		
+		// rate update
+		productDao.updateRate(p_id,p_rate);
+		
 	}
 
 }

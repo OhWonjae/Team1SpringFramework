@@ -16,6 +16,7 @@ public interface ReviewDao {
 
 	public int count();
 	public List<String> selectOrderIdForReview(@Param("user_id")String user_id,@Param("p_id") int p_id);
+	public int getCount(int p_id);
 }
 
 

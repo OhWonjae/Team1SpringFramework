@@ -9,12 +9,15 @@ public class Product {
 
 private int p_id;
 private String p_name;
+private int p_rate;
    private int p_price;
    private int p_stock;
    private int p_salescount;
    private String p_category_name;
    private Date p_upload_date;
    private String p_description;
+
+
    private List<Photo> photolist;
    private List<Review> reviewlist;
    private List<SizeProduct> sizelist;
@@ -73,6 +76,12 @@ public String getP_description() {
 }
 public void setP_description(String p_description) {
 	this.p_description = p_description;
+}
+public int getP_rate() {
+	return p_rate;
+}
+public void setP_rate(int p_rate) {
+	this.p_rate = p_rate;
 }
 public List<Photo> getPhotolist() {
 	return photolist;
