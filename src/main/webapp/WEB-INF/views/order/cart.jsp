@@ -55,7 +55,7 @@
                             <div class="cart-content">
                                 <div class="container" style="margin-bottom: 20px;">
 						                    <c:set var="sum" value="0" />
-						                    <c:if test="${listcount == 0}">
+						                    <c:if test="${empty list}">
 						                    	      <div class="div2">
 						                                <div class="nolist" style= "padding:50px;text-align: center";>
 						                                    <i class="far fa-sticky-note" style="color:gray;font-size:80px;"></i>
@@ -110,7 +110,7 @@
 	                              </c:forEach> 
                                 
                                                            
-                                    <c:if test="${listcount > 0}">                         
+                                    <c:if test="${!empty list}">                         
 	                                  <div class="d-flex text-center">
 																			<div class="flex-grow-1">
 																		
@@ -143,7 +143,7 @@
 
                                 </div>
                                 
-                              <c:if test="${listcount > 0}">
+                              <c:if test="${!empty list}">
                               
                   					   <div style="border:3px solid #FF3357"></div>
                                 <div class="row cart-content2-box">
