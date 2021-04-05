@@ -2,6 +2,7 @@ package com.mycompany.webapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +12,63 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.mycompany.webapp.dto.CartItem;
 
+import com.mycompany.webapp.dto.CartItem;
+import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.CartsService;
+import com.mycompany.webapp.service.UsersService;
 
 @Controller
 @RequestMapping("/order")
 public class CartController {
    @Autowired
-      private CartsService cartsService; 
+      private CartsService cartsService;
+   
+   @Autowired
+   		private UsersService usersService;
       
-   @GetMapping("/cart")
+  /* @GetMapping("/cart")
    public String cart(Model model, Authentication auth) {
       List<CartItem> list = cartsService.getCartList(auth.getName());
       model.addAttribute("list", list);
       return "/order/cart";
-   } 
+   }*/
+   
+   @GetMapping("/cart")
+   public String cart(Model model, Authentication auth, String pageNo, HttpSession session) {
+	   
+	   User user = usersService.getUser(auth.getName());
+	   user.setUser_password("");
+	   int intPageNo=1;
+	   if(pageNo==null) {
+	         //세션에서 Pager를 찾고, 있으면 pageNo설정
+	         Pager pager = (Pager) session.getAttribute("pager");
+	         if(pager!=null) {
+	            intPageNo=pager.getPageNo();
+	         }
+	      } else {
+	         intPageNo = Integer.parseInt(pageNo);
+	      }
+	   int totalRows = cartsService.getTotalRows(auth.getName());
+	   Pager pager = new Pager(3,5, totalRows, intPageNo);
+	   session.setAttribute("pager", pager);
+	   List<CartItem> list = cartsService.getCartList(auth.getName(), pager);
+		/*
+		 * if(list.size()==0 ) { 
+		 * pager.setPageNo(1); 
+		 * pager.setStartRowNo(1);
+		 * pager.setEndPageNo(3); 
+		 * list = cartsService.getCartList(auth.getName(), pager); 
+		 * System.out.println(list.size()); }
+		 */
+	   
+	   model.addAttribute("user", user);
+	   model.addAttribute("listcount",totalRows);
+	   model.addAttribute("list", list);
+	   model.addAttribute("pager", pager);
+	   return "/order/cart";
+   }
    
    @GetMapping(value = "/putcart", produces = "application/json;charset=UTF-8")
    @ResponseBody // 리턴되는 값이 바디속으로 들어간다.
@@ -41,8 +83,8 @@ public class CartController {
          List<CartItem> list = cartsService.getCartList(userId);
          for(int i=0;i<list.size();i++) {
             if(userId.equals(list.get(i).getUser_id())
-                  && list.get(i).getP_id() == cart.getP_id()) {
-               
+                  && list.get(i).getP_id() == cart.getP_id()
+                  && list.get(i).getP_size().equals(cart.getP_size())) {
                
                jsonObject.put("result", "fail");
              return jsonObject.toString();
