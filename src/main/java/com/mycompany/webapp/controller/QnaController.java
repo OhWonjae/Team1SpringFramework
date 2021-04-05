@@ -1,7 +1,6 @@
 package com.mycompany.webapp.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.QnaService;
+import com.mycompany.webapp.service.UsersService;
 
 @Controller
 @RequestMapping("/boards")
@@ -25,6 +26,8 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;	
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
+	@Autowired
+	private UsersService usersService;
 	
 	//1:1문의 게시판으로 이동
 	@GetMapping("/askList")
@@ -33,6 +36,8 @@ public class QnaController {
 		      Pager pager = new Pager(10, 5, totalRows, pageNo);
 			  //List<Qna> list = qnaService.getBoardList(pager);
 		      //여기에 이제 user_id 값 받은거 넣어줘야함
+		      User user = usersService.getUser(auth.getName());
+		      model.addAttribute("user", user);
 		      logger.info(auth.getName());
 		      List<Qna> list = qnaService.getBoardList(auth.getName());
 			  //user_id에 맞는 게시글을 불러오도록 해야함

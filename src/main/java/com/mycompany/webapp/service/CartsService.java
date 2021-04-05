@@ -19,10 +19,18 @@ public class CartsService {
 		List<CartItem> list = cartDao.cartList(uid);
 		return list;
 	}
+	public List<CartItem> getCartList(String uid, Pager pager){
+		List<CartItem> list = cartDao.cartListByPage(uid, pager);
+		return list;
+	}
 	public CartItem getCartOne(String uid, int pid) {
 		CartItem cartitem =cartDao.cartListOne(uid, pid);
 		return cartitem;
 	}
+	public int getTotalRows(String uid) {
+	     int rows = cartDao.count(uid);
+	     return rows;
+	   }
 	public void plusAmount(String uid, int pid) {
 		cartDao.increaseAmount(uid, pid);
 	}

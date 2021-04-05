@@ -3,30 +3,20 @@ package com.mycompany.webapp.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Review;
 
 
 @Mapper
 public interface ReviewDao {
-	public static List<Review> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public static int insert(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+	public int insertReview(Review review);
 	public Review selectByREVIEW_ID(int REVIEW_ID);
-	public static int update(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public static int deleteByREVIEW_ID(int REVIEW_ID) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 	public int count();
+	public List<String> selectOrderIdForReview(@Param("user_id")String user_id,@Param("p_id") int p_id);
+	public int getCount(int p_id);
 }
 
 

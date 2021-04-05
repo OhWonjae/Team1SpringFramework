@@ -57,6 +57,8 @@ public interface ProductDao {
    int searchcategorycount(@Param("searchword")String searchword, @Param("category")String category);
 
    Product selectProductDetail(int pid);
+
+int updateRate(@Param("p_id")int p_id,@Param("p_rate")int p_rate);
    
 
 }

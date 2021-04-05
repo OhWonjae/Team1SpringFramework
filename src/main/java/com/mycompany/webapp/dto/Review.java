@@ -15,10 +15,18 @@ public class Review {
 	private String order_id;
 	private String user_id;
 
+	private String user_name;
 	private String photo_oname; 
 	private String photo_sname;
 	private String photo_type;
 	
+	
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 	public int getReview_id() {
 		return review_id;
 	}

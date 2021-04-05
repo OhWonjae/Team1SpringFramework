@@ -1,42 +1,29 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.webapp.dao.REVIEWDao">
+<mapper namespace="com.mycompany.webapp.dao.ReviewDao">
 
-   <select id="selectAll" resultType="review">
-   	select REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHTOTO, REVIEW_DATE, P_ID, ORDER_ID, USER_ID
-   	from REVIEW
-   	order by REVIEW desc
-   </select>
+ 
    
-   <insert id="insert" parameterType="review">
-    insert into QNA
-    (REVIEW_ID, REVIEW_SCORE, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_PHOTO,REVIEW_DATE)
+   <insert id="insertReview" parameterType="review">
+   <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
+      select seq_review_rno.nextval from dual
+   
+   </selectKey>
+    insert into review
+    (review_id, review_score, review_title, review_content,review_date,p_id,user_id,photo_oname,photo_sname,photo_type,order_id)
     values
-    (#{REVIEW_ID},#{REVIEW_SCORE},#{REVIEW_TITLE},#{REVIEW_CONTENT},#{REVIEW_PHOTO},#{REVIEW_DATE})
+    (#{review_id},#{review_score},#{review_title},#{review_content},#{review_date},#{p_id},#{user_id},#{photo_oname},#{photo_sname},#{photo_type},#{order_id})
    </insert>
-   
-
-   
-   <select id="selectUser" resultType="review">
-   select u.user_id, u.user_name, u.dog_size
-   from user
-   where user_id=#{user_id}
-   </select>
-     
-   <update id="update" parameterType="review">
-   	update REVIEW set
-   		REVIEW_SCORE=#{REVIEW_SCORE},
-   		REVIEW_TITLE=#{REVIEW_TITLE},
-   		REVIEW_CONTENT=#{REVIEW_CONTENT},
-   		REVIEW_PHTOTO=#{REVIEW_PHTOTO},
-   		REVIEW_DATE=#{REVIEW_DATE},
-   	where REVIEW_ID=#{REVIEW_ID}
-   </update>
-   
-   <delete id="deleteByREVIEW_ID" parameterType="int">
-	   	delete from REVIEW
-	   	where REVIEW_ID=#{REVIEW_ID}
-	   	user_id=#{user_id}
-   </delete>
-   
+	
+	<select id="selectOrderIdForReview" resultType="string">
+	select o.order_id
+	from orders o JOIN order_products op on o.order_id= op.order_id 
+	where o.user_id=#{user_id} and op.p_id = #{p_id} 
+	</select>
+	
+	<select id="getCount" parameterType="int" resultType="int">
+	select count(*)
+	from review 
+	where p_id=#{p_id}
+	</select>
 </mapper>

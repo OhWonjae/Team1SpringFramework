@@ -24,7 +24,9 @@
                  <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
               </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user_id}</div>
+
+                     <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
+
                 </div>
          </div>
         <br/>
@@ -66,19 +68,27 @@
 							                  <c:forEach var="cart" items="${list}">
 	                                
 	                                    <div class="row cart-content1-box">
-	                                        <div class="cart-info-box col-sm-5">
+	                                        <div class="cart-info-box col-sm-4">
 	                                            <div class="cart-info">
 	                                            <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photo_sname}&photoType=${cart.photo_type}" alt="cart1" style="margin:5px 0"/>
 	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">${cart.p_name}</a>
 	                                            </div>
 	                                        </div>        
-	                                        <div class="col-sm-3" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
+	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
 	                                            <div class="count-button">
 	                                                <div class="btn-group" role="group" aria-label="Basic example">
 	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?pid=${cart.p_id}" class="btn btn-light btn-sm">-</a>
 	                                                    <span id="numberUpDown" class="count-text">${cart.amount}</span>
 	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?pid=${cart.p_id}" class="btn btn-light btn-sm">+</a>
 	                                                  </div>
+	                                            </div>
+	                                        </div>
+	                         
+	                        								 <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef;">
+	                                            <div class="cart-price">
+	                                                <div style="font-weight: bold;">
+	                                                    ${(cart.p_size)}
+	                                                </div>
 	                                            </div>
 	                                        </div>
 	                         
@@ -98,8 +108,39 @@
 	                                    </div>
 	                               <c:set var="sum" value="${sum + (cart.p_price * cart.amount)}" />      
 	                              </c:forEach> 
-                               
-                                   
+                                
+                                                           
+                                    <c:if test="${!empty list}">                         
+	                                  <div class="d-flex text-center">
+																			<div class="flex-grow-1">
+																		
+																				<a class="btn btn-outline-primary btn-sm"
+																					href="cart?pageNo=1">처음</a>
+																					
+																				<c:if test="${pager.groupNo>1}">
+																					<a class="btn btn-outline-info btn-sm"
+																					href="cart?pageNo=${pager.startPageNo-1}">이전</a>
+																				</c:if>	
+																				
+																				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+																					<a class="btn 
+																					<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+																					<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+																					
+																					btn-sm" href="cart?pageNo=${i}">${i}</a>
+																				</c:forEach>
+																				
+																				<c:if test="${pager.groupNo<pager.totalGroupNo}">
+																					<a class="btn btn-outline-info btn-sm"
+																					href="cart?pageNo=${pager.endPageNo+1}">다음</a>
+																				</c:if>		
+																					
+																				<a class="btn btn-outline-primary btn-sm"
+																					href="cart?pageNo=${pager.totalPageNo}">맨끝</a>
+																			</div>
+																		</div> 
+                                 	</c:if>
+
                                 </div>
                                 
                               <c:if test="${!empty list}">
@@ -138,19 +179,17 @@
                                         </div>
                                     </div>
                                  </div>
-                                 </c:if>
+                           
+                                 
+								               </c:if>
                             </div>         
                     </div>
-                    
-                    
-                    					
 
-      
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                 </div>
+                 </div>
+            </div>   
+         </div>
+         
         
     
  <%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -183,8 +183,17 @@
 				 		<figcaption>${status.count}위</figcaption>
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
       					<figcaption>${product.p_name}</figcaption>
-      					<figcaption><i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> <i class="fas fa-star" style="color: #ff3357;"></i> (0)</figcaption>
-    					<figcaption>${product.p_price}</figcaption>
+      					<figcaption>
+      					  <!--별점-->
+                          <c:forEach var="i" begin="1" end="${product.p_rate}">
+                          <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+                          </c:forEach>
+                          <c:forEach var="i" begin="${product.p_rate+1}" end="5">
+                          <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+                          </c:forEach>
+      					  (${product.p_rate})
+      					</figcaption>
+      					<figcaption>${product.p_price}</figcaption>
     				</figure>
                 </div>
 				</c:forEach>

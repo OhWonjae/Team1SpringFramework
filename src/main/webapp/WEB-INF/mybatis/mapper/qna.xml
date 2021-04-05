@@ -57,5 +57,11 @@
          where qa_id=#{qa_id} and
          user_id=#{user_id}
    </delete>
-
+	<select id="selectByUserid" parameterType="string" resultType="user"> 
+      select user_id, user_name, user_password, user_phone, dog_size, 
+      enabled, authority 
+      from users 
+      where user_id=#{user_id}
+   </select>
+   
 </mapper>

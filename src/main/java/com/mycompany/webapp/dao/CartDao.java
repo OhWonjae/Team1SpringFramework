@@ -11,6 +11,8 @@ import com.mycompany.webapp.dto.Pager;
 @Mapper
 public interface CartDao {
 	public List<CartItem> cartList(String uid);
+	public List<CartItem> cartListByPage(@Param("uid")String uid, @Param("pager")Pager pager);
+	public int count(String uid);
 	public int insertCart(CartItem cart);
 	public int deleteCart(@Param("uid") String uid, @Param("pid") int pid);
 	public int deleteCartAll(String uid);

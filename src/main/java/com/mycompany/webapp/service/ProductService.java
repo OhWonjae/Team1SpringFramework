@@ -30,14 +30,18 @@ public class ProductService {
 	@Autowired
 	PhotosDao photosDao;
 
-
+	@Autowired
+	ReviewDao reviewDao;
 	//Create
 	// 상품 생성
 	public void createProduct(Product product) {
 		productDao.insert(product);
 	}
 
-
+	//리뷰 저장하기
+	public void createReview(Review review) {
+		reviewDao.insertReview(review);
+	}
 
 
 	//Read	
@@ -49,7 +53,9 @@ public class ProductService {
 	//신규 상품 리스트 가져오기
 	public List<Product> getProductsByPager(Pager pager){
 		List<Product> products = productDao.selectAllByPager(pager);
-		
+		System.out.println("rate!!! : "+products.get(2).getP_id()+"  " +products.get(2).getP_rate());
+
+		System.out.println("rate!!! : "+products.get(1).getP_id()+"  " +products.get(1).getP_rate());
 		return products;
 	}
 	//신규 상품 리스트 개수 가져오기
@@ -190,36 +196,37 @@ public class ProductService {
 	public void createSize(SizeProduct s) {
 		sizeProductDao.insertSize(s);
 	}
-	
 
-	public List<Review> getREVIEWList(){
-		List<Review> list = ReviewDao.selectAll();
-		return list;
-	}
-
-	public void saveREVIEW(Review review) {
-
-		ReviewDao.insert(review);
-
-
-	}
 
 	public Review getQna(int bno) {
 		Review qna = qnaDao.selectByREVIEW_ID(bno);
 		return qna;
 	}
 
-	public void updateREVIEW(Review review) {
-		ReviewDao.update(review);
-	}
-
-	public void deleteREVIEW(int bno) {
-		ReviewDao.deleteByREVIEW_ID(bno);
-	}
 
 	public int getTotalRows() {
 		int rows = qnaDao.count();
 		return rows;
+	}
+
+	public List<String> GetOrderIdForReview(String user_id, int p_id) {
+		// TODO Auto-generated method stub
+		List<String> orderid = reviewDao.selectOrderIdForReview(user_id, p_id);
+		
+		return orderid;
+	}
+
+	public void ChangeRate(int p_id,int review_score) {
+		// TODO Auto-generated method stub
+		int reviewcount =reviewDao.getCount(p_id);
+		int p_rate = productDao.selectBypid(p_id).getP_rate();
+		
+		p_rate+=review_score;
+		p_rate /= (reviewcount);
+		
+		// rate update
+		productDao.updateRate(p_id,p_rate);
+		
 	}
 
 }
