@@ -6,14 +6,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
-
-
-
-
-
     <title>Document></title>
-
-
 <div class="header2"> 
     <div class="inner">
         <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 고객센터</div> 
@@ -22,10 +15,12 @@
  <div class="inner">
     <div class="info" style="height: 120px;">
         <picture style="float: left;">
-            <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+            <img src="${pageContext.request.contextPath}/resources/img/profile-empty.svg" 
+            style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
         </picture>
             <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
+                <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>
+                <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
             </div>
     </div>
     <br/>
@@ -58,17 +53,9 @@
                                		
 			
                                     <div class="faq-content">
-                                        <button class="question" id="que-1">
+                                        <button class="question" id="que-${qna.qa_id}">
                                             <div>
-                                            	<c:if test="${qna.qa_category eq '상품 문의'}">
-                                                	<span>상품 문의</span>
-                                                </c:if>
-                                                <c:if test="${qna.qa_category eq '배송 문의'}">
-                                                	<span>배송 문의</span>
-                                                </c:if>
-                                                <c:if test="${qna.qa_category eq '주문/결제 문의'}">
-                                                	<span>주문/결제 문의</span>
-                                                </c:if>
+                                                	<span>${qna.qa_category}</span>
                                                 <span class="wait">답변 대기</span>
                                             </div>
                                             <div>
@@ -77,21 +64,22 @@
                                                 <span id="que-1-toggle">∨</span>
                                             </div>
                                         </button>
-                                        <div class="answer" id="ans-1">${qna.qa_content}
+                                        <div class="answer" id="ans-${qna.qa_id}">${qna.qa_content}
+                                        
                                             <div class="btn-2">
-                                                <a type="button" href="<%=application.getContextPath()%>/boards/editaskWrite" class="btn btn-outline-secondary btn-sm">수정</a>
+                                                <a type="button" href="<%=application.getContextPath()%>/boards/askUpdate?qa_id=${qna.qa_id}" class="btn btn-outline-secondary btn-sm">수정</a>
                                                 <a type="button" href="<%=application.getContextPath()%>/boards/delete?qa_id=${qna.qa_id}" class="btn btn-outline-secondary btn-sm">삭제</a>
                                             </div>
                                         </div>
                                     </div>
-                                    </c:forEach>
+                             	</c:forEach>
    									
                                     
                                             <script>
                                                 const items = document.querySelectorAll('.question');
                                                     function openCloseAnswer() {
                                                         const answerId = this.id.replace('que', 'ans');
-    
+    													
                                                         if(document.getElementById(answerId).style.display === 'block') {
                                                         document.getElementById(answerId).style.display = 'none';
                                                         document.getElementById(this.id + '-toggle').textContent = '∨';
@@ -102,7 +90,6 @@
                                                     }
                                                 items.forEach(item => item.addEventListener('click', openCloseAnswer));
                                             </script>
-                                            
                                 </div>
                             </div>
                         </div>

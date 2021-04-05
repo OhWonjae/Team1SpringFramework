@@ -1,7 +1,6 @@
 package com.mycompany.webapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.UsersDao;
@@ -16,19 +15,23 @@ public class UsersService {
 		usersDao.insert(user);
 	}
 	
-	/*public String login(User user) {
-		User dbUser = usersDao.selectByUserid(user.getUser_id());
-		if (dbUser == null) {
-			return "wrongUser_id";
+	/*public String idCheck(String user_id) {
+		int dbUser = usersDao.idCheck(user_id);
+		if (dbUser == 1) {
+			return "success";
 		} else {
-			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-			boolean result = bpe.matches(user.getUser_password(), dbUser.getUser_password());
-			if (result == false) {
-				return "wrongUser_password";
-			}
+			return "false"; 
 		}
-		return "success";
 	}*/
+	
+	public int idCheck(User user) throws Exception {
+		int result = usersDao.idCheck(user);
+		return result;
+	}
+
+				
+
+	
 
 	// 읽어오기, 비밀번호 찾기(searchId)
 	public User getUser(String user_id) {

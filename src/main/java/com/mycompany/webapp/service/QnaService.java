@@ -8,17 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.QnaDao;
+import com.mycompany.webapp.dao.UsersDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
+import com.mycompany.webapp.dto.User;
+
 
 @Service
 public class QnaService {
    @Autowired
    private QnaDao qnaDao;
    private static final Logger logger = LoggerFactory.getLogger(QnaService.class);
+   @Autowired
+   private UsersDao usersDao;
 
-   public Qna getQna(int bno) {
-      Qna qna = qnaDao.selectByQa_id(bno);
+   public Qna getQna(int qno) {
+      Qna qna = qnaDao.selectByQa_id(qno);
       return qna;
    }
 
@@ -30,7 +35,7 @@ public class QnaService {
 	   logger.info("userid"+  user_id + "qaid"+  qa_id);
 	   qnaDao.deleteByQa_id(qa_id, user_id);
    }
-   public void insert(Qna qna) {
+   public void insertQna(Qna qna) {
 	   logger.info(qna.getQa_content());
 	   qnaDao.insert(qna);
    }
@@ -42,10 +47,17 @@ public class QnaService {
 	      List<Qna> list = qnaDao.selectByPage(pager);	      
 	      return list;
    }
+   public List<Qna> getBoardList(String user_id) {
+	   List<Qna> list = qnaDao.selectAllByUserId(user_id);
+	   return list;
+   }
 
 	public int getTotalRows() {
 		return 0;
 	}
-
+	public User getUser(String user_id) {
+		      User user = usersDao.selectByUserid(user_id);
+		      return user;
+		   }
 	
 }

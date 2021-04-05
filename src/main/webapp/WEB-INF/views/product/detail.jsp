@@ -6,7 +6,7 @@
 
 <%-- taglib 지시자 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 	<head>
@@ -224,38 +224,14 @@
                     			
                     		});
                         }
-                        <!--바로구매-->
-                        const Buy=(pid)=>{
-                        	event.preventDefault();
-                    		const pamount = $("#selectAmount").text();
-                    		const psize =$("#selectSize").text();
-                    		if(psize==="선택"){
-                    			alert("사이즈를 선택해 주세요");
-                    			return;
-                    		}
-                    		$.ajax({
-                    			url:"test",
-                    			data: {pid, pamount, psize},
-                    			method: "get"
-                    		}).then(data=>{
-                    			if(data.result=="success"){
-                    				console.log("바로구매 완료")
-                    			}
-                    			
-                    		});
-                        }
                         </script>
                         
                         
                         <!--장바구니 담기, 바로구매 버튼 컨테이너-->
                         <div class="row " style="margin: 70px 5px;">
                             <!--장바구니 담기 버튼-->
-                            <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="PutCart(${product.p_id})"  class="btn disabled btn-outline-danger text-center btn-lg btn-block">장바구니 담기</button>
-                            </div>
-                            <!--바로구매 버튼-->
-                            <div class="col-6" style="padding:0 3%;">
-                                <button type="button" onclick="Buy(${product.p_id})" class="btn btn-danger text-center btn-lg btn-block">바로구매</button>
+                            <div class="col-12" style="padding:0 3%;">
+                                <button type="button" onclick="PutCart(${product.p_id})"  class="btn btn-danger text-center btn-lg btn-block">구매하기</button>
                             </div>
                         </div>
                     </div>
@@ -310,13 +286,62 @@
                 <button type="button" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
             </div>
 
+			<script>
+			
+			function OnClickStar(num){
+				
+				var number = parseInt(num);
+				for(var i=1; i<=number; i++){
+					$("#star"+i).attr("src","${pageContext.request.contextPath}/resources/img/Star.PNG");
+					console.log($("#star"+i).attr("src"));
+				}
+				for(var i=number+1; i<=5; i++){
+					$("#star"+i).attr("src","${pageContext.request.contextPath}/resources/img/EmptyStar.PNG");
+					console.log($("#star"+i).attr("src"));		
+				}
+				
+				$("#score").attr('value',num);
+				
+			}
+			
+			
+			// confirmOrdered컨트롤러에서 해당 유저가 구매한 상품인지 확인 후 fial이라면 모달창 안나오게함
+        	 const confirmOrdered=(pid)=>{
+             	event.preventDefault();
+             	console.log("confirm!");
+         		
+         		$.ajax({
+         			url:"${pageContext.request.contextPath}/product/confirmOrdered",
+         			data: {pid},
+         			method: "get"
+         		}).then(data=>{
+         			if(data.result=="success"){
+        				console.log("success");
+        			}
+        			else{
+        				alert("주문한 상품만 리뷰를 작성할 수 잇습니다.");	
+        				    $(".modal-backdrop").remove();
+        				    
+        			}
+         			
+         		});
+             }
+			</script>
+
+		
             <!--상세페이지 구매후기 제목 컨테이너-->
             <div class="container " style="  font-weight: bold; font-size: large;">
                 <div class="row justify-content-between" style="margin: 2px;">
                     <!--구매후기 제목-->
                     구매후기
+                    
+                    <!--로그인 됬을때만 글쓰기 버튼 생성--> 
+                    <sec:authorize access="isAuthenticated()">          
                     <!--구매후기 글쓰기 버튼-->
-                    <button type="button" class="btn btn-outline-dark btn-sm"data-toggle="modal" data-target="#staticBackdrop">글쓰기</button>
+                    <button type="button" onclick="confirmOrdered(${product.p_id})" class="btn btn-outline-dark btn-sm"data-toggle="modal" data-target="#staticBackdrop">글쓰기</button>
+                    </sec:authorize>
+                    
+                    
                     <!-- Modal - 리뷰쓰기 -->
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">      
                         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
@@ -338,16 +363,20 @@
                                     </div>
                                     <!--별점-->
                                     <div style="display: flex; ">
-                                        <img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="40px" ><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px"><img src="{pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
+                                        <img id="star1" onclick="OnClickStar('1')" src="${pageContext.request.contextPath}/resources/img/Star.PNG"  height="40px" >
+                                        <img id="star2" onclick="OnClickStar('2');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
+                                        <img id="star3" onclick="OnClickStar('3');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
+                                        <img id="star4" onclick="OnClickStar('4');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
+                                        <img id="star5" onclick="OnClickStar('5');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
                                <!--리뷰 입력 폼-->
-                               <form action="reviewupload" method="post">
+                               <form action="reviewupload?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
                                 <!--리뷰 입력 컨테이너-->
                                 <div style="display:flex;flex-direction: column; padding:2% 20%; height: 100%;">
-                                 
-     
-                                        <div class="form-group">
+                                 		<input type="hidden" name="score" id="score" value="1"/>       
+	                                    <input type="hidden" name="pid" id="pid" value=${product.p_id}>         
+     								    <div class="form-group">
                                             <!--제목 폼-->
                                             <label for="recipient-name" class="col-form-label">제목</label>
                                             <input type="text" name="title" class="form-control" id="recipient-name" placeholder="제목을 입력해 주세요.">
@@ -358,10 +387,10 @@
                                             <textarea class="form-control" name="content" id="message-text"style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요."></textarea>
                                         </div>
                                         <!--사진 입력 버튼-->
-                                        <button type="button" name="media" class="form-control" id="recipient-pic" style="border:1px black dashed; margin:3% 0; padding: 5px; ">
-                                            <i class="fas fa-camera" style="vertical-align: middle;">사진/동영상 첨부하기</i>
-                                            
-                                        </button>                                                              
+                                        <label  class="form-control" for="battach" id="recipient-pic" style="border:1px black dashed; cursor:pointer; text-align:center; margin:3% 0; padding: 5px; ">
+                                            <i class="fas fa-camera">사진/동영상 첨부하기</i>
+                                        </label>                                     
+                                        <input type="file" class="form-control-file" id="battach" name="battach" style="display: none;"/>                         
                                		 </div>  
   								
                                 
@@ -377,7 +406,11 @@
                 
                 </div>
             </div>
+           
+           
             
+            
+           
             <!--상세페이지 구매후기 내용 컨테이너-->
             <div class="container " style="font-size: small; border-top: solid 1px black; padding:0">        
                 <!--상세페이지 구매후기 목록1-->
@@ -389,11 +422,16 @@
 	                        <img src="${pageContext.request.contextPath}/resources/img/DogFace.PNG">
 	                        <!--구매후기 제목 내용 컨테이너-->
 	                        <div class="col-9" style="padding:0 ">
-	                            <span style="margin:0 0; white-space:nowrap; font-size:medium">
+	                            <span id="startspan" style="margin:0 0; white-space:nowrap; font-size:medium">
 	                                <!--별점-->
-	                                <img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG"><img src="${pageContext.request.contextPath}/resources/img/Star.PNG">
+	                               <c:forEach var="i" begin="1" end="${review.review_score}">
+	                               <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+	                               </c:forEach>
+	                               <c:forEach var="i" begin="${review.review_score+1}" end="5">
+	                               <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+	                               </c:forEach>
 	                                <!--구매인증됨 | 작성 날짜-->
-	                                구매인증됨  |  ${review.review_date}<br/>
+	                                구매인증됨  |  <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd"/><br/>
 	                            </span>
 	                            <!--작성자 및 강아지 정보-->
 	                            강*민  · 토이 푸들 · 2살
@@ -401,7 +439,7 @@
 	                    </div>
 	                    <!--구매후기 내용-->
 	                    <div class="row"style="margin-bottom:2%; font-size:medium">
-	                        <img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" width="10%" height="10%" style="margin-right: 1%;margin-top: 1%;">
+	                        <img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" style=" height: 100px; width: 100px; margin-right: 1%;margin-top: 1%;">
 	                        옵션 : ${product.p_category_name}<br/>${review.review_content}
 	                   </div>
 	                

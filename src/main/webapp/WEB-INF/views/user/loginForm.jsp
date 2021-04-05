@@ -26,7 +26,8 @@
 		const uid = $("#user_id").val();
 		const upassword = $("#user_password").val();
 
-		if (user_password === "") { // 비어있으면 문제있지
+
+		if (upassword === "") { // 비어있으면 문제있지
 			result = false;
 			$("#errorUserpassword").html("필수사항 입니다.");
 		}
@@ -76,14 +77,12 @@
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="form-group input-group">
 				<input id="user_id" name="user_id" class="form-control"
-					placeholder="이메일을 입력하세요." type="email"><span
-					id="errorUser_id" class="text-danger error"></span>
+					placeholder="이메일을 입력하세요." type="email">
 			</div>
 
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호을 입력하세요." type="password"><span
-					id="errorUser_password" class="text-danger error"></span>
+					placeholder="비밀번호을 입력하세요." type="password">
 			</div>
 
 

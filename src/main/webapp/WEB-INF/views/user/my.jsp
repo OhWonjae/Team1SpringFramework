@@ -81,8 +81,8 @@
 								<div class="tab1">비밀번호</div>
 								<div class="tab2">
 								
-									<strong>${user.user_password}</strong>
-									<!-- <strong>********</strong> 	 -->								
+									<%-- <strong>${user.user_password}</strong> --%>
+									<strong>********</strong>								
 									<button style="margin-left: 10px;"
 										onclick="location.href='<%=application.getContextPath()%>/user/pwChange'"
 										type="button" class="btn btn-outline-secondary btn-sm">수정</button>

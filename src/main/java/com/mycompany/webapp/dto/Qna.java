@@ -2,8 +2,6 @@ package com.mycompany.webapp.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Qna {
 	private int qa_id;
 	private String qa_content;
@@ -12,6 +10,7 @@ public class Qna {
 	private Date qa_date;
 	private String user_id;
 	private int qa_cn;
+	private String user_name;
 	public int getQa_id() {
 		return qa_id;
 	}
@@ -54,8 +53,11 @@ public class Qna {
 	public void setQa_category(String qa_category) {
 		this.qa_category = qa_category;
 	}
-	
-	
-	
+		   public String getUser_name() {
+		      return user_name;
+		   }
+		   public void setUser_name(String user_name) {
+		      this.user_name = user_name;
+		   }
 
 }
