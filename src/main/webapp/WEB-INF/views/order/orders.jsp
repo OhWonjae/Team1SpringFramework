@@ -158,13 +158,52 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                	const orderDelete=()=>{
+                		event.preventDefault();
+                		swal("주문을 삭제하시겠습니까?", {
+          				  dangerMode: true,
+          				  buttons:{
+          					  confirm2:{
+          						  text:'주문 취소',
+          						  value:true
+          					  },
+                			  confirm:{
+                				  text:'뒤로가기',
+                				  value:false
+                			  }
+          				  }
+          				}).then((result)=>{
+          					if(result){
+          						const data = {
+                        				delivery_status: $("#delivery_status").val(),
+                        				 order_id: $("#order_id").val()
+                        		}
+                        		console.log(data.order_id);
+                        		$.ajax({
+                        			url:"${pageContext.request.contextPath}/order/deleteOrder",
+                        			data:data,
+                        			method:"get"
+                        		})
+                        		location.href='${pageContext.request.contextPath}/order/history';
+          					}else{
+          						
+          					}
+          				})
+                	}
+                </script>
                 <div style="text-align: center;">
                     <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black; margin:0 10px; border:none;">주문내역으로 이동</button>
-                     <form action="deleteOrder" method="get" style="display:inline-block">
-                     <input type="hidden" name="delivery_status" value="취소 중"/>
-                     <input type="hidden" name="order_id" value="${orders.order_id}"/>
-                     <button type="submit" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;  border:none;">주문 취소</button>
-                     </form>
+                    <form action="deleteOrder" method="get" style="display:inline-block" onsubmit="orderDelete()">
+                     <input type="hidden" id="delivery_status" name="delivery_status" value="취소 중"/>
+                     <input type="hidden" id="order_id" name="order_id" value="${orders.order_id}"/>
+                    <button type="submit" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;  border:none;">주문 취소</button>
+                   </form>
+                </div>
+            </div>
+        </div>
+     </div>
+
                 </div>
             </div>
         </div>
