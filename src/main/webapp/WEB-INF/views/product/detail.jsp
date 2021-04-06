@@ -20,7 +20,7 @@
             홈 > ${product.p_category_name} > ${product.p_name}
         </div>
     </div>
-    <div class="inner">
+    <div class="inner" style="margin-bottom: 30px;">
         <!--상세페이지 컨테이너-->
         <div class="container-fluid p-0">
             <!--제품 개요-->
@@ -503,5 +503,5 @@
             </div> 
         </div>
     </div>
-    </div>
+</div>
    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
