@@ -16,6 +16,7 @@ public class UsersService {
 	}
 	
 	public int idCheck(String user_id) {
+		
 		return usersDao.idCheck(user_id);
 	}
 	

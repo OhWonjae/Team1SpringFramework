@@ -59,14 +59,14 @@ function openZipSearch() {
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text">
+                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required>
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text">
+                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text" required>
                                 </div>
                             </div> 
                             
@@ -74,23 +74,19 @@ function openZipSearch() {
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송지 주소</span> 
-<!--                                     <input class="form-control" placeholder="우편번호를 입력하세요." type="number">
- -->                                <input class="form-control" type="text" name="zip" id="zip" />
+                              		 <input class="form-control" type="text" name="zip" id="zip" required />
                                     
                                     <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">검색</button>
                                     
-<!--                                     <button type="button" style="width: 120px; margin-left: 20px;">검색</button>
- -->                                </div> <!-- form-group// -->
+                              </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" >
-<!--                                     <input class="form-control" placeholder="주소를 입력하세요." type="text">
- -->                                </div> 
+                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required>
+                              </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" >
-<!--                                     <input class="form-control" placeholder="상세주소를 입력하세요." type="text">
- -->                                </div>   
+                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required>
+                                </div>   
                             </div>
 
                             <div style=" width: 60%;">

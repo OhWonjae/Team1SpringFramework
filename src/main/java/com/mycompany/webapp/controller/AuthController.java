@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
@@ -66,12 +65,11 @@ public class AuthController {
 		}*/
 
 	// 아이디 중복 체크
-	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	@RequestMapping(value="/idCheck", produces="text/plain; charset=UTF-8")
 	@ResponseBody
 	public String idCheck(String user_id) {
 		logger.info("idCheck 진입");
 		int result = usersService.idCheck(user_id);
-		logger.info("post join");
 		if (result == 1) {
 			System.out.println("중복있음");
 			return "1";
