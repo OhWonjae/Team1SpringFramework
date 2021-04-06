@@ -320,7 +320,9 @@
             </div>
 
 			<script>
-			
+			$(document).ready(function () {
+				$("#detailimg").toggle();
+			})
 			function fold(){
 				$("#detailimg").toggle();
                  
