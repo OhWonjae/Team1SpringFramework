@@ -193,7 +193,7 @@
                           </c:forEach>
       					  (${product.p_rate})
       					</figcaption>
-      					<figcaption>${product.p_price}</figcaption>
+      					<figcaption>${product.p_price}원</figcaption>
     				</figure>
                 </div>
 				</c:forEach>

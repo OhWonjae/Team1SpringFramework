@@ -5,7 +5,7 @@
    <resultMap type="product" id="productMap">
 		<id property="p_id" column="p_id"/>
 		<result property="p_name" column="p_name"/>
-		<result property="p_rate" column="p_rate"/>		
+		<result property="p_rate" column="p_rate"/>		 
 		<result property="p_price" column="p_price"/>
 		<result property="p_stock" column="p_stock"/>
 		<result property="p_salescount" column="p_salescount"/>
@@ -157,6 +157,7 @@
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
+              order by p_rate desc
    </select>
 
    <select id="selectRankAll" resultType="product" resultMap="productMap">

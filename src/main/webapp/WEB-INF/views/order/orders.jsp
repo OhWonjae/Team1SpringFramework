@@ -22,7 +22,7 @@
      <div class="inner">
         <div class="info" style="height: 120px;">
             <picture style="float: left;">
-                <img src="/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
@@ -135,21 +135,22 @@
                                     </div>
          
                                 </div>
-                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1);; border-top:none">
+                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1); border-top:none">
                                     <table class="table">
                                     
                                         <tbody>
                                             <c:forEach var="orderProduct" items="${list}">
                                             <tr>
-                                                <td style="border-top:none; border-right:none"> 
-                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="15%" style="float: left; margin-right: 10px;">
-                                                    <div style="font-size: 13px; font-weight: 700;"> ${orderProduct.p_name} </div>
-                                                    <div style="font-size: 12px; font-weight: bold; "> ${orderProduct.p_price}원 </div> 
-                                                    <div style="font-size: 10px;">수량: ${orderProduct.amount}</div>
+                                                <td style="border-top:none; border-right:none; border-bottom:1px solid rgba(244,244,245,1"> 
+                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="20%" style="float: left; margin-right: 10px;">
+                                                    <br/>
+                                                    <div style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </div>
+                                                    <div style="font-size: 0.9em;"> ${orderProduct.p_price}원 </div> 
+                                                    <div style="font-size: 0.9em;">수량: ${orderProduct.amount}</div>
+                                        
                                                 </td>
                                             </tr>
-											</c:forEach>
-                       
+                                 </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

@@ -44,18 +44,18 @@
                               <c:if test="${empty list}">
                                <div class="cart-content">
                                 <div class="container" style="margin-bottom: 20px;">
-						                    	      <div class="div2">
-						                                <div class="nolist" style= "padding:50px;text-align: center";>
-						                                    <i class="far fa-sticky-note" style="color:gray;font-size:80px;"></i>
-						                                    <div>
-						                                    주문내역이 없습니다.
-						                                    </div>
-						                                </div>
-						                            </div>
-						                           </div>
-						                          </div>
-						                    </c:if>         
-							  <c:if test="${!empty list}">                
+                                               <div class="div2">
+                                                  <div class="nolist" style= "padding:50px;text-align: center";>
+                                                      <i class="far fa-sticky-note" style="color:gray;font-size:80px;"></i>
+                                                      <div>
+                                                      주문내역이 없습니다.
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                             </div>
+                                            </div>
+                                      </c:if>         
+                       <c:if test="${!empty list}">                
                             <table class="table">
                                     <thead class="thead-light">
                                         <tr>
@@ -67,15 +67,20 @@
                                     </thead>
     
                                     <tbody>
-                                    	 <c:forEach var="orders" items="${list}">
+                                        <c:forEach var="orders" items="${list}">
                                         <tr>
                                             <th scope="row" style="color:rgb(138, 138, 146);">${orders.order_id}</th>
                                             <td style="color:rgb(138, 138, 146);"><fmt:formatDate value="${orders.order_date}" pattern="yyyy.MM.dd"/></td>
                                             <td> <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orders.photo_sname}&photoType=${orders.photo_type}"  width="20%" style="float: left; margin-right: 10px;">
+                                                <c:if test="${orders.total_amount==1}">
+                                                    <strong style="font-size: 1.2em;">${orders.p_name}</strong> 
+                                                </c:if>
+                                                 <c:if test="${orders.total_amount>1}">
                                                 <strong style="font-size: 1.2em;">${orders.p_name} 외 ${orders.total_amount-1}개</strong> 
+                                                </c:if>
                                             </td>
                                             <td style="border-right: white; text-align: center;">
-                                            	 <div>${orders.delivery_status}</div>
+                                                <div>${orders.delivery_status}</div>
                                                 <div style="margin-top: 5px; font-size: 14px;">
                                                     <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
                                                 </div>
@@ -84,7 +89,7 @@
                                         </c:forEach>
                                     </tbody>
                             </table>
-                        	  </c:if> 
+                             </c:if> 
                         </div>
                     
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">   
