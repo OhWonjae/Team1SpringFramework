@@ -3,9 +3,9 @@
 <mapper namespace="com.mycompany.webapp.dao.QnaDao">
 
    <select id="selectAllByUserId" parameterType="string" resultType="qna">
-   		select qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
-   		from QNA
-   		where user_id = #{user_id}
+         select qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
+         from QNA
+         where user_id = #{user_id}
    </select>
 
    <select id="selectByQa_id" resultType="qna">
@@ -42,7 +42,7 @@
    
    <update id="update" parameterType="qna">
       update qna set
-      	 qa_id=#{qa_id},
+          qa_id=#{qa_id},
          qa_category=#{qa_category},
          qa_content=#{qa_content},
          qa_status=#{qa_status},
@@ -57,7 +57,7 @@
          where qa_id=#{qa_id} and
          user_id=#{user_id}
    </delete>
-	<select id="selectByUserid" parameterType="string" resultType="user"> 
+   <select id="selectByUserid" parameterType="string" resultType="user"> 
       select user_id, user_name, user_password, user_phone, dog_size, 
       enabled, authority 
       from users 
