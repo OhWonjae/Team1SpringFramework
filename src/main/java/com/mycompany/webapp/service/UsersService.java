@@ -15,23 +15,14 @@ public class UsersService {
 		usersDao.insert(user);
 	}
 	
-	/*public String idCheck(String user_id) {
-		int dbUser = usersDao.idCheck(user_id);
-		if (dbUser == 1) {
-			return "success";
-		} else {
-			return "false"; 
-		}
-	}*/
-	
-	public int idCheck(User user) throws Exception {
-		int result = usersDao.idCheck(user);
-		return result;
+	public int idCheck(String user_id) {
+		return usersDao.idCheck(user_id);
 	}
-
-				
-
 	
+	/*public int idCheck(String user_id) throws Exception {
+		int result = usersDao.idCheck(user_id);
+		return result;
+	}*/
 
 	// 읽어오기, 비밀번호 찾기(searchId)
 	public User getUser(String user_id) {

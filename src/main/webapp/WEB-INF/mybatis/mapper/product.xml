@@ -5,6 +5,7 @@
    <resultMap type="product" id="productMap">
 		<id property="p_id" column="p_id"/>
 		<result property="p_name" column="p_name"/>
+		<result property="p_rate" column="p_rate"/>		
 		<result property="p_price" column="p_price"/>
 		<result property="p_stock" column="p_stock"/>
 		<result property="p_salescount" column="p_salescount"/>
@@ -29,6 +30,7 @@
 	<resultMap type="product" id="productDetailMap">
 		<id property="p_id" column="p_id"/>
 		<result property="p_name" column="p_name"/>
+		<result property="p_rate" column="p_rate"/>
 		<result property="p_price" column="p_price"/>
 		<result property="p_stock" column="p_stock"/>
 		<result property="p_salescount" column="p_salescount"/>
@@ -74,9 +76,10 @@
       where p_id=#{p_id}
     </select>
 	<select id="getReviewList" parameterType="int" resultType="review">
-      select *
-      from review
-      where p_id=#{p_id}
+      select r.review_score, r.review_title, r.review_content, r.review_date, r.p_id,
+       r.user_id, r.photo_oname, r.photo_sname, r.photo_type, r.order_id, u.user_name
+      from review r, users u
+      where r.p_id=#{p_id} and u.user_id = r.user_id 
     </select>
    <select id="getSizeList" parameterType="int" resultType="size">
       select *
@@ -102,18 +105,18 @@
  
 <!-- 상품 뿌려주기 select-->
    <select id="selectBypid" parameterType="int" resultType="product">
-      select p_id, p_name, p_price, p_stock, category_name, p_description
+      select p_id, p_name,p_rate,p_price, p_stock, p_category_name, p_description
       from products
       where p_id=#{pid}
    </select>
      
    <select id="selectAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
-    select rnum, p_id,p_name,p_price, photo_sname, photo_type
+    select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum,p_id, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum,p_id, p_name,p_rate,p_price, photo_sname, photo_type
           from (
-               select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+               select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
@@ -130,11 +133,11 @@
    
     <select id="selectRecommandAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
    
-     select rnum, p_id,p_name,p_price, photo_sname, photo_type
+     select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum,p_id, p_name,p_price, photo_sname, photo_type
+          select rownum as rnum,p_id, p_name,p_rate,p_price, photo_sname, photo_type
           from (
-               select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+               select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
@@ -150,15 +153,15 @@
 
 
    <select id="selectBestReviewAll" resultType="product" resultMap="productMap">
-      select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+      select p.p_id,p.p_name,p_rate,p.p_price, ph.photo_sname,ph.photo_type 
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
    </select>
 
    <select id="selectRankAll" resultType="product" resultMap="productMap">
-   select p_id,p_name, p_price, photo_sname, photo_type
-   from( select p.p_id, p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+   select p_id,p_name,p_rate, p_price, photo_sname, photo_type
+   from( select p.p_id, p.p_name,p_rate,p.p_price, ph.photo_sname,ph.photo_type 
     from products p Join photos ph
     on p.p_id = ph.p_id and
     ph.photo_role='main'
@@ -170,9 +173,9 @@
    </select> 
    
    <select id="selectRankCategory" parameterType="string" resultType="product" resultMap="productMap">
-    select p_id,p_name, p_price, photo_sname, photo_type
-   from( select p_id,p_name, p_price, photo_sname, photo_type, p_category_name
-       from( select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
+    select p_id,p_name,p_rate, p_price, photo_sname, photo_type
+   from( select p_id,p_name,p_rate, p_price, photo_sname, photo_type, p_category_name
+       from( select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type, p.p_category_name 
         from products p Join photos ph
         on p.p_id = ph.p_id and
         ph.photo_role='main'
@@ -198,11 +201,11 @@
    
    
    <select id="selectCategory" resultType="product" resultMap="productMap">
-   select rnum, p_id,p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
           from (
-                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -223,11 +226,11 @@
       </select> 
    
    <select id="selectSearchAll" resultType="product" resultMap="productMap">
-   select rnum, p_id,p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
       from (
-          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
           from (
-                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -246,11 +249,11 @@
       </select> 
    
     <select id="selectSearchCategory" resultType="product" resultMap="productMap">
-   select rnum, p_id,p_name,p_price, photo_sname, photo_type
+   select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
     from (
-          select rownum as rnum, p_id,p_name,p_price, photo_sname, photo_type
+          select rownum as rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
           from (
-                  select p.p_id,p.p_name,p.p_price, ph.photo_sname,ph.photo_type 
+                  select p.p_id,p.p_name,p.p_rate,p.p_price, ph.photo_sname,ph.photo_type 
              from products p Join photos ph
              on p.p_id = ph.p_id and
              ph.photo_role='main'
@@ -283,7 +286,10 @@
    from products p ,photos ph, review rv, size_products sp
    where p.p_id=#{pid} and p.p_id = ph.p_id and p.p_id = rv.p_id and p.p_id = sp.p_id
       </select> -->
-  
+  	<update id="updateRate" >
+      update products set p_rate=#{p_rate}
+      where p_id=#{p_id}
+    </update>
       
       
       <update id="update" parameterType="product">

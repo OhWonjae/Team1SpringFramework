@@ -32,7 +32,9 @@ import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.Review;
 import com.mycompany.webapp.dto.SizeProduct;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.ProductService;
+import com.mycompany.webapp.service.UsersService;
 
 @Controller
 @RequestMapping("/product")
@@ -42,6 +44,9 @@ public class ProductController {
 	// ProductService 전역변수 의존성 주입
 	@Autowired
 	private ProductService productService;
+	// ProductService 전역변수 의존성 주입
+	@Autowired
+	private UsersService userService;
 	
 	@GetMapping(value = "/test", produces = "application/json;charset=UTF-8")
 	@ResponseBody // 리턴되는 값이 바디속으로 들어간다.
@@ -54,14 +59,7 @@ public class ProductController {
 	
 	@GetMapping("/testsql")
 	public String testsql(Model model) {
-		List<String> s = productService.GetOrderIdForReview("user100@naver.com", 3);
-		logger.info("s : "+ s.get(0));
-
-		List<String> s1 = productService.GetOrderIdForReview("user100@naver.com", 7);
-		if(s1.size()==0) {
-			logger.info("s1 : ");	
-	
-		}
+		productService.ChangeRate(84, 4);
 		
 	    return "/product/new";
 	}
@@ -181,6 +179,9 @@ public class ProductController {
 	      session.setAttribute("pager", pager);
 	      List<Product> list = productService.getProductsByPager(pager);
 	      logger.info(""+list.get(0).getPhotolist().get(0).getPhoto_sname());
+	      logger.info("rate"+list.get(2).getP_rate());
+	      logger.info("rate"+list.get(1).getP_rate());
+	      logger.info("rate"+list.get(0).getP_rate());
 	      logger.info("hi");
 	      model.addAttribute("listcount",totalRows);
 	      model.addAttribute("list", list);
@@ -317,10 +318,7 @@ public class ProductController {
 				subPhotoList.add(p);
 			}
 		}
-		
-		
-		
-		
+
 		model.addAttribute("mainphoto", mainPhoto);
 		model.addAttribute("detailphoto", detailPhoto);
 		model.addAttribute("subphotolist", subPhotoList);
@@ -347,8 +345,6 @@ public class ProductController {
 			   review.setReview_content(content);
 			   review.setUser_id(auth.getName());
 			   review.setP_id(pid);
-			   
-			   
 			   if(battach != null && !battach.isEmpty()) {
 				  
 				   review.setPhoto_oname(battach.getOriginalFilename());
@@ -366,16 +362,26 @@ public class ProductController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();				   
 			   }
+		   }else {
+			   review.setPhoto_oname("");
+			   review.setPhoto_type("");
+			   review.setPhoto_sname("");
+			   }
+			   
+			//해당 리뷰 DB에 저장
+			productService.createReview(review);  
+			
+			// 해당 리뷰 점수에 따라 해당 상품의 Rate 변경
+			productService.ChangeRate(review.getP_id(),review.getReview_score());
+			
+			model.addAttribute("reviewuploadresult", "success");
+		
 		   }
 		   else 
 		   {
 				model.addAttribute("reviewuploadresult", "fail");
 				return "redirect:detail?pid="+pid;	
 
-		   }
-			productService.createReview(review);   
-			model.addAttribute("reviewuploadresult", "success");
-		
 		   }
 		 return "redirect:detail?pid="+pid;		
 	}

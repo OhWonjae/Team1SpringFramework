@@ -319,13 +319,23 @@
         				console.log("success");
         			}
         			else{
-        				alert("주문한 상품만 리뷰를 작성할 수 잇습니다.");	
-        				    $(".modal-backdrop").remove();
-        				    
+        				alert("주문한 상품이 아닙니다.");
+    				
+    					  $(".modal-backdrop").remove();
+    					  location.reload(true);
+        			}
+        				function myFunction() {
+        					
+        					
+        					 
+        				
         			}
          			
          		});
              }
+        	 
+        	 
+        	 
 			</script>
 
 		
@@ -396,14 +406,13 @@
                                 
                                 <!--닫기/등록 버튼 컨테이너-->
                                 <div style="width: 100%; height: 30%; padding:2% 0%; display:flex; justify-content: space-around; align-items: center; ">
-                                    <button type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-danger" data-dismiss="modal">취소</button>
+                                    <button id="closemodal" type="button" style="padding:1% 3%; font-size: large; width: 48%; height: 100%;"class="btn btn-danger" data-dismiss="modal">취소</button>
                                     <button type="submit" style="padding:1% 3%; font-size: large; width: 48%;  height: 100%;"class="btn btn-danger">등록</button>
                                 </div>
                                 </form> 
                             </div>
                         </div>
                     </div>
-                
                 </div>
             </div>
            
@@ -425,7 +434,7 @@
 	                            <span id="startspan" style="margin:0 0; white-space:nowrap; font-size:medium">
 	                                <!--별점-->
 	                               <c:forEach var="i" begin="1" end="${review.review_score}">
-	                               <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
+	                               <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="20px">
 	                               </c:forEach>
 	                               <c:forEach var="i" begin="${review.review_score+1}" end="5">
 	                               <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
@@ -434,15 +443,16 @@
 	                                구매인증됨  |  <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd"/><br/>
 	                            </span>
 	                            <!--작성자 및 강아지 정보-->
-	                            강*민  · 토이 푸들 · 2살
+	                            ${review.user_name}
 	                        </div>
 	                    </div>
 	                    <!--구매후기 내용-->
 	                    <div class="row"style="margin-bottom:2%; font-size:medium">
-	                        <img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" style=" height: 100px; width: 100px; margin-right: 1%;margin-top: 1%;">
+	                    	<c:if test="${review.photo_sname ne null}">
+	                    	<img src="${pageContext.request.contextPath}/resource/GetReviewPhoto?photoSname=${review.photo_sname}&photoType=${review.photo_type}" style=" height: 100px; width: 100px; margin-right: 1%;margin-top: 1%;">
+	                    	</c:if>
 	                        옵션 : ${product.p_category_name}<br/>${review.review_content}
 	                   </div>
-	                
                 	</c:forEach>
                 </div>
                 

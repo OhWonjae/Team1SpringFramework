@@ -19,9 +19,11 @@
 	select o.order_id
 	from orders o JOIN order_products op on o.order_id= op.order_id 
 	where o.user_id=#{user_id} and op.p_id = #{p_id} 
-	
-	
 	</select>
 	
-	
+	<select id="getCount" parameterType="int" resultType="int">
+	select count(*)
+	from review 
+	where p_id=#{p_id}
+	</select>
 </mapper>

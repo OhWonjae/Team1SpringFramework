@@ -26,40 +26,61 @@ public class AuthController {
 	public String loginForm() {
 		return "/user/loginForm";
 	}
-
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "/user/joinForm";
 	}
-
 	@GetMapping("/searchIdForm")
 	public String searchIdForm() {
 		return "/user/searchIdForm";
 	}
-	
-
 	@PostMapping("/join")
 	public String join(User user) throws Exception {
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		user.setUser_password(bpe.encode(user.getUser_password()));
-		int result = usersService.idCheck(user);
+
 		usersService.join(user);
-		try {
-			if(result == 1) {
-				return "/user/joinForm";
-			}else if(result == 0) {
-				usersService.join(user);
-			}
-			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
-			// 존재하지 않는다면 -> join
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-		return "redirect:/";
-		/*		return "/user/loginForm";
-		*/	
+
+		return "/user/loginForm";
 	}
-	
+	/*
+		// 회원가입 post
+		@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
+		public String join(User user) throws Exception {
+			logger.info("post join");
+			
+			int result = usersService.idCheck(user);
+			System.out.println(result);
+			try {
+				if (result == 1) {
+					logger.info("join");
+		
+					return "/user/joinForm";
+				} else if (result == 0) {
+					usersService.join(user);
+				}
+			} catch (Exception e) {
+				throw new RuntimeException();
+			}
+			return "redirect:/";
+		}*/
+
+	// 아이디 중복 체크
+	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String idCheck(String user_id) {
+		logger.info("idCheck 진입");
+		int result = usersService.idCheck(user_id);
+		logger.info("post join");
+		if (result == 1) {
+			System.out.println("중복있음");
+			return "1";
+		} else {
+			System.out.println("중복없음");
+			return "0";
+		}
+	}
+
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "/user/searchPw";
@@ -74,6 +95,7 @@ public class AuthController {
 		System.out.println(user.getUser_password());
 		return "/user/pwChange";
 	}
+
 	@PostMapping("/searchIdForm")
 	public String searchIdForm(String user_name, String user_phone, Model model) throws Exception {
 		User user = usersService.getUserid(user_name, user_phone);
@@ -81,6 +103,7 @@ public class AuthController {
 		System.out.println(user.getUser_id());
 		return "/user/searchId";
 	}
+
 	@GetMapping("/searchId")
 	public String searchId(String user_name, String user_phone, Model model) throws Exception {
 		User user = usersService.getUserid(user_name, user_phone);
@@ -88,9 +111,9 @@ public class AuthController {
 		System.out.println(user.getUser_id());
 		return "/user/searchId";
 	}
-	
+
 	@PostMapping("/searchId")
-	public String searchId() throws Exception {		
+	public String searchId() throws Exception {
 		return "/user/loginForm";
 	}
 
@@ -108,6 +131,7 @@ public class AuthController {
 		model.addAttribute("user", user);
 		return "/user/pwChange";
 	}
+
 	@PostMapping("user/updateUser")
 	public String updateUser(String user_password, Authentication auth) {
 		User user = usersService.getUser(auth.getName());
@@ -130,18 +154,6 @@ public class AuthController {
 		return "redirect:/user/my";
 	}
 
-	
-	
-	// 아이디 중복 체크
-	@ResponseBody
-	@RequestMapping(value="/idCheck", method = RequestMethod.POST)
-	public int idCheck(User user) throws Exception {
-		int result = usersService.idCheck(user);
-		return result;
-	}
-
-	
-	
 	@GetMapping("user/error403")
 	public String error403() {
 		return "/user/error403";

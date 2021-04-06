@@ -27,7 +27,7 @@
 		const upassword2 = $("#user_password2").val();
 		const uphone = $("#user_phone").val();
 
-		if (uid === "") { // 비어있으면 문제
+		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
 		} else if (uid.length < 8) {
@@ -37,11 +37,7 @@
 			result = false;
 			$("#errorUserid").html("최대 50자 까지만 입력해야 합니다.");
 		}
-		if (uid === "success") { // 비어있으면 문제
-			result = false;
-			alert("개굳.");
-		}
-		
+
 		if (upassword !== upassword2) {
 			if (upassword !== "" && upassword2 !== "")
 				result = false;
@@ -49,7 +45,6 @@
 			$('#user_password2').val('');
 			$('#user_password2').focus();
 		}
-
 		if (uname === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUsername").html("필수사항 입니다.");
@@ -69,7 +64,8 @@
 			result = false;
 			$("#errorUserphone").html("필수사항 입니다.");
 		}
-
+	
+		
 		if (result) {
 			$("#joinForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
@@ -83,6 +79,12 @@
 			$('#user_id').val('');
 			$('#user_id').focus();
 		}
+		var idChkVal = $("#idCheck").val();
+		if(idChkVal == "N"){
+			alert("중복체크 버튼을 눌러주세요.");
+		}else if(idChkVal == "Y"){
+			$("#joinForm").submit();
+		}
 
 		else
 			(!re_hp.test(uphone))
@@ -93,18 +95,19 @@
 			$('#user_phone').focus();
 		}
 
-	}
-	function fn_idChk(){
-		logger.info("asd");
+	} 
+	function fn_idCheck() {
 		$.ajax({
-			url : "/idCheck",
-			type : "post",
+			url : "user/idCheck",
+			type : "POST",
 			dataType : "json",
-			data : {"user_id" : $("#user_id").val()},
-			success : function(data){
-				if(data == 1){
+			data : {
+				"user_id" : $("#user_id").val()
+			},
+			success : function(data) {
+				if (data == 1) {
 					alert("중복된 아이디입니다.");
-				}else if(data == 0){
+				} else if (data == 0) {
 					$("#idCheck").attr("value", "Y");
 					alert("사용가능한 아이디입니다.");
 				}
@@ -112,7 +115,6 @@
 		})
 	}
 
-	// 비밀번호 확인
 </script>
 
 
@@ -128,7 +130,7 @@
 	</h4>
 
 	<form id="joinForm" name="joinForm" method="post" action="join"
-		onsubmit="validate()" novalidate="novalidate">
+		onsubmit="validate()">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 		<div>
@@ -145,8 +147,9 @@
 				<input id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"><span
 					id="errorUserid" class="text-danger error"></span>
-				<button type="button" class="idCheck"
-					style="width: 120px; margin-left: 20px;" onclick="fn_idChk();" value="N">중복체크</button>
+				<button class="btn btn-light" type="button"
+					style="width: 120px; margin-left: 20px;" id="idCheck"
+					onclick="fn_idCheck();" value="N">중복체크</button>
 			</div>
 		</div>
 		<%-- <c:if test="${joinError != null }">
@@ -203,6 +206,7 @@
 				개인정보 수집 및 이용</span> 내용을 확인 하였으며, 동의합니다.
 		</div>
 	</form>
+
 
 	<!-- <form method="post" action="join">
 		<div class="form-group">

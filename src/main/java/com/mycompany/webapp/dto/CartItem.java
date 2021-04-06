@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto;
 
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class CartItem {   
    private int amount;
@@ -13,7 +15,15 @@ public class CartItem {
    private String photo_sname;
    private String photo_type;
    private String photo_role;
+   private Timestamp cart_date;
    
+
+public Timestamp getCart_date() {
+	return cart_date;
+}
+public void setCart_date(Timestamp cart_date) {
+	this.cart_date = cart_date;
+}
 public int getAmount() {
 	return amount;
 }
