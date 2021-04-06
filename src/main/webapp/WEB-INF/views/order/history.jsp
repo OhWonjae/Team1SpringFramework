@@ -19,7 +19,7 @@
                  <img src="<%=application.getContextPath()%>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
               </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                     <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
+                     <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
                 </div>
          </div>
         <br/>
@@ -79,12 +79,19 @@
                                                 <strong style="font-size: 1.2em;">${orders.p_name} 외 ${orders.total_amount-1}개</strong> 
                                                 </c:if>
                                             </td>
-                                            <td style="border-right: white; text-align: center;">
-                                                <div>${orders.delivery_status}</div>
-                                                <div style="margin-top: 5px; font-size: 14px;">
-                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
-                                                </div>
-                                            </td>
+                                            <c:if test="${orders.delivery_status eq '배송준비중' }">
+	                                            <td style="border-right: white; text-align: center;">
+	                                                <div>${orders.delivery_status}</div>
+	                                                <div style="margin-top: 5px; font-size: 14px;">
+	                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
+	                                                </div>
+	                                            </td>
+                                            </c:if>
+                                             <c:if test="${orders.delivery_status eq '취소 중' }">
+	                                            <td style="border-right: white; text-align: center;">
+	                                                <div>${orders.delivery_status}</div>
+	                                            </td>
+                                            </c:if>
                                         </tr>
                                         </c:forEach>
                                     </tbody>

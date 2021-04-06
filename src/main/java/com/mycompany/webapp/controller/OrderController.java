@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.OrderProduct;
 import com.mycompany.webapp.dto.Orders;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.CartsService;
 import com.mycompany.webapp.service.OrdersService;
+import com.mycompany.webapp.service.UsersService;
 
 
 
@@ -31,6 +33,8 @@ public class OrderController {
    
    @Autowired
    CartsService cartService;
+   @Autowired
+   UsersService usersService;
    
 
    // pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
@@ -107,14 +111,17 @@ public class OrderController {
 
    @GetMapping("/history")
    public String history(Model model, Authentication auth) {
+	  User user = usersService.getUser(auth.getName());
       List<Orders> list = ordersService.getOrdersList(auth.getName());
       model.addAttribute("list",list);
+      model.addAttribute("user",user);
       return "/order/history";
    }
 
    @GetMapping("/orders")
-   public String orders(String order_id,Model model) {
-      
+   public String orders(String order_id,Model model,Authentication auth) {
+	  User user = usersService.getUser(auth.getName());
+	  model.addAttribute("user",user);
       Orders orders=ordersService.ReadOrders(order_id);
       model.addAttribute("orders", orders);
       List<OrderProduct> list =ordersService.getProductList(order_id);
@@ -128,9 +135,14 @@ public class OrderController {
    @GetMapping("/pay")
    public String cartPay(Model model, Authentication auth) {
       List<CartItem> list = ordersService.getOrderList(auth.getName());
-
       model.addAttribute("list", list);
       return "/order/pay";
    }
+   
+   @GetMapping("/deleteOrder")
+   public String deleteOrder(Orders orders) {
+	  ordersService.deleteOrder(orders);
+	   return "redirect:history";
+  }
 
 }

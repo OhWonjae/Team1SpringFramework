@@ -35,11 +35,13 @@
             #{total_amount}
    )
    </insert>
-   <delete id="ordersDelete" parameterType="int">
-      delete
-      From orders
-      where order_id=#{order_id}
-   </delete>
+   
+ 	<update id="updateStatus" >
+		update orders 
+		set delivery_status=#{delivery_status}
+		where order_id=#{order_id}
+	</update>
+	
    <select id="orderSelectByAll" parameterType="int" resultType="orders">
       select *
       from orders
