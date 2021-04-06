@@ -13,7 +13,7 @@
 		<result property="p_upload_date" column="p_upload_date"/>
 		<result property="p_description" column="p_description"/>	
 		
-		
+		 
 		 <collection property="photolist" ofType="photo">
 		 	<result property="photo_id" column="photo_id"/>
 			<result property="p_id" column="p_id"/>

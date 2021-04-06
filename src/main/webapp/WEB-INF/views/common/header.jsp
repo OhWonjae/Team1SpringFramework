@@ -62,7 +62,7 @@
 					</form>
 				</sec:authorize>-->
 		<!--  새로 추가한 행 끝 -->
-                    <div class="mypage">
+                    <div class="mypage"  style="margin-right: 75px;">
                     	
 	                     <sec:authorize access="isAnonymous()">
 							<a href="<%=application.getContextPath()%>/loginForm">
