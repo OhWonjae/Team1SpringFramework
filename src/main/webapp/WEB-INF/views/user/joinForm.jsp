@@ -27,7 +27,6 @@
 		const upassword2 = $("#user_password2").val();
 		const uphone = $("#user_phone").val();
 		var idChkVal = idCheck.getAttribute('value');
-		
 		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
