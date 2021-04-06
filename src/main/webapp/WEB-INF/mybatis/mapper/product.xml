@@ -5,7 +5,7 @@
    <resultMap type="product" id="productMap">
 		<id property="p_id" column="p_id"/>
 		<result property="p_name" column="p_name"/>
-		<result property="p_rate" column="p_rate"/>		
+		<result property="p_rate" column="p_rate"/>		 
 		<result property="p_price" column="p_price"/>
 		<result property="p_stock" column="p_stock"/>
 		<result property="p_salescount" column="p_salescount"/>
@@ -13,7 +13,7 @@
 		<result property="p_upload_date" column="p_upload_date"/>
 		<result property="p_description" column="p_description"/>	
 		
-		
+		 
 		 <collection property="photolist" ofType="photo">
 		 	<result property="photo_id" column="photo_id"/>
 			<result property="p_id" column="p_id"/>
@@ -132,7 +132,7 @@
    </select>
    
     <select id="selectRecommandAllByPager" parameterType="pager" resultType="product" resultMap="productMap">
-   
+    
      select rnum, p_id,p_name,p_rate,p_price, photo_sname, photo_type
       from (
           select rownum as rnum,p_id, p_name,p_rate,p_price, photo_sname, photo_type
@@ -157,6 +157,7 @@
               from products p Join photos ph
               on p.p_id = ph.p_id and
               ph.photo_role='main'
+              order by p_rate desc
    </select>
 
    <select id="selectRankAll" resultType="product" resultMap="productMap">

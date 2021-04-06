@@ -24,16 +24,9 @@ import com.mycompany.webapp.service.UsersService;
 public class CartController {
    @Autowired
       private CartsService cartsService;
-   
    @Autowired
-   		private UsersService usersService;
+   	  private UsersService usersService;
       
-  /* @GetMapping("/cart")
-   public String cart(Model model, Authentication auth) {
-      List<CartItem> list = cartsService.getCartList(auth.getName());
-      model.addAttribute("list", list);
-      return "/order/cart";
-   }*/
    
    @GetMapping("/cart")
    public String cart(Model model, Authentication auth, String pageNo, HttpSession session) {
@@ -54,17 +47,16 @@ public class CartController {
 	   Pager pager = new Pager(3,5, totalRows, intPageNo);
 	   session.setAttribute("pager", pager);
 	   List<CartItem> list = cartsService.getCartList(auth.getName(), pager);
-		/*
-		 * if(list.size()==0 ) { 
-		 * pager.setPageNo(1); 
-		 * pager.setStartRowNo(1);
-		 * pager.setEndPageNo(3); 
-		 * list = cartsService.getCartList(auth.getName(), pager); 
-		 * System.out.println(list.size()); }
-		 */
-	   
+		
+	  if(list.size()==0  && intPageNo>1) { 
+		  totalRows = cartsService.getTotalRows(auth.getName());
+		  pager = new Pager(3,5, totalRows, intPageNo-1);
+		  list = cartsService.getCartList(auth.getName(), pager); 
+		  
+		  session.setAttribute("pager", pager);
+	  }
+	 
 	   model.addAttribute("user", user);
-	   model.addAttribute("listcount",totalRows);
 	   model.addAttribute("list", list);
 	   model.addAttribute("pager", pager);
 	   return "/order/cart";

@@ -30,9 +30,9 @@ public class OrdersService {
 
 	}
 
-	//주문서 삭제
-	public void RemoveOrders(int oid) {
-		ordersDao.ordersDelete(oid);
+	//주문 삭제
+	public void deleteOrder(Orders orders) {
+		ordersDao.updateStatus(orders);
 	}
 	
 	//주문서 읽어오기

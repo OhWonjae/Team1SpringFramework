@@ -16,6 +16,7 @@
 		<script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0/js/bootstrap.bundle.min.js"></script>
 		<script src="<%=pageContext.getServletContext().getContextPath() %>/resources/bootstrap-4.6.0/js/bootstrap.min.js"></script>
     	<script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
    	<link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/style.css">
     <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/cart.css">
@@ -62,7 +63,7 @@
 					</form>
 				</sec:authorize>-->
 		<!--  새로 추가한 행 끝 -->
-                    <div class="mypage">
+                    <div class="mypage"  style="margin-right: 75px;">
                     	
 	                     <sec:authorize access="isAnonymous()">
 							<a href="<%=application.getContextPath()%>/loginForm">

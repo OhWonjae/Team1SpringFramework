@@ -178,7 +178,7 @@
                           </c:forEach>
       					  (${product.p_rate})
       					</figcaption>
-    					<figcaption>${product.p_price}</figcaption>
+    					<figcaption>${product.p_price}원</figcaption>
     					<figcaption>신상품</figcaption>
     				</figure>
                 </div>
@@ -186,7 +186,7 @@
             </div> 
             
       </div>
-      <div class="d-flex text-center">
+      <div class="d-flex text-center" style="margin:30px 0">
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->

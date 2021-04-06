@@ -1,86 +1,90 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.OrdersDao">
-	<insert id="ordersInsert" parameterType="orders">
-		insert into orders(	order_id,
-							order_date,
-							order_request,
-							total_price,
-							payment,
-							delivery_address,
-							delivery_address_detail,
-							zip,
-							user_id,
-							order_name,
-							order_phone,
-							order_sprice,
-							p_id,
-							delivery_status,
-							total_amount
-		)
-		values(	#{order_id},
-				sysdate,
-				#{order_request},
-				#{total_price},
-				#{payment},
-				#{delivery_address},
-				#{delivery_address_detail},
-				#{zip},
-				#{user_id},
-				#{order_name},
-				#{order_phone},
-				#{order_sprice},
-				#{p_id},
-				'배송준비중',
-				#{total_amount}
-	)
-	</insert>
-	<delete id="ordersDelete" parameterType="int">
-		delete
-		From orders
+   <insert id="ordersInsert" parameterType="orders">
+      insert into orders(   order_id,
+                     order_date,
+                     order_request,
+                     total_price,
+                     payment,
+                     delivery_address,
+                     delivery_address_detail,
+                     zip,
+                     user_id,
+                     order_name,
+                     order_phone,
+                     order_sprice,
+                     p_id,
+                     delivery_status,
+                     total_amount
+      )
+      values(   #{order_id},
+            systimestamp,
+            #{order_request},
+            #{total_price},
+            #{payment},
+            #{delivery_address},
+            #{delivery_address_detail},
+            #{zip},
+            #{user_id},
+            #{order_name},
+            #{order_phone},
+            #{order_sprice},
+            #{p_id},
+            '배송준비중',
+            #{total_amount}
+   )
+   </insert>
+   
+ 	<update id="updateStatus" >
+		update orders 
+		set delivery_status=#{delivery_status}
 		where order_id=#{order_id}
-	</delete>
-	<select id="orderSelectByAll" parameterType="int" resultType="orders">
-		select *
-		from orders
-	</select>
+	</update>
 	
-	<select id="orderSelectByOne" parameterType="String" resultType="orders">
-		select 	order_id,
-				order_name,
-				order_phone,
-				order_date,
-				order_request,
-				delivery_address,
-				delivery_address_detail,
-				payment,
-				total_price,
-				order_sprice
-		from orders
-		where order_id = #{order_id}		
-	</select>
-	
-		<select id="ordersList" parameterType="orders" resultType="orders">
-		select 	
-						o.order_id,
-						o.order_date,
-						o.p_id,
-						o.total_amount,
-						p.p_name,  
-						p.p_price, 
-						photos.photo_id,
-						photos.photo_oname, 
-						photos.photo_sname, 
-						photos.photo_type, 
-						photos.photo_role
-		from  orders o, products p, photos
-		where	 o.user_id = #{user_id} and
-					 o.p_id = p.p_id and
-					 p.p_id = photos.p_id and
-					 photos.photo_role = 'main'
+   <select id="orderSelectByAll" parameterType="int" resultType="orders">
+      select *
+      from orders
+   </select>
+   
+   <select id="orderSelectByOne" parameterType="String" resultType="orders">
+      select    order_id,
+            order_name,
+            order_phone,
+            order_date,
+            order_request,
+            delivery_address,
+            delivery_address_detail,
+            payment,
+            total_price,
+            order_sprice
+      from orders
+      where order_id = #{order_id}      
+   </select>
+   
+      <select id="ordersList" parameterType="orders" resultType="orders">
+      select    
+                  o.order_id,
+                  o.order_date,
+                  o.delivery_status,
+                  o.p_id,
+                  o.total_amount,
+                  p.p_name,  
+                  p.p_price, 
+                  photos.photo_id,
+                  photos.photo_oname, 
+                  photos.photo_sname, 
+                  photos.photo_type, 
+                  photos.photo_role
+      from  orders o, products p, photos
+      where    o.user_id = #{user_id} and
+                o.p_id = p.p_id and
+                p.p_id = photos.p_id and
+                photos.photo_role = 'main'
+                order by o.order_date desc
 
-	</select>
-	
+   </select>
+   
 
-	
+   
 </mapper>
