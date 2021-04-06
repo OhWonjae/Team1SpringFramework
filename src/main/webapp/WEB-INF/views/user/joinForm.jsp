@@ -26,7 +26,7 @@
 		const upassword = $("#user_password").val();
 		const upassword2 = $("#user_password2").val();
 		const uphone = $("#user_phone").val();
-
+		var idChkVal = idCheck.getAttribute('value');
 		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
@@ -36,11 +36,13 @@
 		} else if (uid.length > 50) {
 			result = false;
 			$("#errorUserid").html("최대 50자 까지만 입력해야 합니다.");
+		} else if (idChkVal == "N") {
+			result = false;
+			$("#errorUserid").html("중복체크를 받아야합니다.");
 		}
-
 		if (upassword !== upassword2) {
 			if (upassword !== "" && upassword2 !== "")
-				result = false;
+			result = false;
 			alert("비밀번호가 일치하지 않습니다.");
 			$('#user_password2').val('');
 			$('#user_password2').focus();
@@ -48,69 +50,67 @@
 		if (uname === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUsername").html("필수사항 입니다.");
-		}
-
+		} 
 		if (upassword === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserpassword").html("필수사항 입니다.");
 		}
-
 		if (upassword2 === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserpassword2").html("필수사항 입니다.");
 		}
-
 		if (uphone === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserphone").html("필수사항 입니다.");
-		}
-	
-		
+		}		
 		if (result) {
 			$("#joinForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
 			var re_id = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var re_hp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+			//var idChkVal = $("#idCheck").val();
+			
 		}
 		if (!re_id.test(uid)) {
 			result = false;
 			alert("이메일에 맞는 형식이 아닙니다.");
 			$('#user_id').val('');
 			$('#user_id').focus();
-		}
-		var idChkVal = $("#idCheck").val();
-		if(idChkVal == "N"){
-			alert("중복체크 버튼을 눌러주세요.");
-		}else if(idChkVal == "Y"){
-			$("#joinForm").submit();
-		}
-
-		else
-			(!re_hp.test(uphone))
-		{
+		} else if (upassword == "" && upassword2 == "") {
+			if (upassword !== upassword2)
+			result = false;
+			alert("비밀번호을 입력하지 않았습니다.");
+			$('#user_password').focus();
+		} else if (!re_hp.test(uphone)) {
 			result = false;
 			alert("휴대번호에 맞는 형식이 아닙니다.");
 			$('#user_phone').val('');
 			$('#user_phone').focus();
-		}
-
+		} else if (idChkVal == "N"){
+			alert("중복체크 버튼을 눌러주세요.");
+		} else if(idChkVal == "Y"){
+			result = true;
+			} 
+/* 		console.log(idCheck.getAttribute('value'));
+		console.log(idChkVal);  */
+		
 	} 
 	function fn_idCheck() {
 		$.ajax({
-			url : "user/idCheck",
-			type : "POST",
-			dataType : "json",
-			data : {
-				"user_id" : $("#user_id").val()
-			},
-			success : function(data) {
-				if (data == 1) {
+			url: "idCheck",
+			method: "post",
+			data: {user_id:$("#user_id").val(), ${_csrf.parameterName}:"${_csrf.token}"},
+			success: function(data) {				
+				console.log(data);
+				if ($("#user_id").val() == '') {
+					alert("필수 입력사항입니다.");
+				} else if (data == "1") {
 					alert("중복된 아이디입니다.");
-				} else if (data == 0) {
+				} else if (data == "0") {
 					$("#idCheck").attr("value", "Y");
 					alert("사용가능한 아이디입니다.");
-				}
+				} 
 			}
 		})
 	}
@@ -145,11 +145,13 @@
 			<strong>이메일</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="user_id" name="user_id" class="form-control"
-					placeholder="이메일을 입력하세요." type="email"><span
+					placeholder="이메일을 입력하세요." type="email"> <span
 					id="errorUserid" class="text-danger error"></span>
-				<button class="btn btn-light" type="button"
-					style="width: 120px; margin-left: 20px;" id="idCheck"
-					onclick="fn_idCheck();" value="N">중복체크</button>
+
+				<!--아이디(이메일) 중복체크-->
+				<a class="btn btn-light" type="button" id="idCheck"
+					style="width: 120px; margin-left: 20px;"
+					href="javascript:fn_idCheck();" value="N">중복체크</a>
 			</div>
 		</div>
 		<%-- <c:if test="${joinError != null }">
@@ -164,7 +166,7 @@
 			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호를 6자 이상 입력해 주세요." type="password"><span
+					placeholder="비밀번호를 4자 이상 입력해 주세요." type="password"><span
 					id="errorUserpassword" class="text-danger error"></span>
 			</div>
 		</div>
@@ -205,6 +207,7 @@
 			본인은 만 14세 이상이며, DOGSINSA <span style="color: #228be6;">이용약관,
 				개인정보 수집 및 이용</span> 내용을 확인 하였으며, 동의합니다.
 		</div>
+		
 	</form>
 
 

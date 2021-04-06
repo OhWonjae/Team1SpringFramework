@@ -71,7 +71,7 @@
 	                                        <div class="cart-info-box col-sm-4">
 	                                            <div class="cart-info">
 	                                            <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photo_sname}&photoType=${cart.photo_type}" alt="cart1" style="margin:5px 0"/>
-	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail">${cart.p_name}</a>
+	                                            <a class="cart-goods-name" href="<%=application.getContextPath()%>/product/detail?pid=${cart.p_id}">${cart.p_name}</a>
 	                                            </div>
 	                                        </div>        
 	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
