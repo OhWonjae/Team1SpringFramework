@@ -52,6 +52,7 @@
             order_name,
             order_phone,
             order_date,
+            delivery_status,
             order_request,
             delivery_address,
             delivery_address_detail,
