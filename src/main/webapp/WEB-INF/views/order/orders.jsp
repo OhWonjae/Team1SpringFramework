@@ -16,7 +16,7 @@
 
 <div class="header2"> 
     <div class="inner">
-        <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 고객센터</div> 
+        <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 주문내역 > 주문상세정보</div> 
     </div>
 </div>
      <div class="inner">
@@ -165,11 +165,11 @@
           				  dangerMode: true,
           				  buttons:{
           					  confirm2:{
-          						  text:'주문 취소',
+          						  text:'예',
           						  value:true
           					  },
                 			  confirm:{
-                				  text:'뒤로가기',
+                				  text:'아니요',
                 				  value:false
                 			  }
           				  }

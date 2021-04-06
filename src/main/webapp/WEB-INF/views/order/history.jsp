@@ -10,7 +10,7 @@
 
     <div class="header2"> 
         <div class="inner">
-            <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 고객센터</div> 
+            <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 주문내역</div> 
         </div>
      </div>
     <div class="inner" style="margin-bottom: 80px;">
