@@ -29,18 +29,18 @@
             <div class="row">
                 <div class="col-2">
                     <div class="list-group" id="list-tab" role="tablist">
-	                    <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
-	                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
-	                    <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
+                       <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
+                       <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+                       <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+                       <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+                       <a class="list-group-item list-group-item-action active"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                     </div>
                 </div>
                 <div class="col-10">
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade"  id="list-home" role="tabpanel" aria-labelledby="list-home-list"><br><h5><strong>나의 정보</strong></h5> </div>
                         <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><div></div>  
-						<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list"> </div>
+                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list"> </div>
                         <div class="tab-pane fade show active" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                             <div>
                                 <div class="div1" style="margin-bottom: 20px;">
@@ -50,17 +50,17 @@
                                 
                                 <div class="div2" style="padding-bottom: 200px;">
                                 <c:forEach var="qna" items="${qna}">
-                               		
-			
+                                     
+         
                                     <div class="faq-content">
                                         <button class="question" id="que-${qna.qa_id}">
                                             <div>
-                                                	<span>${qna.qa_category}</span>
+                                                   <span>${qna.qa_category}</span>
                                                 <span class="wait">답변 대기</span>
                                             </div>
                                             <div>
                                                 <span class="orderDate"><fmt:formatDate value="${qna.qa_date}"
-							pattern="yyyy-MM-dd" /></span>
+                     pattern="yyyy-MM-dd" /></span>
                                                 <span id="que-1-toggle">∨</span>
                                             </div>
                                         </button>
@@ -72,14 +72,14 @@
                                             </div>
                                         </div>
                                     </div>
-                             	</c:forEach>
-   									
+                                </c:forEach>
+                              
                                     
                                             <script>
                                                 const items = document.querySelectorAll('.question');
                                                     function openCloseAnswer() {
                                                         const answerId = this.id.replace('que', 'ans');
-    													
+                                           
                                                         if(document.getElementById(answerId).style.display === 'block') {
                                                         document.getElementById(answerId).style.display = 'none';
                                                         document.getElementById(this.id + '-toggle').textContent = '∨';

@@ -207,7 +207,7 @@
                     		const pamount = $("#selectAmount").text();
                     		const psize =$("#selectSize").text();
                     		if(psize==="선택"){
-                    			alert("사이즈를 선택해 주세요")
+                    			swal("Notice","사이즈를 선택해 주세요.")
                     			return;
                     		}
                     		
@@ -217,9 +217,33 @@
                     			method: "get"
                     		}).then(data=>{
                     			if(data.result=="success"){
-                    				alert("카트담기 완료");
+
+                    				swal({
+                    					  title: "알림",
+                    					  text: "장바구니 화면으로 가시겠습니까?",
+                    					  icon: "info",
+                    					  buttons: {
+		                    				confirm2:{
+		          							  text: '계속 쇼핑하기',
+		          							  value: false
+		          							  },
+		          							  
+		          							confirm:{
+                  							  text: '장바구니 가기',
+                  								value: true
+                  							  }
+                    					  }
+                    					  
+                    					})
+                    					.then((result) => {
+                    					  if (result) {
+                    					    location.href='${pageContext.request.contextPath}/order/cart?pageNo=1';
+                    					  } else {
+                    					   
+                    					  }
+                    					});
                     			}else if(data.result=="fail"){
-                    				alert("이미 추가한 상품입니다.");
+                    				swal("Notice","이미 추가한 상품입니다.")
                     			}
                     			
                     		});
@@ -305,34 +329,39 @@
 			}
 			
 			
-			// confirmOrdered컨트롤러에서 해당 유저가 구매한 상품인지 확인 후 fial이라면 모달창 안나오게함
-        	 const confirmOrdered=(pid)=>{
-             	event.preventDefault();
-             	console.log("confirm!");
-         		
-         		$.ajax({
-         			url:"${pageContext.request.contextPath}/product/confirmOrdered",
-         			data: {pid},
-         			method: "get"
-         		}).then(data=>{
-         			if(data.result=="success"){
-        				console.log("success");
-        			}
-        			else{
-        				alert("주문한 상품이 아닙니다.");
-    				
-    					  $(".modal-backdrop").remove();
-    					  location.reload(true);
-        			}
-        				function myFunction() {
-        					
-        					
-        					 
-        				
-        			}
-         			
-         		});
-             }
+			   // confirmOrdered컨트롤러에서 해당 유저가 구매한 상품인지 확인 후 fial이라면 모달창 안나오게함
+            const confirmOrdered=(pid)=>{
+                event.preventDefault();
+                console.log("confirm!");
+               
+               $.ajax({
+                  url:"${pageContext.request.contextPath}/product/confirmOrdered",
+                  data: {pid},
+                  method: "get"
+               }).then(data=>{
+                  if(data.result=="success"){
+                     document.getElementById('btn');
+                     btn.setAttribute('data-target','#staticBackdrop');
+                  	 btn.click();
+                  }
+                 else{
+                    document.getElementById('btn');
+                    btn.setAttribute('data-target','#myModel');
+                    btn.click();
+                    
+                    swal("Notice","주문하신 상품이 아닙니다.")
+                    .then(()=>{
+                       location.reload();
+                           document.documentElement.scrollTop = 0; 
+                    });
+                    
+                    
+                       
+                    }
+                        
+                 })
+                  
+               };
         	 
         	 
         	 
@@ -347,8 +376,8 @@
                     
                     <!--로그인 됬을때만 글쓰기 버튼 생성--> 
                     <sec:authorize access="isAuthenticated()">          
-                    <!--구매후기 글쓰기 버튼-->
-                    <button type="button" onclick="confirmOrdered(${product.p_id})" class="btn btn-outline-dark btn-sm"data-toggle="modal" data-target="#staticBackdrop">글쓰기</button>
+                   <!--구매후기 글쓰기 버튼-->
+               		<button type="button" id="btn" onclick="confirmOrdered(${product.p_id}); this.onclick=null;"class="btn btn-outline-dark btn-sm rbtn" data-toggle="modal">글쓰기</button>
                     </sec:authorize>
                     
                     

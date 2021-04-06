@@ -22,10 +22,10 @@
      <div class="inner">
         <div class="info" style="height: 120px;">
             <picture style="float: left;">
-                <img src="/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
+                <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                    <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
+                   <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
                 </div>
         </div>
         <br/>
@@ -33,11 +33,11 @@
         <div class="row">
             <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a><hr/>
-                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="my.html" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action active" id="list-profile-list" href="history.html" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list"href="cart.html" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list"  href="cs1.html" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
+                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
                  </div>
             </div>
             <div class="col-10 col-content">
@@ -135,21 +135,22 @@
                                     </div>
          
                                 </div>
-                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1);; border-top:none">
+                                <div class="orders-inner" style="border:3px solid rgba(244,244,245,1); border-top:none">
                                     <table class="table">
                                     
                                         <tbody>
                                             <c:forEach var="orderProduct" items="${list}">
                                             <tr>
-                                                <td style="border-top:none; border-right:none"> 
-                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="15%" style="float: left; margin-right: 10px;">
-                                                    <div style="font-size: 13px; font-weight: 700;"> ${orderProduct.p_name} </div>
-                                                    <div style="font-size: 12px; font-weight: bold; "> ${orderProduct.p_price}원 </div> 
-                                                    <div style="font-size: 10px;">수량: ${orderProduct.amount}</div>
+                                                <td style="border-top:none; border-right:none; border-bottom:1px solid rgba(244,244,245,1"> 
+                                                    <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="20%" style="float: left; margin-right: 10px;">
+                                                    <br/>
+                                                    <div style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </div>
+                                                    <div style="font-size: 0.9em;"> ${orderProduct.p_price}원 </div> 
+                                                    <div style="font-size: 0.9em;">수량: ${orderProduct.amount}</div>
+                                        
                                                 </td>
                                             </tr>
-											</c:forEach>
-                       
+                                 </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -158,7 +159,12 @@
                     </div>
                 </div>
                 <div style="text-align: center;">
-                    <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;">주문내역으로 이동</button>
+                    <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black; margin:0 10px; border:none;">주문내역으로 이동</button>
+                     <form action="deleteOrder" method="get" style="display:inline-block">
+                     <input type="hidden" name="delivery_status" value="취소 중"/>
+                     <input type="hidden" name="order_id" value="${orders.order_id}"/>
+                     <button type="submit" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black;  border:none;">주문 취소</button>
+                     </form>
                 </div>
             </div>
         </div>
