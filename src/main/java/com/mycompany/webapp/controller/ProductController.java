@@ -318,7 +318,12 @@ public class ProductController {
 				subPhotoList.add(p);
 			}
 		}
-
+		if(auth==null) {
+			model.addAttribute("userid", "notlogin");
+		}else {
+			model.addAttribute("userid", auth.getName());
+		}
+		
 		model.addAttribute("mainphoto", mainPhoto);
 		model.addAttribute("detailphoto", detailPhoto);
 		model.addAttribute("subphotolist", subPhotoList);

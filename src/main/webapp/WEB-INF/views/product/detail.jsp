@@ -204,6 +204,13 @@
                         <!--카트 담기-->
                         const PutCart=(pid)=>{
                         	event.preventDefault();
+                        	var login = $("#islogin").val();
+                        	console.log(login);
+                        	if(login=="notlogin"){
+                        		swal("Notice","로그인 해 주세요.");
+                        		return;
+                        	}
+                        	
                     		const pamount = $("#selectAmount").text();
                     		const psize =$("#selectSize").text();
                     		if(psize==="선택"){
@@ -249,7 +256,9 @@
                     		});
                         }
                         </script>
-                        
+                          <input type="hidden"  id="islogin" value=${userid}>  
+                                 
+     								  
                         
                         <!--장바구니 담기, 바로구매 버튼 컨테이너-->
                         <div class="row " style="margin: 70px 5px;">
@@ -305,12 +314,20 @@
             <!--상세페이지 Detail 컨테이너-->
             <div class="row justify-content-md-center mb-5"  >
                 <!--Detail 이미지-->
-                <img src="${pageContext.request.contextPath}/resource/GetDetailPhoto?photoSname=${detailphoto.photo_sname}&photoType=${detailphoto.photo_type}" >
+                <img id="detailimg" src="${pageContext.request.contextPath}/resource/GetDetailPhoto?photoSname=${detailphoto.photo_sname}&photoType=${detailphoto.photo_type}" >
                 <!--Detail 접기 버튼-->
-                <button type="button" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
+                <button type="button" onclick="fold()" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
             </div>
 
 			<script>
+			
+			function fold(){
+				$("#detailimg").toggle();
+                 
+				
+				
+			}
+			
 			
 			function OnClickStar(num){
 				
@@ -333,7 +350,6 @@
             const confirmOrdered=(pid)=>{
                 event.preventDefault();
                 console.log("confirm!");
-               
                $.ajax({
                   url:"${pageContext.request.contextPath}/product/confirmOrdered",
                   data: {pid},
@@ -402,7 +418,7 @@
                                     </div>
                                     <!--별점-->
                                     <div style="display: flex; ">
-                                        <img id="star1" onclick="OnClickStar('1')" src="${pageContext.request.contextPath}/resources/img/Star.PNG"  height="40px" >
+                                        <img id="star1" onclick="OnClickStar('1');" src="${pageContext.request.contextPath}/resources/img/Star.PNG"  height="40px" >
                                         <img id="star2" onclick="OnClickStar('2');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                         <img id="star3" onclick="OnClickStar('3');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                         <img id="star4" onclick="OnClickStar('4');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
@@ -466,7 +482,7 @@
 	                               <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="20px">
 	                               </c:forEach>
 	                               <c:forEach var="i" begin="${review.review_score+1}" end="5">
-	                               <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
+	                               <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="20px">
 	                               </c:forEach>
 	                                <!--구매인증됨 | 작성 날짜-->
 	                                구매인증됨  |  <fmt:formatDate value="${review.review_date}" pattern="yyyy-MM-dd"/><br/>
