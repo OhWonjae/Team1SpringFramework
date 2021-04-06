@@ -11,7 +11,7 @@ import com.mycompany.webapp.dto.Orders;
 @Mapper
 public interface OrdersDao {
 	public int ordersInsert(Orders orders);
-	public int ordersDelete(int ono);
+	public int updateStatus(Orders orders);
 	public List<Orders> ordersList(String uid);
 	public Orders orderSelectByOne(String order_id);
 	
