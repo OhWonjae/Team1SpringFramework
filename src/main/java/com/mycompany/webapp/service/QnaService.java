@@ -28,36 +28,36 @@ public class QnaService {
    }
 
    public void updateQna(Qna qna) {
-	   qnaDao.update(qna);
+      qnaDao.update(qna);
    }
    
    public void deleteQna(int qa_id, String user_id) {
-	   logger.info("userid"+  user_id + "qaid"+  qa_id);
-	   qnaDao.deleteByQa_id(qa_id, user_id);
+      logger.info("userid"+  user_id + "qaid"+  qa_id);
+      qnaDao.deleteByQa_id(qa_id, user_id);
    }
    public void insertQna(Qna qna) {
-	   logger.info(qna.getQa_content());
-	   qnaDao.insert(qna);
+      logger.info(qna.getQa_content());
+      qnaDao.insert(qna);
    }
    public List<Qna> getBoardList(){
-	      List<Qna> list = qnaDao.selectAll();
-	      return list;
+         List<Qna> list = qnaDao.selectAll();
+         return list;
    }
    public List<Qna> getBoardList(Pager pager) { // 메소드 오버로딩
-	      List<Qna> list = qnaDao.selectByPage(pager);	      
-	      return list;
+         List<Qna> list = qnaDao.selectByPage(pager);         
+         return list;
    }
    public List<Qna> getBoardList(String user_id) {
-	   List<Qna> list = qnaDao.selectAllByUserId(user_id);
-	   return list;
+      List<Qna> list = qnaDao.selectAllByUserId(user_id);
+      return list;
    }
 
-	public int getTotalRows() {
-		return 0;
-	}
-	public User getUser(String user_id) {
-		      User user = usersDao.selectByUserid(user_id);
-		      return user;
-		   }
-	
+   public int getTotalRows() {
+      return 0;
+   }
+   public User getUser(String user_id) {
+            User user = usersDao.selectByUserid(user_id);
+            return user;
+         }
+   
 }
