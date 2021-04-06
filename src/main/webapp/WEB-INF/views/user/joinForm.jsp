@@ -21,16 +21,11 @@ var user_phone2 = $("#phone2").val();
 var user_phone3 = $("#phone3").val();
 var user_phone = user_phone1 + user_phone2 + user_phone3;
 document.getElementById("user_phone").value = user_phone; */
-
-
-
 	function validate() {
 		event.preventDefault(); // 기능 잠시 꺼두기
 		var result = true;
-
 		// 유효성 검사 시작
 		// result = false; 어디선가 false가 되면 실행이 안됨. 여전히 트루값을 가지면 실행
-		const uid = $("#user_id").val();
 		const uname = $("#user_name").val();
 		const upassword = $("#user_password").val();
 		const upassword2 = $("#user_password2").val();
@@ -46,18 +41,27 @@ document.getElementById("user_phone").value = user_phone; */
 		// 이메일 2칸으로 나눠서 입력받기 
 		var user_email1 = $("#email1").val();
 		var user_email2 = $("#email2").val();
-		var user_id = user_email1 + user_email1; 		
+		var user_email3 = $("#textEmail").val();
+		
+		if(user_email2 == "directly" || user_email2 == null) {
+			user_email2 == "";
+			var user_id = user_email1 + "@" + user_email3; 
+		} else {
+			var user_id = user_email1 + "@" + user_email2;
+		}
+		/* var user_id = user_email1 + "@" + user_email2 + user_email3; 	 */	
 		document.getElementById("user_id").value = user_id; 
-
-
+		const uid = $("#user_id").val();
 		var idChkVal = idCheck.getAttribute('value');
-		console.log(user_phone);
+		
+ 		console.log(user_phone);
 		console.log(user_phone1);
 		console.log(user_phone2);
 		console.log(user_phone3);
-		console.log(user_email);
 		console.log(user_email1);
 		console.log(user_email2);
+		console.log(user_email3);
+		console.log(user_id); 
 		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
@@ -134,12 +138,32 @@ document.getElementById("user_phone").value = user_phone; */
 		
 	} 
 	function fn_idCheck() {
+		var user_email1 = $("#email1").val();
+		var user_email2 = $("#email2").val();
+		var user_email3 = $("#textEmail").val();
+		
+		if(user_email2 == "directly" || user_email2 == null) {
+			user_email2 == "";
+			var user_id = user_email1 + "@" + user_email3; 
+		} else {
+			var user_id = user_email1 + "@" + user_email2;
+		}
+		document.getElementById("user_id").value = user_id; 
+
 		$.ajax({
+			
 			url: "idCheck",
 			method: "post",
 			data: {user_id:$("#user_id").val(), ${_csrf.parameterName}:"${_csrf.token}"},
 			success: function(data) {				
 				console.log(data);
+				// 이메일 2칸으로 나눠서 입력받기 
+				
+				console.log(user_email1);
+				console.log(user_email2);
+				console.log(user_email3);
+				console.log(user_id); 
+				/* var user_id = user_email1 + "@" + user_email2 + user_email3; 	 */	
 				if ($("#user_id").val() == '') {
 					alert("필수 입력사항입니다.");
 				} else if (data == "1") {
@@ -151,6 +175,18 @@ document.getElementById("user_phone").value = user_phone; */
 			}
 		})
 	}
+	
+	$(function() {
+        $('#email2').change(function() {
+            if ($('#email2').val() == 'directly') {
+                $('#textEmail').attr("disabled", false);
+                $('#textEmail').val("");
+                $('#textEmail').focus();
+            } else {
+                $('#textEmail').val($('#email2').val());
+            }
+        })
+    });
 
 </script>
 
@@ -161,7 +197,7 @@ document.getElementById("user_phone").value = user_phone; */
 		> 회원가입</div>
 </div>
 
-<article class="card-body mx-auto" style="width: 500px;">
+<article class="card-body mx-auto" style="width: 600px;">
 	<h4 class="card-title mt-3 text-center">
 		<strong>회원 가입</strong>
 	</h4>
@@ -180,35 +216,30 @@ document.getElementById("user_phone").value = user_phone; */
 		</div>
 		<div>
 			<strong>이메일</strong><span style="color: red;">*</span>
-			
 			<div class="form-group input-group">
-			
-			<input type="text" id="email1" name="email1" class="form-control" maxLength="15"/>
-				
-						 @ <select type="email" id="email2" name="email2" class="form-control" maxLength="20">
-							<option selected="" value="naver.com">naver.com</option>
-							<option>gmail.com</option>
-							<option>daum.net</option>
-							<option>hanmail.com</option>
-							<option>nate.com</option>
-							<option>yahoo.co.kr</option>
-							<option>paran.com</option>
-							<option>직접선택</option>
-							<option></option>
-						 
-						 </select>
-			
-			
-				<input type="hidden" id="user_id" name="user_id" class="form-control"
-					placeholder="이메일을 입력하세요." type="email"> <span
-					id="errorUserid" class="text-danger error"></span>
-
+				<input type="text" id="email1" name="email1" class="form-control"
+					maxLength="15"/> 
+					<span>@</span> 
+ 					<input id="textEmail" style="width: 170px;"> 
+					<select type="email" id="email2"
+					name="email2" class="form-control" maxLength="25">
+					<option value="" disabled selected>E-Mail 선택</option>
+					<option>naver.com</option>
+					<option>gmail.com</option>
+					<option>daum.net</option>
+					<option>hanmail.com</option>
+					<option>nate.com</option>
+					<option>yahoo.co.kr</option>
+					<option value="directly" id="textEmail">직접선택</option>
+					</select> 
+					
+				<input type="hidden" id="user_id" name="user_id"
+					class="form-control" placeholder="이메일을 입력하세요." type="email">
+				<span id="errorUserid" class="text-danger error"></span>
 				<!--아이디(이메일) 중복체크-->
 				<a class="btn btn-light" type="button" id="idCheck"
-					style="width: 120px; margin-left: 20px;"
+					style="width: 100px; margin-left: 10px;"
 					href="javascript:fn_idCheck();" value="N">중복체크</a>
-					
-					
 			</div>
 		</div>
 		<%-- <c:if test="${joinError != null }">
@@ -238,21 +269,22 @@ document.getElementById("user_phone").value = user_phone; */
 			</div>
 		</div>
 		<div>
-			<strong>핸드폰 번호</strong><span style="color: red;">*</span>
+			<strong>휴대폰 번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
- 				 	
-						<select class="form-control" type="tel" id="phone1" name="phone1" maxLength="3">
-							<option selected="" value="010">010</option>
-							<option>011</option>
-							<option>016</option>
-							<option>017</option>
-							<option>019</option>
-						</select>
-						 - <input type="tel" id="phone2" name="phone2" class="form-control" maxLength="4"/>
-                      - <input type="tel" id="phone3" name="phone3" class="form-control" maxLength="4"/>
-					<input type="hidden" id="user_phone" name="user_phone" class="form-control"
-					placeholder="핸드폰 번호를 입력해주세요." type="text">
-				<span id="errorUserphone" class="text-danger error"></span>
+
+				<select class="form-control" type="tel" id="phone1" name="phone1"
+					maxLength="3">
+					<option selected="" value="010">010</option>
+					<option>011</option>
+					<option>016</option>
+					<option>017</option>
+					<option>019</option>
+				</select> - <input type="tel" id="phone2" name="phone2" class="form-control"
+					maxLength="4" /> - <input type="tel" id="phone3" name="phone3"
+					class="form-control" maxLength="4" /> <input type="hidden"
+					id="user_phone" name="user_phone" class="form-control"
+					placeholder="휴대폰 번호를 입력해주세요." type="text"> <span
+					id="errorUserphone" class="text-danger error"></span>
 			</div>
 		</div>
 		<div>
@@ -270,7 +302,7 @@ document.getElementById("user_phone").value = user_phone; */
 			style="background-color: rgb(255, 81, 82); height: 50px; border-color: rgb(255, 81, 82);">
 			<strong>회원가입</strong>
 		</button>
-		<div class="text-center" style="text-align: center; font-size: 0.9em;">
+		<div class="text-center" style="text-align: center; font-size: 0.8em;">
 			본인은 만 14세 이상이며, DOGSINSA <span style="color: #228be6;">이용약관,
 				개인정보 수집 및 이용</span> 내용을 확인 하였으며, 동의합니다.
 		</div>

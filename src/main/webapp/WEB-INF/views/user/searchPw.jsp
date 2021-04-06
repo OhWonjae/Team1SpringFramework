@@ -26,7 +26,6 @@
 		<h4 class="card-title mt-4 mb-4 text-center">
 			<strong>비밀번호 찾기</strong>
 		</h4>
-
 		<form method="post" action="searchPw">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div style="font: bold;">
