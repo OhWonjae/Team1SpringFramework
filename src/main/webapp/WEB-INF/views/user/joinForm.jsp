@@ -15,6 +15,15 @@
 </style>
 
 <script>
+
+/* var user_phone1 = $("#phone1").val();
+var user_phone2 = $("#phone2").val();
+var user_phone3 = $("#phone3").val();
+var user_phone = user_phone1 + user_phone2 + user_phone3;
+document.getElementById("user_phone").value = user_phone; */
+
+
+
 	function validate() {
 		event.preventDefault(); // 기능 잠시 꺼두기
 		var result = true;
@@ -25,12 +34,34 @@
 		const uname = $("#user_name").val();
 		const upassword = $("#user_password").val();
 		const upassword2 = $("#user_password2").val();
+		
+		// 휴대폰 번호 3칸으로 나눠서 입력받기
+ 		var user_phone1 = $("#phone1").val();
+		var user_phone2 = $("#phone2").val();
+		var user_phone3 = $("#phone3").val();
+		var user_phone = user_phone1 + user_phone2 + user_phone3;
+		document.getElementById("user_phone").value = user_phone; 
 		const uphone = $("#user_phone").val();
+		
+		// 이메일 2칸으로 나눠서 입력받기 
+		var user_email1 = $("#email1").val();
+		var user_email2 = $("#email2").val();
+		var user_id = user_email1 + user_email1; 		
+		document.getElementById("user_id").value = user_id; 
+
+
 		var idChkVal = idCheck.getAttribute('value');
+		console.log(user_phone);
+		console.log(user_phone1);
+		console.log(user_phone2);
+		console.log(user_phone3);
+		console.log(user_email);
+		console.log(user_email1);
+		console.log(user_email2);
 		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
-		} else if (uid.length < 8) {
+		}  else if (uid.length < 8) {
 			result = false;
 			$("#errorUserid").html("최소 8자 이상 입력해야 합니다.");
 		} else if (uid.length > 50) {
@@ -40,6 +71,7 @@
 			result = false;
 			$("#errorUserid").html("중복체크를 받아야합니다.");
 		}
+		
 		if (upassword !== upassword2) {
 			if (upassword !== "" && upassword2 !== "")
 			result = false;
@@ -59,7 +91,7 @@
 			result = false;
 			$("#errorUserpassword2").html("필수사항 입니다.");
 		}
-		if (uphone === "") { // 비어있으면 문제
+		if (user_phone === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserphone").html("필수사항 입니다.");
 		}		
@@ -77,23 +109,28 @@
 			alert("이메일에 맞는 형식이 아닙니다.");
 			$('#user_id').val('');
 			$('#user_id').focus();
+		} else if (uid  === "") {
+			result = false;
+			alert("이름을 입력하지 않았습니다.");
+			$('#user_name').focus();
 		} else if (upassword == "" && upassword2 == "") {
 			if (upassword !== upassword2)
 			result = false;
 			alert("비밀번호을 입력하지 않았습니다.");
 			$('#user_password').focus();
-		} else if (!re_hp.test(uphone)) {
+		}  else if (!re_hp.test(uphone)) {
 			result = false;
-			alert("휴대번호에 맞는 형식이 아닙니다.");
+			alert("휴대폰 번호에 맞는 형식이 아닙니다.");
 			$('#user_phone').val('');
 			$('#user_phone').focus();
-		} else if (idChkVal == "N"){
+		}  else if (idChkVal == "N"){
 			alert("중복체크 버튼을 눌러주세요.");
 		} else if(idChkVal == "Y"){
 			result = true;
 			} 
 /* 		console.log(idCheck.getAttribute('value'));
 		console.log(idChkVal);  */
+		
 		
 	} 
 	function fn_idCheck() {
@@ -130,7 +167,7 @@
 	</h4>
 
 	<form id="joinForm" name="joinForm" method="post" action="join"
-		onsubmit="validate()">
+		onsubmit="validate()" novalidate="novalidate">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 		<div>
@@ -143,8 +180,26 @@
 		</div>
 		<div>
 			<strong>이메일</strong><span style="color: red;">*</span>
+			
 			<div class="form-group input-group">
-				<input id="user_id" name="user_id" class="form-control"
+			
+			<input type="text" id="email1" name="email1" class="form-control" maxLength="15"/>
+				
+						 @ <select type="email" id="email2" name="email2" class="form-control" maxLength="20">
+							<option selected="" value="naver.com">naver.com</option>
+							<option>gmail.com</option>
+							<option>daum.net</option>
+							<option>hanmail.com</option>
+							<option>nate.com</option>
+							<option>yahoo.co.kr</option>
+							<option>paran.com</option>
+							<option>직접선택</option>
+							<option></option>
+						 
+						 </select>
+			
+			
+				<input type="hidden" id="user_id" name="user_id" class="form-control"
 					placeholder="이메일을 입력하세요." type="email"> <span
 					id="errorUserid" class="text-danger error"></span>
 
@@ -152,6 +207,8 @@
 				<a class="btn btn-light" type="button" id="idCheck"
 					style="width: 120px; margin-left: 20px;"
 					href="javascript:fn_idCheck();" value="N">중복체크</a>
+					
+					
 			</div>
 		</div>
 		<%-- <c:if test="${joinError != null }">
@@ -166,7 +223,7 @@
 			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호를 4자 이상 입력해 주세요." type="password"><span
+					placeholder="비밀번호를 4자 이상 입력해주세요." type="password"><span
 					id="errorUserpassword" class="text-danger error"></span>
 			</div>
 		</div>
@@ -181,11 +238,21 @@
 			</div>
 		</div>
 		<div>
-			<strong>휴대번호</strong><span style="color: red;">*</span>
+			<strong>핸드폰 번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
-				<input id="user_phone" name="user_phone" class="form-control"
-					placeholder="핸드폰 번호를 입력해 주세요." type="number"><span
-					id="errorUserphone" class="text-danger error"></span>
+ 				 	
+						<select class="form-control" type="tel" id="phone1" name="phone1" maxLength="3">
+							<option selected="" value="010">010</option>
+							<option>011</option>
+							<option>016</option>
+							<option>017</option>
+							<option>019</option>
+						</select>
+						 - <input type="tel" id="phone2" name="phone2" class="form-control" maxLength="4"/>
+                      - <input type="tel" id="phone3" name="phone3" class="form-control" maxLength="4"/>
+					<input type="hidden" id="user_phone" name="user_phone" class="form-control"
+					placeholder="핸드폰 번호를 입력해주세요." type="text">
+				<span id="errorUserphone" class="text-danger error"></span>
 			</div>
 		</div>
 		<div>
@@ -207,7 +274,7 @@
 			본인은 만 14세 이상이며, DOGSINSA <span style="color: #228be6;">이용약관,
 				개인정보 수집 및 이용</span> 내용을 확인 하였으며, 동의합니다.
 		</div>
-		
+
 	</form>
 
 
