@@ -207,7 +207,7 @@
                     		const pamount = $("#selectAmount").text();
                     		const psize =$("#selectSize").text();
                     		if(psize==="선택"){
-                    			alert("사이즈를 선택해 주세요")
+                    			swal("Notice","사이즈를 선택해 주세요.")
                     			return;
                     		}
                     		
@@ -217,9 +217,33 @@
                     			method: "get"
                     		}).then(data=>{
                     			if(data.result=="success"){
-                    				alert("카트담기 완료");
+
+                    				swal({
+                    					  title: "알림",
+                    					  text: "장바구니 화면으로 가시겠습니까?",
+                    					  icon: "info",
+                    					  buttons: {
+		                    				confirm2:{
+		          							  text: '계속 쇼핑하기',
+		          							  value: false
+		          							  },
+		          							  
+		          							confirm:{
+                  							  text: '장바구니 가기',
+                  								value: true
+                  							  }
+                    					  }
+                    					  
+                    					})
+                    					.then((result) => {
+                    					  if (result) {
+                    					    location.href='${pageContext.request.contextPath}/order/cart?pageNo=1';
+                    					  } else {
+                    					   
+                    					  }
+                    					});
                     			}else if(data.result=="fail"){
-                    				alert("이미 추가한 상품입니다.");
+                    				swal("Notice","이미 추가한 상품입니다.")
                     			}
                     			
                     		});
