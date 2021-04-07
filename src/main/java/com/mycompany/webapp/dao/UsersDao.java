@@ -24,4 +24,10 @@ public interface UsersDao {
 
 	public int idCheck(String user_id);
 
+	public int updateEnabledById(String user_id);
+
+	public int searchIdCheck(@Param("user_name") String user_name, @Param("user_phone") String user_phone);
+
+	public int searchPwCheck(@Param("user_id") String user_id, @Param("user_phone") String user_phone);
+
 }

@@ -35,26 +35,44 @@
 			result = false;
 			$("#errorUserid").html("최대 50자 까지만 입력해야 합니다.");
 		} 
-		if (uid === "") { // 비어있으면 문제있지
+		if (upassword === "") { // 비어있으면 문제있지
 			result = false;
-			$("#errorUserid").html("필수사항 입니다.");
+			$("#errorUserpassword").html("필수사항 입니다.");
+		} else if (upassword.length < 6) {
+			result = false;
+			$("#errorUserpassword").html("최소 6자 이상 입력해야 합니다.");
+		} else if (upassword.length > 20) {
+			result = false;
+			$("#errorUserpassword").html("최대 20자 이하 입력해야 합니다.");
 		}
 		if (result) {
 			$("#loginForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
 			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		} if (uid  === ""){
+			var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+		} if (!re_id.test(uid)) {
 			result = false;
-			alert("필수 입력사항입니다.");
+			swal("이메일에 맞는 형식이 아닙니다.");
+			$('#user_id').val('');
+			$('#user_id').focus();
+		} else if (!reg_pwd.test(upassword)) {
+			result = false;
+			swal("영문, 숫자 혼합하여 최소 6~20자리 이내의 비밀번호를 입력해야 합니다.");
+			$('#user_password').val('');
+			$('#user_password2').val('');
+			$('#user_password').focus();
+		} else if (uid  === ""){
+			result = false;
+			swal("필수 입력사항입니다.");
 			$("#user_id").focus();
 		} else if (!re.test(uid)) {
-			alert("이메일에 맞는 형식이 아닙니다.");
+			swal("이메일에 맞는 형식이 아닙니다.");
 			$('#user_id').val('');
 			$("#user_id").focus(); 
 		} else if (upassword == "" ) {		
 			result = false;
-			alert("필수 입력사항입니다.");
+			swal("필수 입력사항입니다.");
 			$('#user_password').val('');
 			$('#user_password').focus();
 		}
@@ -76,12 +94,12 @@
 				value="${_csrf.token}" />
 			<div class="form-group input-group">
 				<input id="user_id" name="user_id" class="form-control"
-					placeholder="이메일을 입력하세요." type="email"> <span
-					id="errorUserid" class="text-danger error"></span>
+					placeholder="이메일을 입력하세요." type="email"> 
+					<span id="errorUserid" class="text-danger error"></span>
 			</div>
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호을 입력하세요." type="password"> <span
+					placeholder="비밀번호를 입력하세요.(영문,숫자 포함 6~20자 이내)" type="password"> <span
 					id="errorUserpassword" class="text-danger error"></span>
 			</div>
 			<div class="form-group">
