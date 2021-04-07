@@ -35,9 +35,9 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/history?pageNo=1" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/cart?pageNo=1" role="tab" aria-controls="messages">장바구니</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList?pageNo=1" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -58,8 +58,8 @@
 						                    <c:if test="${empty list}">
 						                    	      <div class="div2">
 						                                <div class="nolist" style= "padding:50px;text-align: center";>
-						                                    <i class="far fa-sticky-note" style="color:gray;font-size:80px;"></i>
-						                                    <div>
+						                                    <i class="fas fa-shopping-cart" style="color:#e9ecef;font-size:80px;"></i>
+						                                    <div style="padding:20px;">
 						                                    장바구니가 비었습니다.
 						                                    </div>
 						                                </div>

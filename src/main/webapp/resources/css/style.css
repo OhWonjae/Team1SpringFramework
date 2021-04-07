@@ -59,7 +59,7 @@ header{
 
 .searchTab{
     width: 100%;
-    border: 3px solid #FF3357;
+    border: 3px solid rgb(255, 96, 97);
     border-right: none;
     padding: 5px;
     height: 30px;
@@ -71,8 +71,8 @@ header{
 .searchButton {
   width: 40px;
   height: 30px;
-  border: 1px solid #FF3357;
-  background: #FF3357;
+  border: 1px solid rgb(255, 96, 97);
+  background: rgb(255, 96, 97);
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -99,7 +99,7 @@ header{
 }
 
 .mypage a:hover{
-    color:#FF3357;
+    color:rgb(255, 96, 97);
     text-decoration: none;
 }
 
@@ -125,7 +125,7 @@ header{
 }
 
 .cart a:hover{
-    color:#FF3357;
+    color:rgb(255, 96, 97);
     text-decoration: none;
 }
 
