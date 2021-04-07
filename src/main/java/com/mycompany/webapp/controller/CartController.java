@@ -1,6 +1,10 @@
 package com.mycompany.webapp.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.CartsService;
+import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.UsersService;
 
 @Controller
@@ -26,7 +32,8 @@ public class CartController {
       private CartsService cartsService;
    @Autowired
    	  private UsersService usersService;
-      
+   @Autowired
+   	  private ProductService productService;
    
    @GetMapping("/cart")
    public String cart(Model model, Authentication auth, String pageNo, HttpSession session) {
@@ -141,5 +148,39 @@ public class CartController {
     */
    
 
+//	// 테스트용 컨트롤러 - 상품 무작위 생성
+//	@GetMapping("/cart/create")
+//	public String create(Model model) {
+//		
+//		Random random = new Random();
+//		for(int i=1; i<= 100; i++) {
+//			int r = random.nextInt(5);
+//			String category = "티셔츠";
+//			switch(r) {
+//			case 0: category = "티셔츠";
+//			break;
+//			case 1: category = "후드티";
+//			break;
+//			case 2: category = "패딩/코트";
+//			break;
+//			case 3: category = "원피스";
+//			break;
+//			case 4: category = "올인원";
+//			break;
+//			}
+//			Date now = new Date();
+//			Calendar cal = Calendar.getInstance();
+//			cal.setTime(now);
+//			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
+//			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");		
+//			Product p = new Product("name"+i,i*1000,20,random.nextInt(100),category, cal.getTime(),""+"description"+i);
+//			System.out.println(p.toString());
+//			//productService.createProduct(p);
+//		}
+//
+//	    return "/product/new";
+//	}
+//	
    
 }
