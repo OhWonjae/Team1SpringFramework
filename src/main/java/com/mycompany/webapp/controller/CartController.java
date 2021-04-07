@@ -1,10 +1,6 @@
 package com.mycompany.webapp.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.Pager;
-import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.CartsService;
 import com.mycompany.webapp.service.ProductService;
@@ -123,29 +119,55 @@ public class CartController {
       cartsService.removeCartAll(auth.getName());
       return "redirect:/order/cart";
    }
+}
    
    
-   /*
-    * @GetMapping("/cart/create") 
-    * public String create(Model model) {
-    * 
-    * int k=0; for(int i=1; i<= 32; i++) {
-    * 
-    * String name = "dog"; name = name+""+i;
-    * 
-    * 
-    * Photo p = new Photo(i+k+206,i,name,name,"JPG","detail"); k++;
-    * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
-    * System.out.print(p.getPhoto_oname()+" ");
-    * System.out.print(p.getPhoto_role()+" ");
-    * System.out.println(p.getPhoto_type());
-    * 
-    * productService.createPhoto(p);
-    * 
-    * }
-    * 
-    * return "/product/new"; }
-    */
+   
+/*
+ * @GetMapping("/cart/create") public String create(Model model) {
+ * 
+ * for(int i=1; i<= 50; i++) {
+ * 
+ * 
+ * 
+ * String name = "dog"; name = name+""+i+"-2";
+ * 
+ * 
+ * Photo p = new Photo(i+250,i,name,name,"JPG","sub");
+ * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
+ * System.out.print(p.getPhoto_oname()+" ");
+ * System.out.print(p.getPhoto_role()+" ");
+ * System.out.println(p.getPhoto_type());
+ * 
+ * productService.createPhoto(p);
+ * 
+ * } int k=1; for(int i=51; i<= 100; i++) {
+ * 
+ * String name = "dog"; name = name+""+k+"-1";
+ * 
+ * 
+ * Photo p = new Photo(i+300,i,name,name,"JPG","sub");
+ * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
+ * System.out.print(p.getPhoto_oname()+" ");
+ * System.out.print(p.getPhoto_role()+" ");
+ * System.out.println(p.getPhoto_type());
+ * 
+ * productService.createPhoto(p);
+ * 
+ * name = "dog"; name = name+""+k+"-2";
+ * 
+ * 
+ * p = new Photo(i+350,i,name,name,"JPG","sub");
+ * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
+ * System.out.print(p.getPhoto_oname()+" ");
+ * System.out.print(p.getPhoto_role()+" ");
+ * System.out.println(p.getPhoto_type()); k++; productService.createPhoto(p);
+ * 
+ * 
+ * }
+ * 
+ * return "/product/new"; }}
+ */
    
 
 //	// 테스트용 컨트롤러 - 상품 무작위 생성
@@ -174,13 +196,29 @@ public class CartController {
 //			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
 //			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");		
-//			Product p = new Product("name"+i,i*1000,20,random.nextInt(100),category, cal.getTime(),""+"description"+i);
+//			Product p = new Product(i, "name"+i,i*100,20,random.nextInt(100),category, cal.getTime(),""+"description"+i, 0);
 //			System.out.println(p.toString());
-//			//productService.createProduct(p);
+//			productService.createProduct(p);
 //		}
 //
 //	    return "/product/new";
 //	}
-//	
+	
    
-}
+// 테스트용 컨트롤러 - 상품 무작위 생성
+	/*
+	 * @GetMapping("/cart/size") public String size(Model model) {
+	 * 
+	 * for(int i=1; i<=100; i++) {
+	 * 
+	 * SizeProduct p = new SizeProduct(i,"S"); productService.createSize(p);
+	 * SizeProduct p1 = new SizeProduct(i,"M"); productService.createSize(p1);
+	 * SizeProduct p2 = new SizeProduct(i,"L"); productService.createSize(p2);
+	 * 
+	 * }
+	 * 
+	 * 
+	 * return "/product/new"; }
+	 * 
+	 * }
+	 */

@@ -101,8 +101,9 @@ public List<SizeProduct> getSizelist() {
 public void setSizelist(List<SizeProduct> sizelist) {
 	this.sizelist = sizelist;
 }
-//   public Product(String p_name, int p_price, int p_stock, int p_salescount, String p_category_name,
-//		Date p_upload_date, String p_description) {
+//   public Product(int p_id, String p_name, int p_price, int p_stock, int p_salescount, String p_category_name, Date p_upload_date, String p_description, int p_rate) 
+//   {
+//	   this.p_id=p_id;
 //	this.p_name = p_name;
 //	this.p_price = p_price;
 //	this.p_stock = p_stock;
@@ -110,6 +111,7 @@ public void setSizelist(List<SizeProduct> sizelist) {
 //	this.p_category_name = p_category_name;
 //	this.p_upload_date = p_upload_date;
 //	this.p_description = p_description;
+//	this.p_rate=p_rate;
 //}
 
    
