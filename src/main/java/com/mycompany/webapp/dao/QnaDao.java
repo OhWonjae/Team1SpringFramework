@@ -18,9 +18,9 @@ public interface QnaDao {
    public Qna selectByQa_id(int qa_id);// As-is
    public int update(Qna qna);
    public int deleteByQa_id(@Param("qa_id") int qa_id, @Param("user_id")String user_id);
-   public int count();
+   public int countuser(String name);
    public List<Qna> selectAll();
-   public List<Qna> selectByPage(Pager pager);
+   public List<Qna> selectByPage(@Param("user_id")String user_id, @Param("pager")Pager pager);
    public List<Qna> selectAllByUserId(String user_id);
    public User selectByUserid(String user_id);
 }
