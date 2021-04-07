@@ -54,6 +54,7 @@
                                               </div>
                                              </div>
                                             </div>
+                                            </div>
                                       </c:if>         
                        <c:if test="${!empty list}">                
                             <table class="table">
