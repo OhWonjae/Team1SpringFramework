@@ -62,6 +62,7 @@
                                              </div>
                                             </div>
                                       </c:if>
+                                      <c:if test="${!empty qna}">
                                 <c:forEach var="qna" items="${qna}">
                                     <div class="faq-content">
                                         <button class="question" id="que-${qna.qa_id}">
@@ -84,7 +85,36 @@
                                         </div>
                                     </div>
                                 </c:forEach>
-                              
+                                      <div class="d-flex text-center" style="margin:30px 0">
+										<div class="flex-grow-1">
+									         <!-- [처음][이전] 6 7 8 9 10 [다음][맨끝] -->
+									            <a class="btn btn-outline-primary btn-sm"
+														href="askList?pageNo=1">처음</a>
+														
+													<c:if test="${pager.groupNo>1}">
+														<a class="btn btn-outline-info btn-sm"
+														href="askList?pageNo=${pager.startPageNo-1}">이전</a>
+													</c:if>	
+													
+													<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+														<a class="btn 
+														<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+														<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+														
+														btn-sm" href="askList?pageNo=${i}">${i}</a>
+													</c:forEach>
+													
+													<c:if test="${pager.groupNo<pager.totalGroupNo}">
+														<a class="btn btn-outline-info btn-sm"
+														href="askList?pageNo=${pager.endPageNo+1}">다음</a>
+													</c:if>		
+														
+													<a class="btn btn-outline-primary btn-sm"
+														href="askList?pageNo=${pager.totalPageNo}">맨끝</a>
+								         	</div>
+							         	</div>
+							         	</c:if>
+							                              
                                     
                                             <script>
                                                 const items = document.querySelectorAll('.question');
@@ -109,33 +139,5 @@
             </div>
       </div>
      </div>
-      <div class="d-flex text-center" style="margin:30px 0">
-			<div class="flex-grow-1">
-		         <!-- [처음][이전] 6 7 8 9 10 [다음][맨끝] -->
-		            <a class="btn btn-outline-primary btn-sm"
-							href="askList?pageNo=1">처음</a>
-							
-						<c:if test="${pager.groupNo>1}">
-							<a class="btn btn-outline-info btn-sm"
-							href="askList?pageNo=${pager.startPageNo-1}">이전</a>
-						</c:if>	
-						
-						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-							<a class="btn 
-							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
-							
-							btn-sm" href="askList?pageNo=${i}">${i}</a>
-						</c:forEach>
-						
-						<c:if test="${pager.groupNo<pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm"
-							href="askList?pageNo=${pager.endPageNo+1}">다음</a>
-						</c:if>		
-							
-						<a class="btn btn-outline-primary btn-sm"
-							href="askList?pageNo=${pager.totalPageNo}">맨끝</a>
-	         	</div>
-         	</div>
       	<hr>
  <%@ include file="/WEB-INF/views/common/footer.jsp"%>     
