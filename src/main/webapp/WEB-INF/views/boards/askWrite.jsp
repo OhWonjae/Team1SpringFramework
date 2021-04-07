@@ -50,8 +50,23 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <script>
+                                                function Alertting(){
+                                                	console.log("");
+                                                	if($("#qa_content").val()===""){
+                                                		event.preventDefault();
+                                                		
+                                                    	alert("내용을 작성해 주세요");
+                                                	}
+                                                	
+                                                
+                                                	
+                                                }
+                                                </script>
+                                                
+                                                
                                                 <!--1:1문의 입력 폼-->
-                            								  <form action="insertAskWrite" method="post"> 
+                            								  <form action="insertAskWrite" method="post" onsubmit="Alertting();"> 
                             								  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             								  <input type="hidden" id="qa_category_hidden" value="${qna.qa_category}" />
 	                                                <!-- 1:1문의 입력 컨테이너 -->
@@ -74,7 +89,7 @@
                                                             <textarea class="form-control" id="qa_content" name="qa_content" style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요.">${qna.qa_content}</textarea>
                                                         </div>
                                                         <div style="padding-top: 20px;">
-                                                            <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
+                                                            <button type="submit" class="form-control"  id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
                                                                 1:1 문의하기 등록
                                                             </button>
                                                         </div>

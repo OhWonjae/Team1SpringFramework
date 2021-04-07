@@ -50,8 +50,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <script>
+                                                function Alertting(){
+                                                	console.log("");
+                                                	if($("#qa_content").val()===""){
+                                                		event.preventDefault();
+                                                		
+                                                    	alert("내용을 작성해 주세요");
+                                                	}
+                                                	
+                                                
+                                                	
+                                                }
+                                                </script>
                                                 <!--1:1문의 입력 폼-->
-                            								  <form action="updateAskWrite" method="post"> 
+                            								  <form action="updateAskWrite" method="post"onsubmit="Alertting();"> 
                             								  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             								  <input type="hidden" id="qa_category_hidden" value="${qna.qa_category}" />
                             								  <input type="hidden" id="qa_id" name="qa_id" value="${qna.qa_id}" />
