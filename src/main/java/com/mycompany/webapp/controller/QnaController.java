@@ -55,7 +55,7 @@ public class QnaController {
    		System.out.println ( pager.getEndRowNo() );
    		//페이저 공부
    		
-   		//session.setAttribute("pager", pager);
+   		session.setAttribute("pager", pager);
 
    		//1. pager를 이용해서 리스트 가져오기
    		//List<Qna> list = qnaService.getBoardList(pager);
