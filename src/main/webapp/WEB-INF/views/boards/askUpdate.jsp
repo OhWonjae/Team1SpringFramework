@@ -8,6 +8,24 @@
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/askWrite.css">
     <title>Document></title>
+<script>
+	function validate(){
+		event.preventDefault(); // 기능 잠시 꺼두기
+		var result = true;
+		
+		const content = $("#qa_content").val();
+	      if (content === "") { // 비어있으면 문제
+	         result = false;
+	         $("#errorcontent").html("필수사항 입니다.");
+	      } else if (content.length < 10) {
+	         result = false;
+	         $("#errorcontent").html("최소 10자 이상 입력해야 합니다.");
+	      }
+	      if (result) {
+	    	  $("#content")[0].submit();
+	      }
+}
+</script>
 
 <div class="header2"> 
     <div class="inner">
@@ -64,7 +82,7 @@
                                                 }
                                                 </script>
                                                 <!--1:1문의 입력 폼-->
-                            								  <form action="updateAskWrite" method="post"onsubmit="Alertting();"> 
+                            								  <form id = "content" name = "content" action="updateAskWrite" method="post" onsubmit="validate(), Alertting();" novalidate="novalidate"> 
                             								  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             								  <input type="hidden" id="qa_category_hidden" value="${qna.qa_category}" />
                             								  <input type="hidden" id="qa_id" name="qa_id" value="${qna.qa_id}" />
@@ -86,6 +104,7 @@
                                                         <div style="display: flex; flex-direction: column; padding-top: 20px;">
                                                             <label>문의 내용</label>
                                                             <textarea class="form-control" id="qa_content" name="qa_content" style="height:200px; overflow:hidden; resize: none;"  placeholder="내용을 최소 10자 이상 입력하세요.">${qna.qa_content}</textarea>
+                                                        	<span id="errorcontent" class="text-danger error"></span>
                                                         </div>
                                                         <div style="padding-top: 20px;">
                                                             <button type="submit" class="form-control" id="recipient-pic" style="border:1px #FF3357 solid; text-align:center; background-color: #FF3357; color:white">
