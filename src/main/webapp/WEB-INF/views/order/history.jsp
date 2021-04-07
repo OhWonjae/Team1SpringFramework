@@ -28,9 +28,9 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/history?pageNo=1" role="tab" aria-controls="profile">주문내역</a>
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart?pageNo=1" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList?pageNo=1" role="tab" aria-controls="settings">고객센터</a>
                 </div>
                 </div>
                 <div class="col-10">
@@ -96,38 +96,33 @@
                                         </c:forEach>
                                     </tbody>
                             </table>
-                             </c:if> 
-                                <c:if test="${!empty list}">                         
-	                                  <div class="d-flex text-center">
-																			<div class="flex-grow-1" style="margin-top:20px;">
-																		
-																				<a class="btn btn-light btn-sm"
-																					href="history?pageNo=1"><pre style="margin-bottom:0;"><<</pre></a>
+                                <div class="d-flex text-center">
+									<div class="flex-grow-1" style="margin-top:20px;">							
+										<a class="btn btn-light btn-sm"
+										href="history?pageNo=1"><pre style="margin-bottom:0;"><<</pre></a>
 																					
-																				<c:if test="${pager.groupNo>1}">
-																					<a class="btn btn-outline-info btn-sm"
-																					href="history?pageNo=${pager.startPageNo-1}">이전</a>
-																				</c:if>	
+										<c:if test="${pager.groupNo>1}">
+											<a class="btn btn-outline-info btn-sm" href="history?pageNo=${pager.startPageNo-1}">이전</a>
+										</c:if>	
 																				
-																				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-																					<a class="btn 
-																					<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-																					<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
-																					
-																					btn-sm" href="history?pageNo=${i}">${i}</a>
-																				</c:forEach>
+										<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+											<a class="btn 
+												<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
+												<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
+												btn-sm" href="history?pageNo=${i}">${i}</a>
+										</c:forEach>
 																				
-																				<c:if test="${pager.groupNo<pager.totalGroupNo}">
-																					<a class="btn btn-outline-info btn-sm"
-																					href="history?pageNo=${pager.endPageNo+1}">처음</a>
-																				</c:if>		
+										<c:if test="${pager.groupNo<pager.totalGroupNo}">
+											<a class="btn btn-outline-info btn-sm"
+												href="history?pageNo=${pager.endPageNo+1}">처음</a>
+											</c:if>		
 																					
-																				<a class="btn btn-light btn-sm"
-																					href="history?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
-																			</div>
-																		</div> 
-                                 	</c:if>
+										<a class="btn btn-light btn-sm"
+											href="history?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
+										</div>
+								</div> 
                         </div>
+                             </c:if> 
                     
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">   
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"> </div>
