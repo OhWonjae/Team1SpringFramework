@@ -218,18 +218,31 @@ section{
     padding: 1rem 0;
     margin-top:15px;
     overflow: none;
-    position: relative;
+    
 }
 
 .fa-chevron-circle-right{
     position: absolute;
-    top:105px;
-    left:1110px;
-    font-size: 35px;
+   	top:190px;
+    left:1388px;
+    z-index:100;
+    font-size: 45px;
     color:black;
     cursor:pointer;
+    border:0;
+    outline:0;
 }
-
+.fa-chevron-circle-left{
+    position: absolute;
+    top:190px;
+    left:257px;
+		z-index:2;
+    font-size: 45px;
+    color:black;
+    cursor:pointer;
+    border:0;
+    outline:0;
+}
 .new-goods{
     width: 280px;
     transition: 0.4s;

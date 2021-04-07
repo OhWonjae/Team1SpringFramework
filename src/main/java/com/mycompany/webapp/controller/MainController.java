@@ -32,7 +32,7 @@ public class MainController {
 	public String main(Model model) {
 		 
 	      
-	      Pager pager = new Pager(5,1,5,1);
+	      Pager pager = new Pager(10,1,10,1);
 	      List<Product> newlist = productService.getProductsByPager(pager);
 	      model.addAttribute("newlist", newlist);
 		

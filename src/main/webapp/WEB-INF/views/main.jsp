@@ -10,6 +10,129 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+<style>
+   .swiper-container { 
+       width: 100%; 
+       height: 100%; 
+     } 
+ 
+ 
+     .swiper-slide { 
+       text-align: center; 
+       font-size: 18px; 
+       background: #fff; 
+ 
+ 
+       /* Center slide text vertically */ 
+       display: -webkit-box; 
+       display: -ms-flexbox; 
+       display: -webkit-flex; 
+       display: flex; 
+       -webkit-box-pack: center; 
+       -ms-flex-pack: center; 
+       -webkit-justify-content: center; 
+       justify-content: center; 
+       -webkit-box-align: center; 
+       -ms-flex-align: center; 
+       -webkit-align-items: center; 
+       align-items: center; 
+       
+       .left
+}
+       
+   </style>
+
+<script>
+$(function(){
+    //initialize swiper when document ready
+    var mySwiper = new Swiper('.swiper-container1', {
+        // Optional parameters 
+        direction: 'horizontal', // 방향
+        slidesPerView: 5, // 슬라이드를 한번에 3개를 보여준다
+        slidesPerGroup : 5, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+        spaceBetween: 50, // 슬라이드간 padding 값 30px 씩 떨어뜨려줌
+        
+        // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+        // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+        loopFillGroupWithBlank : false,
+
+        loop: false, // loop 를 true 로 할경우 무한반복 슬라이드, false 로 할경우 슬라이드의 끝에서 더보여지지 않음
+
+        // If we need pagination 
+        pagination: {
+            el: '.swiper-pagination',
+            clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+        },
+        
+        // Navigation arrows 
+        navigation: {
+            nextEl: '.right',
+            prevEl: '.left',
+        },
+        
+        // 반응형
+        breakpoints: {
+            1280: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+            },
+            720: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+            },
+        }
+    })
+});
+
+$(function(){
+    //initialize swiper when document ready
+    var mySwiper = new Swiper('.swiper-container2', {
+        // Optional parameters 
+        direction: 'horizontal', // 방향
+        slidesPerView: 5, // 슬라이드를 한번에 3개를 보여준다
+        slidesPerGroup : 5, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+        spaceBetween: 50, // 슬라이드간 padding 값 30px 씩 떨어뜨려줌
+        
+        // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+        // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
+        loopFillGroupWithBlank : false,
+
+        loop: false, // loop 를 true 로 할경우 무한반복 슬라이드, false 로 할경우 슬라이드의 끝에서 더보여지지 않음
+
+        // If we need pagination 
+        pagination: {
+            el: '.swiper-pagination',
+            clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+        },
+        
+        // Navigation arrows 
+        navigation: {
+            nextEl: '.right2',
+            prevEl: '.left2',
+        },
+        
+        // 반응형
+        breakpoints: {
+            1280: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+            },
+            720: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+            },
+        }
+    })
+});
+
+
+</script>
+
    <section>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -38,19 +161,28 @@
             </a>
           </div>
     </section>
-    <section>
+    <section style="position: relative;">
       <div class="inner">
         <div class="main-new">
           <div class="main-title-new">
             <div class="main-title">신규</div>
             <button type="button" onclick="location.href='<%=application.getContextPath()%>/product/new'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
+          
+   
+          
+          
           <ul class="new-list">
-            
+                   <!-- Slider main container -->
+    <div class="swiper-container swiper-container1">
+
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
             <!--신규 상품 리스트 출력 -->
             	<c:forEach var="product" items="${newlist}">
+            	 <div class="swiper-slide">
             	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'">
-				 	
+				 
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
@@ -64,47 +196,67 @@
                 		<a style="color: silver;"> (${product.p_rate})</a>
     				
                 </li>
+                </div>
 				</c:forEach>
+            </div>
+
+            </div>
             
-            
-            <i class="fas fa-chevron-circle-right"></i>
+           
           </ul>
         </div>
       </div>
+     		<i class="fas fa-chevron-circle-left left"></i>
+        <i class="fas fa-chevron-circle-right right"></i>
     </section>
     <hr/>
-    <section>
+     <section style="position: relative;">
       <div class="inner">
         <div class="main-new">
           <div class="main-title-new">
-            <div class="main-title">추천</div>
-            <button type="button" onclick="location.href='<%=application.getContextPath()%>/product/rec'" class="btn btn-outline-secondary btn-sm">더보기></button>
+            <div class="main-title">신규</div>
+            <button type="button" onclick="location.href='<%=application.getContextPath()%>/product/new'" class="btn btn-outline-secondary btn-sm">더보기></button>
           </div>
+          
+   
+          
+          
           <ul class="new-list">
-             	<!--추천 상품 리스트 출력 -->
+                   <!-- Slider main container -->
+    <div class="swiper-container swiper-container2">
+
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!--신규 상품 리스트 출력 -->
             	<c:forEach var="product" items="${reclist}">
-            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'" >
-				 	
+            	 <div class="swiper-slide">
+            	<li class="new-goods" style="margin-left: 0;" onclick="location.href='product/detail?pid=${product.p_id}'">
+				 
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px" style="cursor: pointer;">
       					<div class="goods-title">${product.p_name}</div>
       					<div class="goods-price">${product.p_price}원</div>
-      					
-     					  <!--별점-->
+      					 <!--별점-->
                          <c:forEach var="i" begin="1" end="${product.p_rate}">
                          <img src="${pageContext.request.contextPath}/resources/img/Star.PNG" height="10px">
                          </c:forEach>
                          <c:forEach var="i" begin="${product.p_rate+1}" end="5">
                          <img src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG" height="10px">
                          </c:forEach>
-     					  
-     					
                 		<a style="color: silver;"> (${product.p_rate})</a>
+    				
                 </li>
+                </div>
 				</c:forEach>
-            <i class="fas fa-chevron-circle-right"></i>
+            </div>
+
+            </div>
+            
+           
           </ul>
         </div>
       </div>
+     		<i class="fas fa-chevron-circle-left left2" ></i>
+        <i class="fas fa-chevron-circle-right right2"></i>
     </section>
     <hr/>
     <section>
