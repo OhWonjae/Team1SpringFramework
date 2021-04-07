@@ -6,6 +6,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
+</script>
     <title>Document></title>
 <div class="header2"> 
     <div class="inner">
