@@ -1,6 +1,5 @@
 package com.mycompany.webapp.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import com.mycompany.webapp.dao.OrdersDao;
 import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.OrderProduct;
 import com.mycompany.webapp.dto.Orders;
+import com.mycompany.webapp.dto.Pager;
 
 @Service
 public class OrdersService {
@@ -41,12 +41,24 @@ public class OrdersService {
 			Orders orders=ordersDao.orderSelectByOne(order_id);
 			return orders;
 		}
-
+	//주문내역 읽어오기
 	public List<Orders> getOrdersList(String uid){ 
 		List<Orders> list = ordersDao.ordersList(uid);
 		return list;
 	}
-
+	
+	public List<Orders> getOrdersList(String uid,Pager pager){ 
+		List<Orders> list = ordersDao.orderListByPage(uid, pager);
+		return list;
+	}
+	
+	public int getTotalRows(String uid) {
+	     int rows = ordersDao.count(uid);
+	     return rows;
+	   }
+	
+	
+	//orderProduct 테이블 관련 
 	public void creatOrderProduct(OrderProduct orderproduct) {
 		orderProductDao.orderProductList(orderproduct);
 	}
