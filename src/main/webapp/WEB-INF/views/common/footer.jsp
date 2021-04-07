@@ -4,7 +4,7 @@
     
     
     <footer style="color: #ffffff">
-      <div class="container-fluid" style = "background-color: #FF3357; margin-left : 0px; margin-right : 0px; height:90px">
+      <div class="container-fluid" style = "background-color: rgb(255, 96, 97); margin-left : 0px; margin-right : 0px; height:90px">
           <div class="inner">
             <div class="row">
               <div class="col-sm-3">

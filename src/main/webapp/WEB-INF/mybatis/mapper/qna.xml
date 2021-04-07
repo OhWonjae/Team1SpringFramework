@@ -21,11 +21,12 @@
           from (
               select qa_id, qa_category, qa_content, qa_status, qa_date, qa_cn, user_id
               from QNA
-              order by qa_id desc
+              where user_id = #{user_id}
+              order by qa_id desc  
           )
-          where rownum &lt;= #{endRowNo}
+          where rownum &lt;= #{pager.endRowNo}
       )
-      where rnum &gt;= #{startRowNo}  
+      where rnum &gt;= #{pager.startRowNo}  
    
    </select> 
       
@@ -63,5 +64,10 @@
       from users 
       where user_id=#{user_id}
    </select>
+   
+  <select id="countuser" resultType="int">
+      select count(*) from qna
+      where user_id=#{user_id}
+   </select> 
    
 </mapper>

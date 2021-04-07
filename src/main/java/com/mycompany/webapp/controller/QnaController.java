@@ -2,6 +2,8 @@ package com.mycompany.webapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,21 +33,47 @@ public class QnaController {
    
    //1:1문의 게시판으로 이동
    @GetMapping("/askList")
-   public String askList(@RequestParam(defaultValue = "1") int pageNo, Model model, Authentication auth) {
-           int totalRows = qnaService.getTotalRows();
-            Pager pager = new Pager(10, 5, totalRows, pageNo);
-           //List<Qna> list = qnaService.getBoardList(pager);
-            //여기에 이제 user_id 값 받은거 넣어줘야함
-            User user = usersService.getUser(auth.getName());
-            model.addAttribute("user", user);
-            logger.info(auth.getName());
-            List<Qna> list = qnaService.getBoardList(auth.getName());
-           //user_id에 맞는 게시글을 불러오도록 해야함
-           //where user_id = #{user_id}
+   public String askList(String pageNo, Model model, HttpSession session, Authentication auth) {
+           int intPageNo = 1;
+           if (pageNo == null) { // 클라이언트에서 pageNo가 넘어오지 않았을 경우
+   			// 세션에서 Pager 를 찾고, 있으면 pageNo를 설정하고,
+   			// 없으면 Pager를 세션에 저장함.
+   			Pager pager = (Pager) session.getAttribute("pager");
+   			if (pager != null) {
+   				intPageNo = pager.getPageNo();
+   			}
+   		} else {
+   			intPageNo = Integer.parseInt(pageNo);
+   		}
+ 
+       	String name = auth.getName();
+        System.out.println( name );
+        int totalRows = qnaService.getTotalRows( name );
+        System.out.println( totalRows );
+        //유저아이디 기준ㅇ로 전체 행
+   		Pager pager = new Pager(6, 5, totalRows, intPageNo);
+   		System.out.println ( pager.getEndRowNo() );
+   		//페이저 공부
+   		
+   		session.setAttribute("pager", pager);
+
+   		//1. pager를 이용해서 리스트 가져오기
+   		//List<Qna> list = qnaService.getBoardList(pager);
+		
+   		//여기에 이제 user_id 값 받은거 넣어줘야함
+        User user = usersService.getUser(auth.getName());
+        model.addAttribute("user", user);
+        logger.info(auth.getName());//
+        List<Qna> list = qnaService.getBoardList(auth.getName(), pager);
+//           //user_id에 맞는 게시글을 불러오도록 해야함
+//           where user_id = #{user_id};
+//           session.setAttribute("pager", pager);
            model.addAttribute("qna", list);//as -is => list , be -to => qna
-            model.addAttribute("pager", pager.getTotalRows());
-            
-            //System.out.println(list);//테스트 여기서 list 값을 잘 활용 하면 됨. 지금 insert 하면 값 들어가고,콘솔에 보면 값은 계속 쌓이고는 있음 
+//           model.addAttribute("list", list);
+           model.addAttribute("pager", pager);//?
+//           model.addAttribute("listcount",totalRows);
+//            
+//            //System.out.println(list);//테스트 여기서 list 값을 잘 활용 하면 됨. 지금 insert 하면 값 들어가고,콘솔에 보면 값은 계속 쌓이고는 있음 
             
       return "/boards/askList";
    }

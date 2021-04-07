@@ -90,16 +90,16 @@
     
    <!-- 상품 insert / seq로 상품 id-->
    <insert id="insert" parameterType="product">
-   <selectKey keyProperty="pid" resultType="int" order="BEFORE">
+   <!-- <selectKey keyProperty="pid" resultType="int" order="BEFORE">
       select seq_product_pno.nextval from dual
    
-   </selectKey>
+   </selectKey> -->
       insert into products
       (p_id, p_name, p_price, p_stock, p_salescount, p_category_name,
-      p_upload_date, p_description)
+      p_upload_date, p_description, p_rate)
       values
-      (#{pid}, #{pname}, #{pprice}, #{pstock}, #{salescount}, #{categoryname},
-      #{puploaddate}, #{pdescription})
+      (#{p_id}, #{p_name}, #{p_price}, #{p_stock}, #{p_salescount}, #{p_category_name},
+      #{p_upload_date}, #{p_description}, #{p_rate})
    </insert>
    
  

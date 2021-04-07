@@ -43,18 +43,20 @@ public class QnaService {
          List<Qna> list = qnaDao.selectAll();
          return list;
    }
-   public List<Qna> getBoardList(Pager pager) { // 메소드 오버로딩
-         List<Qna> list = qnaDao.selectByPage(pager);         
-         return list;
+   public List<Qna> getBoardList(String user_id, Pager pager) { // 메소드 오버로딩
+         List<Qna> lists = qnaDao.selectByPage(user_id, pager);         
+         return lists;
    }
    public List<Qna> getBoardList(String user_id) {
       List<Qna> list = qnaDao.selectAllByUserId(user_id);
       return list;
    }
 
-   public int getTotalRows() {
-      return 0;
-   }
+   public int getTotalRows(String name) {
+       int rows = qnaDao.countuser(name);
+       return rows;
+    }
+
    public User getUser(String user_id) {
             User user = usersDao.selectByUserid(user_id);
             return user;

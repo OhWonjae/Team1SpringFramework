@@ -59,7 +59,7 @@ header{
 
 .searchTab{
     width: 100%;
-    border: 3px solid #FF3357;
+    border: 3px solid rgb(255, 96, 97);
     border-right: none;
     padding: 5px;
     height: 30px;
@@ -71,8 +71,8 @@ header{
 .searchButton {
   width: 40px;
   height: 30px;
-  border: 1px solid #FF3357;
-  background: #FF3357;
+  border: 1px solid rgb(255, 96, 97);
+  background: rgb(255, 96, 97);
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -99,7 +99,7 @@ header{
 }
 
 .mypage a:hover{
-    color:#FF3357;
+    color:rgb(255, 96, 97);
     text-decoration: none;
 }
 
@@ -125,7 +125,7 @@ header{
 }
 
 .cart a:hover{
-    color:#FF3357;
+    color:rgb(255, 96, 97);
     text-decoration: none;
 }
 
@@ -218,18 +218,31 @@ section{
     padding: 1rem 0;
     margin-top:15px;
     overflow: none;
-    position: relative;
+    
 }
 
 .fa-chevron-circle-right{
     position: absolute;
-    top:105px;
-    left:1110px;
-    font-size: 35px;
+   	top:38%;
+    left:86%;
+    z-index:100;
+    font-size: 45px;
     color:black;
     cursor:pointer;
+    border:0;
+    outline:0;
 }
-
+.fa-chevron-circle-left{
+    position: absolute;
+    top:38%;
+    left:11%;
+	z-index:2;
+    font-size: 45px;
+    color:black;
+    cursor:pointer;
+    border:0;
+    outline:0;
+}
 .new-goods{
     width: 280px;
     transition: 0.4s;
@@ -635,6 +648,8 @@ a:hover{
         max-width: 1200px;
     }
 }
+
+
 
 
 
