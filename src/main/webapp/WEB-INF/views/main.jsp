@@ -166,7 +166,7 @@ $(function(){
 		</a>
 	</div>
 </section>
-<section style="position: relative;">
+<section>
 	<div class="inner">
 		<div class="main-new">
 			<div class="main-title-new">
@@ -180,6 +180,7 @@ $(function(){
 
 
 			<ul class="new-list">
+			<i class="fas fa-chevron-circle-left left" style="display: none"></i> 
 				<!-- Slider main container -->
 				<div class="swiper-container swiper-container1">
 
@@ -190,7 +191,6 @@ $(function(){
 							<div class="swiper-slide">
 								<li class="new-goods" style="margin-left: 0;"
 									onclick="location.href='product/detail?pid=${product.p_id}'">
-
 									<img
 									src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}"
 									width="200px" style="cursor: pointer;">
@@ -215,10 +215,11 @@ $(function(){
 
 
 			</ul>
+			<i class="fas fa-chevron-circle-right right"></i> 
 		</div>
 	</div>
-	<i class="fas fa-chevron-circle-left left" style="display: none"></i> <i
-		class="fas fa-chevron-circle-right right"></i>
+	<!--  <i class="fas fa-chevron-circle-left left" style="display: none"></i> 
+	<i class="fas fa-chevron-circle-right right"></i>-->
 </section>
 <hr />
 <section style="position: relative;">
