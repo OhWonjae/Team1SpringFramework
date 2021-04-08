@@ -90,9 +90,6 @@ public class CartController {
    
    @GetMapping("/cart/increase")
    public String increase(Authentication auth, int pid, String psize) {
-	   System.out.println(auth.getName());
-	   System.out.println(pid);
-	   System.out.println(psize);
       cartsService.plusAmount(auth.getName(), pid, psize);
       return "redirect:/order/cart";
    }

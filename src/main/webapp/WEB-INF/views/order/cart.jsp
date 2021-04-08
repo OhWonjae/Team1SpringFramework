@@ -114,7 +114,7 @@
 	                                  <div class="d-flex text-center">
 																			<div class="flex-grow-1">
 																		
-																				<a class="btn btn-outline-primary btn-sm"
+																				<a class="btn btn-light btn-sm"
 																					href="cart?pageNo=1">처음</a>
 																					
 																				<c:if test="${pager.groupNo>1}">
@@ -125,7 +125,7 @@
 																				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 																					<a class="btn 
 																					<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-																					<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+																					<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 																					
 																					btn-sm" href="cart?pageNo=${i}">${i}</a>
 																				</c:forEach>
@@ -135,7 +135,7 @@
 																					href="cart?pageNo=${pager.endPageNo+1}">다음</a>
 																				</c:if>		
 																					
-																				<a class="btn btn-outline-primary btn-sm"
+																				<a class="btn btn-light btn-sm"
 																					href="cart?pageNo=${pager.totalPageNo}">맨끝</a>
 																			</div>
 																		</div> 
