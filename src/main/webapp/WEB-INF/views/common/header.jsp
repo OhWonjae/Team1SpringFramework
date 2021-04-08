@@ -25,7 +25,16 @@
 
 
 </head>
+<!-- <script>
+$(function () {
+    var token = $("input[name='_csrf']").val();
+    var header = "X-CSRF-TOKEN";
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });
+});
 
+</script> -->
 
 <body>
     <header>
@@ -68,7 +77,7 @@
 	                     <sec:authorize access="isAnonymous()">
 							<a href="<%=application.getContextPath()%>/loginForm">
 	                        	<i class="fas fa-user mypage-icon"></i>
-	                        	<span class="mypage-text">MY</span>
+	                        	<span class="mypage-text">LOGIN</span>
 	                      	</a>
 						</sec:authorize>
 					

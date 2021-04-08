@@ -25,21 +25,32 @@ public class AuthController {
 	public String loginForm() {
 		return "/user/loginForm";
 	}
+	
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "/user/joinForm";
 	}
+	
+	
 	@GetMapping("/searchIdForm")
 	public String searchIdForm() {
 		return "/user/searchIdForm";
 	}
+	
+	// 회원가입
 	@PostMapping("/join")
 	public String join(User user) throws Exception {
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		user.setUser_password(bpe.encode(user.getUser_password()));
-
 		usersService.join(user);
-
+		return "/user/loginForm";
+	}
+	
+	
+	// 회원탈퇴
+	@PostMapping("/signout")
+	public String signout(Authentication auth) throws Exception {
+		usersService.signout(auth.getName());
 		return "/user/loginForm";
 	}
 	/*
@@ -64,7 +75,7 @@ public class AuthController {
 			return "redirect:/";
 		}*/
 
-	// 아이디 중복 체크
+	// 회원가입시 아이디 중복 체크
 	@RequestMapping(value="/idCheck", produces="text/plain; charset=UTF-8")
 	@ResponseBody
 	public String idCheck(String user_id) {
@@ -78,7 +89,36 @@ public class AuthController {
 			return "0";
 		}
 	}
-
+	
+	// 아이디 찾기
+	@RequestMapping(value="/searchIdCheck", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public String searchIdCheck(String user_name, String user_phone) {
+		logger.info("searchIdCheck 진입");
+		int result = usersService.searchIdCheck(user_name, user_phone);
+		if (result == 1) {
+			System.out.println("가입한 아이디가 있습니다.");
+			return "1";
+		} else {
+			System.out.println("가입한 아이디가 없습니다.");
+			return "0";
+		}
+	}
+	
+	// 비밀번호 찾기
+	@RequestMapping(value="/searchPwCheck", produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public String searchPwCheck(String user_id, String user_phone) {
+		logger.info("searchPwCheck 진입");
+		int result = usersService.searchPwCheck(user_id, user_phone);
+		if (result == 1) {
+			System.out.println("가입한 아이디가 있습니다.");
+			return "1";
+		} else {
+			System.out.println("가입한 아이디가 없습니다.");
+			return "0";
+		}
+	}
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "/user/searchPw";
@@ -87,8 +127,8 @@ public class AuthController {
 	@PostMapping("/searchPw")
 	public String searchPw(String user_id, Model model) throws Exception {
 		User user = usersService.getUser(user_id);
-		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-		user.setUser_password(bpe.encode(user.getUser_password()));
+		/*		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+				user.setUser_password(bpe.encode(user.getUser_password()));*/
 		model.addAttribute("user", user);
 		System.out.println(user.getUser_password());
 		return "/user/pwChange";
@@ -102,19 +142,20 @@ public class AuthController {
 		return "/user/searchId";
 	}
 
-	@GetMapping("/searchId")
-	public String searchId(String user_name, String user_phone, Model model) throws Exception {
-		User user = usersService.getUserid(user_name, user_phone);
-		model.addAttribute("user", user);
-		System.out.println(user.getUser_id());
-		return "/user/searchId";
-	}
+	/*	@GetMapping("/searchId")
+		public String searchId(String user_name, String user_phone, Model model) throws Exception {
+			User user = usersService.getUserid(user_name, user_phone);
+			model.addAttribute("user", user);
+			System.out.println(user.getUser_id());
+			return "/user/searchId";
+		}*/
 
 	@PostMapping("/searchId")
 	public String searchId() throws Exception {
 		return "/user/loginForm";
 	}
 
+	// my.jsp 이름이랑 이메일 보여주기
 	@GetMapping("user/my")
 	public String read(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
@@ -122,7 +163,7 @@ public class AuthController {
 		return "/user/my";
 	}
 
-	// PW 변경
+	// pwChange.jsp 이름이랑 이메일 보여주기
 	@GetMapping("user/pwChange")
 	public String pwChange(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
@@ -130,28 +171,30 @@ public class AuthController {
 		return "/user/pwChange";
 	}
 
-	@PostMapping("user/updateUser")
-	public String updateUser(String user_password, Authentication auth) {
+	// PW 변경
+	@PostMapping("user/updatePw")
+	public String updatePw(String user_password, Authentication auth) {
 		User user = usersService.getUser(auth.getName());
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-		usersService.updateUser(bpe.encode(user_password), auth.getName());
+		usersService.updatePw(bpe.encode(user_password), auth.getName());
 		return "redirect:/user/my";
 	}
 
-	// PHONE 변경
+	// phoneChange.jsp 이름이랑 이메일 보여주기
 	@GetMapping("user/phoneChange")
 	public String phoneChange(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
 		model.addAttribute("user", user);
 		return "/user/phoneChange";
 	}
-
-	@PostMapping("user/updateUser2")
-	public String updateUser2(String user_phone, Authentication auth) {
-		usersService.updateUser2(user_phone, auth.getName());
+	// PHONE 변경
+	@PostMapping("user/updatePhone")
+	public String updatePhone(String user_phone, Authentication auth) {
+		usersService.updatePhone(user_phone, auth.getName());
 		return "redirect:/user/my";
 	}
 
+	//
 	@GetMapping("user/error403")
 	public String error403() {
 		return "/user/error403";

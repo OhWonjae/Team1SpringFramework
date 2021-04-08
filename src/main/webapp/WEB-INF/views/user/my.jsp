@@ -90,12 +90,20 @@
 							</div>
 							<div class="tab">
 								<div class="event">
-									<form method="post"
+									<form method="post" class="mb-3"
 										action="<%=application.getContextPath()%>/logout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 										<button type="submit" 
 											class="btn btn-outline-secondary btn-sm">로그아웃</button>
+									</form>
+									
+									<form method="post"
+										action="<%=application.getContextPath()%>/signout">
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
+										<button type="submit" 
+											class="btn btn-outline-secondary btn-sm">회원탈퇴</button>
 									</form>
 								</div>
 							</div>

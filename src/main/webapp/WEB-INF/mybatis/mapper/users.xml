@@ -24,6 +24,12 @@
 		where user_name=#{user_name} and user_phone=#{user_phone} 
 	</select>
 	
+	<!-- 아이디 찾기 select count() 사용 -->
+	<select id="searchIdCheck" resultType="int"> 
+		select count(user_id)
+		from users 
+		where user_name=#{user_name} and user_phone=#{user_phone} 
+	</select>
 	<!-- 비밂번호 찾기 -->
 	<select id="selectPasswordById" parameterType="string" resultType="user"> 
 		select user_password
@@ -31,7 +37,14 @@
 		where user_name=#{user_name}
 	</select>
 	
-	<!-- 비밂번호 변경 -->
+	<!-- 비밀번호 찾기 select count() 사용 -->
+	<select id="searchPwCheck" resultType="int"> 
+		select count(user_password)
+		from users 
+		where user_id=#{user_id} and user_phone=#{user_phone} 
+	</select>
+	
+	<!-- 비밀번호 변경 -->
 	<update id="updatePasswordById" parameterType="string">
 		update users 
 		set user_password=#{user_password} 
@@ -42,6 +55,13 @@
 	<update id="updatePhoneById" >
 		update users 
 		set user_phone=#{user_phone} 
+		where user_id=#{user_id}
+	</update>
+	
+	<!-- 회원탈퇴-->
+	<update id="updateEnabledById" >
+		update users 
+		set enabled=0
 		where user_id=#{user_id}
 	</update>
 	

@@ -65,7 +65,7 @@ document.getElementById("user_phone").value = user_phone; */
 		if (uid  === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserid").html("필수사항 입니다.");
-		}  else if (uid.length < 8) {
+		} else if (uid.length < 8) {
 			result = false;
 			$("#errorUserid").html("최소 8자 이상 입력해야 합니다.");
 		} else if (uid.length > 50) {
@@ -76,13 +76,13 @@ document.getElementById("user_phone").value = user_phone; */
 			$("#errorUserid").html("중복체크를 받아야합니다.");
 		}
 		
-		if (upassword !== upassword2) {
+		/* if (upassword !== upassword2) {
 			if (upassword !== "" && upassword2 !== "")
 			result = false;
-			alert("비밀번호가 일치하지 않습니다.");
+			$("#errorUserid").html("중복체크를 받아야합니다.");
 			$('#user_password2').val('');
 			$('#user_password2').focus();
-		}
+		} */
 		if (uname === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUsername").html("필수사항 입니다.");
@@ -90,12 +90,19 @@ document.getElementById("user_phone").value = user_phone; */
 		if (upassword === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserpassword").html("필수사항 입니다.");
+		} else if (upassword.length < 6) {
+			result = false;
+			$("#errorUserpassword").html("최소 6자 이상 입력해야 합니다.");
 		}
 		if (upassword2 === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserpassword2").html("필수사항 입니다.");
+		} else if (upassword2.length < 6) {
+			result = false;
+			$("#errorUserpassword2").html("최소 6자 이상 입력해야 합니다.");
+			
 		}
-		if (user_phone === "") { // 비어있으면 문제
+		if (user_phone2 === "" || user_phone3 === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUserphone").html("필수사항 입니다.");
 		}		
@@ -103,6 +110,7 @@ document.getElementById("user_phone").value = user_phone; */
 			$("#joinForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 			//document.joinForm.submit(); // 찾는 방법이 2개가 있음. 아이디를 이용
 		} else {
+			var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 			var re_id = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var re_hp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 			//var idChkVal = $("#idCheck").val();
@@ -110,26 +118,34 @@ document.getElementById("user_phone").value = user_phone; */
 		}
 		if (!re_id.test(uid)) {
 			result = false;
-			alert("이메일에 맞는 형식이 아닙니다.");
+			swal("이메일에 맞는 형식이 아닙니다.");
 			$('#user_id').val('');
 			$('#user_id').focus();
-		} else if (uid  === "") {
+		}  else if (!reg_pwd.test(upassword) || !reg_pwd.test(upassword2)) {
 			result = false;
-			alert("이름을 입력하지 않았습니다.");
+			swal("영문, 숫자 혼합하여 최소 6~20자리 이내의 비밀번호를 입력해야 합니다.");
+			$('#user_password').val('');
+			$('#user_password2').val('');
+			$('#user_password').focus();
+		}	else if (uname  === "") {
+			result = false;
+			swal("이름을 입력하지 않았습니다.");
 			$('#user_name').focus();
-		} else if (upassword == "" && upassword2 == "") {
-			if (upassword !== upassword2)
+		}  else if (upassword === "" || upassword2 === "") {
 			result = false;
-			alert("비밀번호을 입력하지 않았습니다.");
+			swal("비밀번호를 입력하지 않았습니다.");
+		}  else if (upassword !== upassword2) {
+			result = false;
+			swal("비밀번호가 서로 일치하지 않습니다.");
 			$('#user_password').focus();
 		}  else if (!re_hp.test(uphone)) {
 			result = false;
-			alert("휴대폰 번호에 맞는 형식이 아닙니다.");
+			swal("휴대폰 번호에 맞는 형식이 아닙니다.");
 			$('#user_phone').val('');
 			$('#user_phone').focus();
 		}  else if (idChkVal == "N"){
-			alert("중복체크 버튼을 눌러주세요.");
-		} else if(idChkVal == "Y"){
+			swal("중복체크 버튼을 눌러주세요.");
+		}  else if(idChkVal == "Y"){
 			result = true;
 			} 
 /* 		console.log(idCheck.getAttribute('value'));
@@ -165,12 +181,12 @@ document.getElementById("user_phone").value = user_phone; */
 				console.log(user_id); 
 				/* var user_id = user_email1 + "@" + user_email2 + user_email3; 	 */	
 				if ($("#user_id").val() == '') {
-					alert("필수 입력사항입니다.");
+					swal("필수 입력사항입니다.");
 				} else if (data == "1") {
-					alert("중복된 아이디입니다.");
+					swal("중복된 아이디입니다.");
 				} else if (data == "0") {
 					$("#idCheck").attr("value", "Y");
-					alert("사용가능한 아이디입니다.");
+					swal("사용가능한 아이디입니다.");
 				} 
 			}
 		})
@@ -243,7 +259,7 @@ document.getElementById("user_phone").value = user_phone; */
 			</div>
 		</div>
 		<%-- <c:if test="${joinError != null }">
-			<div class="alert alert-primary">
+			<div class="swal swal-primary">
 				<c:if test="${joinError == 'wrongUser_id'}">
 					<span>이미 사용중인 이메일입니다.</span>
 				</c:if>
@@ -254,7 +270,7 @@ document.getElementById("user_phone").value = user_phone; */
 			<strong>비밀번호</strong><span style="color: red;">*</span>
 			<div class="form-group input-group">
 				<input id="user_password" name="user_password" class="form-control"
-					placeholder="비밀번호를 4자 이상 입력해주세요." type="password"><span
+					placeholder="비밀번호를 입력하세요.(영문,숫자 포함 6~20자 이내)" type="password"><span
 					id="errorUserpassword" class="text-danger error"></span>
 			</div>
 		</div>
