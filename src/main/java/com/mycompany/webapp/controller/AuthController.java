@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.User;
@@ -50,10 +51,11 @@ public class AuthController {
 	
 	
 	// 회원탈퇴
-	@PostMapping("/signout")
-	public String signout(Authentication auth) throws Exception {
+	@GetMapping("/signout")
+	public String signout(Authentication auth, HttpSession session) throws Exception {
 		usersService.signout(auth.getName());
-		return "/user/loginForm";
+		session.invalidate();
+		return "redirect:main";
 	}
 	/*
 		// 회원가입 post
@@ -140,7 +142,6 @@ public class AuthController {
 	    session.setAttribute("user", user);
 
 		model.addAttribute("user", user);
-		//System.out.println(user.getUser_password());
 		return "/user/pwChangeBySearch";
 	}
 	
@@ -201,7 +202,7 @@ public class AuthController {
 		return "redirect:/user/my";
 	}
 
-	// phoneChange.jsp 이름이랑 이메일 보여주기
+	// phoneChange.jsp 상단에서 이름이랑 이메일 보여주기
 	@GetMapping("user/phoneChange")
 	public String phoneChange(Authentication auth, Model model) throws Exception {
 		User user = usersService.getUser(auth.getName());
@@ -214,8 +215,7 @@ public class AuthController {
 		usersService.updatePhone(user_phone, auth.getName());
 		return "redirect:/user/my";
 	}
-
-	//
+	// error403 발생시 
 	@GetMapping("user/error403")
 	public String error403() {
 		return "/user/error403";

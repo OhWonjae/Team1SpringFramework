@@ -10,8 +10,10 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <script>
-      	const signOut=()=>{
+      	/*const signOut=()=>{
+      		
       		event.preventDefault();
+      		
       		swal("회원탈퇴하시겠습니까?", {
 				  dangerMode: true,
 				  buttons:{
@@ -25,21 +27,29 @@
       			  }
 				  }
 				}).then((result)=>{
-
-					if(result){
-						const data = {
-              				 user_id: $("#user_id").val()
-              		}
-              		$.ajax({
-              			url:"${pageContext.request.contextPath}/signout",
-              			data:data,
-              			method:"get"
-              		})
-              		location.href='${pageContext.request.contextPath}/loginForm';
-					}else{
-						
-					}
+					$.ajax({
+            			url:"${pageContext.request.contextPath}/signout",
+            			data:{${_csrf.parameterName}:"${_csrf.token}"},
+            			method:"post"
+            		})
+            		location.href='${pageContext.request.contextPath}/loginForm';
+           
 				})
+      	}*/
+      	
+      	function signOut(){
+      	   event.preventDefault();
+      	   swal({
+      	        title: "회원탈퇴",
+      	        text: "탈퇴 하시겠습니까?",
+      	        buttons: true,
+      	        dangerMode: true,
+      	      }).then((willDelete) => {
+      	        if (willDelete) {
+      	          $(".deleteUser")[0].submit(); //form에서 deleteUser클래스를 제출
+      	        }
+      	      });
+      	      
       	}
 </script>
 <body>
@@ -113,9 +123,9 @@
 							<div class="tab">
 								<div class="tab1">비밀번호</div>
 								<div class="tab2">
-								
+
 									<%-- <strong>${user.user_password}</strong> --%>
-									<strong>********</strong>								
+									<strong>********</strong>
 									<button style="margin-left: 10px;"
 										onclick="location.href='<%=application.getContextPath()%>/user/pwChange'"
 										type="button" class="btn btn-outline-secondary btn-sm">수정</button>
@@ -127,24 +137,19 @@
 										action="<%=application.getContextPath()%>/logout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
-										<button type="submit" 
-											class="btn btn-outline-secondary btn-sm">로그아웃</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">로그아웃</button>
 									</form>
-									
-									<form method="post" class="mt-5"
-										action="<%=application.getContextPath()%>/signout" onsubmit="signOut()">
+
+									<form method="get" class="mt-5 deleteUser" onsubmit="signOut()"
+										action="<%=application.getContextPath()%>/signout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
-										<button type="submit" 
-											class="btn btn-outline-secondary btn-sm">회원탈퇴</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">회원탈퇴</button>
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
-					
-					
-					
 				</div>
 			</div>
 		</div>

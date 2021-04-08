@@ -51,7 +51,7 @@ public class QnaController {
         int totalRows = qnaService.getTotalRows( name );
         System.out.println( totalRows );
         //유저아이디 기준ㅇ로 전체 행
-   		Pager pager = new Pager(6, 5, totalRows, intPageNo);
+   		Pager pager = new Pager(5, 5, totalRows, intPageNo);
    		System.out.println ( pager.getEndRowNo() );
    		//페이저 공부
    		

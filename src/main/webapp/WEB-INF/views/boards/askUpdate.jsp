@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/askWrite.css">
     <title>Document></title>
 <script>
-	function validate(){
+	function validate(){ //글 작성할때 양식이 일치하지 않으면 유효하지 않은 글이므로 작성을 막을 수 있다.
 		event.preventDefault(); // 기능 잠시 중단
 		var result = true;
 		
@@ -70,7 +70,7 @@
                                                     </div>
                                                 </div>
                                                 <script>
-                                                function Alertting(){
+                                                function Alertting(){ //경고창을 띄워줄 때 사용하는 함수.
                                                 	console.log("");
                                                 	if($("#qa_content").val()===""){
                                                 		event.preventDefault();
