@@ -60,11 +60,11 @@
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">휴대전화</dt>
-                                            <dd class="data-name">${orders.order_phone}</dd>
+                                            <dd class="data-name">0${orders.order_phone}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송주소</dt>
-                                            <dd class="data-name">${orders.delivery_address_detail}</dd>
+                                            <dd class="data-name">${orders.delivery_address} ${orders.delivery_address_detail}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송 요청사항</dt>
