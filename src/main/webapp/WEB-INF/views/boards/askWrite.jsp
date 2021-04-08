@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<%=pageContext.getServletContext().getContextPath() %>/resources/css/askWrite.css">
     <title>Document></title>
 <script>
-	function validate(){
+	function validate(){ //글 양식이 일치하지 않으면 유효하지 않은 형식이므로 글 등록을 막을 수 있음.
 		event.preventDefault(); // 기능 잠시 꺼두기
 		var result = true;
 		
@@ -38,7 +38,8 @@
                 <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                    <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
+                    <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>
+					<div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
                 </div>
         </div>
         <br/>
@@ -74,7 +75,7 @@
                                                 	if($("#qa_content").val()===""){
                                                 		event.preventDefault();
                                                 		
-                                                    	alert("내용을 작성해 주세요");
+                                                    	swal("내용을 작성해 주세요");
                                                 	}
                                                 	
                                                 

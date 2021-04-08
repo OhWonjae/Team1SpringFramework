@@ -77,9 +77,9 @@
 	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
 	                                            <div class="count-button">
 	                                                <div class="btn-group" role="group" aria-label="Basic example">
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?pid=${cart.p_id}" class="btn btn-light btn-sm">-</a>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?pid=${cart.p_id}&psize=${cart.p_size}" class="btn btn-light btn-sm">-</a>
 	                                                    <span id="numberUpDown" class="count-text">${cart.amount}</span>
-	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?pid=${cart.p_id}" class="btn btn-light btn-sm">+</a>
+	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?pid=${cart.p_id}&psize=${cart.p_size}" class="btn btn-light btn-sm">+</a>
 	                                                  </div>
 	                                            </div>
 	                                        </div>
@@ -102,7 +102,7 @@
 	                                        </div>
 	                                        <div class="col-sm-2" style="border-bottom: 1px solid #e9ecef;">
 	                                            <div class="delete-button" >
-	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?pid=${cart.p_id}" class="btn btn-light">삭제</a>
+	                                                <a href="<%=application.getContextPath()%>/order/cart/delete?pid=${cart.p_id}&psize=${cart.p_size}" class="btn btn-light">삭제</a>
 	                                            </div>
 	                                        </div>
 	                                    </div>
@@ -114,7 +114,7 @@
 	                                  <div class="d-flex text-center">
 																			<div class="flex-grow-1">
 																		
-																				<a class="btn btn-outline-primary btn-sm"
+																				<a class="btn btn-light btn-sm"
 																					href="cart?pageNo=1">처음</a>
 																					
 																				<c:if test="${pager.groupNo>1}">
@@ -125,7 +125,7 @@
 																				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 																					<a class="btn 
 																					<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-																					<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+																					<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 																					
 																					btn-sm" href="cart?pageNo=${i}">${i}</a>
 																				</c:forEach>
@@ -135,7 +135,7 @@
 																					href="cart?pageNo=${pager.endPageNo+1}">다음</a>
 																				</c:if>		
 																					
-																				<a class="btn btn-outline-primary btn-sm"
+																				<a class="btn btn-light btn-sm"
 																					href="cart?pageNo=${pager.totalPageNo}">맨끝</a>
 																			</div>
 																		</div> 

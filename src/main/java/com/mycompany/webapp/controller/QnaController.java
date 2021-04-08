@@ -70,7 +70,7 @@ public class QnaController {
 //           session.setAttribute("pager", pager);
            model.addAttribute("qna", list);//as -is => list , be -to => qna
 //           model.addAttribute("list", list);
-           model.addAttribute("pager", pager);//?
+           model.addAttribute("pager", pager);
 //           model.addAttribute("listcount",totalRows);
 //            
 //            //System.out.println(list);//테스트 여기서 list 값을 잘 활용 하면 됨. 지금 insert 하면 값 들어가고,콘솔에 보면 값은 계속 쌓이고는 있음 
@@ -79,14 +79,19 @@ public class QnaController {
    }
    //'문의하기'버튼 클릭시 작성란으로 이동
    @GetMapping("/askWrite")
-   public String askWrite() {   
+   public String askWrite(Model model, Authentication auth) {
+       User user = usersService.getUser(auth.getName());
+       model.addAttribute("user", user);
       return "/boards/askWrite";
    }
+   
    //'수정'버튼 클릭시 작성란으로 이동
    @GetMapping("/askUpdate")
-   public String askUpdate( @RequestParam ("qa_id") int qa_id, Model model ) {
+   public String askUpdate( @RequestParam ("qa_id") int qa_id, Model model, Authentication auth ) {
          System.out.println(qa_id );      
          Qna qna = qnaService.getQna( qa_id);
+         User user = usersService.getUser(auth.getName());
+         model.addAttribute("user", user);
          model.addAttribute("qna", qna);   
       return "/boards/askUpdate";
    }
