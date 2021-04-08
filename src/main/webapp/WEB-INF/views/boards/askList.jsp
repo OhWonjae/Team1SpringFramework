@@ -45,7 +45,7 @@
                         <div class="tab-pane fade show active" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                             <div>
                                 <div class="div1" style="margin-bottom: 20px;">
-                                <h5 class="qa">고객센터(1:1문의)</h5>
+                                <h5 class="qa"><strong>고객센터(1:1문의)</strong></h5>
                                 <a href="<%=application.getContextPath() %>/boards/askWrite" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">문의하기</a>
                                 </div>
                                 <div class="div2" style="padding-bottom: 200px;">
