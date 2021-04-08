@@ -14,9 +14,9 @@ public interface CartDao {
 	public List<CartItem> cartListByPage(@Param("uid")String uid, @Param("pager")Pager pager);
 	public int count(String uid);
 	public int insertCart(CartItem cart);
-	public int deleteCart(@Param("uid") String uid, @Param("pid") int pid);
+	public int deleteCart(@Param("uid") String uid, @Param("pid") int pid, @Param("psize")String psize);
 	public int deleteCartAll(String uid);
-	public int increaseAmount(@Param("uid") String uid, @Param("pid") int pid);
-	public int decreaseAmount(@Param("uid") String uid, @Param("pid") int pid);
-	public CartItem cartListOne(@Param("uid") String uid, @Param("pid") int pid);
+	public int increaseAmount(@Param("uid") String uid, @Param("pid") int pid, @Param("psize")String psize);
+	public int decreaseAmount(@Param("uid") String uid, @Param("pid") int pid, @Param("psize")String psize);
+	public CartItem cartListOne(@Param("uid") String uid, @Param("pid") int pid, @Param("psize")String psize);
 }
