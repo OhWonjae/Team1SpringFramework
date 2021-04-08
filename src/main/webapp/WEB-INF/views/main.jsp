@@ -220,8 +220,8 @@ $(function(){
 	<i class="fas fa-chevron-circle-right right"></i>
 </section>
 <hr />
-<section style="position: relative;">
-	<div class="inner">
+<section >
+	<div class="inner" style="position: relative;">
 		<div class="main-new">
 			<div class="main-title-new">
 				<div class="main-title">추천</div>

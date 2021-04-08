@@ -43,7 +43,7 @@
    
    <update id="update" parameterType="qna">
       update qna set
-          qa_id=#{qa_id},
+         qa_id=#{qa_id},
          qa_category=#{qa_category},
          qa_content=#{qa_content},
          qa_status=#{qa_status},

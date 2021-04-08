@@ -10,7 +10,7 @@
     <title>Document></title>
 <script>
 	function validate(){
-		event.preventDefault(); // 기능 잠시 꺼두기
+		event.preventDefault(); // 기능 잠시 중단
 		var result = true;
 		
 		const content = $("#qa_content").val();
@@ -38,7 +38,8 @@
                 <img src="<%=application.getContextPath() %>/resources/img/profile-empty.svg" style="width: 75px; border: 1px solid #cfcfd0; overflow: hidden; border-radius: 50%; background-color: #fff; ;" >
             </picture>
                 <div style="float: left; padding-left: 20px; padding-top: 15px;">
-                    <strong>1조</strong> <i class="fas fa-cog"></i>  <div style="color: rgb(138, 138, 146); font-size: 0.9em;">abcd1234@naver.com</div>
+                    <strong>${user.user_name}</strong> <i class="fas fa-cog"></i>  
+                    <div style="color: rgb(138, 138, 146); font-size: 0.9em;">${user.user_id}</div>
                 </div>
         </div>
         <br/>
