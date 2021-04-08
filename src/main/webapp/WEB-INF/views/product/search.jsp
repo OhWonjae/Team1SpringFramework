@@ -57,11 +57,11 @@
                                         의류/악세서리
                                 </h6>
                                 <div class="collapse" id="collapseExample2">
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=티셔츠&searchword=${word}'"><h6>티셔츠</h6></button>
-                                    <button type="button" class="btn btn-linknav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=후드티&searchword=${word}'"><h6>후드티</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=패딩/코트&searchword=${word}'"><h6>패딩/코트</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=원피스&searchword=${word}'"><h6>원피스</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=올인원&searchword=${word}'"><h6>올인원</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=티셔츠&searchword=${word}'"><h6>티셔츠</h6></button>
+                                    <button type="button" class="btn btn-linknav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=후드티&searchword=${word}'"><h6>후드티</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=패딩/코트&searchword=${word}'"><h6>패딩/코트</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=원피스&searchword=${word}'"><h6>원피스</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=올인원&searchword=${word}'"><h6>올인원</h6></button>
                                 </div>
                             </div>
                         </div>
