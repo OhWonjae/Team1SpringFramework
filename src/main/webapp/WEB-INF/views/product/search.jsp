@@ -100,15 +100,12 @@
 							</c:forEach>
 			            </div>      
 			            
-			           
-
-                      
-				 <div class="d-flex text-center" style="margin:30px 0">
+			              <div class="d-flex text-center" style="margin:30px 0">
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->
-						<a class="btn btn-outline-primary btn-sm"
-							href="search?pageNo=1&category=${category}&searchword=${word}">처음</a>
+						<a class="btn btn-light btn-sm"
+							href="search?pageNo=1&category=${category}&searchword=${word}"><pre style="margin-bottom:0;"><<</pre></a>
 							
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
@@ -118,7 +115,7 @@
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<a class="btn 
 							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 							
 							btn-sm" href="search?pageNo=${i}&category=${category}&searchword=${word}">${i}</a>
 						</c:forEach>
@@ -128,12 +125,10 @@
 							href="search?pageNo=${pager.endPageNo+1}&category=${category}&searchword=${word}">다음</a>
 						</c:if>		
 							
-						<a class="btn btn-outline-primary btn-sm"
-							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">맨끝</a>
+						<a class="btn btn-light btn-sm"
+							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">>></pre></a>
 					</div>
-				</div>   
-
-                        
+		</div>   
                        
                     </div>
                     
