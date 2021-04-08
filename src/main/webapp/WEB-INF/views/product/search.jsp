@@ -57,11 +57,11 @@
                                         의류/악세서리
                                 </h6>
                                 <div class="collapse" id="collapseExample2">
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=티셔츠&searchword=${word}'"><h6>티셔츠</h6></button>
-                                    <button type="button" class="btn btn-linknav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=후드티&searchword=${word}'"><h6>후드티</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=패딩/코트&searchword=${word}'"><h6>패딩/코트</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=원피스&searchword=${word}'"><h6>원피스</h6></button>
-                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?phgeNo=1&category=올인원&searchword=${word}'"><h6>올인원</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=티셔츠&searchword=${word}'"><h6>티셔츠</h6></button>
+                                    <button type="button" class="btn btn-linknav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=후드티&searchword=${word}'"><h6>후드티</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=패딩/코트&searchword=${word}'"><h6>패딩/코트</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=원피스&searchword=${word}'"><h6>원피스</h6></button>
+                                    <button type="button" class="btn btn-link nav-link2"  style="display:block; padding: 5% 20%" onclick= "location.href='search?pageNo=1&category=올인원&searchword=${word}'"><h6>올인원</h6></button>
                                 </div>
                             </div>
                         </div>
@@ -100,15 +100,12 @@
 							</c:forEach>
 			            </div>      
 			            
-			           
-
-                      
-				 <div class="d-flex text-center" style="margin:30px 0">
+			              <div class="d-flex text-center" style="margin:30px 0">
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->
-						<a class="btn btn-outline-primary btn-sm"
-							href="search?pageNo=1&category=${category}&searchword=${word}">처음</a>
+						<a class="btn btn-light btn-sm"
+							href="search?pageNo=1&category=${category}&searchword=${word}"><pre style="margin-bottom:0;"><<</pre></a>
 							
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
@@ -118,7 +115,7 @@
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<a class="btn 
 							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 							
 							btn-sm" href="search?pageNo=${i}&category=${category}&searchword=${word}">${i}</a>
 						</c:forEach>
@@ -128,12 +125,10 @@
 							href="search?pageNo=${pager.endPageNo+1}&category=${category}&searchword=${word}">다음</a>
 						</c:if>		
 							
-						<a class="btn btn-outline-primary btn-sm"
-							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">맨끝</a>
+						<a class="btn btn-light btn-sm"
+							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">>></pre></a>
 					</div>
-				</div>   
-
-                        
+		</div>   
                        
                     </div>
                     

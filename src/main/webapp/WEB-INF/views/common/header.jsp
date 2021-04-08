@@ -89,7 +89,7 @@ $(function () {
 						</sec:authorize>
                     </div>
                     <div class="cart">
-                      <a href="<%=application.getContextPath()%>/order/cart">
+                      <a href="<%=application.getContextPath()%>/order/cart?pageNo=1">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-text">장바구니</span>
                       </a>
