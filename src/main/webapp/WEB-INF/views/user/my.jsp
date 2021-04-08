@@ -10,29 +10,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 <script>
-      	/*const signOut=()=>{
-      		event.preventDefault();
-      		swal("회원탈퇴하시겠습니까?", {
-				  dangerMode: true,
-				  buttons:{
-					  confirm2:{
-						  text:'예',
-						  value:true
-					  },
-      			  confirm:{
-      				  text:'아니요',
-      				  value:false
-      			  }
-				  }
-				}).then((result)=>{
-					$.ajax({
-            			url:"${pageContext.request.contextPath}/signout",
-            			data:{${_csrf.parameterName}:"${_csrf.token}"},
-            			method:"post"
-            		})
-            		location.href='${pageContext.request.contextPath}/loginForm';
-				})
-      	}*/
       	
       	function signOut(){
       	   event.preventDefault();
@@ -140,7 +117,7 @@
 									</form>
 
 									<form method="get" class="mt-2 deleteUser" onsubmit="signOut()"
-										action="<%=application.getContextPath()%>/signout">
+										action="<%=application.getContextPath()%>/user/signout">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 										<button type="submit" class="btn btn-outline-secondary btn-sm">회원탈퇴</button>
