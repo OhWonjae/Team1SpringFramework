@@ -83,6 +83,7 @@ document.getElementById("user_phone").value = user_phone; */
 			$('#user_password2').val('');
 			$('#user_password2').focus();
 		} */
+		
 		if (uname === "") { // 비어있으면 문제
 			result = false;
 			$("#errorUsername").html("필수사항 입니다.");
@@ -100,7 +101,6 @@ document.getElementById("user_phone").value = user_phone; */
 		} else if (upassword2.length < 6) {
 			result = false;
 			$("#errorUserpassword2").html("최소 6자 이상 입력해야 합니다.");
-			
 		}
 		if (user_phone2 === "" || user_phone3 === "") { // 비어있으면 문제
 			result = false;
@@ -167,7 +167,6 @@ document.getElementById("user_phone").value = user_phone; */
 		document.getElementById("user_id").value = user_id; 
 
 		$.ajax({
-			
 			url: "idCheck",
 			method: "post",
 			data: {user_id:$("#user_id").val(), ${_csrf.parameterName}:"${_csrf.token}"},

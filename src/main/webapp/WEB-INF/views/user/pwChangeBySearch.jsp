@@ -24,11 +24,13 @@ function validate() {
 	var upassword = $("#user_password").val();
 	var upassword2 = $("#user_password2").val();
 
-	if (upassword === "") { // 비어있으면 문제
+	if (upassword === "") { // 비어있으면 
 		result = false;
+		//.html()은 선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꿉니다.
 		$("#errorUserpassword").html("필수사항 입니다.");
 	} else if (upassword.length < 6) {
 		result = false;
+		//.html()은 선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꿉니다.
 		$("#errorUserpassword").html("최소 6자 이상 입력해야 합니다.");
 	}
 	if (upassword2 === "") { // 비어있으면 문제

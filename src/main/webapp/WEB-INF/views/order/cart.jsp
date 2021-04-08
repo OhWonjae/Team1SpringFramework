@@ -55,6 +55,7 @@
                             <div class="cart-content">
                                 <div class="container" style="margin-bottom: 20px;">
 						                    <c:set var="sum" value="0" />
+						                    <!-- 장바구니가 비었을 때 -->
 						                    <c:if test="${empty list}">
 						                    	      <div class="div2">
 						                                <div class="nolist" style= "padding:50px;text-align: center";>
@@ -64,7 +65,8 @@
 						                                    </div>
 						                                </div>
 						                            </div>
-						                    </c:if>         
+						                    </c:if>
+						                    <!-- 장바구니에 리스트가 있을 때 -->         
 							                  <c:forEach var="cart" items="${list}">
 	                                
 	                                    <div class="row cart-content1-box">
@@ -77,6 +79,7 @@
 	                                        <div class="col-sm-2" style="border-right: 1px solid #e9ecef;border-bottom: 1px solid #e9ecef; margin: 0;">
 	                                            <div class="count-button">
 	                                                <div class="btn-group" role="group" aria-label="Basic example">
+	                                                		<!-- 개별 상품 amount 증가, 감소 버튼-->
 	                                                    <a href="<%=application.getContextPath()%>/order/cart/decrease?pid=${cart.p_id}&psize=${cart.p_size}" class="btn btn-light btn-sm">-</a>
 	                                                    <span id="numberUpDown" class="count-text">${cart.amount}</span>
 	                                                    <a href="<%=application.getContextPath()%>/order/cart/increase?pid=${cart.p_id}&psize=${cart.p_size}" class="btn btn-light btn-sm">+</a>
@@ -106,10 +109,11 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
+	                               <!-- 총액을 계산해서 sum에 값을 저장 -->     
 	                               <c:set var="sum" value="${sum + (cart.p_price * cart.amount)}" />      
 	                              </c:forEach> 
                                 
-                                                           
+                                    <!-- 장바구니가 비어있지 않을 때 페이저 띄워주기-->                       
                                     <c:if test="${!empty list}">                         
 	                                  <div class="d-flex text-center">
 																			<div class="flex-grow-1">
@@ -142,7 +146,8 @@
                                  	</c:if>
 
                                 </div>
-                                
+                              
+                              <!-- 장바구니가 비어있지 않을 때 총액 띄워주기-->  
                               <c:if test="${!empty list}">
                               
                   					   <div style="border:3px solid #FF3357"></div>
