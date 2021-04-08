@@ -289,7 +289,7 @@ $(function(){
     		lbtn[i].style.display="none";
     	})
     	}
-    </script>
+ </script>
 
 
 <section>

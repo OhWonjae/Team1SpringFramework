@@ -186,12 +186,12 @@
             </div>            
       </div>
       
-      <div class="d-flex text-center" style="margin:30px 0">
+           <div class="d-flex text-center" style="margin:30px 0">
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->
-						<a class="btn btn-outline-primary btn-sm"
-							href="rec?pageNo=1">처음</a>
+						<a class="btn btn-light btn-sm"
+							href="rec?pageNo=1"><pre style="margin-bottom:0;"><<</pre></a>
 							
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
@@ -201,7 +201,7 @@
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<a class="btn 
 							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 							
 							btn-sm" href="rec?pageNo=${i}">${i}</a>
 						</c:forEach>
@@ -211,8 +211,8 @@
 							href="rec?pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if>		
 							
-						<a class="btn btn-outline-primary btn-sm"
-							href="rec?pageNo=${pager.totalPageNo}">맨끝</a>
+						<a class="btn btn-light btn-sm"
+							href="rec?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
 					</div>
 		</div>   
 
