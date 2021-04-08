@@ -99,7 +99,7 @@
 			                </div>
 							</c:forEach>
 			            </div>      
-			            
+			   <c:if test="${listcount>0}">         
 			              <div class="d-flex text-center" style="margin:30px 0">
 					<div class="flex-grow-1">
 				
@@ -128,7 +128,8 @@
 						<a class="btn btn-light btn-sm"
 							href="search?pageNo=${pager.totalPageNo}&category=${category}&searchword=${word}">>></pre></a>
 					</div>
-		</div>   
+		</div>  
+		</c:if> 
                        
                     </div>
                     
