@@ -23,26 +23,42 @@ function validate(){
 	var result = true;
 	//유효성 검사코드
 	
+	const uname = $("#order_name").val();
 	const uphone = $("#order_phone").val();
+	const zip = $("#zip").val();
+	const address = $("#delivery_address").val();
+	const detail = $("#delivery_address_detail").val();
+	
 	const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-	if(uphone===""){
+	if(uname===""){
+		result= false;
+		swal("이름을 입력해주세요.");
+		$("#order_name").focus();
+	}
+	else if(uphone===""){
 		result = false;
-		$("#errorUid").html("필수 사항 입니다.");
+		swal("휴대전화 번호를 입력해주세요.");
+		$('#order_phone').focus();
 	}else if(!regExp.test(uphone)){
 		result=false;
-		swal("전화번호에 맞는 형식이 아닙니다.");
+		swal("휴대전화에 맞는 형식이 아닙니다.");
 		$('#order_phone').val('');
 		$('#order_phone').focus();
 	}
+	else if(zip === "" || address ==="" || detail ===""){
+		result=false;
+		swal("주소를 입력해주세요");
+		$('#zip').focus();
+	}
 	
 	if(result){
-		$("#pform")[0].submit();
+		$("#payForm")[0].submit();
 	}
 	
 	
 }
 
-
+//주소 검색
 function openZipSearch() {
 	new daum.Postcode({
 		oncomplete: function(data) {
@@ -52,9 +68,6 @@ function openZipSearch() {
 		}
 	}).open();
 }
-
-	
-
 
 </script>
 
@@ -78,19 +91,19 @@ function openZipSearch() {
             
                 <div class="inner2" style="border: 1px solid #e9ecef; font-size: 0.8em"> 
                     <span class="history-subtitle">배송정보</span>
-                    <form class="history_underborder" action="do_payment" method="post" onsubmit="validate()" id="pform" >
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <form class="history_underborder" action="do_payment" method="post" onsubmit="validate()" id="payForm" >
+                   	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required/>
+                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text"/>
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="tel" required/>
+                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요.(-제외)" type="tel" />
                                 </div>
                             </div> 
                             
@@ -98,27 +111,28 @@ function openZipSearch() {
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송지 주소</span> 
-                              		 <input class="form-control" type="text" name="zip" id="zip" required />
+                              		 <input class="form-control" type="text" name="zip" id="zip" />
                                     
                                     <button type="button" class="btn btn-light" style="width:120px; margin-left: 20px;" onclick="openZipSearch()">검색</button>
                                     
                               </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required/>
+                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" />
                               </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required/>
+                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail"/>
                                 </div>   
                             </div>
 
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">배송 요청사항</span>  
-                                    <input name="order_request" id="order_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text">
+                                    <input name="order_request" id="order_request" class="form-control" placeholder="배송 요청 사항을 입력하세요." type="text"/>
+                                    <!-- orderProduct 테이블의 데이터를 넣어주기 위해 카트에 담긴 상품들의 데이터를 form이 submit될 때 보내줌  -->
                                     <c:forEach var="cart" items="${list}">
-                                    	<input type="hidden" name="prod" id="prod" value=${cart.p_id}/>
+                                    	<input type="hidden" name="pid" id="pid" value=${cart.p_id}/>
                                     	<input type="hidden" name="pamount" id="pamount" value=${cart.amount}/>
                                      </c:forEach>
                                 </div> <!-- form-group// -->
@@ -135,9 +149,10 @@ function openZipSearch() {
                                 </tr>
                             </thead>
                            	<tbody>
-                           	 	<c:set var="sum" value="0" />
+                           	 	<c:set var="sum" value="0" />	
                            	 	<c:set var="psum" value="0" />
-                           		<c:forEach var="cart" items="${list}">
+                           	 	<!-- 카트에 담아서 구매하기 누른 상품들 리스트로 출력 -->
+                           		<c:forEach var="cart" items="${list}">	
                                 <tr>
                                     <th style="color: rgb(195, 195, 195); font-size: 0.8em"> 
                                     <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${cart.photo_sname}&photoType=${cart.photo_type}" width="20%" style="float: left; margin-right: 10px;">
@@ -149,9 +164,10 @@ function openZipSearch() {
                                     <td style="border-right: white; text-align: center; vertical-align: middle;">${cart.p_price * cart.amount}원</td>
                                 </tr>
                                 </c:forEach>
+                                <!-- 상품의 총 수량 orders테이블에 저장하기 위해 보내줌 -->
+                                <input type="hidden" name="total_amount" id="total_amount" value="${tamount}"/>
                             </tbody>
                         </table>
-                        <input type="hidden" name="total_amount" id="total_amount" value="${tamount}"/>
                     </div>
 
                     <span class="history-subtitle">최종 결제금액</span>
@@ -162,6 +178,7 @@ function openZipSearch() {
                             <tr>
                                 <th style="width: 20%;">총 상품금액</th>
                                 <td style="text-align: left;"> ${psum}원</td>
+                                <!-- 배송비를 제외한 사용자가 주문한 상품만의 가격을 orders테이블에 저장하기 위해 해당 값을 보내줌 -->
                                 <input type="hidden" name="order_sprice" id="order_sprice" value="${psum}"/>
                             </tr>
                             <tr>
@@ -180,6 +197,7 @@ function openZipSearch() {
                                 <th>총 결제금액</th>
                                 <c:set var="sum" value="${psum+3000}" />
                                 <td style="text-align: left; color: black; font-weight: 900;">${sum}원</td>
+                                <!-- 배송비를 포함한 주문의 전체가격을 orders테이블에 저장하기 위해 해당 값을 보내줌  -->
                                 <input type="hidden" name="total_price" id="total_price" value="${sum}"/>
                             </tr>
                     
@@ -218,16 +236,13 @@ function openZipSearch() {
 
                     </div>
                 </div> 
-                <div class="text-center" style="text-align: center; font-size: 1.1em; padding: 15px;">
-		           위 주문내용을 확인 하였으며, 결제에 동의합니다.
-		       </div>  
-		       <div class="form-group" style="display:flex; justify-content: center;">
+		       <div class="form-group" style="display:flex; justify-content: center; margin-top:25px;">
 		           <button type="submit" class="btn btn-primary btn-block" 
 		           style="background-color : rgb(255, 81, 82); height: 60px ;font-size: 1.8em; border-color: rgb(255, 81, 82); width: 50%;">
 		                   <strong>결제하기</strong> 
 		           </button>   
 		      </div>
-			</form>
+		</form>
 		       
         <br>
         <br>

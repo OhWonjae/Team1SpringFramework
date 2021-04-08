@@ -20,6 +20,7 @@ public class OrderProduct {
    private String photo_sname;
    private String photo_type;
    private String photo_role;
+   
 public String getP_name() {
 	return p_name;
 }

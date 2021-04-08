@@ -56,47 +56,51 @@
                                             </div>
                                             </div>
                                       </c:if>         
-                       <c:if test="${!empty list}">                
-                            <table class="table">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col" style="width: 10%;">주문 번호</th>
-                                            <th scope="col" style="width: 10%;">주문 일자</th>
-                                            <th scope="col" style="width: 65%;">상품 정보</th>
-                                            <th scope="col" style="width: 15%;">진행 상황</th>
-                                        </tr>
-                                    </thead>
-    
-                                    <tbody>
-                                        <c:forEach var="orders" items="${list}">
-                                        <tr>
-                                            <th scope="row" style="color:rgb(138, 138, 146);">${orders.order_id}</th>
-                                            <td style="color:rgb(138, 138, 146);"><fmt:formatDate value="${orders.order_date}" pattern="yyyy.MM.dd"/></td>
-                                            <td> <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orders.photo_sname}&photoType=${orders.photo_type}"  width="20%" style="float: left; margin-right: 10px;">
-                                                <c:if test="${orders.total_amount==1}">
-                                                    <strong style="font-size: 1.2em;">${orders.p_name}</strong> 
-                                                </c:if>
-                                                 <c:if test="${orders.total_amount>1}">
-                                                <strong style="font-size: 1.2em;">${orders.p_name} 외 ${orders.total_amount-1}개</strong> 
-                                                </c:if>
-                                            </td>
-                                            <c:if test="${orders.delivery_status eq '배송준비중' }">
-	                                            <td style="border-right: white; text-align: center;">
-	                                                <div>${orders.delivery_status}</div>
-	                                                <div style="margin-top: 5px; font-size: 14px;">
-	                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
-	                                                </div>
+                      		 <c:if test="${!empty list}">                
+	                            <table class="table">
+	                                    <thead class="thead-light">
+	                                        <tr>
+	                                            <th scope="col" style="width: 10%;">주문 번호</th>
+	                                            <th scope="col" style="width: 10%;">주문 일자</th>
+	                                            <th scope="col" style="width: 65%;">상품 정보</th>
+	                                            <th scope="col" style="width: 15%;">진행 상황</th>
+	                                        </tr>
+	                                    </thead>
+	    
+	                                    <tbody>
+	                                    	<!-- 주문내역리스트를 출력 -->
+	                                        <c:forEach var="orders" items="${list}">
+	                                        <tr>
+	                                            <th scope="row" style="color:rgb(138, 138, 146);">${orders.order_id}</th>
+	                                            <td style="color:rgb(138, 138, 146);"><fmt:formatDate value="${orders.order_date}" pattern="yyyy.MM.dd"/></td>
+	                                            <td> <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orders.photo_sname}&photoType=${orders.photo_type}"  width="20%" style="float: left; margin-right: 10px;">
+	                                                <c:if test="${orders.total_amount==1}">	<!-- 주문한 상품의 수량이 하나라면 상품이름만 출력 -->
+	                                                    <strong style="font-size: 1.2em;">${orders.p_name}</strong> 
+	                                                </c:if>
+	                                                 <c:if test="${orders.total_amount>1}">	<!-- 주문한 상품의 수량이 하나이상이라면 주문한 상품수량의 ~외 *개 출력 -->
+	                                                <strong style="font-size: 1.2em;">${orders.p_name} 외 ${orders.total_amount-1}개</strong> 
+	                                                </c:if>
 	                                            </td>
-                                            </c:if>
-                                             <c:if test="${orders.delivery_status eq '취소 중' }">
-	                                            <td style="border-right: white; text-align: center;">
-	                                                <div>${orders.delivery_status}</div>
-	                                            </td>
-                                            </c:if>
-                                        </tr>
-                                        </c:forEach>
-                                    </tbody>
-                            </table>
+	                                            <!-- 배송상태가 배송준비중이라면 해당 내역에 상세주문내역 링크와 배송준비중 출력 -->
+	                                            <c:if test="${orders.delivery_status eq '배송준비중' }">
+		                                            <td style="border-right: white; text-align: center;">
+		                                                <div>${orders.delivery_status}</div>
+		                                                <div style="margin-top: 5px; font-size: 14px;">
+		                                                    <a href="<%=application.getContextPath()%>/order/orders?order_id=${orders.order_id}" >주문 상세내역</a>
+		                                                </div>
+		                                            </td>
+	                                            </c:if>
+	                                            <!-- 배송상태가 취소 중이라면 해당 내역에 상세주문내역 링크는 없어지고 취소 중 출력 -->
+	                                             <c:if test="${orders.delivery_status eq '취소 중' }">
+		                                            <td style="border-right: white; text-align: center;">
+		                                                <div>${orders.delivery_status}</div>
+		                                            </td>
+	                                            </c:if>
+	                                        </tr>
+	                                        </c:forEach>
+	                                    </tbody>
+	                            </table>
+	                            <!-- 페이징 -->
                                 <div class="d-flex text-center">
 									<div class="flex-grow-1" style="margin-top:20px;">							
 										<a class="btn btn-light btn-sm"
@@ -116,15 +120,14 @@
 										<c:if test="${pager.groupNo<pager.totalGroupNo}">
 											<a class="btn btn-outline-info btn-sm"
 												href="history?pageNo=${pager.endPageNo+1}">다음</a>
-											</c:if>		
+										</c:if>		
 																					
 										<a class="btn btn-light btn-sm"
 											href="history?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
 										</div>
-								</div> 
-                        </div>
-                             </c:if> 
-                    
+									</div> 
+                       		 	</div>
+                           </c:if> 
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-cart-list">   
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"> </div>
                 </div>

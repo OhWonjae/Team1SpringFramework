@@ -8,10 +8,8 @@ import com.mycompany.webapp.dto.OrderProduct;
 
 @Mapper
 public interface OrderProductsDao {
-	List<OrderProduct> productList(String oid);
-    int orderProductList(OrderProduct orderproduct);
-    int updateStatus(OrderProduct orderproduct);
-    public List<CartItem> orderList(String uid);
+	public List<OrderProduct> productList(String oid);	//select
+    public int orderProductList(OrderProduct orderproduct); //insert
 }
 
 

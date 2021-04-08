@@ -31,23 +31,31 @@ import com.mycompany.webapp.service.UsersService;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
 	@Autowired
 	OrdersService ordersService;
 
 	@Autowired
-	CartsService cartService;
+	CartsService cartService;	//카트지우기 위해 선언
+
 	@Autowired
 	UsersService usersService;
 
 
+	//카트에서 구매버튼 클릭
+	@GetMapping("/pay")
+	public String cartPay(Model model, Authentication auth) {
+		List<CartItem> list = ordersService.getOrderList(auth.getName());
+		model.addAttribute("list", list);
+		return "/order/pay";
+	}
+	
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
-	public String putcart(Orders orders, OrderProduct orderProduct, HttpServletRequest request , Authentication auth) {   
-		System.out.println(orders.getOrder_phone());
+	public String pay(Orders orders, OrderProduct orderProduct, HttpServletRequest request , Authentication auth) {   
 		orders.setUser_id(auth.getName());
-		//orderid 설정
+
+		//orderid 설정 연도+달+일+밀리초+ 6자리난수
 		Calendar cal =Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
@@ -64,14 +72,14 @@ public class OrderController {
 		orderProduct.setOrder_id(orderId);
 
 		//pid 저장,amount 저장
-		String[] arr = request.getParameterValues("prod");
-		String [] arr2 = request.getParameterValues("pamount");
+		String[] pidArr = request.getParameterValues("pid");
+		String [] amountArr = request.getParameterValues("pamount");
 
 		String str="";
 		String str2="";
-		for(int i=0; i<arr.length; i++) {
-			str += arr[i];
-			str2+= arr2[i];
+		for(int i=0; i<pidArr.length; i++) {
+			str += pidArr[i];
+			str2+= amountArr[i];
 		}
 
 
@@ -80,7 +88,7 @@ public class OrderController {
 
 		int[] intArr = null;
 		int[] intArr2 = null;
-		if( arr != null ){
+		if( pidArr != null ){
 			intArr = new int[ strArr.length ];
 			intArr2 = new int[strArr2.length];
 			for( int i=0;i<intArr.length; i++) {
@@ -100,12 +108,7 @@ public class OrderController {
 		//카트 테이블 삭제
 		cartService.removeCartAll(auth.getName());
 
-		return "/order/payFinish";
-	}
-
-	@GetMapping("/do_payment")
-	public String Postputcart() {
-		return "redirect:/order/payFinish";
+		return "redirect:payFinish";
 	}
 
 
@@ -119,6 +122,7 @@ public class OrderController {
 	public String history(String pageNo, Model model, Authentication auth,HttpSession session) {
 		User user = usersService.getUser(auth.getName());
 		int intPageNo=1;
+		//
 		if(pageNo==null) {
 			Pager pager = (Pager) session.getAttribute("pager");
 			if(pager!=null) {
@@ -131,16 +135,10 @@ public class OrderController {
 		Pager pager = new Pager(5,5,totalRows,intPageNo);
 		session.setAttribute("pager", pager);
 		List<Orders> list = ordersService.getOrdersList(auth.getName(),pager);
-		if(list.size()==0  && intPageNo>1) { 
-			  totalRows = ordersService.getTotalRows(auth.getName());
-			  pager = new Pager(3,5, totalRows, intPageNo-1);
-			  list = ordersService.getOrdersList(auth.getName(), pager); 
-			  
-			  session.setAttribute("pager", pager);
-		  }
+
 		model.addAttribute("list",list);
 		model.addAttribute("user",user);
-		 model.addAttribute("pager", pager);
+		model.addAttribute("pager", pager);
 		return "/order/history";
 	}
 
@@ -150,6 +148,7 @@ public class OrderController {
 		model.addAttribute("user",user);
 		Orders orders=ordersService.ReadOrders(order_id);
 		model.addAttribute("orders", orders);
+		//발송상품 리스트 보여주기 
 		List<OrderProduct> list =ordersService.getProductList(order_id);
 		model.addAttribute("list",list);
 		return "/order/orders";
@@ -157,27 +156,14 @@ public class OrderController {
 
 
 
-	//카트에서 구매버튼 클릭
-	@GetMapping("/pay")
-	public String cartPay(Model model, Authentication auth) {
-		List<CartItem> list = ordersService.getOrderList(auth.getName());
-		model.addAttribute("list", list);
-		return "/order/pay";
-	}
-
-	/*@GetMapping("/deleteOrder")
-   public String deleteOrder(Orders orders) {
-	  ordersService.deleteOrder(orders);
-	   return "redirect:history";
-  }*/
-
+	//배송준비중 -> 취소중(ajax사용)
 	@GetMapping(value="/deleteOrder", produces ="application/json;charset=UTF-8")
 	public String deleteOrder(String order_id, String delivery_status,Orders orders) {
 		orders.setOrder_id(order_id);
 		orders.setDelivery_status(delivery_status);
 		ordersService.deleteOrder(orders);
 
-		return "redirect:history";
+		return "/order/history";
 	}
 
 }

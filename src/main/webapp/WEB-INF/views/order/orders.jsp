@@ -14,6 +14,39 @@
  
   <%int delivery = 3000; %>
 
+<!-- 주문삭제 스크립트 -->
+<script>
+     	const orderDelete=()=>{
+     		event.preventDefault();
+     		swal("주문을 삭제하시겠습니까?", {
+			  dangerMode: true,
+			  buttons:{
+				  confirm2:{
+					  text:'예',
+					  value:true
+				  },
+     			  confirm:{
+     				  text:'아니요',
+     				  value:false
+     			  }
+			  }
+			}).then((result)=>{
+				if(result){
+					const data = {
+             				delivery_status: $("#delivery_status").val(),
+             				 order_id: $("#order_id").val()
+             		}
+             		$.ajax({
+             			url:"${pageContext.request.contextPath}/order/deleteOrder",
+             			data:data,
+             			method:"get"
+             		})
+             		location.href='${pageContext.request.contextPath}/order/history';
+				}
+			})
+     	}
+</script>
+
 <div class="header2"> 
     <div class="inner">
         <div  style="font-size: 0.85em; padding-top: 5px;">홈 > 주문내역 > 주문상세정보</div> 
@@ -35,9 +68,9 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-my" id="list-home-list" style="text-decoration:none; border-color: white; color: black; font-weight: bold; font-size:1.3em;" >마이페이지</a>
                     <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/user/my" role="tab" aria-controls="home" >회원정보</a>
-                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/history" role="tab" aria-controls="profile">주문내역</a>
-                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart" role="tab" aria-controls="messages">장바구니</a>
-                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList" role="tab" aria-controls="settings">고객센터</a>
+                    <a class="list-group-item list-group-item-action active" href="<%=application.getContextPath()%>/order/history?pageNo=1" role="tab" aria-controls="profile">주문내역</a>
+                    <a class="list-group-item list-group-item-action" href="<%=application.getContextPath()%>/order/cart?pageNo=1" role="tab" aria-controls="messages">장바구니</a>
+                    <a class="list-group-item list-group-item-action"  href="<%=application.getContextPath()%>/boards/askList?pageNo=1" role="tab" aria-controls="settings">고객센터</a>
                  </div>
             </div>
             <div class="col-10 col-content">
@@ -82,7 +115,7 @@
                                             총 상품 금액
                                           </div>
                                           <div class="col-9 tdata">
-                                             ${orders.order_sprice}
+                                             ${orders.order_sprice}원
                                           </div>
                                         </div>
                                         <div class="row trow">
@@ -90,7 +123,7 @@
                                             배송비
                                           </div>
                                           <div class="col-9 tdata">
-                                             <%=delivery %>원
+                                             <%=delivery%>원
                                           </div>
                                         </div>
                                         <div class="row trow">
@@ -128,17 +161,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 발송상품 리스트 -->
                             <div class="orders-list">
                                 <div class="orders-inner" style="background-color: rgba(244,244,245,1);">
                                     <div class="orders-bottom">
                                         발송상품
                                     </div>
-         
                                 </div>
                                 <div class="orders-inner" style="border:3px solid rgba(244,244,245,1); border-top:none">
                                     <table class="table">
-                                    
                                         <tbody>
+                                        	<!-- orderProduct테이블 값 화면에 출력 -->
                                             <c:forEach var="orderProduct" items="${list}">
                                             <tr>
                                                 <td style="border-top:none; border-right:none; border-bottom:1px solid rgba(244,244,245,1"> 
@@ -158,40 +191,6 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                	const orderDelete=()=>{
-                		event.preventDefault();
-                		swal("주문을 삭제하시겠습니까?", {
-          				  dangerMode: true,
-          				  buttons:{
-          					  confirm2:{
-          						  text:'예',
-          						  value:true
-          					  },
-                			  confirm:{
-                				  text:'아니요',
-                				  value:false
-                			  }
-          				  }
-          				}).then((result)=>{
-          					if(result){
-          						const data = {
-                        				delivery_status: $("#delivery_status").val(),
-                        				 order_id: $("#order_id").val()
-                        		}
-                        		console.log(data.order_id);
-                        		$.ajax({
-                        			url:"${pageContext.request.contextPath}/order/deleteOrder",
-                        			data:data,
-                        			method:"get"
-                        		})
-                        		location.href='${pageContext.request.contextPath}/order/history';
-          					}else{
-          						
-          					}
-          				})
-                	}
-                </script>
                 <div style="text-align: center;">
                     <button type="button" onclick="location.href='<%=application.getContextPath()%>/order/history'" class="btn btn-primary btn-lg refundBtn" style="background-color: #FF3357; border-color: black; margin:0 10px; border:none;">주문내역으로 이동</button>
                     <form action="deleteOrder" method="get" style="display:inline-block" onsubmit="orderDelete()">
@@ -203,8 +202,4 @@
             </div>
         </div>
      </div>
-
-                </div>
-            </div>
-        </div>
-     </div>
+ <%@ include file="/WEB-INF/views/common/footer.jsp"%>   
