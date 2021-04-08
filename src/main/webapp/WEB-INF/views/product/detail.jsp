@@ -412,7 +412,7 @@
                                 <div style="display:flex;flex-direction: column; align-items: center; padding: 3% 0; border-bottom: 1px #c4c4c6 solid ;">
                                     <!--상품명-->
                                     <div style="margin:2% 0; font-size: x-large;">
-                                        헤이제리 테디베어 퍼 후드 베이지
+                                        ${product.p_name}
                                     </div>
                                     <!--별점 텍스트-->
                                     <div>
