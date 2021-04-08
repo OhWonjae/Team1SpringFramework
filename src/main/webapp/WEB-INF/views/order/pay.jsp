@@ -18,6 +18,30 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
+function validate(){
+	event.preventDefault();
+	var result = true;
+	//유효성 검사코드
+	
+	const uphone = $("#order_phone").val();
+	const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+	if(uphone===""){
+		result = false;
+		$("#errorUid").html("필수 사항 입니다.");
+	}else if(!regExp.test(uphone)){
+		result=false;
+		swal("전화번호에 맞는 형식이 아닙니다.");
+		$('#order_phone').val('');
+		$('#order_phone').focus();
+	}
+	
+	if(result){
+		$("#pform")[0].submit();
+	}
+	
+	
+}
+
 
 function openZipSearch() {
 	new daum.Postcode({
@@ -54,7 +78,7 @@ function openZipSearch() {
             
                 <div class="inner2" style="border: 1px solid #e9ecef; font-size: 0.8em"> 
                     <span class="history-subtitle">배송정보</span>
-                    <form class="history_underborder" action="do_payment" method="post">
+                    <form class="history_underborder" action="do_payment" method="post" onsubmit="validate()" id="pform" >
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
