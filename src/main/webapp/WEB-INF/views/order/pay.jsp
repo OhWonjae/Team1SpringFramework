@@ -59,14 +59,14 @@ function openZipSearch() {
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required>
+                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required/>
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text" required>
+                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="tel" required/>
                                 </div>
                             </div> 
                             
@@ -81,11 +81,11 @@ function openZipSearch() {
                               </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required>
+                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required/>
                               </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required>
+                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required/>
                                 </div>   
                             </div>
 
