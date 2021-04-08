@@ -24,11 +24,13 @@ function validate() {
 	var upassword = $("#user_password").val();
 	var upassword2 = $("#user_password2").val();
 
-	if (upassword === "") { // 비어있으면 문제
+	if (upassword === "") { // 비어있으면 
 		result = false;
+		//.html()은 선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꿉니다.
 		$("#errorUserpassword").html("필수사항 입니다.");
 	} else if (upassword.length < 6) {
 		result = false;
+		//.html()은 선택한 요소 안의 내용을 가져오거나, 다른 내용으로 바꿉니다.
 		$("#errorUserpassword").html("최소 6자 이상 입력해야 합니다.");
 	}
 	if (upassword2 === "") { // 비어있으면 문제
@@ -39,8 +41,13 @@ function validate() {
 		$("#errorUserpassword2").html("최소 6자 이상 입력해야 합니다.");
 
 	}
+	if (upassword !== upassword2) { // 비어있으면 문제
+		result = false;
+		$("#errorUserpassword").html("비밀번호가 서로 일치하지 않습니다.");
+		$("#errorUserpassword2").html("비밀번호가 서로 일치하지 않습니다.");
+	} 
 	if (result) {
-		$("#pwChangeForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
+		$("#pwChangeBySearchForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
 	} else {
 		 var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 	}
@@ -50,14 +57,14 @@ function validate() {
 		$('#user_password').val('');
 		$('#user_password2').val('');
 		$('#user_password').focus();
-	} else if (upassword === "" || upassword2 === "") {
-		result = false;
-		swal("비밀번호를 입력하지 않았습니다.");
-	}  else if (upassword !== upassword2) {
+	} else if (upassword !== upassword2) {
 		result = false;
 		swal("비밀번호가 서로 일치하지 않습니다.");
 		$('#user_password').focus();
-	}
+	} else if (upassword === "" || upassword2 === "") {
+		result = false;
+		swal("비밀번호를 입력하지 않았습니다.");
+	} 
 }
 </script>
 
@@ -73,7 +80,7 @@ function validate() {
 									<strong>비밀번호 변경</strong>
 								</h4>
 
-								<form id="pwChangeForm" name="pwChangeForm" method="post"
+								<form id="pwChangeBySearchForm" name="pwChangeBySearchForm" method="post"
 									action="pwChangeBySearch" onsubmit="validate()"
 									novalidate="novalidate">
 									<input type="hidden" name="${_csrf.parameterName}"

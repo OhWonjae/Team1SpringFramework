@@ -43,6 +43,7 @@
    <select id="productList" parameterType="orderproduct" resultType="orderproduct">
 		select 	
 						o.amount,
+						o.p_id,
 						p.p_name,  
 						p.p_price, 
 						photos.photo_id,

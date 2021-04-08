@@ -84,4 +84,19 @@
             font-weight:bold;
         }
         
+        .pdlink:link { color: black; 
+        
+        }
+        
+        .pdlink:link:hover{
+        	color:#007bff;
+        }
+        
+        .pdlink:visited{
+        color: #8c59b9;
+        }
+        
+        
+        
+        
         

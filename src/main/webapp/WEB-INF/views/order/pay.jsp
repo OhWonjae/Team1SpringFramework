@@ -18,6 +18,30 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
+function validate(){
+	event.preventDefault();
+	var result = true;
+	//유효성 검사코드
+	
+	const uphone = $("#order_phone").val();
+	const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+	if(uphone===""){
+		result = false;
+		$("#errorUid").html("필수 사항 입니다.");
+	}else if(!regExp.test(uphone)){
+		result=false;
+		swal("전화번호에 맞는 형식이 아닙니다.");
+		$('#order_phone').val('');
+		$('#order_phone').focus();
+	}
+	
+	if(result){
+		$("#pform")[0].submit();
+	}
+	
+	
+}
+
 
 function openZipSearch() {
 	new daum.Postcode({
@@ -54,19 +78,19 @@ function openZipSearch() {
             
                 <div class="inner2" style="border: 1px solid #e9ecef; font-size: 0.8em"> 
                     <span class="history-subtitle">배송정보</span>
-                    <form class="history_underborder" action="do_payment" method="post">
+                    <form class="history_underborder" action="do_payment" method="post" onsubmit="validate()" id="pform" >
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div style=" width: 60%; ">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">받는 사람</span>  
-                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required>
+                                    <input name="order_name" id="order_name" class="form-control" placeholder="받으시는 분의 성함을 입력하세요." type="text" required/>
                                 </div> <!-- form-group// -->
                             </div>
                             
                             <div style=" width: 60%;">
                                 <div class="form-group input-group">
                                     <span class="pay_form_size">휴대전화</span>  
-                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="text" required>
+                                    <input name="order_phone" id="order_phone"  class="form-control" placeholder="휴대전화 번호를 입력하세요." type="tel" required/>
                                 </div>
                             </div> 
                             
@@ -81,11 +105,11 @@ function openZipSearch() {
                               </div> <!-- form-group// -->
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required>
+                                    <input class="form-control" type="text" name="delivery_address" id="delivery_address" required/>
                               </div> 
                                 <div class="form-group input-group">
                                     <span class="pay_form_size"></span> 
-                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required>
+                                    <input class="form-control" type="text" name="delivery_address_detail" id="delivery_address_detail" required/>
                                 </div>   
                             </div>
 
