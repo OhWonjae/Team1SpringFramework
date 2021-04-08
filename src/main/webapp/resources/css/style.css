@@ -224,7 +224,7 @@ section{
 .fa-chevron-circle-right{
    	position: absolute;
    	top:38%;
-    left:86%;
+    left:79%;
     z-index:100;
     font-size: 45px;
     color:black;
@@ -235,7 +235,7 @@ section{
 .fa-chevron-circle-left{
     position: absolute;
     top:38%;
-    left:11%;
+    left:18.5%;
 	z-index:2;
     font-size: 45px;
     color:black;
