@@ -59,7 +59,42 @@
 	border-color: #fff;
 }
 </style>
-</head>
+<script>
+	function validate() {
+		event.preventDefault(); // 기능 잠시 꺼두기
+		var result = true;
+		// 유효성 검사 시작
+
+		// 휴대폰 번호 3칸으로 나눠서 입력받기
+		var user_phone1 = $("#phone1").val();
+		var user_phone2 = $("#phone2").val();
+		var user_phone3 = $("#phone3").val();
+		var user_phone = user_phone1 + user_phone2 + user_phone3;
+		document.getElementById("user_phone").value = user_phone;
+		const uphone = $("#user_phone").val();
+
+		console.log(user_phone);
+		console.log(user_phone1);
+		console.log(user_phone2);
+		console.log(user_phone3);
+
+		if (user_phone2 === "" || user_phone3 === "") { // 비어있으면 문제
+			result = false;
+			$("#errorUserphone").html("필수사항 입니다.");
+		}
+		if (result) {
+			$("#phoneChangeForm")[0].submit(); // submit을 통해 꺼진 기능을 살림.
+		} else {
+			var re_hp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+		}
+		if (!re_hp.test(uphone)) {
+			result = false;
+			swal("휴대폰 번호에 맞는 형식이 아닙니다.");
+			$('#user_phone').val('');
+			$('#user_phone').focus();
+		}
+	}
+</script>
 <body>
 	<div>
 		<div class="header2">
@@ -109,19 +144,36 @@
 
 							<article class="card-body mx-auto" style="width: 500px;">
 								<h4 class="card-title mt-4 mb-4 text-center">
-									<strong>휴대번호 변경</strong>
+									<strong>휴대폰번호 변경</strong>
 								</h4>
 
-								<form method="post" action="updateUser2">
+								<form id="phoneChangeForm" name="phoneChangeForm" method="post" action="updatePhone"
+		onsubmit="validate()" novalidate="novalidate">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
 									<div style="font: bolder;">
-										<strong>휴대번호</strong><span style="color: red;">*</span>
+										<strong>휴대폰 번호</strong><span style="color: red;">*</span>
+										<div class="form-group input-group">
+											<select class="form-control" type="tel" id="phone1"
+												name="phone1" maxLength="3">
+												<option selected="" value="010">010</option>
+												<option>011</option>
+												<option>016</option>
+												<option>017</option>
+												<option>019</option>
+											</select> - <input type="tel" id="phone2" name="phone2"
+												class="form-control" maxLength="4" /> - <input type="tel"
+												id="phone3" name="phone3" class="form-control" maxLength="4" />
+											<input type="hidden" id="user_phone" name="user_phone"
+												class="form-control" placeholder="휴대폰 번호를 입력해주세요."
+												type="text"> <span id="errorUserphone"
+												class="text-danger error"></span>
+										</div>
+
 									</div>
-									<div class="form-group input-group">
-										<input class="form-control" id="user_phone" name="user_phone"
-											placeholder="변경할 휴대전화 번호를 입력하세요." type="number">
-									</div>
+
+
+
 
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary btn-block"
