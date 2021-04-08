@@ -167,7 +167,7 @@ $(function(){
 	</div>
 </section>
 <section>
-	<div class="inner">
+	<div class="inner" style="position:relative;">
 		<div class="main-new">
 			<div class="main-title-new">
 				<div class="main-title">신규</div>
@@ -180,7 +180,6 @@ $(function(){
 
 
 			<ul class="new-list">
-			<i class="fas fa-chevron-circle-left left" style="display: none"></i> 
 				<!-- Slider main container -->
 				<div class="swiper-container swiper-container1">
 
@@ -215,11 +214,10 @@ $(function(){
 
 
 			</ul>
-			<i class="fas fa-chevron-circle-right right"></i> 
 		</div>
 	</div>
-	<!--  <i class="fas fa-chevron-circle-left left" style="display: none"></i> 
-	<i class="fas fa-chevron-circle-right right"></i>-->
+	  <i class="fas fa-chevron-circle-left left" style="display: none"></i> 
+	<i class="fas fa-chevron-circle-right right"></i>
 </section>
 <hr />
 <section style="position: relative;">
