@@ -115,7 +115,7 @@
 																				
 										<c:if test="${pager.groupNo<pager.totalGroupNo}">
 											<a class="btn btn-outline-info btn-sm"
-												href="history?pageNo=${pager.endPageNo+1}">처음</a>
+												href="history?pageNo=${pager.endPageNo+1}">다음</a>
 											</c:if>		
 																					
 										<a class="btn btn-light btn-sm"

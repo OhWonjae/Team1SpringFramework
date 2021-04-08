@@ -167,7 +167,7 @@
 				 <div class="flex-items"> 
 				 	<figure onclick="location.href='detail?pid=${product.p_id}'" style="cursor: pointer;">
       					<img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}" width="200px">
-      					<figcaption>${product.p_name}</figcaption>
+      					<figcaption style="font-weight:bold;">${product.p_name}</figcaption>
       					 <figcaption>
       					  <!--별점-->
                           <c:forEach var="i" begin="1" end="${product.p_rate}">
@@ -179,7 +179,6 @@
       					  (${product.p_rate})
       					</figcaption>
     					<figcaption>${product.p_price}원</figcaption>
-    					<figcaption>신상품</figcaption>
     				</figure>
                 </div>
 				</c:forEach>
@@ -190,8 +189,8 @@
 					<div class="flex-grow-1">
 				
 						<!-- 6 7 8 9 10 -->
-						<a class="btn btn-outline-primary btn-sm"
-							href="new?pageNo=1">처음</a>
+						<a class="btn btn-light btn-sm"
+							href="new?pageNo=1"><pre style="margin-bottom:0;"><<</pre></a>
 							
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
@@ -201,7 +200,7 @@
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<a class="btn 
 							<c:if test='${pager.pageNo==i}'>btn-danger</c:if>
-							<c:if test='${pager.pageNo!=i}'>btn-outline-success</c:if>
+							<c:if test='${pager.pageNo!=i}'>btn-light</c:if>
 							
 							btn-sm" href="new?pageNo=${i}">${i}</a>
 						</c:forEach>
@@ -211,8 +210,8 @@
 							href="new?pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if>		
 							
-						<a class="btn btn-outline-primary btn-sm"
-							href="new?pageNo=${pager.totalPageNo}">맨끝</a>
+						<a class="btn btn-light btn-sm"
+							href="new?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
 					</div>
 		</div>   
  
