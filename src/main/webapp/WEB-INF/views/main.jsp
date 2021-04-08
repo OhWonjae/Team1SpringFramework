@@ -1,5 +1,4 @@
 <%-- page 지시자 --%>
-
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.mycompany.webapp.dto.*"%>
@@ -10,10 +9,8 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/menu.jsp"%>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 
@@ -45,6 +42,7 @@
 }
 </style>
 
+<!-- swiper를 사용하기 위한 함수 -->
 <script>
 $(function(){
     //initialize swiper when document ready
@@ -61,12 +59,6 @@ $(function(){
 
         loop: false, // loop 를 true 로 할경우 무한반복 슬라이드, false 로 할경우 슬라이드의 끝에서 더보여지지 않음
 
-        // If we need pagination 
-        pagination: {
-            el: '.swiper-pagination',
-            clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-        },
-        
         // Navigation arrows 
         navigation: {
             nextEl: '.right',
@@ -101,13 +93,7 @@ $(function(){
         loopFillGroupWithBlank : false,
 
         loop: false, // loop 를 true 로 할경우 무한반복 슬라이드, false 로 할경우 슬라이드의 끝에서 더보여지지 않음
-
-        // If we need pagination 
-        pagination: {
-            el: '.swiper-pagination',
-            clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-        },
-        
+  
         // Navigation arrows 
         navigation: {
             nextEl: '.right2',
@@ -211,7 +197,6 @@ $(function(){
 					</div>
 
 				</div>
-
 					 <i class="fas fa-chevron-circle-left left" style="display: none"></i> 
 					<i class="fas fa-chevron-circle-right right"></i>
 			</ul>
@@ -265,9 +250,8 @@ $(function(){
 					</div>
 
 				</div>
-
-				<i class="fas fa-chevron-circle-left left2" style="display: none;"></i>
-				<i class="fas fa-chevron-circle-right right2"></i>
+					<i class="fas fa-chevron-circle-left left2" style="display: none;"></i>
+					<i class="fas fa-chevron-circle-right right2"></i>
 			</ul>
 		</div>
 	</div>

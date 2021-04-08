@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.CartDao">
 
-
+	<!-- 카트에 담기 -->
 	<insert id="insertCart" parameterType="cart">
 		insert into cart 
 		(user_id, p_id, amount, p_size, cart_date)
@@ -10,7 +10,7 @@
 		(#{user_id}, #{p_id}, #{amount}, #{p_size}, systimestamp)
 	</insert>
  
- 
+ 	<!-- 전체 카트리스트 값 가져오기 -->
 	<select id="cartList" parameterType="cart" resultType="cart">
 		select 	
 						c.user_id,
@@ -32,6 +32,7 @@
 
 	</select>
 	
+	 <!-- 페이저를 이용한 cartList -->
 	 <select id="cartListByPage" parameterType="pager" resultType="cart">
 		select rnum, user_id, p_id, p_size, amount, p_name, p_price, photo_id, photo_oname, photo_sname, photo_type, photo_role
 		from(
