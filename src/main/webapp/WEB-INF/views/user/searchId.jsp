@@ -13,13 +13,10 @@
 
 <link rel="stylesheet"
 	href="<%=pageContext.getServletContext().getContextPath()%>/resources/css/hungyun.css">
-
-
 <div class="header2">
 	<div class="inner" style="font-size: 0.85em; padding-top: 5px;">
 		홈 > 아이디 찾기</div>
 </div>
-
 <div class="card" style="border: white;">
 	<article class="card-body mx-auto" style="width: 500px;">
 		<h4 class="card-title mt-4 mb-4 text-center">
@@ -31,7 +28,7 @@
 				value="${_csrf.token}" />
 			<div class="tab">
 								<div class="tab4">이메일</div>
-								<div class="tab2">
+								<div class="tab2" style="font-size: 1.2em;">
 									<strong>${user.user_id}</strong>
 								</div>
 							</div>

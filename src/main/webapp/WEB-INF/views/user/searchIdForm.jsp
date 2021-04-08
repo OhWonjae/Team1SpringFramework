@@ -84,8 +84,7 @@
                swal("필수 입력사항입니다.");
             } else if (data == "0") {
                swal("등록된 ID가 아닙니다.");
-            } else if (data == "1") {
-               swal("등록된 ID 입니다.");
+            } else {
                $("#searchIdForm")[0].submit(); 
             } 
          }
