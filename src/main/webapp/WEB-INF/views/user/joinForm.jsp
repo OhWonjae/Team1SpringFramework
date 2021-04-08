@@ -232,6 +232,7 @@ document.getElementById("user_phone").value = user_phone; */
 		</div>
 		<div>
 			<strong>이메일</strong><span style="color: red;">*</span>
+			<span id="errorUserid" class="text-danger error"></span>
 			<div class="form-group input-group">
 				<input type="text" id="email1" name="email1" class="form-control"
 					maxLength="15"/> 
@@ -251,7 +252,7 @@ document.getElementById("user_phone").value = user_phone; */
 					
 				<input type="hidden" id="user_id" name="user_id"
 					class="form-control" placeholder="이메일을 입력하세요." type="email">
-				<span id="errorUserid" class="text-danger error"></span>
+				
 				<!--아이디(이메일) 중복체크-->
 				<a class="btn btn-light" type="button" id="idCheck"
 					style="width: 100px; margin-left: 10px;"
