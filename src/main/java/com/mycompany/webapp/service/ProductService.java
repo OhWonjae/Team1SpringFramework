@@ -219,11 +219,17 @@ public class ProductService {
 	public void ChangeRate(int p_id,int review_score) {
 		// TODO Auto-generated method stub
 		int reviewcount =reviewDao.getCount(p_id);
-		int p_rate = productDao.selectBypid(p_id).getP_rate();
-		
-		p_rate+=review_score;
-		p_rate /= (reviewcount);
-		
+		List<Review> reviewProductList = reviewDao.getreviewListBypid(p_id);
+		int sum=0;
+		for(Review r:reviewProductList) {
+			sum+=r.getReview_score();
+		}
+		System.out.println("current reviewcount :" + reviewcount);
+		System.out.println("current sum :" + sum);
+		System.out.println("current prate :" + review_score);
+
+		int p_rate = sum/reviewcount;
+		System.out.println("average :" + p_rate);
 		// rate update
 		productDao.updateRate(p_id,p_rate);
 		

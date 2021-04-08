@@ -26,4 +26,10 @@
 	from review 
 	where p_id=#{p_id}
 	</select>
+	<select id="getreviewListBypid" parameterType="int" resultType="review">
+	select review_score
+	from review 
+	where p_id=#{p_id}
+	</select>
+	
 </mapper>
