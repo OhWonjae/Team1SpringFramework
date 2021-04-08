@@ -144,7 +144,7 @@
                                                 <td style="border-top:none; border-right:none; border-bottom:1px solid rgba(244,244,245,1"> 
                                                     <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="20%" style="float: left; margin-right: 10px;">
                                                     <br/>
-                                                    <a href="<%=application.getContextPath()%>/product/detail?pid=${orderProduct.p_id}" style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </a>
+                                                    <a class="pdlink" href="<%=application.getContextPath()%>/product/detail?pid=${orderProduct.p_id}" style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </a>
                                                     <div style="font-size: 0.9em;"> ${orderProduct.p_price}원 </div> 
                                                     <div style="font-size: 0.9em;">수량: ${orderProduct.amount}</div>
                                         

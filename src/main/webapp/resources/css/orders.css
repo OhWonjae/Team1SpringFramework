@@ -84,15 +84,15 @@
             font-weight:bold;
         }
         
-        a:link { color: black; 
+        .pdlink:link { color: black; 
         
         }
         
-        a:link:hover{
+        .pdlink:link:hover{
         	color:#007bff;
         }
         
-        a:visited{
+        .pdlink:visited{
         color: #8c59b9;
         }
         
