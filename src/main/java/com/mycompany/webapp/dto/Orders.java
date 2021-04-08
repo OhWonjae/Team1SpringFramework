@@ -13,7 +13,7 @@ public class Orders {
 	private int zip;
 	private String user_id;
 	private String order_name;
-	private int order_phone;
+	private String order_phone;
 	private int order_sprice;
 	private int p_id;
 	private String delivery_status;
@@ -147,10 +147,10 @@ public class Orders {
 	public void setOrder_name(String order_name) {
 		this.order_name = order_name;
 	}
-	public int getOrder_phone() {
+	public String getOrder_phone() {
 		return order_phone;
 	}
-	public void setOrder_phone(int order_phone) {
+	public void setOrder_phone(String order_phone) {
 		this.order_phone = order_phone;
 	}
 	public int getTotal_amount() {

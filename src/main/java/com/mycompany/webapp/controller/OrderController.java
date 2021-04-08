@@ -45,6 +45,7 @@ public class OrderController {
 	// pay.jsp에서 결제정보 입력 후 결제하기 버튼 클릭시
 	@PostMapping("/do_payment")
 	public String putcart(Orders orders, OrderProduct orderProduct, HttpServletRequest request , Authentication auth) {   
+		System.out.println(orders.getOrder_phone());
 		orders.setUser_id(auth.getName());
 		//orderid 설정
 		Calendar cal =Calendar.getInstance();

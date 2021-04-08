@@ -11,21 +11,21 @@
                                 <span class="category">카테고리</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=티셔츠&searchword=">티셔츠</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=후드티&searchword=">후드티</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=패딩/코트&searchword=">패딩/코트</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=원피스&searchword=">원피스</a>
-                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?phgeNo=1&category=올인원&searchword=">올인원</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?pageNo=1&category=티셔츠&searchword=">티셔츠</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?pageNo=1&category=후드티&searchword=">후드티</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?pageNo=1&category=패딩/코트&searchword=">패딩/코트</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?pageNo=1&category=원피스&searchword=">원피스</a>
+                              <a class="dropdown-item" href="<%=application.getContextPath()%>/product/search?pageNo=1&category=올인원&searchword=">올인원</a>
                              </div>
                           </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/new">신규</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/new?pageNo=1">신규</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/rank">랭킹</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/rec">추천</a>
+                            <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/product/rec?pageNo=1">추천</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<%=application.getContextPath()%>/user/my">고객센터</a>

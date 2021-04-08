@@ -503,14 +503,14 @@ $(function(){
 	</div>
 	</div>
 	</div>
-	</div>
+
 </section>
 <section>
 	<div class="review-container">
 		<div class="inner">
 			<div class="main-new">
 				<div class="main-title-new">
-					<div class="main-title">베스트 리뷰</div>
+					<div class="main-title">별점 높은 상품</div>
 				</div>
 				<ul class="class-list">
 					<!--베스트 리뷰 상품 리스트 출력 -->
@@ -522,7 +522,7 @@ $(function(){
 								alt="Review1" class="class-image" />
 								<div class="class-container">
 									<div class="class-box">
-										<div class="class-type">사이즈 L</div>
+										<div class="class-type">사이즈: S, M, L</div>
 										<div class="class-format">
 											<!--별점-->
 											<c:forEach var="i" begin="1" end="${product.p_rate}">
@@ -540,8 +540,8 @@ $(function(){
 										</div>
 									</div>
 									<div class="class-desc">
-										<div class="class-title">플로트 스탠다드 골지 티셔츠 그린</div>
-										<div class="class-detail">리뷰: 리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰</div>
+										<div class="class-title">${product.p_name}</div>
+										<div class="class-detail">${product.p_price}원</div>
 									</div>
 								</div>
 						</a></li>

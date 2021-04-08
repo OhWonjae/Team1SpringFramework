@@ -271,26 +271,9 @@
                 </div>
             </div>
             
-            <!--상세페이지 메뉴컨테이너-->
-            <div class="container-fluid " style="border-bottom: 1px solid darkgray; padding: 10px;"  >
-                <ul class="nav  justify-content-around "  >
-                    <li class="nav-item" style="text-align:center; width: 20%; margin: 0 0; ">
-                    <a class="nav-link1 active" href="#">상품정보</a>
-                    </li>
-                    <li class="nav-item"style="text-align:center width: 20%; margin: 0 0; ">
-                    <a class="nav-link1" href="#" >질문/답변</a>
-                    </li>
-                    <li class="nav-item"style="text-align:center width: 20%;  margin: 0 0; ">
-                    <a class="nav-link1" href="#">구매후기</a>
-                    </li>
-                    <li class="nav-item"style="text-align:center width: 20%;  margin: 0 0;  ">
-                    <a class="nav-link1 " href="#">취소/교환/반품 안내</a>
-                    </li>
-                </ul>
-                
-            </div>
+           
             <!--상세페이지 상품정보 제목 컨테이너-->
-            <div class="container " style="  font-weight: bold; font-size: large;">
+            <div class="container " style="margin-top:10px;  font-weight: bold; font-size: large;">
                 상품정보 
             </div>
             <!--상세페이지 상품정보 텍스트 컨테이너-->
@@ -316,7 +299,7 @@
                 <!--Detail 이미지-->
                 <img id="detailimg" src="${pageContext.request.contextPath}/resource/GetDetailPhoto?photoSname=${detailphoto.photo_sname}&photoType=${detailphoto.photo_type}" >
                 <!--Detail 접기 버튼-->
-                <button type="button" onclick="fold()" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 접기</button>
+                <button type="button" onclick="fold()" id="foldbutton" class="btn w-50  disabled btn-outline-danger text-center btn-lg btn-block">상품 상세 열기</button>
             </div>
 
 			<script>
@@ -325,8 +308,12 @@
 			})
 			function fold(){
 				$("#detailimg").toggle();
-                 
-				
+                console.log($("#detailimg"))
+				if ( $("#detailimg").css('display') === 'none' ) 
+				{ $("#foldbutton").text('상품 상세 열기');} 
+				else 
+				{ $("#foldbutton").text('상품 상세 닫기'); }
+
 				
 			}
 			
@@ -412,7 +399,7 @@
                                 <div style="display:flex;flex-direction: column; align-items: center; padding: 3% 0; border-bottom: 1px #c4c4c6 solid ;">
                                     <!--상품명-->
                                     <div style="margin:2% 0; font-size: x-large;">
-                                        헤이제리 테디베어 퍼 후드 베이지
+                                        ${product.p_name}
                                     </div>
                                     <!--별점 텍스트-->
                                     <div>
@@ -427,6 +414,10 @@
                                         <img id="star5" onclick="OnClickStar('5');"src="${pageContext.request.contextPath}/resources/img/EmptyStar.PNG"  height="40px">
                                     </div>
                                 </div>
+                                
+                                
+                              
+
                                <!--리뷰 입력 폼-->
                                <form action="reviewupload?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
                                 <!--리뷰 입력 컨테이너-->
@@ -445,11 +436,21 @@
                                         </div>
                                         <!--사진 입력 버튼-->
                                         <label  class="form-control" for="battach" id="recipient-pic" style="border:1px black dashed; cursor:pointer; text-align:center; margin:3% 0; padding: 5px; ">
-                                            <i class="fas fa-camera">사진/동영상 첨부하기</i>
+                                            <i class="fas fa-camera" id="pic-load">사진/동영상 첨부하기</i>
                                         </label>                                     
                                         <input type="file" class="form-control-file" id="battach" name="battach" style="display: none;"/>                         
                                		 </div>  
-  								
+                               		 
+  								  <script>
+  								document.getElementById('battach').addEventListener('change', function(){
+  									var filename = document.getElementById('pic-load');
+  									if(this.files[0] == undefined){
+  										filename.innerText = '선택된 파일없음';
+  										return;
+  									}
+  									filename.innerText = this.files[0].name;
+  								});
+								</script>
                                 
                                 <!--닫기/등록 버튼 컨테이너-->
                                 <div style="width: 100%; height: 30%; padding:2% 0%; display:flex; justify-content: space-around; align-items: center; ">

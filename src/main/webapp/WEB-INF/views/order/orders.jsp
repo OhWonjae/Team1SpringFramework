@@ -64,7 +64,7 @@
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송주소</dt>
-                                            <dd class="data-name">${orders.delivery_address_detail}</dd>
+                                            <dd class="data-name">${orders.delivery_address} ${orders.delivery_address_detail}</dd>
                                         </dl>
                                         <dl class="info1">
                                             <dt class="info-detail">배송 요청사항</dt>
@@ -144,7 +144,7 @@
                                                 <td style="border-top:none; border-right:none; border-bottom:1px solid rgba(244,244,245,1"> 
                                                     <img src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${orderProduct.photo_sname}&photoType=${orderProduct.photo_type}" width="20%" style="float: left; margin-right: 10px;">
                                                     <br/>
-                                                    <div style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </div>
+                                                    <a href="<%=application.getContextPath()%>/product/detail?pid=${orderProduct.p_id}" style="font-size: 1.3rem; font-weight: bold;"> ${orderProduct.p_name} </a>
                                                     <div style="font-size: 0.9em;"> ${orderProduct.p_price}원 </div> 
                                                     <div style="font-size: 0.9em;">수량: ${orderProduct.amount}</div>
                                         

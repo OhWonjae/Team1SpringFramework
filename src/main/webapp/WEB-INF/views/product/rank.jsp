@@ -175,7 +175,7 @@
 			    <span style="padding: 10px;"><strong>${listcount}</strong>개의 상품</span>
 			</div>
 	
-			 <div class="center">  
+			 <div class="center" style="margin-bottom:45px;">
             	<!--랭킹 상품 리스트 출력 -->
             	<c:forEach var="product" items="${list}" varStatus="status">
 				 <div class="flex-items"> 

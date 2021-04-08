@@ -64,14 +64,12 @@ public class QnaController {
         User user = usersService.getUser(auth.getName());
         model.addAttribute("user", user);
         logger.info(auth.getName());//
-        List<Qna> list = qnaService.getBoardList(auth.getName(), pager);
-//           //user_id에 맞는 게시글을 불러오도록 해야함
-//           where user_id = #{user_id};
-//           session.setAttribute("pager", pager);
+        List<Qna> list = qnaService.getBoardList(auth.getName(), pager); 
+        //로그인한 사람의 글만 보기위해서 auth에서 가지고 있던 로그인 정보 중 user_id를 getName을 통해 가져옴.
+        //getBoardList를 통해 해당 아이디로 작성된 게시글을 모두 가져와서 List객체에 선언
+        //user_id에 맞는 게시글을 불러오도록 해야함
            model.addAttribute("qna", list);//as -is => list , be -to => qna
-//           model.addAttribute("list", list);
            model.addAttribute("pager", pager);
-//           model.addAttribute("listcount",totalRows);
 //            
 //            //System.out.println(list);//테스트 여기서 list 값을 잘 활용 하면 됨. 지금 insert 하면 값 들어가고,콘솔에 보면 값은 계속 쌓이고는 있음 
             
