@@ -115,7 +115,7 @@
 																			<div class="flex-grow-1">
 																		
 																				<a class="btn btn-light btn-sm"
-																					href="cart?pageNo=1">처음</a>
+																					href="cart?pageNo=1"><pre style="margin-bottom:0;"><<</pre></a>
 																					
 																				<c:if test="${pager.groupNo>1}">
 																					<a class="btn btn-outline-info btn-sm"
@@ -136,7 +136,7 @@
 																				</c:if>		
 																					
 																				<a class="btn btn-light btn-sm"
-																					href="cart?pageNo=${pager.totalPageNo}">맨끝</a>
+																					href="cart?pageNo=${pager.totalPageNo}"><pre style="margin-bottom:0;">>></pre></a>
 																			</div>
 																		</div> 
                                  	</c:if>
