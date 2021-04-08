@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.CartItem;
 import com.mycompany.webapp.dto.Pager;
-import com.mycompany.webapp.dto.Photo;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.CartsService;
-import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.UsersService;
 
 @Controller
@@ -28,8 +26,7 @@ public class CartController {
       private CartsService cartsService;
    @Autowired
    	  private UsersService usersService;
-   @Autowired
-   	  private ProductService productService;
+
    
    @GetMapping("/cart")
    public String cart(Model model, Authentication auth, String pageNo, HttpSession session) {
@@ -92,25 +89,28 @@ public class CartController {
    }
    
    @GetMapping("/cart/increase")
-   public String increase(Authentication auth, int pid) {
-      cartsService.plusAmount(auth.getName(), pid);
+   public String increase(Authentication auth, int pid, String psize) {
+	   System.out.println(auth.getName());
+	   System.out.println(pid);
+	   System.out.println(psize);
+      cartsService.plusAmount(auth.getName(), pid, psize);
       return "redirect:/order/cart";
    }
    
    @GetMapping("/cart/decrease")
-   public String decrease(Authentication auth, int pid) {
+   public String decrease(Authentication auth, int pid, String psize) {
 
-      CartItem cart = cartsService.getCartOne(auth.getName(), pid);
+      CartItem cart = cartsService.getCartOne(auth.getName(), pid, psize);
       if(cart.getAmount()>1) {
-            cartsService.minusAmount(auth.getName(), pid);   
+            cartsService.minusAmount(auth.getName(), pid, psize);   
             return "redirect:/order/cart";
       }
       return "redirect:/order/cart";
    }
    
    @GetMapping("/cart/delete")
-   public String delete(Authentication auth, int pid) {
-      cartsService.removeCartList(auth.getName(), pid);
+   public String delete(Authentication auth, int pid, String psize) {
+      cartsService.removeCartList(auth.getName(), pid, psize);
       return "redirect:/order/cart";
    }
    
@@ -122,103 +122,3 @@ public class CartController {
 }
    
    
-   
-/*
- * @GetMapping("/cart/create") public String create(Model model) {
- * 
- * for(int i=1; i<= 50; i++) {
- * 
- * 
- * 
- * String name = "dog"; name = name+""+i+"-2";
- * 
- * 
- * Photo p = new Photo(i+250,i,name,name,"JPG","sub");
- * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
- * System.out.print(p.getPhoto_oname()+" ");
- * System.out.print(p.getPhoto_role()+" ");
- * System.out.println(p.getPhoto_type());
- * 
- * productService.createPhoto(p);
- * 
- * } int k=1; for(int i=51; i<= 100; i++) {
- * 
- * String name = "dog"; name = name+""+k+"-1";
- * 
- * 
- * Photo p = new Photo(i+300,i,name,name,"JPG","sub");
- * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
- * System.out.print(p.getPhoto_oname()+" ");
- * System.out.print(p.getPhoto_role()+" ");
- * System.out.println(p.getPhoto_type());
- * 
- * productService.createPhoto(p);
- * 
- * name = "dog"; name = name+""+k+"-2";
- * 
- * 
- * p = new Photo(i+350,i,name,name,"JPG","sub");
- * System.out.print(p.getPhoto_id()+" "); System.out.print(p.getP_id()+" ");
- * System.out.print(p.getPhoto_oname()+" ");
- * System.out.print(p.getPhoto_role()+" ");
- * System.out.println(p.getPhoto_type()); k++; productService.createPhoto(p);
- * 
- * 
- * }
- * 
- * return "/product/new"; }}
- */
-   
-
-//	// 테스트용 컨트롤러 - 상품 무작위 생성
-//	@GetMapping("/cart/create")
-//	public String create(Model model) {
-//		
-//		Random random = new Random();
-//		for(int i=1; i<= 100; i++) {
-//			int r = random.nextInt(5);
-//			String category = "티셔츠";
-//			switch(r) {
-//			case 0: category = "티셔츠";
-//			break;
-//			case 1: category = "후드티";
-//			break;
-//			case 2: category = "패딩/코트";
-//			break;
-//			case 3: category = "원피스";
-//			break;
-//			case 4: category = "올인원";
-//			break;
-//			}
-//			Date now = new Date();
-//			Calendar cal = Calendar.getInstance();
-//			cal.setTime(now);
-//			cal.add(Calendar.MONTH, +(int)(Math.random() * 5));
-//			cal.add(Calendar.DAY_OF_MONTH, -(int)(Math.random() * 20));
-//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");		
-//			Product p = new Product(i, "name"+i,i*100,20,random.nextInt(100),category, cal.getTime(),""+"description"+i, 0);
-//			System.out.println(p.toString());
-//			productService.createProduct(p);
-//		}
-//
-//	    return "/product/new";
-//	}
-	
-   
-// 테스트용 컨트롤러 - 상품 무작위 생성
-	/*
-	 * @GetMapping("/cart/size") public String size(Model model) {
-	 * 
-	 * for(int i=1; i<=100; i++) {
-	 * 
-	 * SizeProduct p = new SizeProduct(i,"S"); productService.createSize(p);
-	 * SizeProduct p1 = new SizeProduct(i,"M"); productService.createSize(p1);
-	 * SizeProduct p2 = new SizeProduct(i,"L"); productService.createSize(p2);
-	 * 
-	 * }
-	 * 
-	 * 
-	 * return "/product/new"; }
-	 * 
-	 * }
-	 */

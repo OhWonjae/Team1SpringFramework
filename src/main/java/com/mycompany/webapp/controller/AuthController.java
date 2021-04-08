@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,15 +125,34 @@ public class AuthController {
 	public String searchPw() {
 		return "/user/searchPw";
 	}
+	
+	@GetMapping("/pwChangeBySearch")
+	public String pwChangeBySearch() {
+		return "/user/pwChangeBySearch";
+	}
 
 	@PostMapping("/searchPw")
-	public String searchPw(String user_id, Model model) throws Exception {
+	public String searchPw(String user_id, Model model, HttpSession session) throws Exception {
 		User user = usersService.getUser(user_id);
 		/*		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 				user.setUser_password(bpe.encode(user.getUser_password()));*/
+	    user.setUser_id(user_id);
+	    session.setAttribute("user", user);
+
 		model.addAttribute("user", user);
-		System.out.println(user.getUser_password());
-		return "/user/pwChange";
+		//System.out.println(user.getUser_password());
+		return "/user/pwChangeBySearch";
+	}
+	
+	@PostMapping("/pwChangeBySearch")
+	public String updatePw1(String user_password, HttpSession session) {
+		
+		User user = (User) session.getAttribute("user"); // 타입변환 필요
+		System.out.println(user.getUser_id());
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		usersService.updatePw(bpe.encode(user_password), user.getUser_id());
+		//System.out.println(user.getUser_password());
+		return "/user/my";
 	}
 
 	@PostMapping("/searchIdForm")

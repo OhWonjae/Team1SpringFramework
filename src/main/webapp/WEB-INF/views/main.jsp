@@ -166,8 +166,8 @@ $(function(){
 		</a>
 	</div>
 </section>
-<section style="position: relative;">
-	<div class="inner">
+<section>
+	<div class="inner" style="position:relative;">
 		<div class="main-new">
 			<div class="main-title-new">
 				<div class="main-title">신규</div>
@@ -190,7 +190,6 @@ $(function(){
 							<div class="swiper-slide">
 								<li class="new-goods" style="margin-left: 0;"
 									onclick="location.href='product/detail?pid=${product.p_id}'">
-
 									<img
 									src="${pageContext.request.contextPath}/resource/GetPhoto?photoSname=${product.photolist[0].photo_sname}&photoType=${product.photolist[0].photo_type}"
 									width="200px" style="cursor: pointer;">
@@ -217,8 +216,8 @@ $(function(){
 			</ul>
 		</div>
 	</div>
-	<i class="fas fa-chevron-circle-left left" style="display: none"></i> <i
-		class="fas fa-chevron-circle-right right"></i>
+	  <i class="fas fa-chevron-circle-left left" style="display: none"></i> 
+	<i class="fas fa-chevron-circle-right right"></i>
 </section>
 <hr />
 <section style="position: relative;">

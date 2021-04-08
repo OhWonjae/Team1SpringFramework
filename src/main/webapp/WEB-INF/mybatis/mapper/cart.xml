@@ -67,14 +67,16 @@
 						amount				
 		from  cart
 		where	 user_id = #{uid} and
-					 p_id = #{pid} 		
+					 p_id = #{pid} and
+					 p_size = #{psize}
 	</select>
 	
 	<!-- 해당 상품만 장바구니에서 삭제 -->
 	<delete id="deleteCart" parameterType="cart">
 		delete from cart
 		where 	user_id=#{uid} and
-						p_id=#{pid}
+						p_id=#{pid} and
+						p_size=#{psize}
 	</delete>
  
  	<!-- 장바구니 전체 비우기 -->
@@ -88,7 +90,8 @@
 		update cart
 		set	amount = amount+1
 		where user_id=#{uid} and
-						p_id=#{pid}
+						p_id=#{pid} and
+						p_size=#{psize}
 	</update>
 	
 	<!-- 수량 감소 --> 
@@ -96,7 +99,8 @@
 		update cart
 		set	amount = amount-1
 		where user_id=#{uid} and
-						p_id=#{pid}
+						p_id=#{pid} and
+						p_size=#{psize}
 	</update>
 
 
