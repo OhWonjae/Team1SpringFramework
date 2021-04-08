@@ -18,7 +18,7 @@
 <script>
      	const orderDelete=()=>{
      		event.preventDefault();
-     		swal("주문을 삭제하시겠습니까?", {
+     		swal("주문을 취소하시겠습니까?", {
 			  dangerMode: true,
 			  buttons:{
 				  confirm2:{
