@@ -27,7 +27,7 @@
           <i class="fas fa-check" style="font-size: 10em; "></i>
           <!--결재완료 텍스트-->
           <div style="margin:5% 0; font-size:xx-large;">
-              결재가 완료되었습니다.
+              결제가 완료되었습니다.
           </div>
           <!--확인 버튼-->
           <div style="width: 30%;" style="margin:5%;">
